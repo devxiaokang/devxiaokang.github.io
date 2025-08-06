@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>redis on 不积跬步无以至千里</title>
+        <title>Redis on 不积跬步无以至千里</title>
         <link>https://x-xkang.com/tags/redis/</link>
-        <description>Recent content in redis on 不积跬步无以至千里</description>
+        <description>Recent content in Redis on 不积跬步无以至千里</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Fri, 29 Nov 2024 14:30:45 +0800</lastBuildDate><atom:link href="https://x-xkang.com/tags/redis/index.xml" rel="self" type="application/rss+xml" /><item>
@@ -26,13 +26,13 @@
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-golang&#34; data-lang=&#34;golang&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 获取锁操作
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;redis&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;setnx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;lockKey&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;lock&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;// 获取锁成功后会继续执行
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;errors&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;New&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;获取锁失败&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-golang&#34; data-lang=&#34;golang&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 获取锁操作&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;redis&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;setnx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;lockKey&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;lock&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;// 获取锁成功后会继续执行&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;errors&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;New&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;获取锁失败&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// business logic ...
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// business logic ...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;问题： 业务逻辑执行完之后锁没有释放，导致后续请求都获取不到锁，导致业务逻辑执行失败。
 解决： 在业务逻辑执行完之后，再释放锁。&lt;/p&gt;
@@ -51,15 +51,15 @@
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-golang&#34; data-lang=&#34;golang&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 获取锁操作
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;redis&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;setnx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;lockKey&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;lock&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;// 获取锁成功后会继续执行
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;errors&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;New&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;获取锁失败&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-golang&#34; data-lang=&#34;golang&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 获取锁操作&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;redis&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;setnx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;lockKey&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;lock&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;// 获取锁成功后会继续执行&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;errors&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;New&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;获取锁失败&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// business logic ...
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;redis&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;del&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;lockKey&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 释放锁操作失败，导致所没有释放
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// business logic ...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;redis&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;del&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;lockKey&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 释放锁操作失败，导致所没有释放&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;问题： 获取锁成功后，业务逻辑执行完之后，释放锁失败，导致锁没有释放，导致后续请求都获取不到锁，导致业务逻辑执行失败。
 解决方案：获取锁之后，设置锁的过期时间，防止锁没有释放，导致锁无法释放。&lt;/p&gt;
@@ -77,15 +77,15 @@
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 获取锁操作
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;redis&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;setnx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;lockKey&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;lock&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;// 获取锁成功后会继续执行
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;errors&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;New&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;获取锁失败&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 获取锁操作&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;redis&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;setnx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;lockKey&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;lock&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;// 获取锁成功后会继续执行&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;errors&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;New&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;获取锁失败&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;redis&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;expire&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;lockKey&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;30&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 设置过期时间，若释放锁失败，则锁会自动释放
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// business logic ...
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;redis&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;expire&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;lockKey&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;30&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 设置过期时间，若释放锁失败，则锁会自动释放&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// business logic ...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;redis&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;del&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;lockKey&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; 
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
@@ -102,13 +102,13 @@
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 获取锁操作
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;redis&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;setnx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;lockKey&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;lock&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;// 获取锁成功后会继续执行
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;errors&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;New&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;获取锁失败&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; 
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 获取锁操作&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;redis&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;setnx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;lockKey&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;lock&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;// 获取锁成功后会继续执行&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;errors&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;New&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;获取锁失败&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; 
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;redis&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;expire&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;lockKey&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;30&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 设置失败
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;redis&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;expire&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;lockKey&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;30&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 设置失败&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;问题：设置有效期时 redis 出现宕机，锁无法释放，导致锁变成死锁。
 解决方案：使用 lua 脚本，可以保证 获取锁和设置有效期的原子性。&lt;/p&gt;
@@ -131,8 +131,8 @@
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;c1&#34;&gt;// 加锁
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;nx&#34;&gt;key&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;lock&amp;#34;&lt;/span&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;c1&#34;&gt;// 加锁&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nx&#34;&gt;key&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;lock&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nx&#34;&gt;value&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;uuid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;New&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;nx&#34;&gt;cmd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;redis&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;NewScript&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;`
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s&#34;&gt; if (redis.call(&amp;#34;setnx&amp;#34;, KEYS[1], ARGV[1]) == 1)  then
@@ -145,8 +145,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;errors&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;New&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;set lock failed&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;c1&#34;&gt;// business logic
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;c1&#34;&gt;// business logic&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;ol start=&#34;4&#34;&gt;
 &lt;li&gt;并发锁被其他进程释放&lt;/li&gt;
@@ -180,12 +180,12 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;key&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;lock&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;value&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;uuid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;New&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 加锁 ...
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// business logic ...
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 释放锁
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;cmd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;redis&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;NewScript&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;`
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 加锁 ...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// business logic ...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 释放锁&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;nx&#34;&gt;cmd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;redis&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;NewScript&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;`
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s&#34;&gt; if (redis.call(&amp;#34;get&amp;#34;, KEYS[1] ) == ARGV[1])  then  
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s&#34;&gt;  return redis.call(&amp;#34;del&amp;#34;, KEYS[1]);
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s&#34;&gt; else 
@@ -207,11 +207,10 @@
         <pubDate>Thu, 30 Jun 2022 10:01:40 +0800</pubDate>
         
         <guid>https://x-xkang.com/p/redis-%E7%9A%84%E8%BF%87%E6%9C%9F%E5%88%A0%E9%99%A4%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E6%B7%98%E6%B1%B0%E7%AD%96%E7%95%A5/</guid>
-        <description>&lt;h3 id=&#34;一删除策略&#34;&gt;一、删除策略&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;惰性删除&lt;/strong&gt;&lt;/p&gt;
+        <description>&lt;h3 id=&#34;一删除策略&#34;&gt;一、删除策略
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;惰性删除&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;每次获取 key 的时候会在 &lt;code&gt;expire&lt;/code&gt; 字典中查询是否有当前key，如果有的话会校验当前key的过期时间，过期则删除，缺点是如果存在键已过期，但长期不使用的情况，实际上数据还是存在内存中的&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;每次获取 key 的时候会在 &lt;code&gt;expire&lt;/code&gt; 字典中查询是否有当前key，如果有的话会校验当前key的过期时间，过期则删除，缺点是如果存在键已过期，但长期不使用的情况，实际上数据还是存在内存中的&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;以下是 &lt;code&gt;get&lt;/code&gt; 命令的部分源码&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -367,8 +366,7 @@
 &lt;/div&gt;&lt;p&gt;&lt;strong&gt;定期删除&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;每隔一段时间检查一次数据库，随机删除一些过期键，需要注意的是：Redis 每次扫描并不是遍历过期字典中的所有键，而是采用随机抽取判断并删除过期键的形式执行的
-Redis 默认每秒进行10次过期扫描，此配置可以通过 &lt;code&gt;redis.conf&lt;/code&gt; 的 &lt;code&gt;hz&lt;/code&gt;配置项进行配置&lt;/p&gt;
-&lt;/blockquote&gt;
+Redis 默认每秒进行10次过期扫描，此配置可以通过 &lt;code&gt;redis.conf&lt;/code&gt; 的 &lt;code&gt;hz&lt;/code&gt;配置项进行配置&lt;/p&gt;&lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -404,8 +402,8 @@ Redis 默认每秒进行10次过期扫描，此配置可以通过 &lt;code&gt;re
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Redis使用使用的是&lt;code&gt;惰性删除&lt;/code&gt;加&lt;code&gt;定期删除&lt;/code&gt;的策略&lt;/p&gt;
-&lt;h3 id=&#34;二淘汰策略&#34;&gt;二、淘汰策略&lt;/h3&gt;
-&lt;p&gt;只有在 Redis 的运行内存达到了某个阀值，才会触发内存淘汰机制，这个阀值就是我们设置的最大运行内存，此值在 Redis 的配置文件中可以找到，配置项为 maxmemory。&lt;/p&gt;
+&lt;h3 id=&#34;二淘汰策略&#34;&gt;二、淘汰策略
+&lt;/h3&gt;&lt;p&gt;只有在 Redis 的运行内存达到了某个阀值，才会触发内存淘汰机制，这个阀值就是我们设置的最大运行内存，此值在 Redis 的配置文件中可以找到，配置项为 maxmemory。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;查看最大运行内存&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -445,19 +443,16 @@ Redis 默认每秒进行10次过期扫描，此配置可以通过 &lt;code&gt;re
 &lt;strong&gt;5. volatile-lru&lt;/strong&gt;: 淘汰所有设置了过期时间的键中最长时间未使用的
 &lt;strong&gt;6. volatile-random&lt;/strong&gt;: 随机淘汰设置了过期时间的键
 &lt;strong&gt;7. volatile-ttl&lt;/strong&gt;: 优先淘汰更快过期的键
-&lt;strong&gt;8. volatile-lfu&lt;/strong&gt;: 优先淘汰设置了过期时间的键中最少使用的&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;strong&gt;8. volatile-lfu&lt;/strong&gt;: 优先淘汰设置了过期时间的键中最少使用的&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;LRU算法&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;LRU 算法全称是&lt;code&gt;Least Recently Used&lt;/code&gt; 译为最近最少使用
 LRU 算法基于链表结构，链表中的元素按照操作顺序从前往后排列，最新操作的会被移动到表头，当需要内存淘汰时，只需要删除链表尾部的元素即可
-Redis使用的是一种近似 LRU 算法，目的是为了更好的节约内存，它的实现方式是给现有的数据结构添加一个额外的字段，用于记录此键的最后一次访问时间，Redis内存淘汰时，会使用随机采样的方式淘汰数据，他是随机取&lt;code&gt;N&lt;/code&gt;个值（可配置），然后淘汰醉酒没有使用的那个&lt;/p&gt;
-&lt;/blockquote&gt;
+Redis使用的是一种近似 LRU 算法，目的是为了更好的节约内存，它的实现方式是给现有的数据结构添加一个额外的字段，用于记录此键的最后一次访问时间，Redis内存淘汰时，会使用随机采样的方式淘汰数据，他是随机取&lt;code&gt;N&lt;/code&gt;个值（可配置），然后淘汰醉酒没有使用的那个&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;LFU算法&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;LFU 全称是 &lt;code&gt;Least Frequently Used&lt;/code&gt; 翻译为最不常用，最不常用的算法是根据总访问次数来淘汰数据的，它的核心思想是”如果数据过去被访问的次数很多，那么将来被访问的频率也会很高“。
-LFU 解决了偶尔访问一次之后，数据就不会被淘汰的问题，相比于 LRU 算法也更合理一些&lt;/p&gt;
-&lt;/blockquote&gt;</description>
+LFU 解决了偶尔访问一次之后，数据就不会被淘汰的问题，相比于 LRU 算法也更合理一些&lt;/p&gt;&lt;/blockquote&gt;</description>
         </item>
         <item>
         <title>Redis 持久化策略</title>
@@ -466,33 +461,28 @@ LFU 解决了偶尔访问一次之后，数据就不会被淘汰的问题，相�
         
         <guid>https://x-xkang.com/p/redis-%E6%8C%81%E4%B9%85%E5%8C%96%E7%AD%96%E7%95%A5/</guid>
         <description>&lt;p&gt;Redis提供两种持久化方式：一种是默认的RDB持久化方式，另一种是AOF（append only file）持久化方式&lt;/p&gt;
-&lt;h3 id=&#34;一-rdb&#34;&gt;一、 RDB&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;是什么？&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;一-rdb&#34;&gt;一、 RDB
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;是什么？&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;RDB是通过创建快照的方式进行持久化，保存某个时间点的全部数据，RDB是Redis默认的持久化方案，原理是Redis会通过单独创建（fork）一个与当前进程一模一样的子进程来进行持久化，这个子进程的所有数据（变量、环境变量、程序计数器等）都和原进程一模一样，会先将数据写入到一个临时文件中，待持久化结束了，再用这个临时文件替换上次持久化好的文件，整个过程冲，主进程不进行任何的io操作，这就确保了极高的性能。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&#34;1持久化文件在哪&#34;&gt;1、持久化文件在哪&lt;/h4&gt;
-&lt;blockquote&gt;
-&lt;p&gt;启动&lt;code&gt;redis-server&lt;/code&gt; 的目录下&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&#34;2什么时候fork子进程或者什么时候触发-rdb持久化机制&#34;&gt;2、什么时候fork子进程，或者什么时候触发 rdb持久化机制&lt;/h4&gt;
-&lt;p&gt;&lt;code&gt;RDB&lt;/code&gt; 方式持久化数据是通过 &lt;code&gt;fork&lt;/code&gt; 子进程，在子进程中进行数据同步&lt;/p&gt;
+&lt;p&gt;RDB是通过创建快照的方式进行持久化，保存某个时间点的全部数据，RDB是Redis默认的持久化方案，原理是Redis会通过单独创建（fork）一个与当前进程一模一样的子进程来进行持久化，这个子进程的所有数据（变量、环境变量、程序计数器等）都和原进程一模一样，会先将数据写入到一个临时文件中，待持久化结束了，再用这个临时文件替换上次持久化好的文件，整个过程冲，主进程不进行任何的io操作，这就确保了极高的性能。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h4 id=&#34;1持久化文件在哪&#34;&gt;1、持久化文件在哪
+&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;启动&lt;code&gt;redis-server&lt;/code&gt; 的目录下&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h4 id=&#34;2什么时候fork子进程或者什么时候触发-rdb持久化机制&#34;&gt;2、什么时候fork子进程，或者什么时候触发 rdb持久化机制
+&lt;/h4&gt;&lt;p&gt;&lt;code&gt;RDB&lt;/code&gt; 方式持久化数据是通过 &lt;code&gt;fork&lt;/code&gt; 子进程，在子进程中进行数据同步&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;shutdown时，如果没有开启&lt;code&gt;aof&lt;/code&gt;，会触发配置文件中默认的快照配置
 执行命令 &lt;code&gt;save&lt;/code&gt; 或者 &lt;code&gt;bgsave&lt;/code&gt; &lt;code&gt;save&lt;/code&gt;是只管保存，不管其他，全部阻塞，使用主进程进行持久化
-&lt;code&gt;bgsave&lt;/code&gt; redis 会在后台异步进行快照操作，同时可以响应客户端的请求&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&#34;3优点&#34;&gt;3、优点&lt;/h4&gt;
-&lt;blockquote&gt;
+&lt;code&gt;bgsave&lt;/code&gt; redis 会在后台异步进行快照操作，同时可以响应客户端的请求&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h4 id=&#34;3优点&#34;&gt;3、优点
+&lt;/h4&gt;&lt;blockquote&gt;
 &lt;p&gt;存储紧凑，节省内存空间
 恢复速度快
-适合全量备份，全量复制的场景，经常用于灾难恢复（对数据的完整性和一致性要求较低）&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&#34;4缺点&#34;&gt;4、缺点&lt;/h4&gt;
-&lt;blockquote&gt;
+适合全量备份，全量复制的场景，经常用于灾难恢复（对数据的完整性和一致性要求较低）&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h4 id=&#34;4缺点&#34;&gt;4、缺点
+&lt;/h4&gt;&lt;blockquote&gt;
 &lt;p&gt;容易丢失数据，两次数据快照备份之间如果出现故障，则会丢失期间产生或修改的数据
-通过 fork 子进程对内存快照进行全量备份，频繁执行性能消耗较大&lt;/p&gt;
-&lt;/blockquote&gt;
+通过 fork 子进程对内存快照进行全量备份，频繁执行性能消耗较大&lt;/p&gt;&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;手动触发&lt;/p&gt;
@@ -512,21 +502,19 @@ LFU 解决了偶尔访问一次之后，数据就不会被淘汰的问题，相�
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;!-- **aof(--fix) ls -l --block-size=M**是什么？ --&gt;
-&lt;h3 id=&#34;二aof&#34;&gt;二、AOF&lt;/h3&gt;
-&lt;p&gt;将Redis的操作日志以追加的方式写入文件，读操作是不记录的&lt;/p&gt;
+&lt;h3 id=&#34;二aof&#34;&gt;二、AOF
+&lt;/h3&gt;&lt;p&gt;将Redis的操作日志以追加的方式写入文件，读操作是不记录的&lt;/p&gt;
 &lt;p&gt;为什么会出现&lt;strong&gt;AOF&lt;/strong&gt;持久化方式&lt;/p&gt;
-&lt;h4 id=&#34;1这个持久化文件在哪&#34;&gt;1、这个持久化文件在哪&lt;/h4&gt;
-&lt;blockquote&gt;
-&lt;p&gt;启动 &lt;code&gt;redis-server&lt;/code&gt; 的目录下会生成 &lt;code&gt;appendonly.aof&lt;/code&gt;文件&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&#34;2触发机制根据配置文件的配置项--appendfsync&#34;&gt;2、触发机制（根据配置文件的配置项&amp;ndash;appendfsync）&lt;/h4&gt;
-&lt;blockquote&gt;
+&lt;h4 id=&#34;1这个持久化文件在哪&#34;&gt;1、这个持久化文件在哪
+&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;启动 &lt;code&gt;redis-server&lt;/code&gt; 的目录下会生成 &lt;code&gt;appendonly.aof&lt;/code&gt;文件&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h4 id=&#34;2触发机制根据配置文件的配置项appendfsync&#34;&gt;2、触发机制（根据配置文件的配置项&amp;ndash;appendfsync）
+&lt;/h4&gt;&lt;blockquote&gt;
 &lt;p&gt;no: 表示操作系统进行数据缓存同步到磁盘（快，持久化没保证：写满缓冲区才会同步，若在缓冲区未写满前 shutdown 或其他意外关机，则这部分数据会丢失）
 always: 同步持久化，每次发生数据变更时（增删改操作），立即记录到磁盘（慢，安全）
-everysec: 表示每秒同步一次（默认值，很快，但可能会丢失1秒的数据）&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&#34;3aof-重写机制&#34;&gt;3、AOF 重写机制&lt;/h4&gt;
-&lt;p&gt;重写 AOF 文件会 &lt;code&gt;fork&lt;/code&gt; 子进程去执行，会将内存中的数据写入新的 &lt;code&gt;AOF&lt;/code&gt; 文件，并且是以&lt;code&gt;RDB&lt;/code&gt; 的方式写入，重写结束后会替代旧的&lt;code&gt;AOF&lt;/code&gt; 文件，后续的客户端命令操作又重新以 &lt;code&gt;AOF&lt;/code&gt;的格式写入，&lt;code&gt;redis.conf&lt;/code&gt; 中配置触发 &lt;code&gt;AOF&lt;/code&gt; 文件重写的文件大小值&lt;code&gt;auto-aof-rewrite-percentage&lt;/code&gt; 不宜太小，因为会频繁触发重写&lt;/p&gt;
+everysec: 表示每秒同步一次（默认值，很快，但可能会丢失1秒的数据）&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h4 id=&#34;3aof-重写机制&#34;&gt;3、AOF 重写机制
+&lt;/h4&gt;&lt;p&gt;重写 AOF 文件会 &lt;code&gt;fork&lt;/code&gt; 子进程去执行，会将内存中的数据写入新的 &lt;code&gt;AOF&lt;/code&gt; 文件，并且是以&lt;code&gt;RDB&lt;/code&gt; 的方式写入，重写结束后会替代旧的&lt;code&gt;AOF&lt;/code&gt; 文件，后续的客户端命令操作又重新以 &lt;code&gt;AOF&lt;/code&gt;的格式写入，&lt;code&gt;redis.conf&lt;/code&gt; 中配置触发 &lt;code&gt;AOF&lt;/code&gt; 文件重写的文件大小值&lt;code&gt;auto-aof-rewrite-percentage&lt;/code&gt; 不宜太小，因为会频繁触发重写&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;触发时机&lt;/li&gt;
 &lt;/ul&gt;
@@ -534,16 +522,13 @@ everysec: 表示每秒同步一次（默认值，很快，但可能会丢失1秒
 &lt;ol&gt;
 &lt;li&gt;&lt;code&gt;redis.conf&lt;/code&gt; 的配置项 &lt;code&gt;auto-aof-rewrite-min-size&lt;/code&gt; 默认值是 64mb， 当 &lt;code&gt;AOF&lt;/code&gt; 文件大小超过这个配置值时会自动开启重写 `。&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;redis.conf&lt;/code&gt; 的配置项 &lt;code&gt;auto-aof-rewrite-percentage&lt;/code&gt; 默认值是100， 当 &lt;code&gt;AOF&lt;/code&gt; 文件大小的增长率大于配置值时会自动开启重写。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&#34;4优点&#34;&gt;4、优点&lt;/h4&gt;
-&lt;blockquote&gt;
-&lt;p&gt;保证数据安全&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&#34;5缺点&#34;&gt;5、缺点&lt;/h4&gt;
-&lt;blockquote&gt;
-&lt;p&gt;数据恢复慢&lt;/p&gt;
-&lt;/blockquote&gt;</description>
+&lt;/ol&gt;&lt;/blockquote&gt;
+&lt;h4 id=&#34;4优点&#34;&gt;4、优点
+&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;保证数据安全&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h4 id=&#34;5缺点&#34;&gt;5、缺点
+&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;数据恢复慢&lt;/p&gt;&lt;/blockquote&gt;</description>
         </item>
         <item>
         <title>Redis基础知识之缓存雪崩、击穿和穿透</title>
@@ -551,26 +536,23 @@ everysec: 表示每秒同步一次（默认值，很快，但可能会丢失1秒
         <pubDate>Tue, 28 Jun 2022 14:58:25 +0800</pubDate>
         
         <guid>https://x-xkang.com/p/redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B9%8B%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9%E5%87%BB%E7%A9%BF%E5%92%8C%E7%A9%BF%E9%80%8F/</guid>
-        <description>&lt;h3 id=&#34;一redis-缓存雪崩&#34;&gt;一、Redis 缓存雪崩&lt;/h3&gt;
-&lt;ul&gt;
+        <description>&lt;h3 id=&#34;一redis-缓存雪崩&#34;&gt;一、Redis 缓存雪崩
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;出现场景&lt;/li&gt;
 &lt;/ul&gt;
 &lt;blockquote&gt;
-&lt;p&gt;如果使用redis记录大量的热点数据，且过期时间为同一个常量，那么可能会出现大批的缓存数据会在同一时间或较短的时间区间内失效，redis会根据淘汰策略进行优化，如果数据量比较大会导致线程出现短暂的阻塞；另外，因为大量的缓存失效，会导致请求直接落在DB上，请求数较大情况下会直接导致数据库瘫痪，然后整个业务系统变为不可用状态&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;如果使用redis记录大量的热点数据，且过期时间为同一个常量，那么可能会出现大批的缓存数据会在同一时间或较短的时间区间内失效，redis会根据淘汰策略进行优化，如果数据量比较大会导致线程出现短暂的阻塞；另外，因为大量的缓存失效，会导致请求直接落在DB上，请求数较大情况下会直接导致数据库瘫痪，然后整个业务系统变为不可用状态&lt;/p&gt;&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;解决方案&lt;/li&gt;
 &lt;/ul&gt;
 &lt;blockquote&gt;
-&lt;p&gt;针对这种情况，我们可以在设置过期时间时加上一个随机值，类似 &lt;code&gt;redis.set(key, value, expiredTime + Math.random()*10000)&lt;/code&gt;，这样设置就不会出现在短时间内大量缓存key失效的情况。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;二redis-缓存穿透&#34;&gt;二、Redis 缓存穿透&lt;/h3&gt;
-&lt;ul&gt;
+&lt;p&gt;针对这种情况，我们可以在设置过期时间时加上一个随机值，类似 &lt;code&gt;redis.set(key, value, expiredTime + Math.random()*10000)&lt;/code&gt;，这样设置就不会出现在短时间内大量缓存key失效的情况。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h3 id=&#34;二redis-缓存穿透&#34;&gt;二、Redis 缓存穿透
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;出现场景&lt;/li&gt;
 &lt;/ul&gt;
 &lt;blockquote&gt;
-&lt;p&gt;如果用户请求的热点数据本身是不存在的，比如id为-1，或者id=&amp;lsquo;&amp;lsquo;的数据，查询缓存不存在后会将请求直接打到DB上，最终在DB中也没有查到此数据，此时Redis缓存就是去了作用，搞并发的情况下会降低数据库性能，甚至瘫痪&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;如果用户请求的热点数据本身是不存在的，比如id为-1，或者id=&amp;lsquo;&amp;lsquo;的数据，查询缓存不存在后会将请求直接打到DB上，最终在DB中也没有查到此数据，此时Redis缓存就是去了作用，搞并发的情况下会降低数据库性能，甚至瘫痪&lt;/p&gt;&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;解决方案&lt;/li&gt;
 &lt;/ul&gt;
@@ -579,22 +561,19 @@ everysec: 表示每秒同步一次（默认值，很快，但可能会丢失1秒
 &lt;li&gt;增加参数校验，拦截掉大量的非法参数请求；&lt;/li&gt;
 &lt;li&gt;缓存空值，因为数据库中本来就不存在这些数据，因此可以在第一次重建缓存时将value 记录为 null，下次请求时从Redis获取到 null 值直接返回（注意，要对redis查询的返回值进行严格校验，区分key不存在返回的空值和主动设置的空值null）；&lt;/li&gt;
 &lt;li&gt;布隆过滤器，将DB中的热点数据加载至布隆过滤器中（布隆过滤器的特性：若在过滤器中存在，不一定真是存在；若不存在时，一定不存在），每次请求前先校验布隆过滤器是否存在该key，不存在的话直接return；&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;三redis-缓存击穿&#34;&gt;三、Redis 缓存击穿&lt;/h3&gt;
-&lt;ul&gt;
+&lt;/ol&gt;&lt;/blockquote&gt;
+&lt;h3 id=&#34;三redis-缓存击穿&#34;&gt;三、Redis 缓存击穿
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;出现场景&lt;/li&gt;
 &lt;/ul&gt;
 &lt;blockquote&gt;
-&lt;p&gt;高并发请求同一个热点数据，在热点数据失效的瞬间，大量请求在缓存中没有命中会直接落在DB上进行查询，导致DB压力瞬间增加&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;高并发请求同一个热点数据，在热点数据失效的瞬间，大量请求在缓存中没有命中会直接落在DB上进行查询，导致DB压力瞬间增加&lt;/p&gt;&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;解决方案&lt;/li&gt;
 &lt;/ul&gt;
 &lt;blockquote&gt;
 &lt;p&gt;增加互斥锁，在第一个请求没有在缓存命中开始在DB进行查询并重加缓存时加上一个互斥锁，在缓存重建完成之前，对这同一热点数据的请求将会被互斥锁拦截，被拦截的这些请求根据业务需求，可以延时重试直到拿到数据或直接返回失败等；
-热点数据不设置过期时间（不建议，随着热点数据的增加，无过期时间的key也越来越多，或导致Redis的存储压力增加）&lt;/p&gt;
-&lt;/blockquote&gt;</description>
+热点数据不设置过期时间（不建议，随着热点数据的增加，无过期时间的key也越来越多，或导致Redis的存储压力增加）&lt;/p&gt;&lt;/blockquote&gt;</description>
         </item>
         
     </channel>

@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='mysql索引性能分析'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="mysql索引性能分析">
 <title>MySQL -- 索引性能分析</title>
 
 <link rel='canonical' href='https://x-xkang.com/p/mysql--%E7%B4%A2%E5%BC%95%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/'>
 
-<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='MySQL -- 索引性能分析'>
-<meta property='og:description' content='mysql索引性能分析'>
+<link rel="stylesheet" href="/scss/style.min.7e54386a70f08c359dc67b56ecb1ed61936ec90f83972802164db3639519a07b.css"><meta property='og:title' content="MySQL -- 索引性能分析">
+<meta property='og:description' content="mysql索引性能分析">
 <meta property='og:url' content='https://x-xkang.com/p/mysql--%E7%B4%A2%E5%BC%95%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/'>
 <meta property='og:site_name' content='不积跬步无以至千里'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='mysql' /><meta property='article:tag' content='performance' /><meta property='article:tag' content='索引' /><meta property='article:published_time' content='2023-02-28T10:29:46&#43;08:00'/><meta property='article:modified_time' content='2023-02-28T10:29:46&#43;08:00'/>
 <meta name="twitter:title" content="MySQL -- 索引性能分析">
 <meta name="twitter:description" content="mysql索引性能分析">
-    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="shortcut icon" href="/favicon.ico" />
 
     </head>
     <body class="
@@ -58,7 +58,7 @@
                     
                     
                         
-                        <img src="/img/avatar_hu3c3946a5e2dbcd463bda7dfc7c9c9efb_49773_300x0_resize_box_3.png" width="300"
+                        <img src="/img/avatar_hu_dce6ef8b51a3489.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -74,7 +74,7 @@
             <h1 class="site-name"><a href="/">不积跬步无以至千里</a></h1>
             <h2 class="site-description">拨云见日，否极泰来.</h2>
         </div>
-    </header><ol class="social-menu">
+    </header><ol class="menu-social">
             
                 <li>
                     <a 
@@ -167,12 +167,12 @@
             </a>
         </li>
         
+        <li class="menu-bottom-section">
+            <ol class="menu">
 
-        <div class="menu-bottom-section">
-            
-            
-                <li id="dark-mode-toggle">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="8" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -180,7 +180,7 @@
 
 
 
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="16" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -188,10 +188,11 @@
 
 
 
-                    <span>Dark Mode</span>
-                </li>
-            
-        </div>
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
     </ol>
 </aside>
 
@@ -308,8 +309,8 @@
     <section class="article-content">
     
     
-    <h3 id="查看sql执行频率">查看SQL执行频率</h3>
-<p>MySQL 客户端连接成功后，通过show[session|global] status 命令可以提供服务器状态信息。通过如下指令可以查看当前数据库的<code>INSERT</code>、<code>UPDATE</code>、<code>DELETE</code>、<code>SELECT</code>的访问频次：</p>
+    <h3 id="查看sql执行频率">查看SQL执行频率
+</h3><p>MySQL 客户端连接成功后，通过show[session|global] status 命令可以提供服务器状态信息。通过如下指令可以查看当前数据库的<code>INSERT</code>、<code>UPDATE</code>、<code>DELETE</code>、<code>SELECT</code>的访问频次：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -360,8 +361,8 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
-<h3 id="查询慢日志">查询慢日志</h3>
-<blockquote>
+<h3 id="查询慢日志">查询慢日志
+</h3><blockquote>
 <p>慢查询日志记录了所有执行时间超过指定参数（long_query_time，单位：秒，默认10秒）的所有SQL语句的日志。MySQL的慢查询日志默认没有开启，执行一下SQL查看慢日志开启状态：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -399,8 +400,8 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
-<h3 id="profile详情">profile详情</h3>
-<p><code>show profiles</code> 能够在做SQL优化时帮助我们了解时间都耗费到哪去了。通过<code>have_profiling</code>参数，能够看到当前MySQL是否支持profile操作：</p>
+<h3 id="profile详情">profile详情
+</h3><p><code>show profiles</code> 能够在做SQL优化时帮助我们了解时间都耗费到哪去了。通过<code>have_profiling</code>参数，能够看到当前MySQL是否支持profile操作：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -454,8 +455,8 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
-<h3 id="explain-执行计划">explain 执行计划</h3>
-<p><code>EXPLAIN</code> 或者 <code>DESC</code> 命令获取MySQL如何执行SELECT语句的信息，包括在SELECT语句执行过程中表如何连接和连接的顺序。语法如下：</p>
+<h3 id="explain-执行计划">explain 执行计划
+</h3><p><code>EXPLAIN</code> 或者 <code>DESC</code> 命令获取MySQL如何执行SELECT语句的信息，包括在SELECT语句执行过程中表如何连接和连接的顺序。语法如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -463,7 +464,7 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">#</span><span class="w"> </span><span class="err">直接在</span><span class="n">select</span><span class="err">语句之前加上关键字</span><span class="w"> </span><span class="k">explain</span><span class="o">/</span><span class="k">desc</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">#</span><span class="w"> </span><span class="err">直接在</span><span class="n">select语句之前加上关键字</span><span class="w"> </span><span class="k">explain</span><span class="o">/</span><span class="k">desc</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">EXPLAIN</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="err">字段列表</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="err">表名</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="err">条件</span><span class="p">;</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
@@ -491,81 +492,80 @@
 </div>
 </div><p><code>EXPLAIN</code> 输出列如下：</p>
 <div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>Column</th>
-<th>JSON Name</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a class="link" href="#id" >id</a></td>
-<td><code>select_id</code></td>
-<td><code>SELECT</code> 标识符</td>
-</tr>
-<tr>
-<td><a class="link" href="#select_type" >select_type</a></td>
-<td><code>None</code></td>
-<td><code>SELECT</code> 类型</td>
-</tr>
-<tr>
-<td><a class="link" href="#table" >table</a></td>
-<td><code>table_name</code></td>
-<td>输出行table</td>
-</tr>
-<tr>
-<td><a class="link" href="#partitions" >partitions</a></td>
-<td><code>partitions</code></td>
-<td>匹配的分区</td>
-</tr>
-<tr>
-<td><a class="link" href="#type" >type</a></td>
-<td><code>access_type</code></td>
-<td>连接类型</td>
-</tr>
-<tr>
-<td><a class="link" href="#possible_keys" >possible_keys</a></td>
-<td><code>possible_keys</code></td>
-<td>可能的索引选择</td>
-</tr>
-<tr>
-<td><a class="link" href="#key" >key</a></td>
-<td><code>key</code></td>
-<td>实际选择的索引</td>
-</tr>
-<tr>
-<td><a class="link" href="#key_len" >key_len</a></td>
-<td><code>key_length</code></td>
-<td>所选键的长度</td>
-</tr>
-<tr>
-<td><a class="link" href="#ref" >ref</a></td>
-<td><code>ref</code></td>
-<td>与索引比较的列</td>
-</tr>
-<tr>
-<td><a class="link" href="#rows" >rows</a></td>
-<td><code>rows</code></td>
-<td>估计要检查的行</td>
-</tr>
-<tr>
-<td><a class="link" href="#filtered" >filtered</a></td>
-<td><code>filtered</code></td>
-<td>按table条件过滤的行百分比</td>
-</tr>
-<tr>
-<td><a class="link" href="#Extra" >Extra</a></td>
-<td><code>None</code></td>
-<td>扩展信息</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>Column</th>
+          <th>JSON Name</th>
+          <th>Meaning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a class="link" href="#id" >id</a></td>
+          <td><code>select_id</code></td>
+          <td><code>SELECT</code> 标识符</td>
+      </tr>
+      <tr>
+          <td><a class="link" href="#select_type" >select_type</a></td>
+          <td><code>None</code></td>
+          <td><code>SELECT</code> 类型</td>
+      </tr>
+      <tr>
+          <td><a class="link" href="#table" >table</a></td>
+          <td><code>table_name</code></td>
+          <td>输出行table</td>
+      </tr>
+      <tr>
+          <td><a class="link" href="#partitions" >partitions</a></td>
+          <td><code>partitions</code></td>
+          <td>匹配的分区</td>
+      </tr>
+      <tr>
+          <td><a class="link" href="#type" >type</a></td>
+          <td><code>access_type</code></td>
+          <td>连接类型</td>
+      </tr>
+      <tr>
+          <td><a class="link" href="#possible_keys" >possible_keys</a></td>
+          <td><code>possible_keys</code></td>
+          <td>可能的索引选择</td>
+      </tr>
+      <tr>
+          <td><a class="link" href="#key" >key</a></td>
+          <td><code>key</code></td>
+          <td>实际选择的索引</td>
+      </tr>
+      <tr>
+          <td><a class="link" href="#key_len" >key_len</a></td>
+          <td><code>key_length</code></td>
+          <td>所选键的长度</td>
+      </tr>
+      <tr>
+          <td><a class="link" href="#ref" >ref</a></td>
+          <td><code>ref</code></td>
+          <td>与索引比较的列</td>
+      </tr>
+      <tr>
+          <td><a class="link" href="#rows" >rows</a></td>
+          <td><code>rows</code></td>
+          <td>估计要检查的行</td>
+      </tr>
+      <tr>
+          <td><a class="link" href="#filtered" >filtered</a></td>
+          <td><code>filtered</code></td>
+          <td>按table条件过滤的行百分比</td>
+      </tr>
+      <tr>
+          <td><a class="link" href="#Extra" >Extra</a></td>
+          <td><code>None</code></td>
+          <td>扩展信息</td>
+      </tr>
+  </tbody>
 </table></div>
 <blockquote>
 <p>😀 Note
 详细解释可参考 <a class="link" href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html"  target="_blank" rel="noopener"
-    >[官方文档]</a></p>
-</blockquote>
+    >[官方文档]</a></p></blockquote>
 <ul>
 <li>
 <p><span id="id"><code>id</code></span>
@@ -575,64 +575,63 @@
 <p><span id="select_type"><code>select_type</code></span>
 查询的类型，可以是下表的任何一种类型</p>
 <div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>select_type</th>
-<th>类型说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>SIMPLE</code></td>
-<td>简单<code>SELECT</code>（不使用<code>UNION</code>或子查询）</td>
-</tr>
-<tr>
-<td><code>PROMARY</code></td>
-<td>最外层的<code>SELECT</code></td>
-</tr>
-<tr>
-<td><code>UNION</code></td>
-<td><code>UNION</code>中第二个或之后的<code>SELECT</code>语句</td>
-</tr>
-<tr>
-<td><code>DEPENDENT UNION</code></td>
-<td><code>UNION</code>中第二个或之后的<code>SELECT</code>语句取决于外面的查询</td>
-</tr>
-<tr>
-<td><code>UNION RESULT</code></td>
-<td><code>UNION</code>的结果</td>
-</tr>
-<tr>
-<td><code>SUBQUERY</code></td>
-<td>子查询中的第一个<code>SELECT</code></td>
-</tr>
-<tr>
-<td><code>DEPENDENT SUBQUERY</code></td>
-<td>子查询中的第一个<code>SELECT</code>，取决于外面的查询</td>
-</tr>
-<tr>
-<td><code>DERIVED</code></td>
-<td>衍生表（FROM自居中的子查询）</td>
-</tr>
-<tr>
-<td><code>MATERIALIZED</code></td>
-<td>物化子查询</td>
-</tr>
-<tr>
-<td><code>UNCACHEABLE SUBQUERY</code></td>
-<td>结果集无法缓存的子查询，必须重新评估外部查询的每一行</td>
-</tr>
-<tr>
-<td><code>UNCACHEABLE UNION</code></td>
-<td><code>UNION</code>中第二个或之后的<code>SELECT</code>，属于无法缓存的子查询</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>select_type</th>
+          <th>类型说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>SIMPLE</code></td>
+          <td>简单<code>SELECT</code>（不使用<code>UNION</code>或子查询）</td>
+      </tr>
+      <tr>
+          <td><code>PROMARY</code></td>
+          <td>最外层的<code>SELECT</code></td>
+      </tr>
+      <tr>
+          <td><code>UNION</code></td>
+          <td><code>UNION</code>中第二个或之后的<code>SELECT</code>语句</td>
+      </tr>
+      <tr>
+          <td><code>DEPENDENT UNION</code></td>
+          <td><code>UNION</code>中第二个或之后的<code>SELECT</code>语句取决于外面的查询</td>
+      </tr>
+      <tr>
+          <td><code>UNION RESULT</code></td>
+          <td><code>UNION</code>的结果</td>
+      </tr>
+      <tr>
+          <td><code>SUBQUERY</code></td>
+          <td>子查询中的第一个<code>SELECT</code></td>
+      </tr>
+      <tr>
+          <td><code>DEPENDENT SUBQUERY</code></td>
+          <td>子查询中的第一个<code>SELECT</code>，取决于外面的查询</td>
+      </tr>
+      <tr>
+          <td><code>DERIVED</code></td>
+          <td>衍生表（FROM自居中的子查询）</td>
+      </tr>
+      <tr>
+          <td><code>MATERIALIZED</code></td>
+          <td>物化子查询</td>
+      </tr>
+      <tr>
+          <td><code>UNCACHEABLE SUBQUERY</code></td>
+          <td>结果集无法缓存的子查询，必须重新评估外部查询的每一行</td>
+      </tr>
+      <tr>
+          <td><code>UNCACHEABLE UNION</code></td>
+          <td><code>UNION</code>中第二个或之后的<code>SELECT</code>，属于无法缓存的子查询</td>
+      </tr>
+  </tbody>
 </table></div>
 </li>
 </ul>
 <blockquote>
-<p>⭐ <code>DEPENDENT</code> 意味着使用了关联子查询</p>
-</blockquote>
+<p>⭐ <code>DEPENDENT</code> 意味着使用了关联子查询</p></blockquote>
 <ul>
 <li>
 <p><span id="table"><code>table</code></span>：输出行所引用表的名称，也可以是以下值之一：</p>
@@ -740,9 +739,9 @@
     
     <section class="article-tags">
         
-            <a href="/tags/mysql/">mysql</a>
+            <a href="/tags/mysql/">Mysql</a>
         
-            <a href="/tags/performance/">performance</a>
+            <a href="/tags/performance/">Performance</a>
         
             <a href="/tags/%E7%B4%A2%E5%BC%95/">索引</a>
         
@@ -767,18 +766,19 @@
     
         <link 
                 rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
             ><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
                 defer
                 >
             </script><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
                 defer
                 >
             </script><script>
     window.addEventListener("DOMContentLoaded", () => {
-        renderMathInElement(document.querySelector(`.article-content`), {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
             delimiters: [
                 { left: "$$", right: "$$", display: true },
                 { left: "$", right: "$", display: false },
@@ -788,6 +788,7 @@
             ignoredClasses: ["gist"]
         });})
 </script>
+
     
 </article>
 
@@ -926,14 +927,14 @@
         
             2019 - 
         
-        2024 不积跬步无以至千里
+        2025 不积跬步无以至千里
     </section>
     
     <section class="powerby">
         
             皖ICP备20014602号 <br/>
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>
 </footer>
 
@@ -1022,7 +1023,7 @@
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.9b50b7183b4a32f9580543a89407a21e47a8bebc5bdac6e840fa8c910481f55e.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

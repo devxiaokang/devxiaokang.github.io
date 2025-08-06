@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Rust基本了解'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Rust基本了解">
 <meta name="keywords" content="Rust"><title>Rust学习（一）-- 基本了解</title>
 
 <link rel='canonical' href='https://x-xkang.com/p/rust%E5%AD%A6%E4%B9%A0%E4%B8%80--%E5%9F%BA%E6%9C%AC%E4%BA%86%E8%A7%A3/'>
 
-<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='Rust学习（一）-- 基本了解'>
-<meta property='og:description' content='Rust基本了解'>
+<link rel="stylesheet" href="/scss/style.min.7e54386a70f08c359dc67b56ecb1ed61936ec90f83972802164db3639519a07b.css"><meta property='og:title' content="Rust学习（一）-- 基本了解">
+<meta property='og:description' content="Rust基本了解">
 <meta property='og:url' content='https://x-xkang.com/p/rust%E5%AD%A6%E4%B9%A0%E4%B8%80--%E5%9F%BA%E6%9C%AC%E4%BA%86%E8%A7%A3/'>
 <meta property='og:site_name' content='不积跬步无以至千里'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Rust' /><meta property='article:tag' content='Programming Language' /><meta property='article:published_time' content='2023-09-28T11:02:54&#43;08:00'/><meta property='article:modified_time' content='2023-09-28T11:02:54&#43;08:00'/>
 <meta name="twitter:title" content="Rust学习（一）-- 基本了解">
 <meta name="twitter:description" content="Rust基本了解">
-    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="shortcut icon" href="/favicon.ico" />
 
     </head>
     <body class="
@@ -58,7 +58,7 @@
                     
                     
                         
-                        <img src="/img/avatar_hu3c3946a5e2dbcd463bda7dfc7c9c9efb_49773_300x0_resize_box_3.png" width="300"
+                        <img src="/img/avatar_hu_dce6ef8b51a3489.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -74,7 +74,7 @@
             <h1 class="site-name"><a href="/">不积跬步无以至千里</a></h1>
             <h2 class="site-description">拨云见日，否极泰来.</h2>
         </div>
-    </header><ol class="social-menu">
+    </header><ol class="menu-social">
             
                 <li>
                     <a 
@@ -167,12 +167,12 @@
             </a>
         </li>
         
+        <li class="menu-bottom-section">
+            <ol class="menu">
 
-        <div class="menu-bottom-section">
-            
-            
-                <li id="dark-mode-toggle">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="8" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -180,7 +180,7 @@
 
 
 
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="16" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -188,10 +188,11 @@
 
 
 
-                    <span>Dark Mode</span>
-                </li>
-            
-        </div>
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
     </ol>
 </aside>
 
@@ -308,8 +309,8 @@
     <section class="article-content">
     
     
-    <h2 id="为什么要用rust">为什么要用Rust</h2>
-<ul>
+    <h2 id="为什么要用rust">为什么要用Rust
+</h2><ul>
 <li>Rust 是一种令人兴奋的新编程语言，他可以让每个人编写可靠且搞笑的软件。</li>
 <li>它可以用来替换 C/C++,Rust 和它们具有同样的性能，但是很多常见的bug在编译时就可以被消灭</li>
 <li>Rust是一种通用的编程语言，但是它们更善于以下场景：
@@ -320,8 +321,8 @@
 </ul>
 </li>
 </ul>
-<h2 id="与其他语言比较">与其他语言比较</h2>
-<ul>
+<h2 id="与其他语言比较">与其他语言比较
+</h2><ul>
 <li>C/C++性能非常好，但类型系统和内存都不太安全。</li>
 <li>Java/C#，拥有GC，能保证内存安全，也有很多优秀特性，但是性能不行。</li>
 <li>Rust:
@@ -332,8 +333,8 @@
 </ul>
 </li>
 </ul>
-<h2 id="rust擅长的领域">Rust擅长的领域</h2>
-<ul>
+<h2 id="rust擅长的领域">Rust擅长的领域
+</h2><ul>
 <li>高性能 web-service</li>
 <li>WebAssembly</li>
 <li>命令行工具</li>
@@ -341,8 +342,8 @@
 <li>嵌入式设备</li>
 <li>系统编程</li>
 </ul>
-<h2 id="rust-和firefox">Rust 和Firefox</h2>
-<ul>
+<h2 id="rust-和firefox">Rust 和Firefox
+</h2><ul>
 <li>Rust 最初是Mozilla公司的一个研究性项目。FIrefox是Rust产品应用的一个重要的例子。</li>
 <li>Mozilla一直以来都在用Rust创建一个名为Servo的实验性浏览器引擎，其中的所有内容都是并行执行的。
 <ul>
@@ -355,8 +356,8 @@
 </ul>
 </li>
 </ul>
-<h2 id="rust-的用户和案例">Rust 的用户和案例</h2>
-<ul>
+<h2 id="rust-的用户和案例">Rust 的用户和案例
+</h2><ul>
 <li>Google：新操作系统Fuschia，其中Rust代码量大约占30%</li>
 <li>Amazon: 基于Linux开发的直接可以在裸机、虚拟机上运行容器的操作系统</li>
 <li>System76: 纯Rust开发了下一代安全操作系统Redox</li>
@@ -366,22 +367,22 @@
 <li>微软：WinRT/Rust项目</li>
 <li>Dropbox、Yelp、Coursera、LINE、Cloudflare、Atlassian、npm、Ceph、百度、华为、Sentry、Deno&hellip;</li>
 </ul>
-<h2 id="rust-的优点">Rust 的优点</h2>
-<ul>
+<h2 id="rust-的优点">Rust 的优点
+</h2><ul>
 <li>高性能</li>
 <li>安全性</li>
 <li>无所畏惧的并发</li>
 </ul>
-<h2 id="rust-的缺点">Rust 的缺点</h2>
-<ul>
+<h2 id="rust-的缺点">Rust 的缺点
+</h2><ul>
 <li>学习曲线陡峭</li>
 </ul>
 <p>【注意】</p>
 <ul>
 <li>Rust有很多独有的概念。它们和现在大多主流语言不同，所以学习Rust必须从基础概念一步一步学，否则会懵。</li>
 </ul>
-<h2 id="安装rust">安装Rust</h2>
-<ul>
+<h2 id="安装rust">安装Rust
+</h2><ul>
 <li>
 <p>安装：https://www.rust-lang.org/</p>
 </li>
@@ -435,18 +436,19 @@
     
         <link 
                 rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
             ><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
                 defer
                 >
             </script><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
                 defer
                 >
             </script><script>
     window.addEventListener("DOMContentLoaded", () => {
-        renderMathInElement(document.querySelector(`.article-content`), {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
             delimiters: [
                 { left: "$$", right: "$$", display: true },
                 { left: "$", right: "$", display: false },
@@ -456,6 +458,7 @@
             ignoredClasses: ["gist"]
         });})
 </script>
+
     
 </article>
 
@@ -594,14 +597,14 @@
         
             2019 - 
         
-        2024 不积跬步无以至千里
+        2025 不积跬步无以至千里
     </section>
     
     <section class="powerby">
         
             皖ICP备20014602号 <br/>
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>
 </footer>
 
@@ -690,7 +693,7 @@
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.9b50b7183b4a32f9580543a89407a21e47a8bebc5bdac6e840fa8c910481f55e.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

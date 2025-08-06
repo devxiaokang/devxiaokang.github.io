@@ -20,8 +20,8 @@
         <pubDate>Tue, 23 Apr 2024 17:00:23 +0800</pubDate>
         
         <guid>https://x-xkang.com/p/rust%E5%AD%A6%E4%B9%A0%E4%BA%94--%E8%AE%A4%E8%AF%86%E6%89%80%E6%9C%89%E6%9D%83/</guid>
-        <description>&lt;h2 id=&#34;什么是所有权&#34;&gt;什么是所有权&lt;/h2&gt;
-&lt;p&gt;Rust 的核心功能（之一）是 &lt;strong&gt;所有权（ownership）&lt;/strong&gt;。虽然该功能很容易解释，但它对语言的其他部分有着深刻的影响。&lt;/p&gt;
+        <description>&lt;h2 id=&#34;什么是所有权&#34;&gt;什么是所有权
+&lt;/h2&gt;&lt;p&gt;Rust 的核心功能（之一）是 &lt;strong&gt;所有权（ownership）&lt;/strong&gt;。虽然该功能很容易解释，但它对语言的其他部分有着深刻的影响。&lt;/p&gt;
 &lt;p&gt;所有程序都必须管理其运行时使用计算机内存的方式。一些语言中具有垃圾回收机制，在程序运行时有规律地寻找不再使用的内存；在另一些语言中，程序员必须亲自分配和释放内存。Rust 则选择了第三种方式：通过所有权系统管理内存，编译器在编译时会根据一系列的规则进行检查。如果违反了任何这些规则，程序都不能编译。在运行时，所有权系统的任何功能都不会减慢程序。&lt;/p&gt;
 &lt;p&gt;因为所有权对很多程序员来说都是一个新概念，需要一些时间来适应。好消息是随着你对 Rust 和所有权系统的规则越来越有经验，你就越能自然地编写出安全和高效的代码。持之以恒！&lt;/p&gt;
 &lt;p&gt;当你理解了所有权，你将有一个坚实的基础来理解那些使 Rust 独特的功能。在本章中，你将通过完成一些示例来学习所有权，这些示例基于一个常用的数据结构：字符串。&lt;/p&gt;
@@ -32,19 +32,17 @@
 &lt;p&gt;入栈比在堆上分配内存要快，因为（入栈时）分配器无需为存储新数据去搜索内存空间；其位置总是在栈顶。相比之下，在堆上分配内存则需要更多的工作，这是因为分配器必须首先找到一块足够存放数据的内存空间，并接着做一些记录为下一次分配做准备。&lt;/p&gt;
 &lt;p&gt;访问堆上的数据比访问栈上的数据慢，因为必须通过指针来访问。现代处理器在内存中跳转越少就越快（缓存）。继续类比，假设有一个服务员在餐厅里处理多个桌子的点菜。在一个桌子报完所有菜后再移动到下一个桌子是最有效率的。从桌子 A 听一个菜，接着桌子 B 听一个菜，然后再桌子 A，然后再桌子 B 这样的流程会更加缓慢。出于同样原因，处理器在处理的数据彼此较近的时候（比如在栈上）比较远的时候（比如可能在堆上）能更好的工作。&lt;/p&gt;
 &lt;p&gt;当你的代码调用一个函数时，传递给函数的值（包括可能指向堆上数据的指针）和函数的局部变量被压入栈中。当函数结束时，这些值被移出栈。&lt;/p&gt;
-&lt;p&gt;跟踪哪部分代码正在使用堆上的哪些数据，最大限度的减少堆上的重复数据的数量，以及清理堆上不再使用的数据确保不会耗尽空间，这些问题正是所有权系统要处理的。一旦理解了所有权，你就不需要经常考虑栈和堆了，不过明白了所有权的主要目的就是管理堆数据，能够帮助解释为什么所有权要以这种方式工作。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;所有权规则&#34;&gt;所有权规则&lt;/h3&gt;
-&lt;p&gt;首先，让我们看一下所有权的规则。当我们通过举例说明时，请谨记这些规则：&lt;/p&gt;
+&lt;p&gt;跟踪哪部分代码正在使用堆上的哪些数据，最大限度的减少堆上的重复数据的数量，以及清理堆上不再使用的数据确保不会耗尽空间，这些问题正是所有权系统要处理的。一旦理解了所有权，你就不需要经常考虑栈和堆了，不过明白了所有权的主要目的就是管理堆数据，能够帮助解释为什么所有权要以这种方式工作。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h3 id=&#34;所有权规则&#34;&gt;所有权规则
+&lt;/h3&gt;&lt;p&gt;首先，让我们看一下所有权的规则。当我们通过举例说明时，请谨记这些规则：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ol&gt;
 &lt;li&gt;Rust 中的每一个值都有一个 所有者（owner）。&lt;/li&gt;
 &lt;li&gt;值在任一时刻有且只有一个所有者。&lt;/li&gt;
 &lt;li&gt;当所有者（变量）离开作用域，这个值将被丢弃。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;变量作用域&#34;&gt;变量作用域&lt;/h3&gt;
-&lt;p&gt;既然我们已经掌握了基本语法，将不会在之后的例子中包含 fn main() { 代码，所以如果你是一路跟过来的，必须手动将之后例子的代码放入一个 main 函数中。这样，例子将显得更加简明，使我们可以关注实际细节而不是样板代码。
+&lt;/ol&gt;&lt;/blockquote&gt;
+&lt;h3 id=&#34;变量作用域&#34;&gt;变量作用域
+&lt;/h3&gt;&lt;p&gt;既然我们已经掌握了基本语法，将不会在之后的例子中包含 fn main() { 代码，所以如果你是一路跟过来的，必须手动将之后例子的代码放入一个 main 函数中。这样，例子将显得更加简明，使我们可以关注实际细节而不是样板代码。
 在所有权的第一个例子中，我们看看一些变量的 &lt;strong&gt;作用域&lt;/strong&gt;（scope）。作用域是一个项（item）在程序中有效的范围。假设有这样一个变量：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -87,8 +85,8 @@
 &lt;li&gt;这一直及持续到它离开作用域为止。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;目前为止，变量是否有效与作用域的关系跟其他编程语言是类似的。现在我们在此基础上介绍 String 类型。&lt;/p&gt;
-&lt;h3 id=&#34;string-类型&#34;&gt;String 类型&lt;/h3&gt;
-&lt;p&gt;为了掩饰所有权的规则，我们需要一个比“数据类型”章节中讲到的都要复杂的数据类型。前面介绍的类型都是已知大小的，可以存储在栈中，并且当离开作用域时被移出栈，如果代码的另一部分需要在不同的作用域中使用相同的值，可以快速简单地复制它们来创建一个新的独立实例。不过我们需要寻找一个存储在堆上的数据来探索 Rust 是如何知道该在合适清理数据的。&lt;/p&gt;
+&lt;h3 id=&#34;string-类型&#34;&gt;String 类型
+&lt;/h3&gt;&lt;p&gt;为了掩饰所有权的规则，我们需要一个比“数据类型”章节中讲到的都要复杂的数据类型。前面介绍的类型都是已知大小的，可以存储在栈中，并且当离开作用域时被移出栈，如果代码的另一部分需要在不同的作用域中使用相同的值，可以快速简单地复制它们来创建一个新的独立实例。不过我们需要寻找一个存储在堆上的数据来探索 Rust 是如何知道该在合适清理数据的。&lt;/p&gt;
 &lt;p&gt;我们会专注于 &lt;code&gt;String&lt;/code&gt; 与所有权相关的部分。这些方面也同样适用于标准库提供的或你自己创建的其他复杂数据类型。&lt;/p&gt;
 &lt;p&gt;我们已经见过字符串字面值，即被硬编码进程序里的字符串值。字符串字面值是很方便的，不过它们并不适合使用文本的每一种场景。原因之一就是它们是不可变的。另一个原因是并非所有的字符串的值都能在编写代码时就知道，例如：要是想获取用户输入并存储该怎么办呢？为此，Rust有另一种字符串类型：&lt;code&gt;String&lt;/code&gt;。这个类型管理被分配到堆上的数据，所以能够存储在编译时未知大小的文本。可以使用&lt;code&gt;from&lt;/code&gt;函数基于字符串字面值来创建 &lt;code&gt;String&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -122,8 +120,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;那么这里有什么区别呢？为什么 String 可变而字面值却不行呢？区别在于两个类型对内存的处理上。&lt;/p&gt;
-&lt;h3 id=&#34;内存与分配&#34;&gt;内存与分配&lt;/h3&gt;
-&lt;p&gt;就字符串字面值来说，我们在编译时就知道其内容，所以文本被直接硬编码进最终的可执行文件中。这使得字符串字面值快速且高效。不过这些特性都只得益于字符串字面值的不可变性。不幸的是，我们不能为了每一个在编译时大小未知的文本而将一块内存放入二进制文件中，并且它的大小还可能随着程序运行而改变。&lt;/p&gt;
+&lt;h3 id=&#34;内存与分配&#34;&gt;内存与分配
+&lt;/h3&gt;&lt;p&gt;就字符串字面值来说，我们在编译时就知道其内容，所以文本被直接硬编码进最终的可执行文件中。这使得字符串字面值快速且高效。不过这些特性都只得益于字符串字面值的不可变性。不幸的是，我们不能为了每一个在编译时大小未知的文本而将一块内存放入二进制文件中，并且它的大小还可能随着程序运行而改变。&lt;/p&gt;
 &lt;p&gt;对于 &lt;code&gt;String&lt;/code&gt; 类型，为了支持一个可变，可增长的文本片段，需要在堆上分配一块在编译时未知大小的内存来存放内容。这意味着：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;必须在运行时向内存分配器（memory allocator）请求内存。&lt;/li&gt;
@@ -156,11 +154,10 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;这是一个将 &lt;code&gt;String&lt;/code&gt; 需要的内存返回给分配器的很自然的位置：当 &lt;code&gt;s&lt;/code&gt; 离开作用域的时候。当变量离开作用域，Rust 为我们调用一个特殊的函数。这个函数叫做 &lt;code&gt;drop&lt;/code&gt;，在这里 &lt;code&gt;String&lt;/code&gt; 的作者可以放置释放内存的代码。Rust 在结尾的 &lt;code&gt;}&lt;/code&gt; 处自动调用 &lt;code&gt;drop&lt;/code&gt;。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;注意：在 C++ 中，这种 item 在生命周期结束时释放资源的模式有时被称作 &lt;strong&gt;资源获取即初始化&lt;/strong&gt;（Resource Acquisition Is Initialization (RAII)）。如果你使用过 RAII 模式的话应该对 Rust 的 drop 函数并不陌生。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;注意：在 C++ 中，这种 item 在生命周期结束时释放资源的模式有时被称作 &lt;strong&gt;资源获取即初始化&lt;/strong&gt;（Resource Acquisition Is Initialization (RAII)）。如果你使用过 RAII 模式的话应该对 Rust 的 drop 函数并不陌生。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;这个模式对编写 Rust 代码的方式有着深远的影响。现在它看起来很简单，不过在更复杂的场景下代码的行为可能是不可预测的，比如当有多个变量使用在堆上分配的内存时。现在让我们探索一些这样的场景。&lt;/p&gt;
-&lt;h4 id=&#34;变量与数据交互的方式一移动&#34;&gt;变量与数据交互的方式（一）：移动&lt;/h4&gt;
-&lt;p&gt;在 Rust 中，多个变量可以采取不同的方式与同一数据进行交互。让我们看看示例中一个使用整型的例子。&lt;/p&gt;
+&lt;h4 id=&#34;变量与数据交互的方式一移动&#34;&gt;变量与数据交互的方式（一）：移动
+&lt;/h4&gt;&lt;p&gt;在 Rust 中，多个变量可以采取不同的方式与同一数据进行交互。让我们看看示例中一个使用整型的例子。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -249,8 +246,8 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;这样就解决了我们的问题！因为只有 &lt;code&gt;s2&lt;/code&gt; 是有效的，当其离开作用域，它就释放自己的内存，完毕。&lt;/p&gt;
 &lt;p&gt;另外，这里还隐含了一个设计选择：Rust 永远也不会自动创建数据的 “深拷贝”。因此，任何 自动 的复制都可以被认为是对运行时性能影响较小的。&lt;/p&gt;
-&lt;h4 id=&#34;变量与数据交互的方式二克隆&#34;&gt;变量与数据交互的方式（二）：克隆&lt;/h4&gt;
-&lt;p&gt;如果我们 &lt;strong&gt;确实&lt;/strong&gt; 需要深度复制 &lt;code&gt;String&lt;/code&gt; 中堆上的数据，而不仅仅是栈上的数据，可以使用一个叫做 clone 的通用函数。第五章会讨论方法语法，不过因为方法在很多语言中是一个常见功能，所以之前你可能已经见过了。&lt;/p&gt;
+&lt;h4 id=&#34;变量与数据交互的方式二克隆&#34;&gt;变量与数据交互的方式（二）：克隆
+&lt;/h4&gt;&lt;p&gt;如果我们 &lt;strong&gt;确实&lt;/strong&gt; 需要深度复制 &lt;code&gt;String&lt;/code&gt; 中堆上的数据，而不仅仅是栈上的数据，可以使用一个叫做 clone 的通用函数。第五章会讨论方法语法，不过因为方法在很多语言中是一个常见功能，所以之前你可能已经见过了。&lt;/p&gt;
 &lt;p&gt;这是一个实际使用 &lt;code&gt;clone&lt;/code&gt; 方法的例子：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -271,8 +268,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;当出现 clone 调用时，你知道一些特定的代码被执行而且这些代码可能相当消耗资源。你很容易察觉到一些不寻常的事情正在发生。&lt;/p&gt;
-&lt;h4 id=&#34;只在栈上的数据拷贝&#34;&gt;只在栈上的数据：拷贝&lt;/h4&gt;
-&lt;p&gt;这里还有一个没有提到的小窍门。这些代码使用了整型并且是有效的&lt;/p&gt;
+&lt;h4 id=&#34;只在栈上的数据拷贝&#34;&gt;只在栈上的数据：拷贝
+&lt;/h4&gt;&lt;p&gt;这里还有一个没有提到的小窍门。这些代码使用了整型并且是有效的&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -303,8 +300,8 @@
 &lt;li&gt;字符类型，&lt;code&gt;char&lt;/code&gt;，比如 &lt;code&gt;&#39;a&#39;&lt;/code&gt;。&lt;/li&gt;
 &lt;li&gt;元组， 当且仅当其包含的类型也都实现了 &lt;code&gt;Copy&lt;/code&gt;的时候。例如，&lt;code&gt;(i32, i32)&lt;/code&gt; 实现了 &lt;code&gt;Copy&lt;/code&gt;，但是 &lt;code&gt;(i32, String)&lt;/code&gt; 没有实现。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;所有权与函数&#34;&gt;所有权与函数&lt;/h4&gt;
-&lt;p&gt;将值传递给函数与给变量赋值的原理相似。向函数传递值可能会移动或者复制，就像赋值语句一样&lt;/p&gt;
+&lt;h4 id=&#34;所有权与函数&#34;&gt;所有权与函数
+&lt;/h4&gt;&lt;p&gt;将值传递给函数与给变量赋值的原理相似。向函数传递值可能会移动或者复制，就像赋值语句一样&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -358,8 +355,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;当尝试在调用 &lt;code&gt;takes_ownership&lt;/code&gt; 后使用 &lt;code&gt;s&lt;/code&gt; 时，Rust 会抛出一个编译时错误。这些静态检查使我们免于犯错。试试在 &lt;code&gt;main&lt;/code&gt; 函数中添加使用 &lt;code&gt;s&lt;/code&gt; 和 &lt;code&gt;x&lt;/code&gt; 的代码来看看哪里能使用它们，以及所有权规则会在哪里阻止我们这么做。&lt;/p&gt;
-&lt;h4 id=&#34;返回值和作用域&#34;&gt;返回值和作用域&lt;/h4&gt;
-&lt;p&gt;返回值也可以转移所有权。&lt;/p&gt;
+&lt;h4 id=&#34;返回值和作用域&#34;&gt;返回值和作用域
+&lt;/h4&gt;&lt;p&gt;返回值也可以转移所有权。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -461,8 +458,8 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;但是这未免有些形式主义，而且这种场景应该很常见。幸运的是，Rust 对此提供了一个不用获取所有权就可以使用值的功能，叫做 &lt;strong&gt;引用&lt;/strong&gt;（references）。&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;每日一算&#34;&gt;每日一算&lt;/h2&gt;
-&lt;ul&gt;
+&lt;h2 id=&#34;每日一算&#34;&gt;每日一算
+&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;题目： 比特位计数&lt;/p&gt;
 &lt;/li&gt;
@@ -548,14 +545,14 @@
 &lt;li&gt;注释&lt;/li&gt;
 &lt;li&gt;控制流&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;变量与可变性&#34;&gt;变量与可变性&lt;/h2&gt;
-&lt;ul&gt;
+&lt;h2 id=&#34;变量与可变性&#34;&gt;变量与可变性
+&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;声明变量使用&lt;code&gt;let&lt;/code&gt;关键字&lt;/li&gt;
 &lt;li&gt;默认情况下，变量是不可变的（Immutable）&lt;/li&gt;
 &lt;li&gt;声明变量时，在变量前面加&lt;code&gt;mut&lt;/code&gt;，就可以使变量可变。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;变量和常量&#34;&gt;变量和常量&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h3 id=&#34;变量和常量&#34;&gt;变量和常量
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;常量（constant），常量在绑定值以后也是不可变的，但是它与不可变的变量有很多区别：&lt;/p&gt;
 &lt;ul&gt;
@@ -572,8 +569,8 @@
 &lt;p&gt;命名规范：Rust锂常量使用全大写字母，每个单词之间使用下划线分类例如：&lt;code&gt;MAX_POINTS&lt;/code&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;shadowing&#34;&gt;Shadowing&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h3 id=&#34;shadowing&#34;&gt;Shadowing
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;可以使用相同的名字声明新的变量，新的变量就会&lt;code&gt;shadow&lt;/code&gt;之前声明的同名变量
 &lt;ul&gt;
 &lt;li&gt;在后续的代码中这个变量名代表的就是新的变量&lt;/li&gt;
@@ -647,8 +644,8 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;第一个 &lt;code&gt;spaces&lt;/code&gt; 变量是字符串类型，第二个 &lt;code&gt;spaces&lt;/code&gt; 变量是数字类型。隐藏使我们不必使用不同的名字，如 &lt;code&gt;spaces_str&lt;/code&gt; 和 &lt;code&gt;spaces_num&lt;/code&gt;；相反，我们可以复用 &lt;code&gt;spaces&lt;/code&gt; 这个更简单的名字。然而，如果尝试使用 &lt;code&gt;mut&lt;/code&gt;，将会得到一个编译时错误&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;数据类型&#34;&gt;数据类型&lt;/h2&gt;
-&lt;p&gt;在 &lt;code&gt;Rust&lt;/code&gt; 中，每一个值都属于某一个 &lt;strong&gt;数据类型&lt;/strong&gt;（data type），这告诉 Rust 它被指定为何种数据，以便明确数据处理方式。我们将看到两类数据类型子集：标量（scalar）和复合（compound）。&lt;/p&gt;
+&lt;h2 id=&#34;数据类型&#34;&gt;数据类型
+&lt;/h2&gt;&lt;p&gt;在 &lt;code&gt;Rust&lt;/code&gt; 中，每一个值都属于某一个 &lt;strong&gt;数据类型&lt;/strong&gt;（data type），这告诉 Rust 它被指定为何种数据，以便明确数据处理方式。我们将看到两类数据类型子集：标量（scalar）和复合（compound）。&lt;/p&gt;
 &lt;p&gt;记住，Rust 是 静态类型（statically typed）语言，也就是说在编译时就必须知道所有变量的类型。根据值及其使用方式，编译器通常可以推断出我们想要用的类型。当多种类型均有可能时， “比较猜测的数字和秘密数字” 使用 parse 将 String 转换为数字时，必须增加类型注解，像这样：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -659,84 +656,84 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;如果不像上面的代码这样添加类型注解 : u32，Rust 会显示如下错误，这说明编译器需要我们提供更多信息，来了解我们想要的类型&lt;/p&gt;
-&lt;h3 id=&#34;标量类型&#34;&gt;标量类型&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;标量&lt;/strong&gt;（scalar）类型代表一个单独的值。Rust有四种基本的标量类型：整形、浮点型、布尔类型和字符串类型，你可能在其他语言中建国它们。让我们深入了解它们在&lt;code&gt;Rust&lt;/code&gt;中是如何工作的。&lt;/p&gt;
-&lt;h4 id=&#34;整型&#34;&gt;整型&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;整数&lt;/strong&gt;是一个没有小数部分的数字，该类型声明表明，它关联的值应该是一个占据32比特位的无符号整数（有符号整数类型以 &lt;code&gt;i&lt;/code&gt; 开头而不是 &lt;code&gt;u&lt;/code&gt;）。&lt;/p&gt;
+&lt;h3 id=&#34;标量类型&#34;&gt;标量类型
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;标量&lt;/strong&gt;（scalar）类型代表一个单独的值。Rust有四种基本的标量类型：整形、浮点型、布尔类型和字符串类型，你可能在其他语言中建国它们。让我们深入了解它们在&lt;code&gt;Rust&lt;/code&gt;中是如何工作的。&lt;/p&gt;
+&lt;h4 id=&#34;整型&#34;&gt;整型
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;整数&lt;/strong&gt;是一个没有小数部分的数字，该类型声明表明，它关联的值应该是一个占据32比特位的无符号整数（有符号整数类型以 &lt;code&gt;i&lt;/code&gt; 开头而不是 &lt;code&gt;u&lt;/code&gt;）。&lt;/p&gt;
 &lt;p&gt;Rust中的整形&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;长度&lt;/th&gt;
-&lt;th&gt;有符号&lt;/th&gt;
-&lt;th&gt;无符号&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;8-bit&lt;/td&gt;
-&lt;td&gt;i8&lt;/td&gt;
-&lt;td&gt;u8&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;16-bit&lt;/td&gt;
-&lt;td&gt;i16&lt;/td&gt;
-&lt;td&gt;u16&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;32-bit&lt;/td&gt;
-&lt;td&gt;i32&lt;/td&gt;
-&lt;td&gt;u32&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;64-bit&lt;/td&gt;
-&lt;td&gt;i64&lt;/td&gt;
-&lt;td&gt;u64&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;128-bit&lt;/td&gt;
-&lt;td&gt;i128&lt;/td&gt;
-&lt;td&gt;u128&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;arch&lt;/td&gt;
-&lt;td&gt;isize&lt;/td&gt;
-&lt;td&gt;usize&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;长度&lt;/th&gt;
+          &lt;th&gt;有符号&lt;/th&gt;
+          &lt;th&gt;无符号&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;8-bit&lt;/td&gt;
+          &lt;td&gt;i8&lt;/td&gt;
+          &lt;td&gt;u8&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;16-bit&lt;/td&gt;
+          &lt;td&gt;i16&lt;/td&gt;
+          &lt;td&gt;u16&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;32-bit&lt;/td&gt;
+          &lt;td&gt;i32&lt;/td&gt;
+          &lt;td&gt;u32&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;64-bit&lt;/td&gt;
+          &lt;td&gt;i64&lt;/td&gt;
+          &lt;td&gt;u64&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;128-bit&lt;/td&gt;
+          &lt;td&gt;i128&lt;/td&gt;
+          &lt;td&gt;u128&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;arch&lt;/td&gt;
+          &lt;td&gt;isize&lt;/td&gt;
+          &lt;td&gt;usize&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;每一个有符号的变体可以储存包含从 -(2^(n - 1)) 到 2^(n - 1) - 1 在内的数字，这里 n 是变体使用的位数。所以 i8 可以储存从 -(2^7) 到 2^7 - 1 在内的数字，也就是从 -128 到 127。无符号的变体可以储存从 0 到 2^n - 1 的数字，所以 u8 可以储存从 0 到 2^8 - 1 的数字，也就是从 0 到 255。&lt;/p&gt;
 &lt;p&gt;另外，&lt;code&gt;isize&lt;/code&gt; 和 &lt;code&gt;usize&lt;/code&gt; 类型依赖运行程序的计算机架构：64 位架构上它们是 64 位的，32 位架构上它们是 32 位的。&lt;/p&gt;
 &lt;p&gt;Rust 中的整型字面量&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;数字字面量&lt;/th&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;例子&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;Decimal(十进制)&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;98_222&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;Hex(十六进制)&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;0xff&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;Octal(八进制)&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;0o77&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;Binary(二进制)&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;0b1111_0000&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;Byte(字节)&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;b&amp;rsquo;A&#39;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;数字字面量&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;例子&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;Decimal(十进制)&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;98_222&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;Hex(十六进制)&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;0xff&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;Octal(八进制)&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;0o77&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;Binary(二进制)&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;0b1111_0000&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;Byte(字节)&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;b&amp;rsquo;A&#39;&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;blockquote&gt;
 &lt;p&gt;【注意】：整型溢出
@@ -748,10 +745,9 @@
 &lt;li&gt;如果 &lt;code&gt;checked_*&lt;/code&gt; 方法出现溢出，则返回 &lt;code&gt;None&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;用 &lt;code&gt;overflowing_*&lt;/code&gt; 方法返回值和一个布尔值，布尔值表示是否溢出&lt;/li&gt;
 &lt;li&gt;用 &lt;code&gt;saturating_*&lt;/code&gt; 方法在值的最小值或最大值处进行饱和处理&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&#34;浮点型&#34;&gt;浮点型&lt;/h4&gt;
-&lt;p&gt;Rust 也有两个原生的 &lt;strong&gt;浮点数&lt;/strong&gt;（floating-point numbers）类型，它们是带小数点的数字。Rust 的浮点数类型是 f32 和 f64，分别占 32 位和 64 位。默认类型是 f64，因为在现代 CPU 中，它与 f32 速度几乎一样，不过精度更高。所有的浮点型都是有符号的。&lt;/p&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
+&lt;h4 id=&#34;浮点型&#34;&gt;浮点型
+&lt;/h4&gt;&lt;p&gt;Rust 也有两个原生的 &lt;strong&gt;浮点数&lt;/strong&gt;（floating-point numbers）类型，它们是带小数点的数字。Rust 的浮点数类型是 f32 和 f64，分别占 32 位和 64 位。默认类型是 f64，因为在现代 CPU 中，它与 f32 速度几乎一样，不过精度更高。所有的浮点型都是有符号的。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -769,8 +765,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;浮点数采用 &lt;code&gt;IEEE-754&lt;/code&gt; 标准表示。f32 是单精度浮点数，f64 是双精度浮点数。&lt;/p&gt;
-&lt;h4 id=&#34;数值运算&#34;&gt;数值运算&lt;/h4&gt;
-&lt;!-- https://kaisery.github.io/trpl-zh-cn/ch03-02-data-types.html --&gt;
+&lt;h4 id=&#34;数值运算&#34;&gt;数值运算
+&lt;/h4&gt;&lt;!-- https://kaisery.github.io/trpl-zh-cn/ch03-02-data-types.html --&gt;
 &lt;p&gt;Rust 中所有数字类型都支持数字运算：加法、减法、乘法、除法和取余。整数除法会向零舍入到最接近的的整数。下面的代码展示了如何在 &lt;code&gt;let&lt;/code&gt; 语句中使用它们：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -828,8 +824,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h4 id=&#34;布尔型&#34;&gt;布尔型&lt;/h4&gt;
-&lt;p&gt;正如其他大部分编程语言一样，Rust中的布尔类型有两个可能得值：&lt;code&gt;true&lt;/code&gt; 和 &lt;code&gt;false&lt;/code&gt;。Rust中的布尔类型使用 &lt;code&gt;bool&lt;/code&gt; 表示。例如：&lt;/p&gt;
+&lt;/div&gt;&lt;h4 id=&#34;布尔型&#34;&gt;布尔型
+&lt;/h4&gt;&lt;p&gt;正如其他大部分编程语言一样，Rust中的布尔类型有两个可能得值：&lt;code&gt;true&lt;/code&gt; 和 &lt;code&gt;false&lt;/code&gt;。Rust中的布尔类型使用 &lt;code&gt;bool&lt;/code&gt; 表示。例如：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -844,8 +840,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h4 id=&#34;字符类型&#34;&gt;字符类型&lt;/h4&gt;
-&lt;p&gt;Rust的 &lt;code&gt;char&lt;/code&gt;类型是语言中最原生的字母类型，下面是一些声明 &lt;code&gt;char&lt;/code&gt; 值的例子：&lt;/p&gt;
+&lt;/div&gt;&lt;h4 id=&#34;字符类型&#34;&gt;字符类型
+&lt;/h4&gt;&lt;p&gt;Rust的 &lt;code&gt;char&lt;/code&gt;类型是语言中最原生的字母类型，下面是一些声明 &lt;code&gt;char&lt;/code&gt; 值的例子：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -863,8 +859,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;注意，我们用单引号声明 &lt;code&gt;char&lt;/code&gt; 字面量，而与之相反的是，使用双引号声明字符串字面量。Rust的&lt;code&gt;char&lt;/code&gt;类型的大小为四个字节（four bytes）,并代表了一个 &lt;code&gt;Unicode&lt;/code&gt;标量值（Unicode scalar value）,这意味着它可以比ASCII表示更多的内容。在Rust中，带变音符号的字母（Accented letters），中文、日文、韩文等字符，emoji（绘文字）以及零长度的空白字符都是有效的&lt;code&gt;char&lt;/code&gt;值。Unicode标量值包含 &lt;code&gt;U+0000&lt;/code&gt; 到 &lt;code&gt;U+D7FF&lt;/code&gt; 和 &lt;code&gt;U+E000&lt;/code&gt; 到 &lt;code&gt;U+10FFFF&lt;/code&gt; 之间的所有值。不过，“字符”并不是一个Unicode中的概念，所以人直觉上的”字符“可能与Rust中的&lt;code&gt;char&lt;/code&gt;并不符合。&lt;/p&gt;
-&lt;h4 id=&#34;复合类型&#34;&gt;复合类型&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;复合类型&lt;/strong&gt;（compound types）可以将多个值组合成一个类型。Rust有两个原生的符合类型：元组（tuple）和数组（array）。&lt;/p&gt;
+&lt;h4 id=&#34;复合类型&#34;&gt;复合类型
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;复合类型&lt;/strong&gt;（compound types）可以将多个值组合成一个类型。Rust有两个原生的符合类型：元组（tuple）和数组（array）。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;元组&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;元组是一个将多个其他类型的值组合进一个符合类型的主要方式。元组长度固定：一旦声明，其长度不会增大或缩小。
 我们使用包含在圆括号中的逗号分割的值列表来创建一个元组。元组中的每一个位置都有一个类型，而且这些不同值的类型也不必是相同的，：&lt;/p&gt;
@@ -1075,8 +1071,8 @@
 &lt;/div&gt;&lt;p&gt;程序在索引操作中使用一个无效的值时导致 &lt;strong&gt;运行时&lt;/strong&gt; 错误。程序带着错误信息退出，并且没有执行最后的 println! 语句。当尝试用索引访问一个元素时，Rust 会检查指定的索引是否小于数组的长度。如果索引超出了数组长度，Rust 会 panic，这是 Rust 术语，它用于程序因为错误而退出的情况。这种检查必须在运行时进行，特别是在这种情况下，因为编译器不可能知道用户在以后运行代码时将输入什么值。&lt;/p&gt;
 &lt;p&gt;这是第一个在实战中遇到的 Rust 安全原则的例子。在很多底层语言中，并没有进行这类检查，这样当提供了一个不正确的索引时，就会访问无效的内存。通过立即退出而不是允许内存访问并继续执行，Rust 让你避开此类错误。&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;函数&#34;&gt;函数&lt;/h2&gt;
-&lt;p&gt;函数在 Rust 代码中非常普遍。你已经见过语言中最重要的函数之一：&lt;code&gt;main&lt;/code&gt; 函数，它是很多程序的入口点。你也见过 &lt;code&gt;fn&lt;/code&gt; 关键字，它用来声明新函数。&lt;/p&gt;
+&lt;h2 id=&#34;函数&#34;&gt;函数
+&lt;/h2&gt;&lt;p&gt;函数在 Rust 代码中非常普遍。你已经见过语言中最重要的函数之一：&lt;code&gt;main&lt;/code&gt; 函数，它是很多程序的入口点。你也见过 &lt;code&gt;fn&lt;/code&gt; 关键字，它用来声明新函数。&lt;/p&gt;
 &lt;p&gt;Rust 代码中的函数和变量名使用 snake case 规范风格。在 snake case 中，所有字母都是小写并使用下划线分隔单词。这是一个包含函数定义示例的程序：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -1104,8 +1100,8 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;我们在 Rust 中通过输入 &lt;code&gt;fn&lt;/code&gt; 后面跟着函数名和一对圆括号来定义函数。大括号告诉编译器哪里是函数体的开始和结尾。&lt;/p&gt;
 &lt;p&gt;可以使用函数名后跟圆括号来调用我们定义过的任意函数。因为程序中已定义 &lt;code&gt;another_function&lt;/code&gt; 函数，所以可以在 &lt;code&gt;main&lt;/code&gt; 函数中调用它。注意，源码中 &lt;code&gt;another_function&lt;/code&gt; 定义在 &lt;code&gt;main&lt;/code&gt; 函数 之后；也可以定义在之前。Rust 不关心函数定义所在的位置，只要函数被调用时出现在调用之处可见的作用域内就行。&lt;/p&gt;
-&lt;h3 id=&#34;参数&#34;&gt;参数&lt;/h3&gt;
-&lt;p&gt;我们可以定义为拥有 &lt;strong&gt;参数&lt;/strong&gt;（parameters）的函数，参数是特殊变量，是函数签名的一部分。当函数拥有参数（形参）时，可以为这些参数提供具体的值（实参）。技术上讲，这些具体值被称为参数（arguments），但是在日常交流中，人们倾向于不区分使用 parameter 和 argument 来表示函数定义中的变量或调用函数时传入的具体值。&lt;/p&gt;
+&lt;h3 id=&#34;参数&#34;&gt;参数
+&lt;/h3&gt;&lt;p&gt;我们可以定义为拥有 &lt;strong&gt;参数&lt;/strong&gt;（parameters）的函数，参数是特殊变量，是函数签名的一部分。当函数拥有参数（形参）时，可以为这些参数提供具体的值（实参）。技术上讲，这些具体值被称为参数（arguments），但是在日常交流中，人们倾向于不区分使用 parameter 和 argument 来表示函数定义中的变量或调用函数时传入的具体值。&lt;/p&gt;
 &lt;p&gt;在这版 &lt;code&gt;another_function&lt;/code&gt; 中，我们增加了一个参数：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -1167,10 +1163,9 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;这个例子创建了一个名为 &lt;code&gt;print_labeled_measurement&lt;/code&gt; 的函数，它有两个参数。第一个参数名为 &lt;code&gt;value&lt;/code&gt;，类型是 &lt;code&gt;i32&lt;/code&gt;。第二个参数是 &lt;code&gt;unit_label&lt;/code&gt; ，类型是 &lt;code&gt;char&lt;/code&gt;。然后，该函数打印包含 &lt;code&gt;value&lt;/code&gt; 和 &lt;code&gt;unit_label&lt;/code&gt; 的文本。&lt;/p&gt;
-&lt;h3 id=&#34;语句和表达式&#34;&gt;语句和表达式&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;函数体由一系列的语句和一个可选的结尾表达式构成。目前为止，我们提到的函数还不包含结尾表达式，不过你已经见过作为语句一部分的表达式。因为 Rust 是一门基于表达式（expression-based）的语言，这是一个需要理解的（不同于其他语言）重要区别。其他语言并没有这样的区别，所以让我们看看语句与表达式有什么区别以及这些区别是如何影响函数体的。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h3 id=&#34;语句和表达式&#34;&gt;语句和表达式
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;函数体由一系列的语句和一个可选的结尾表达式构成。目前为止，我们提到的函数还不包含结尾表达式，不过你已经见过作为语句一部分的表达式。因为 Rust 是一门基于表达式（expression-based）的语言，这是一个需要理解的（不同于其他语言）重要区别。其他语言并没有这样的区别，所以让我们看看语句与表达式有什么区别以及这些区别是如何影响函数体的。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;语句&lt;/strong&gt;(Statement)是执行一些操作但不返回值的指令。&lt;strong&gt;表达式&lt;/strong&gt;（expressions）计算并产生一个值。让我们看一些例子：
 实际上，我们已经使用过语句和表达式了，使用&lt;code&gt;let&lt;/code&gt;关键字创建变量并绑定一个值是一个语句。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -1406,9 +1401,9 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;运行代码会打印出 &lt;code&gt;The value of x is: 6&lt;/code&gt;。但如果在包含 &lt;code&gt;x + 1&lt;/code&gt; 的行尾加上一个分号，把它从表达式变成语句，我们将看到一个错误。&lt;/p&gt;
 &lt;p&gt;主要的错误信息，“mismatched types”（类型不匹配），揭示了代码的核心问题。函数 plus_one 的定义说明它要返回一个 i32 类型的值，不过语句并不会返回值，使用单位类型 () 表示不返回值。因为不返回值与函数定义相矛盾，从而出现一个错误。在输出中，Rust 提供了一条信息，可能有助于纠正这个错误：它建议删除分号，这会修复这个错误。&lt;/p&gt;
-&lt;h2 id=&#34;控制流&#34;&gt;控制流&lt;/h2&gt;
-&lt;h3 id=&#34;if表达式&#34;&gt;if表达式&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;if&lt;/code&gt; 表达式允许根据条件执行不同的代码分支。你提供一个条件并表示“如果条件满足，运行这段代码；如果条件不满足，不运行这段代码。”&lt;/p&gt;
+&lt;h2 id=&#34;控制流&#34;&gt;控制流
+&lt;/h2&gt;&lt;h3 id=&#34;if表达式&#34;&gt;if表达式
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;if&lt;/code&gt; 表达式允许根据条件执行不同的代码分支。你提供一个条件并表示“如果条件满足，运行这段代码；如果条件不满足，不运行这段代码。”&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -1626,10 +1621,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;&lt;code&gt;if&lt;/code&gt; 代码块中的表达式返回一个整数，而 &lt;code&gt;else&lt;/code&gt; 代码块中的表达式返回一个字符串。这不可行，因为变量必须只有一个类型。Rust 需要在编译时就确切的知道 &lt;code&gt;number&lt;/code&gt; 变量的类型，这样它就可以在编译时验证在每处使用的 &lt;code&gt;number&lt;/code&gt; 变量的类型是有效的。如果 &lt;code&gt;number&lt;/code&gt; 的类型仅在运行时确定，则 Rust 无法做到这一点；且编译器必须跟踪每一个变量的多种假设类型，那么它就会变得更加复杂，对代码的保证也会减少。&lt;/p&gt;
-&lt;h3 id=&#34;使用循环重复执行&#34;&gt;使用循环重复执行&lt;/h3&gt;
-&lt;p&gt;Rust有三种循环：&lt;code&gt;loop&lt;/code&gt;、&lt;code&gt;while&lt;/code&gt; 和 &lt;code&gt;for&lt;/code&gt;。我们每一个都试试。&lt;/p&gt;
-&lt;h4 id=&#34;使用-loop-重复执行代码&#34;&gt;使用 loop 重复执行代码&lt;/h4&gt;
-&lt;p&gt;&lt;code&gt;loop&lt;/code&gt;关键字告诉 Rust 一遍又一遍地执行一段代码直到你明确要求停止。&lt;/p&gt;
+&lt;h3 id=&#34;使用循环重复执行&#34;&gt;使用循环重复执行
+&lt;/h3&gt;&lt;p&gt;Rust有三种循环：&lt;code&gt;loop&lt;/code&gt;、&lt;code&gt;while&lt;/code&gt; 和 &lt;code&gt;for&lt;/code&gt;。我们每一个都试试。&lt;/p&gt;
+&lt;h4 id=&#34;使用-loop-重复执行代码&#34;&gt;使用 loop 重复执行代码
+&lt;/h4&gt;&lt;p&gt;&lt;code&gt;loop&lt;/code&gt;关键字告诉 Rust 一遍又一遍地执行一段代码直到你明确要求停止。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -1776,8 +1771,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;End &lt;span class=&#34;nv&#34;&gt;count&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h4 id=&#34;while-条件循环&#34;&gt;while 条件循环&lt;/h4&gt;
-&lt;p&gt;在程序中计算循环的条件也很常见。当条件为 true，执行循环。当条件不再为 true，调用 break 停止循环。这个循环类型可以通过组合 loop、if、else 和 break 来实现；如果你喜欢的话，现在就可以在程序中试试。&lt;/p&gt;
+&lt;/div&gt;&lt;h4 id=&#34;while-条件循环&#34;&gt;while 条件循环
+&lt;/h4&gt;&lt;p&gt;在程序中计算循环的条件也很常见。当条件为 true，执行循环。当条件不再为 true，调用 break 停止循环。这个循环类型可以通过组合 loop、if、else 和 break 来实现；如果你喜欢的话，现在就可以在程序中试试。&lt;/p&gt;
 &lt;p&gt;然而，这个模式太常用了，Rust 为此内置了一个语言结构，它被称为 &lt;code&gt;while&lt;/code&gt; 循环。下例中使用了 &lt;code&gt;while&lt;/code&gt;：程序循环三次，每次数字都减一。接着，在循环结束后，打印出另一个信息并退出。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -1808,8 +1803,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;这种结构消除了很多使用 loop、if、else 和 break 时所必须的嵌套，这样更加清晰。当条件为 true 就执行，否则退出循环。&lt;/p&gt;
-&lt;h4 id=&#34;使用-for-遍历集合&#34;&gt;使用 for 遍历集合&lt;/h4&gt;
-&lt;p&gt;可以使用 &lt;code&gt;while&lt;/code&gt; 结构来遍历集合中的元素，比如数组。例如:&lt;/p&gt;
+&lt;h4 id=&#34;使用-for-遍历集合&#34;&gt;使用 for 遍历集合
+&lt;/h4&gt;&lt;p&gt;可以使用 &lt;code&gt;while&lt;/code&gt; 结构来遍历集合中的元素，比如数组。例如:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -1905,8 +1900,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;hr&gt;
-&lt;h2 id=&#34;每日一算&#34;&gt;每日一算&lt;/h2&gt;
-&lt;ul&gt;
+&lt;h2 id=&#34;每日一算&#34;&gt;每日一算
+&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;题目： 3的幂&lt;/p&gt;
 &lt;/li&gt;
@@ -1972,8 +1967,8 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;猜数游戏--目标&#34;&gt;猜数游戏&amp;ndash;目标&lt;/h2&gt;
-&lt;ul&gt;
+&lt;h2 id=&#34;猜数游戏目标&#34;&gt;猜数游戏&amp;ndash;目标
+&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;生成一个 1 到 100 间的随机数&lt;/li&gt;
 &lt;li&gt;提示玩家输入一个猜测数字&lt;/li&gt;
 &lt;li&gt;猜完之后，程序会提示猜测是太大了还是太小了&lt;/li&gt;
@@ -2060,8 +2055,8 @@
         <pubDate>Thu, 28 Sep 2023 15:03:17 +0800</pubDate>
         
         <guid>https://x-xkang.com/p/rust%E5%AD%A6%E4%B9%A0%E4%BA%8C--%E5%88%9D%E8%AF%86cargo/</guid>
-        <description>&lt;h2 id=&#34;cargo&#34;&gt;Cargo&lt;/h2&gt;
-&lt;ul&gt;
+        <description>&lt;h2 id=&#34;cargo&#34;&gt;Cargo
+&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;code&gt;Cargo&lt;/code&gt;是Rust的构建系统和包管理工具&lt;/p&gt;
 &lt;ul&gt;
@@ -2075,8 +2070,8 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;使用cargo-创建项目&#34;&gt;使用Cargo 创建项目&lt;/h2&gt;
-&lt;ul&gt;
+&lt;h2 id=&#34;使用cargo-创建项目&#34;&gt;使用Cargo 创建项目
+&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;执行 &lt;code&gt;cargo new hello_cargo&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -2105,8 +2100,8 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;cargotoml&#34;&gt;Cargo.toml&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h3 id=&#34;cargotoml&#34;&gt;Cargo.toml
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;toml (Tom&amp;rsquo;s Obvious,Minimal Language)格式，是Cargo的配置格式
 &lt;img src=&#34;https://x-xkang.com/images/rust/cargo_toml.jpg&#34;
@@ -2136,8 +2131,8 @@
 &lt;p&gt;在Rust里面，代码的包称作&lt;code&gt;crate&lt;/code&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;scrmainrs&#34;&gt;scr/main.rs&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h3 id=&#34;scrmainrs&#34;&gt;scr/main.rs
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;code&gt;cargo&lt;/code&gt; 生成的 main.rs 在 &lt;code&gt;src&lt;/code&gt; 目录下&lt;/li&gt;
 &lt;li&gt;而&lt;code&gt;Cargo.toml&lt;/code&gt;在项目根目录下&lt;/li&gt;
 &lt;li&gt;源代码都应该在&lt;code&gt;src&lt;/code&gt;目录下&lt;/li&gt;
@@ -2149,8 +2144,8 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;构建-cargo-项目&#34;&gt;构建 Cargo 项目&lt;/h2&gt;
-&lt;ul&gt;
+&lt;h2 id=&#34;构建-cargo-项目&#34;&gt;构建 Cargo 项目
+&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;code&gt;cargo build&lt;/code&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -2166,16 +2161,16 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;构建和运行-cargo-项目&#34;&gt;构建和运行 cargo 项目&lt;/h2&gt;
-&lt;ul&gt;
+&lt;h2 id=&#34;构建和运行-cargo-项目&#34;&gt;构建和运行 cargo 项目
+&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;code&gt;cargo run&lt;/code&gt;, 编译代码 + 执行结果
 &lt;ul&gt;
 &lt;li&gt;如果之前编译成功过，并且源码没有修改，那么就会直接运行二进制文件&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;cargo-check&#34;&gt;cargo check&lt;/h2&gt;
-&lt;ul&gt;
+&lt;h2 id=&#34;cargo-check&#34;&gt;cargo check
+&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;code&gt;cargo check&lt;/code&gt;，检查代码，确保能通过编译，但是不产生任何可执行文件&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;cargo check&lt;/code&gt; 要比 &lt;code&gt;cargo build&lt;/code&gt; 快的多
 &lt;ul&gt;
@@ -2183,8 +2178,8 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;为发布构建&#34;&gt;为发布构建&lt;/h2&gt;
-&lt;ul&gt;
+&lt;h2 id=&#34;为发布构建&#34;&gt;为发布构建
+&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;cargo build &amp;ndash;release
 &lt;ul&gt;
 &lt;li&gt;编译时会进行优化
@@ -2196,7 +2191,8 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;尽量使用-cargo&#34;&gt;尽量使用 &lt;code&gt;Cargo&lt;/code&gt;&lt;/h2&gt;</description>
+&lt;h2 id=&#34;尽量使用-cargo&#34;&gt;尽量使用 &lt;code&gt;Cargo&lt;/code&gt;
+&lt;/h2&gt;</description>
         </item>
         <item>
         <title>Rust学习（一）-- 基本了解</title>
@@ -2204,8 +2200,8 @@
         <pubDate>Thu, 28 Sep 2023 11:02:54 +0800</pubDate>
         
         <guid>https://x-xkang.com/p/rust%E5%AD%A6%E4%B9%A0%E4%B8%80--%E5%9F%BA%E6%9C%AC%E4%BA%86%E8%A7%A3/</guid>
-        <description>&lt;h2 id=&#34;为什么要用rust&#34;&gt;为什么要用Rust&lt;/h2&gt;
-&lt;ul&gt;
+        <description>&lt;h2 id=&#34;为什么要用rust&#34;&gt;为什么要用Rust
+&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;Rust 是一种令人兴奋的新编程语言，他可以让每个人编写可靠且搞笑的软件。&lt;/li&gt;
 &lt;li&gt;它可以用来替换 C/C++,Rust 和它们具有同样的性能，但是很多常见的bug在编译时就可以被消灭&lt;/li&gt;
 &lt;li&gt;Rust是一种通用的编程语言，但是它们更善于以下场景：
@@ -2216,8 +2212,8 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;与其他语言比较&#34;&gt;与其他语言比较&lt;/h2&gt;
-&lt;ul&gt;
+&lt;h2 id=&#34;与其他语言比较&#34;&gt;与其他语言比较
+&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;C/C++性能非常好，但类型系统和内存都不太安全。&lt;/li&gt;
 &lt;li&gt;Java/C#，拥有GC，能保证内存安全，也有很多优秀特性，但是性能不行。&lt;/li&gt;
 &lt;li&gt;Rust:
@@ -2228,8 +2224,8 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;rust擅长的领域&#34;&gt;Rust擅长的领域&lt;/h2&gt;
-&lt;ul&gt;
+&lt;h2 id=&#34;rust擅长的领域&#34;&gt;Rust擅长的领域
+&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;高性能 web-service&lt;/li&gt;
 &lt;li&gt;WebAssembly&lt;/li&gt;
 &lt;li&gt;命令行工具&lt;/li&gt;
@@ -2237,8 +2233,8 @@
 &lt;li&gt;嵌入式设备&lt;/li&gt;
 &lt;li&gt;系统编程&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;rust-和firefox&#34;&gt;Rust 和Firefox&lt;/h2&gt;
-&lt;ul&gt;
+&lt;h2 id=&#34;rust-和firefox&#34;&gt;Rust 和Firefox
+&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;Rust 最初是Mozilla公司的一个研究性项目。FIrefox是Rust产品应用的一个重要的例子。&lt;/li&gt;
 &lt;li&gt;Mozilla一直以来都在用Rust创建一个名为Servo的实验性浏览器引擎，其中的所有内容都是并行执行的。
 &lt;ul&gt;
@@ -2251,8 +2247,8 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;rust-的用户和案例&#34;&gt;Rust 的用户和案例&lt;/h2&gt;
-&lt;ul&gt;
+&lt;h2 id=&#34;rust-的用户和案例&#34;&gt;Rust 的用户和案例
+&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;Google：新操作系统Fuschia，其中Rust代码量大约占30%&lt;/li&gt;
 &lt;li&gt;Amazon: 基于Linux开发的直接可以在裸机、虚拟机上运行容器的操作系统&lt;/li&gt;
 &lt;li&gt;System76: 纯Rust开发了下一代安全操作系统Redox&lt;/li&gt;
@@ -2262,22 +2258,22 @@
 &lt;li&gt;微软：WinRT/Rust项目&lt;/li&gt;
 &lt;li&gt;Dropbox、Yelp、Coursera、LINE、Cloudflare、Atlassian、npm、Ceph、百度、华为、Sentry、Deno&amp;hellip;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;rust-的优点&#34;&gt;Rust 的优点&lt;/h2&gt;
-&lt;ul&gt;
+&lt;h2 id=&#34;rust-的优点&#34;&gt;Rust 的优点
+&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;高性能&lt;/li&gt;
 &lt;li&gt;安全性&lt;/li&gt;
 &lt;li&gt;无所畏惧的并发&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;rust-的缺点&#34;&gt;Rust 的缺点&lt;/h2&gt;
-&lt;ul&gt;
+&lt;h2 id=&#34;rust-的缺点&#34;&gt;Rust 的缺点
+&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;学习曲线陡峭&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;【注意】&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Rust有很多独有的概念。它们和现在大多主流语言不同，所以学习Rust必须从基础概念一步一步学，否则会懵。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;安装rust&#34;&gt;安装Rust&lt;/h2&gt;
-&lt;ul&gt;
+&lt;h2 id=&#34;安装rust&#34;&gt;安装Rust
+&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;安装：https://www.rust-lang.org/&lt;/p&gt;
 &lt;/li&gt;

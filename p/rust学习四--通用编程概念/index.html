@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Rust学习（四）-- 通用编程概念'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Rust学习（四）-- 通用编程概念">
 <meta name="keywords" content="Rust"><title>Rust学习（四）-- 通用编程概念</title>
 
 <link rel='canonical' href='https://x-xkang.com/p/rust%E5%AD%A6%E4%B9%A0%E5%9B%9B--%E9%80%9A%E7%94%A8%E7%BC%96%E7%A8%8B%E6%A6%82%E5%BF%B5/'>
 
-<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='Rust学习（四）-- 通用编程概念'>
-<meta property='og:description' content='Rust学习（四）-- 通用编程概念'>
+<link rel="stylesheet" href="/scss/style.min.7e54386a70f08c359dc67b56ecb1ed61936ec90f83972802164db3639519a07b.css"><meta property='og:title' content="Rust学习（四）-- 通用编程概念">
+<meta property='og:description' content="Rust学习（四）-- 通用编程概念">
 <meta property='og:url' content='https://x-xkang.com/p/rust%E5%AD%A6%E4%B9%A0%E5%9B%9B--%E9%80%9A%E7%94%A8%E7%BC%96%E7%A8%8B%E6%A6%82%E5%BF%B5/'>
 <meta property='og:site_name' content='不积跬步无以至千里'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Rust' /><meta property='article:tag' content='Programming Language' /><meta property='article:published_time' content='2023-10-11T17:02:40&#43;08:00'/><meta property='article:modified_time' content='2023-10-11T17:02:40&#43;08:00'/>
 <meta name="twitter:title" content="Rust学习（四）-- 通用编程概念">
 <meta name="twitter:description" content="Rust学习（四）-- 通用编程概念">
-    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="shortcut icon" href="/favicon.ico" />
 
     </head>
     <body class="
@@ -58,7 +58,7 @@
                     
                     
                         
-                        <img src="/img/avatar_hu3c3946a5e2dbcd463bda7dfc7c9c9efb_49773_300x0_resize_box_3.png" width="300"
+                        <img src="/img/avatar_hu_dce6ef8b51a3489.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -74,7 +74,7 @@
             <h1 class="site-name"><a href="/">不积跬步无以至千里</a></h1>
             <h2 class="site-description">拨云见日，否极泰来.</h2>
         </div>
-    </header><ol class="social-menu">
+    </header><ol class="menu-social">
             
                 <li>
                     <a 
@@ -167,12 +167,12 @@
             </a>
         </li>
         
+        <li class="menu-bottom-section">
+            <ol class="menu">
 
-        <div class="menu-bottom-section">
-            
-            
-                <li id="dark-mode-toggle">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="8" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -180,7 +180,7 @@
 
 
 
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="16" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -188,10 +188,11 @@
 
 
 
-                    <span>Dark Mode</span>
-                </li>
-            
-        </div>
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
     </ol>
 </aside>
 
@@ -351,14 +352,14 @@
 <li>注释</li>
 <li>控制流</li>
 </ul>
-<h2 id="变量与可变性">变量与可变性</h2>
-<ul>
+<h2 id="变量与可变性">变量与可变性
+</h2><ul>
 <li>声明变量使用<code>let</code>关键字</li>
 <li>默认情况下，变量是不可变的（Immutable）</li>
 <li>声明变量时，在变量前面加<code>mut</code>，就可以使变量可变。</li>
 </ul>
-<h3 id="变量和常量">变量和常量</h3>
-<ul>
+<h3 id="变量和常量">变量和常量
+</h3><ul>
 <li>
 <p>常量（constant），常量在绑定值以后也是不可变的，但是它与不可变的变量有很多区别：</p>
 <ul>
@@ -375,8 +376,8 @@
 <p>命名规范：Rust锂常量使用全大写字母，每个单词之间使用下划线分类例如：<code>MAX_POINTS</code></p>
 </li>
 </ul>
-<h3 id="shadowing">Shadowing</h3>
-<ul>
+<h3 id="shadowing">Shadowing
+</h3><ul>
 <li>可以使用相同的名字声明新的变量，新的变量就会<code>shadow</code>之前声明的同名变量
 <ul>
 <li>在后续的代码中这个变量名代表的就是新的变量</li>
@@ -450,8 +451,8 @@
 </div>
 </div><p>第一个 <code>spaces</code> 变量是字符串类型，第二个 <code>spaces</code> 变量是数字类型。隐藏使我们不必使用不同的名字，如 <code>spaces_str</code> 和 <code>spaces_num</code>；相反，我们可以复用 <code>spaces</code> 这个更简单的名字。然而，如果尝试使用 <code>mut</code>，将会得到一个编译时错误</p>
 <hr>
-<h2 id="数据类型">数据类型</h2>
-<p>在 <code>Rust</code> 中，每一个值都属于某一个 <strong>数据类型</strong>（data type），这告诉 Rust 它被指定为何种数据，以便明确数据处理方式。我们将看到两类数据类型子集：标量（scalar）和复合（compound）。</p>
+<h2 id="数据类型">数据类型
+</h2><p>在 <code>Rust</code> 中，每一个值都属于某一个 <strong>数据类型</strong>（data type），这告诉 Rust 它被指定为何种数据，以便明确数据处理方式。我们将看到两类数据类型子集：标量（scalar）和复合（compound）。</p>
 <p>记住，Rust 是 静态类型（statically typed）语言，也就是说在编译时就必须知道所有变量的类型。根据值及其使用方式，编译器通常可以推断出我们想要用的类型。当多种类型均有可能时， “比较猜测的数字和秘密数字” 使用 parse 将 String 转换为数字时，必须增加类型注解，像这样：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -462,84 +463,84 @@
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>如果不像上面的代码这样添加类型注解 : u32，Rust 会显示如下错误，这说明编译器需要我们提供更多信息，来了解我们想要的类型</p>
-<h3 id="标量类型">标量类型</h3>
-<p><strong>标量</strong>（scalar）类型代表一个单独的值。Rust有四种基本的标量类型：整形、浮点型、布尔类型和字符串类型，你可能在其他语言中建国它们。让我们深入了解它们在<code>Rust</code>中是如何工作的。</p>
-<h4 id="整型">整型</h4>
-<p><strong>整数</strong>是一个没有小数部分的数字，该类型声明表明，它关联的值应该是一个占据32比特位的无符号整数（有符号整数类型以 <code>i</code> 开头而不是 <code>u</code>）。</p>
+<h3 id="标量类型">标量类型
+</h3><p><strong>标量</strong>（scalar）类型代表一个单独的值。Rust有四种基本的标量类型：整形、浮点型、布尔类型和字符串类型，你可能在其他语言中建国它们。让我们深入了解它们在<code>Rust</code>中是如何工作的。</p>
+<h4 id="整型">整型
+</h4><p><strong>整数</strong>是一个没有小数部分的数字，该类型声明表明，它关联的值应该是一个占据32比特位的无符号整数（有符号整数类型以 <code>i</code> 开头而不是 <code>u</code>）。</p>
 <p>Rust中的整形</p>
 <div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>长度</th>
-<th>有符号</th>
-<th>无符号</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>8-bit</td>
-<td>i8</td>
-<td>u8</td>
-</tr>
-<tr>
-<td>16-bit</td>
-<td>i16</td>
-<td>u16</td>
-</tr>
-<tr>
-<td>32-bit</td>
-<td>i32</td>
-<td>u32</td>
-</tr>
-<tr>
-<td>64-bit</td>
-<td>i64</td>
-<td>u64</td>
-</tr>
-<tr>
-<td>128-bit</td>
-<td>i128</td>
-<td>u128</td>
-</tr>
-<tr>
-<td>arch</td>
-<td>isize</td>
-<td>usize</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>长度</th>
+          <th>有符号</th>
+          <th>无符号</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>8-bit</td>
+          <td>i8</td>
+          <td>u8</td>
+      </tr>
+      <tr>
+          <td>16-bit</td>
+          <td>i16</td>
+          <td>u16</td>
+      </tr>
+      <tr>
+          <td>32-bit</td>
+          <td>i32</td>
+          <td>u32</td>
+      </tr>
+      <tr>
+          <td>64-bit</td>
+          <td>i64</td>
+          <td>u64</td>
+      </tr>
+      <tr>
+          <td>128-bit</td>
+          <td>i128</td>
+          <td>u128</td>
+      </tr>
+      <tr>
+          <td>arch</td>
+          <td>isize</td>
+          <td>usize</td>
+      </tr>
+  </tbody>
 </table></div>
 <p>每一个有符号的变体可以储存包含从 -(2^(n - 1)) 到 2^(n - 1) - 1 在内的数字，这里 n 是变体使用的位数。所以 i8 可以储存从 -(2^7) 到 2^7 - 1 在内的数字，也就是从 -128 到 127。无符号的变体可以储存从 0 到 2^n - 1 的数字，所以 u8 可以储存从 0 到 2^8 - 1 的数字，也就是从 0 到 255。</p>
 <p>另外，<code>isize</code> 和 <code>usize</code> 类型依赖运行程序的计算机架构：64 位架构上它们是 64 位的，32 位架构上它们是 32 位的。</p>
 <p>Rust 中的整型字面量</p>
 <div class="table-wrapper"><table>
-<thead>
-<tr>
-<th style="text-align:center">数字字面量</th>
-<th style="text-align:center">例子</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">Decimal(十进制)</td>
-<td style="text-align:center">98_222</td>
-</tr>
-<tr>
-<td style="text-align:center">Hex(十六进制)</td>
-<td style="text-align:center">0xff</td>
-</tr>
-<tr>
-<td style="text-align:center">Octal(八进制)</td>
-<td style="text-align:center">0o77</td>
-</tr>
-<tr>
-<td style="text-align:center">Binary(二进制)</td>
-<td style="text-align:center">0b1111_0000</td>
-</tr>
-<tr>
-<td style="text-align:center">Byte(字节)</td>
-<td style="text-align:center">b&rsquo;A'</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: center">数字字面量</th>
+          <th style="text-align: center">例子</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">Decimal(十进制)</td>
+          <td style="text-align: center">98_222</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Hex(十六进制)</td>
+          <td style="text-align: center">0xff</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Octal(八进制)</td>
+          <td style="text-align: center">0o77</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Binary(二进制)</td>
+          <td style="text-align: center">0b1111_0000</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Byte(字节)</td>
+          <td style="text-align: center">b&rsquo;A'</td>
+      </tr>
+  </tbody>
 </table></div>
 <blockquote>
 <p>【注意】：整型溢出
@@ -551,10 +552,9 @@
 <li>如果 <code>checked_*</code> 方法出现溢出，则返回 <code>None</code></li>
 <li>用 <code>overflowing_*</code> 方法返回值和一个布尔值，布尔值表示是否溢出</li>
 <li>用 <code>saturating_*</code> 方法在值的最小值或最大值处进行饱和处理</li>
-</ul>
-</blockquote>
-<h4 id="浮点型">浮点型</h4>
-<p>Rust 也有两个原生的 <strong>浮点数</strong>（floating-point numbers）类型，它们是带小数点的数字。Rust 的浮点数类型是 f32 和 f64，分别占 32 位和 64 位。默认类型是 f64，因为在现代 CPU 中，它与 f32 速度几乎一样，不过精度更高。所有的浮点型都是有符号的。</p>
+</ul></blockquote>
+<h4 id="浮点型">浮点型
+</h4><p>Rust 也有两个原生的 <strong>浮点数</strong>（floating-point numbers）类型，它们是带小数点的数字。Rust 的浮点数类型是 f32 和 f64，分别占 32 位和 64 位。默认类型是 f64，因为在现代 CPU 中，它与 f32 速度几乎一样，不过精度更高。所有的浮点型都是有符号的。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -572,8 +572,8 @@
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>浮点数采用 <code>IEEE-754</code> 标准表示。f32 是单精度浮点数，f64 是双精度浮点数。</p>
-<h4 id="数值运算">数值运算</h4>
-<!-- https://kaisery.github.io/trpl-zh-cn/ch03-02-data-types.html -->
+<h4 id="数值运算">数值运算
+</h4><!-- https://kaisery.github.io/trpl-zh-cn/ch03-02-data-types.html -->
 <p>Rust 中所有数字类型都支持数字运算：加法、减法、乘法、除法和取余。整数除法会向零舍入到最接近的的整数。下面的代码展示了如何在 <code>let</code> 语句中使用它们：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -631,8 +631,8 @@
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><h4 id="布尔型">布尔型</h4>
-<p>正如其他大部分编程语言一样，Rust中的布尔类型有两个可能得值：<code>true</code> 和 <code>false</code>。Rust中的布尔类型使用 <code>bool</code> 表示。例如：</p>
+</div><h4 id="布尔型">布尔型
+</h4><p>正如其他大部分编程语言一样，Rust中的布尔类型有两个可能得值：<code>true</code> 和 <code>false</code>。Rust中的布尔类型使用 <code>bool</code> 表示。例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -647,8 +647,8 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><h4 id="字符类型">字符类型</h4>
-<p>Rust的 <code>char</code>类型是语言中最原生的字母类型，下面是一些声明 <code>char</code> 值的例子：</p>
+</div><h4 id="字符类型">字符类型
+</h4><p>Rust的 <code>char</code>类型是语言中最原生的字母类型，下面是一些声明 <code>char</code> 值的例子：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -666,8 +666,8 @@
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>注意，我们用单引号声明 <code>char</code> 字面量，而与之相反的是，使用双引号声明字符串字面量。Rust的<code>char</code>类型的大小为四个字节（four bytes）,并代表了一个 <code>Unicode</code>标量值（Unicode scalar value）,这意味着它可以比ASCII表示更多的内容。在Rust中，带变音符号的字母（Accented letters），中文、日文、韩文等字符，emoji（绘文字）以及零长度的空白字符都是有效的<code>char</code>值。Unicode标量值包含 <code>U+0000</code> 到 <code>U+D7FF</code> 和 <code>U+E000</code> 到 <code>U+10FFFF</code> 之间的所有值。不过，“字符”并不是一个Unicode中的概念，所以人直觉上的”字符“可能与Rust中的<code>char</code>并不符合。</p>
-<h4 id="复合类型">复合类型</h4>
-<p><strong>复合类型</strong>（compound types）可以将多个值组合成一个类型。Rust有两个原生的符合类型：元组（tuple）和数组（array）。</p>
+<h4 id="复合类型">复合类型
+</h4><p><strong>复合类型</strong>（compound types）可以将多个值组合成一个类型。Rust有两个原生的符合类型：元组（tuple）和数组（array）。</p>
 <p><strong>元组</strong></p>
 <p>元组是一个将多个其他类型的值组合进一个符合类型的主要方式。元组长度固定：一旦声明，其长度不会增大或缩小。
 我们使用包含在圆括号中的逗号分割的值列表来创建一个元组。元组中的每一个位置都有一个类型，而且这些不同值的类型也不必是相同的，：</p>
@@ -878,8 +878,8 @@
 </div><p>程序在索引操作中使用一个无效的值时导致 <strong>运行时</strong> 错误。程序带着错误信息退出，并且没有执行最后的 println! 语句。当尝试用索引访问一个元素时，Rust 会检查指定的索引是否小于数组的长度。如果索引超出了数组长度，Rust 会 panic，这是 Rust 术语，它用于程序因为错误而退出的情况。这种检查必须在运行时进行，特别是在这种情况下，因为编译器不可能知道用户在以后运行代码时将输入什么值。</p>
 <p>这是第一个在实战中遇到的 Rust 安全原则的例子。在很多底层语言中，并没有进行这类检查，这样当提供了一个不正确的索引时，就会访问无效的内存。通过立即退出而不是允许内存访问并继续执行，Rust 让你避开此类错误。</p>
 <hr>
-<h2 id="函数">函数</h2>
-<p>函数在 Rust 代码中非常普遍。你已经见过语言中最重要的函数之一：<code>main</code> 函数，它是很多程序的入口点。你也见过 <code>fn</code> 关键字，它用来声明新函数。</p>
+<h2 id="函数">函数
+</h2><p>函数在 Rust 代码中非常普遍。你已经见过语言中最重要的函数之一：<code>main</code> 函数，它是很多程序的入口点。你也见过 <code>fn</code> 关键字，它用来声明新函数。</p>
 <p>Rust 代码中的函数和变量名使用 snake case 规范风格。在 snake case 中，所有字母都是小写并使用下划线分隔单词。这是一个包含函数定义示例的程序：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -907,8 +907,8 @@
 </div>
 </div><p>我们在 Rust 中通过输入 <code>fn</code> 后面跟着函数名和一对圆括号来定义函数。大括号告诉编译器哪里是函数体的开始和结尾。</p>
 <p>可以使用函数名后跟圆括号来调用我们定义过的任意函数。因为程序中已定义 <code>another_function</code> 函数，所以可以在 <code>main</code> 函数中调用它。注意，源码中 <code>another_function</code> 定义在 <code>main</code> 函数 之后；也可以定义在之前。Rust 不关心函数定义所在的位置，只要函数被调用时出现在调用之处可见的作用域内就行。</p>
-<h3 id="参数">参数</h3>
-<p>我们可以定义为拥有 <strong>参数</strong>（parameters）的函数，参数是特殊变量，是函数签名的一部分。当函数拥有参数（形参）时，可以为这些参数提供具体的值（实参）。技术上讲，这些具体值被称为参数（arguments），但是在日常交流中，人们倾向于不区分使用 parameter 和 argument 来表示函数定义中的变量或调用函数时传入的具体值。</p>
+<h3 id="参数">参数
+</h3><p>我们可以定义为拥有 <strong>参数</strong>（parameters）的函数，参数是特殊变量，是函数签名的一部分。当函数拥有参数（形参）时，可以为这些参数提供具体的值（实参）。技术上讲，这些具体值被称为参数（arguments），但是在日常交流中，人们倾向于不区分使用 parameter 和 argument 来表示函数定义中的变量或调用函数时传入的具体值。</p>
 <p>在这版 <code>another_function</code> 中，我们增加了一个参数：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -970,10 +970,9 @@
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>这个例子创建了一个名为 <code>print_labeled_measurement</code> 的函数，它有两个参数。第一个参数名为 <code>value</code>，类型是 <code>i32</code>。第二个参数是 <code>unit_label</code> ，类型是 <code>char</code>。然后，该函数打印包含 <code>value</code> 和 <code>unit_label</code> 的文本。</p>
-<h3 id="语句和表达式">语句和表达式</h3>
-<blockquote>
-<p>函数体由一系列的语句和一个可选的结尾表达式构成。目前为止，我们提到的函数还不包含结尾表达式，不过你已经见过作为语句一部分的表达式。因为 Rust 是一门基于表达式（expression-based）的语言，这是一个需要理解的（不同于其他语言）重要区别。其他语言并没有这样的区别，所以让我们看看语句与表达式有什么区别以及这些区别是如何影响函数体的。</p>
-</blockquote>
+<h3 id="语句和表达式">语句和表达式
+</h3><blockquote>
+<p>函数体由一系列的语句和一个可选的结尾表达式构成。目前为止，我们提到的函数还不包含结尾表达式，不过你已经见过作为语句一部分的表达式。因为 Rust 是一门基于表达式（expression-based）的语言，这是一个需要理解的（不同于其他语言）重要区别。其他语言并没有这样的区别，所以让我们看看语句与表达式有什么区别以及这些区别是如何影响函数体的。</p></blockquote>
 <p><strong>语句</strong>(Statement)是执行一些操作但不返回值的指令。<strong>表达式</strong>（expressions）计算并产生一个值。让我们看一些例子：
 实际上，我们已经使用过语句和表达式了，使用<code>let</code>关键字创建变量并绑定一个值是一个语句。</p>
 <div class="highlight"><div class="chroma">
@@ -1209,9 +1208,9 @@
 </div>
 </div><p>运行代码会打印出 <code>The value of x is: 6</code>。但如果在包含 <code>x + 1</code> 的行尾加上一个分号，把它从表达式变成语句，我们将看到一个错误。</p>
 <p>主要的错误信息，“mismatched types”（类型不匹配），揭示了代码的核心问题。函数 plus_one 的定义说明它要返回一个 i32 类型的值，不过语句并不会返回值，使用单位类型 () 表示不返回值。因为不返回值与函数定义相矛盾，从而出现一个错误。在输出中，Rust 提供了一条信息，可能有助于纠正这个错误：它建议删除分号，这会修复这个错误。</p>
-<h2 id="控制流">控制流</h2>
-<h3 id="if表达式">if表达式</h3>
-<p><code>if</code> 表达式允许根据条件执行不同的代码分支。你提供一个条件并表示“如果条件满足，运行这段代码；如果条件不满足，不运行这段代码。”</p>
+<h2 id="控制流">控制流
+</h2><h3 id="if表达式">if表达式
+</h3><p><code>if</code> 表达式允许根据条件执行不同的代码分支。你提供一个条件并表示“如果条件满足，运行这段代码；如果条件不满足，不运行这段代码。”</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1429,10 +1428,10 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>if</code> 代码块中的表达式返回一个整数，而 <code>else</code> 代码块中的表达式返回一个字符串。这不可行，因为变量必须只有一个类型。Rust 需要在编译时就确切的知道 <code>number</code> 变量的类型，这样它就可以在编译时验证在每处使用的 <code>number</code> 变量的类型是有效的。如果 <code>number</code> 的类型仅在运行时确定，则 Rust 无法做到这一点；且编译器必须跟踪每一个变量的多种假设类型，那么它就会变得更加复杂，对代码的保证也会减少。</p>
-<h3 id="使用循环重复执行">使用循环重复执行</h3>
-<p>Rust有三种循环：<code>loop</code>、<code>while</code> 和 <code>for</code>。我们每一个都试试。</p>
-<h4 id="使用-loop-重复执行代码">使用 loop 重复执行代码</h4>
-<p><code>loop</code>关键字告诉 Rust 一遍又一遍地执行一段代码直到你明确要求停止。</p>
+<h3 id="使用循环重复执行">使用循环重复执行
+</h3><p>Rust有三种循环：<code>loop</code>、<code>while</code> 和 <code>for</code>。我们每一个都试试。</p>
+<h4 id="使用-loop-重复执行代码">使用 loop 重复执行代码
+</h4><p><code>loop</code>关键字告诉 Rust 一遍又一遍地执行一段代码直到你明确要求停止。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -1579,8 +1578,8 @@
 </span></span><span class="line"><span class="cl">End <span class="nv">count</span> <span class="o">=</span> <span class="m">2</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h4 id="while-条件循环">while 条件循环</h4>
-<p>在程序中计算循环的条件也很常见。当条件为 true，执行循环。当条件不再为 true，调用 break 停止循环。这个循环类型可以通过组合 loop、if、else 和 break 来实现；如果你喜欢的话，现在就可以在程序中试试。</p>
+</div><h4 id="while-条件循环">while 条件循环
+</h4><p>在程序中计算循环的条件也很常见。当条件为 true，执行循环。当条件不再为 true，调用 break 停止循环。这个循环类型可以通过组合 loop、if、else 和 break 来实现；如果你喜欢的话，现在就可以在程序中试试。</p>
 <p>然而，这个模式太常用了，Rust 为此内置了一个语言结构，它被称为 <code>while</code> 循环。下例中使用了 <code>while</code>：程序循环三次，每次数字都减一。接着，在循环结束后，打印出另一个信息并退出。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1611,8 +1610,8 @@
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>这种结构消除了很多使用 loop、if、else 和 break 时所必须的嵌套，这样更加清晰。当条件为 true 就执行，否则退出循环。</p>
-<h4 id="使用-for-遍历集合">使用 for 遍历集合</h4>
-<p>可以使用 <code>while</code> 结构来遍历集合中的元素，比如数组。例如:</p>
+<h4 id="使用-for-遍历集合">使用 for 遍历集合
+</h4><p>可以使用 <code>while</code> 结构来遍历集合中的元素，比如数组。例如:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -1708,8 +1707,8 @@
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
-<h2 id="每日一算">每日一算</h2>
-<ul>
+<h2 id="每日一算">每日一算
+</h2><ul>
 <li>
 <p>题目： 3的幂</p>
 </li>
@@ -1791,18 +1790,19 @@
     
         <link 
                 rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
             ><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
                 defer
                 >
             </script><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
                 defer
                 >
             </script><script>
     window.addEventListener("DOMContentLoaded", () => {
-        renderMathInElement(document.querySelector(`.article-content`), {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
             delimiters: [
                 { left: "$$", right: "$$", display: true },
                 { left: "$", right: "$", display: false },
@@ -1812,6 +1812,7 @@
             ignoredClasses: ["gist"]
         });})
 </script>
+
     
 </article>
 
@@ -1950,14 +1951,14 @@
         
             2019 - 
         
-        2024 不积跬步无以至千里
+        2025 不积跬步无以至千里
     </section>
     
     <section class="powerby">
         
             皖ICP备20014602号 <br/>
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>
 </footer>
 
@@ -2046,7 +2047,7 @@
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.9b50b7183b4a32f9580543a89407a21e47a8bebc5bdac6e840fa8c910481f55e.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

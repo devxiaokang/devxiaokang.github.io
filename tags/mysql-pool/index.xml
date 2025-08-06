@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>mysql pool on 不积跬步无以至千里</title>
+        <title>Mysql Pool on 不积跬步无以至千里</title>
         <link>https://x-xkang.com/tags/mysql-pool/</link>
-        <description>Recent content in mysql pool on 不积跬步无以至千里</description>
+        <description>Recent content in Mysql Pool on 不积跬步无以至千里</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Fri, 12 Mar 2021 17:42:20 +0800</lastBuildDate><atom:link href="https://x-xkang.com/tags/mysql-pool/index.xml" rel="self" type="application/rss+xml" /><item>
@@ -12,13 +12,12 @@
         <pubDate>Fri, 12 Mar 2021 17:42:20 +0800</pubDate>
         
         <guid>https://x-xkang.com/p/mysql--%E8%BF%9E%E6%8E%A5%E6%B1%A0%E9%97%AE%E9%A2%98/</guid>
-        <description>&lt;h2 id=&#34;一问题描述&#34;&gt;一、问题描述&lt;/h2&gt;
-&lt;blockquote&gt;
+        <description>&lt;h2 id=&#34;一问题描述&#34;&gt;一、问题描述
+&lt;/h2&gt;&lt;blockquote&gt;
 &lt;p&gt;1、生产环境主站每隔一段时间就会出现卡顿，接口响应慢，甚至超时的情况、&lt;br&gt;
-2、测试环境重现不了（一抹诡异的光）&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;二问题排查&#34;&gt;二、问题排查&lt;/h2&gt;
-&lt;blockquote&gt;
+2、测试环境重现不了（一抹诡异的光）&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;二问题排查&#34;&gt;二、问题排查
+&lt;/h2&gt;&lt;blockquote&gt;
 &lt;p&gt;针对响应慢的接口进行优化，之前的代码风格也存在问题，还是有些滥用sync/await，一些没有依赖关系的操作，全部分开每行await同步执行，分析后把部分DB操作合并一个Promise执行
 阿里云查了一下mysql的slow_log，有挺多的慢查询，优化了一部分SQL，业务逻辑太复杂，但是！没有解决问题，主站还是隔一段时间就卡
 找到部分接口日志，超时的接口返回的是Knex.js数据库管理工具抛出的异常，&lt;code&gt;KnexTimeoutError: Knex: Timeout acquiring a connection. The pool is probably full.&lt;/code&gt;，可能是连接池已满，获取连接失败导致的
@@ -27,10 +26,9 @@
 &lt;li&gt;1，主站的信息列表会隔几秒钟轮询，获取最新的数据，如果1000个用户在线，轮询周期内就会有1000个查询，中间也没有做缓存处理，导致并发到DB的请求会比较多&lt;/li&gt;
 &lt;li&gt;2，为了维护DB的状态统一，用户的部分操作用了事务，一些事务内包含了太多操作（感觉是长期占用连接未释放的罪魁祸首）&lt;/li&gt;
 &lt;li&gt;3，测试环境重现不了是因为没有经过压测，只测试了功能，没有测试性能，日常测试也没有大并发&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;三问题验证&#34;&gt;三、问题验证&lt;/h2&gt;
-&lt;blockquote&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;三问题验证&#34;&gt;三、问题验证
+&lt;/h2&gt;&lt;blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;将数据库连接池的数量改成了1，使用事务的接口中做了延时的&lt;code&gt;transaction.commit()&lt;/code&gt;操作，然后另外一个请求再去正常查询，&lt;/p&gt;
@@ -41,10 +39,9 @@
 &lt;li&gt;
 &lt;p&gt;也侧面印证了为什么测试环境复现不了这种情况，毕竟在没有压测的前提下。两个测试通过手动操作，并发量是达不到配置的数量的，也就不会出现卡顿的情况&lt;/p&gt;
 &lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;四解决方案&#34;&gt;四、解决方案&lt;/h2&gt;
-&lt;blockquote&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;四解决方案&#34;&gt;四、解决方案
+&lt;/h2&gt;&lt;blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;1，优化长事务的操作，减少不必要的事务，提高处理效率（难度较大，业务逻辑比较复杂）；&lt;/p&gt;
@@ -58,13 +55,11 @@
 &lt;li&gt;
 &lt;p&gt;4，数据库扩展成读写分离，update和insert的操作直接操作主库，大部分select操作转移到从库，即使有部分的事务操作慢，也不会导致主站的基本查询卡住&lt;/p&gt;
 &lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;五写在最后&#34;&gt;五、写在最后&lt;/h2&gt;
-&lt;blockquote&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;五写在最后&#34;&gt;五、写在最后
+&lt;/h2&gt;&lt;blockquote&gt;
 &lt;p&gt;系统的业务逻辑比较复杂，从业务代码层面下手成本还是比较高，接口的耦合都比较高，重构都比改的成本低，开始的设计，可能也没有考虑扩展的问题，并发的问题等，
-包括每个服务之间的通信问题，后期再慢慢优化吧，不怕有问题，就怕一直没遇到过问题！加油~。&lt;/p&gt;
-&lt;/blockquote&gt;</description>
+包括每个服务之间的通信问题，后期再慢慢优化吧，不怕有问题，就怕一直没遇到过问题！加油~。&lt;/p&gt;&lt;/blockquote&gt;</description>
         </item>
         
     </channel>

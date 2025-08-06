@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Golang之channel数据类型解析'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Golang之channel数据类型解析">
 <title>Golang -- Channel</title>
 
 <link rel='canonical' href='https://x-xkang.com/p/golang--channel/'>
 
-<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='Golang -- Channel'>
-<meta property='og:description' content='Golang之channel数据类型解析'>
+<link rel="stylesheet" href="/scss/style.min.7e54386a70f08c359dc67b56ecb1ed61936ec90f83972802164db3639519a07b.css"><meta property='og:title' content="Golang -- Channel">
+<meta property='og:description' content="Golang之channel数据类型解析">
 <meta property='og:url' content='https://x-xkang.com/p/golang--channel/'>
 <meta property='og:site_name' content='不积跬步无以至千里'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Golang' /><meta property='article:tag' content='channel' /><meta property='article:published_time' content='2023-03-29T11:08:08&#43;08:00'/><meta property='article:modified_time' content='2023-03-29T11:08:08&#43;08:00'/>
 <meta name="twitter:title" content="Golang -- Channel">
 <meta name="twitter:description" content="Golang之channel数据类型解析">
-    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="shortcut icon" href="/favicon.ico" />
 
     </head>
     <body class="
@@ -58,7 +58,7 @@
                     
                     
                         
-                        <img src="/img/avatar_hu3c3946a5e2dbcd463bda7dfc7c9c9efb_49773_300x0_resize_box_3.png" width="300"
+                        <img src="/img/avatar_hu_dce6ef8b51a3489.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -74,7 +74,7 @@
             <h1 class="site-name"><a href="/">不积跬步无以至千里</a></h1>
             <h2 class="site-description">拨云见日，否极泰来.</h2>
         </div>
-    </header><ol class="social-menu">
+    </header><ol class="menu-social">
             
                 <li>
                     <a 
@@ -167,12 +167,12 @@
             </a>
         </li>
         
+        <li class="menu-bottom-section">
+            <ol class="menu">
 
-        <div class="menu-bottom-section">
-            
-            
-                <li id="dark-mode-toggle">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="8" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -180,7 +180,7 @@
 
 
 
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="16" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -188,10 +188,11 @@
 
 
 
-                    <span>Dark Mode</span>
-                </li>
-            
-        </div>
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
     </ol>
 </aside>
 
@@ -318,8 +319,8 @@
     <section class="article-content">
     
     
-    <h3 id="设计原理">设计原理</h3>
-<p>Go 语言中最常见的、也是经常被人提及的设计模式就是：不要通过共享内存的方式进行通信，而是应该通过通信的方式共享内存。在很多主流的编程语言中，多个线程传递数据的方式一般都是共享内存，为了解决线程竞争，我们需要限制同一时间能够读写这些变量的线程数量，然而这与 Go 语言鼓励的设计并不相同。</p>
+    <h3 id="设计原理">设计原理
+</h3><p>Go 语言中最常见的、也是经常被人提及的设计模式就是：不要通过共享内存的方式进行通信，而是应该通过通信的方式共享内存。在很多主流的编程语言中，多个线程传递数据的方式一般都是共享内存，为了解决线程竞争，我们需要限制同一时间能够读写这些变量的线程数量，然而这与 Go 语言鼓励的设计并不相同。</p>
 <p><img src="/images/golang/channel/shared-memory.png"
 	
 	
@@ -344,14 +345,14 @@
 >
 <strong><center>Goroutine 使用 Channel 传递数据</center></strong></p>
 <p>上图中的两个 Goroutine，一个会向 Channel 中发送数据，另一个会从 Channel 中接收数据，它们两者能够独立运行并不存在直接关联，但是能通过 Channel 间接完成通信。</p>
-<h4 id="先入先出">先入先出</h4>
-<p>目前的 Channel 收发操作均遵循了先进先出的设计，具体规则如下：</p>
+<h4 id="先入先出">先入先出
+</h4><p>目前的 Channel 收发操作均遵循了先进先出的设计，具体规则如下：</p>
 <ul>
 <li>先从 Channel 读取数据的 Goroutine 会先接收到数据；</li>
 <li>先向 Channel 发送数据的 Goroutine 会得到先发送数据的权利；</li>
 </ul>
-<h4 id="无锁管道">无锁管道</h4>
-<p>锁是一种常见的并发控制技术，我们一般会将锁分成乐观锁和悲观锁，即乐观并发控制和悲观并发控制，无锁（lock-free）队列更准确的描述是使用乐观并发控制的队列。乐观并发控制也叫乐观锁，很多人都会误以为乐观锁是与悲观锁差不多，然而它并不是真正的锁，只是一种并发控制的思想。</p>
+<h4 id="无锁管道">无锁管道
+</h4><p>锁是一种常见的并发控制技术，我们一般会将锁分成乐观锁和悲观锁，即乐观并发控制和悲观并发控制，无锁（lock-free）队列更准确的描述是使用乐观并发控制的队列。乐观并发控制也叫乐观锁，很多人都会误以为乐观锁是与悲观锁差不多，然而它并不是真正的锁，只是一种并发控制的思想。</p>
 <p><img src="/images/golang/channel/concurrency-control.png"
 	
 	
@@ -373,8 +374,8 @@
 <li><code>chan struct{}</code> 类型的异步Channel - <code>struct{}</code>类型不占用内存空间，不需要实现缓冲区和直接发送(Handoff)的语义。</li>
 </ul>
 <p>这个提案的目的也不是实现完全无锁的队列，只是在一些关键路径上通过无锁提升 Channel 的性能。社区中已经有无锁 Channel 的实现，但是在实际的基准测试中，无锁队列在多核测试中的表现还需要进一步的改进。</p>
-<h3 id="数据结构">数据结构</h3>
-<p>源码位置：<a class="link" href="https://github.com/golang/go/blob/f57f02fcd519a86683c47a444e0e24a086fea8e0/src/runtime/chan.go#L33"  target="_blank" rel="noopener"
+<h3 id="数据结构">数据结构
+</h3><p>源码位置：<a class="link" href="https://github.com/golang/go/blob/f57f02fcd519a86683c47a444e0e24a086fea8e0/src/runtime/chan.go#L33"  target="_blank" rel="noopener"
     >src/runtime/chan.go#L33</a></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -401,29 +402,29 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">hchan</span> <span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl"> <span class="nx">qcount</span>   <span class="kt">uint</span>           <span class="c1">// total data in the queue， 队列中的元素数量
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="nx">dataqsiz</span> <span class="kt">uint</span>           <span class="c1">// size of the circular queue，  底层循环数组的长度
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="nx">buf</span>      <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span> <span class="c1">// points to an array of dataqsiz elements， 指向底层循环数组的指针，只针对有缓冲区的 channel
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="nx">elemsize</span> <span class="kt">uint16</span>        <span class="c1">// channel 中的元素大小
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="nx">closed</span>   <span class="kt">uint32</span>        <span class="c1">// channel是否被关闭的标识
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="nx">elemtype</span> <span class="o">*</span><span class="nx">_type</span> <span class="c1">// element type  ，channel中元素类型
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="nx">sendx</span>    <span class="kt">uint</span>   <span class="c1">// send index，已发送元素在循环数组中的索引
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="nx">recvx</span>    <span class="kt">uint</span>   <span class="c1">// receive index，已接收元素在数组中的索引
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="nx">recvq</span>    <span class="nx">waitq</span>  <span class="c1">// list of recv waiters，等待接收的 `goroutine` 队列
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="nx">sendq</span>    <span class="nx">waitq</span>  <span class="c1">// list of send waiters，等待发送的 `goroutine` 队列
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl"> <span class="c1">// lock protects all fields in hchan, as well as several
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="c1">// fields in sudogs blocked on this channel.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="c1">// Do not change another G&#39;s status while holding this lock
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="c1">// (in particular, do not ready a G), as this can deadlock
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="c1">// with stack shrinking.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="nx">lock</span> <span class="nx">mutex</span>   <span class="c1">// 保护 channel 中的所有字段
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">qcount</span>   <span class="kt">uint</span>           <span class="c1">// total data in the queue， 队列中的元素数量</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">dataqsiz</span> <span class="kt">uint</span>           <span class="c1">// size of the circular queue，  底层循环数组的长度</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">buf</span>      <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span> <span class="c1">// points to an array of dataqsiz elements， 指向底层循环数组的指针，只针对有缓冲区的 channel</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">elemsize</span> <span class="kt">uint16</span>        <span class="c1">// channel 中的元素大小</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">closed</span>   <span class="kt">uint32</span>        <span class="c1">// channel是否被关闭的标识</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">elemtype</span> <span class="o">*</span><span class="nx">_type</span> <span class="c1">// element type  ，channel中元素类型</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">sendx</span>    <span class="kt">uint</span>   <span class="c1">// send index，已发送元素在循环数组中的索引</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">recvx</span>    <span class="kt">uint</span>   <span class="c1">// receive index，已接收元素在数组中的索引</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">recvq</span>    <span class="nx">waitq</span>  <span class="c1">// list of recv waiters，等待接收的 `goroutine` 队列</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">sendq</span>    <span class="nx">waitq</span>  <span class="c1">// list of send waiters，等待发送的 `goroutine` 队列</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="c1">// lock protects all fields in hchan, as well as several</span>
+</span></span><span class="line"><span class="cl"> <span class="c1">// fields in sudogs blocked on this channel.</span>
+</span></span><span class="line"><span class="cl"> <span class="c1">//</span>
+</span></span><span class="line"><span class="cl"> <span class="c1">// Do not change another G&#39;s status while holding this lock</span>
+</span></span><span class="line"><span class="cl"> <span class="c1">// (in particular, do not ready a G), as this can deadlock</span>
+</span></span><span class="line"><span class="cl"> <span class="c1">// with stack shrinking.</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">lock</span> <span class="nx">mutex</span>   <span class="c1">// 保护 channel 中的所有字段</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h4 id="字段解释">字段解释</h4>
-<blockquote>
+</div><h4 id="字段解释">字段解释
+</h4><blockquote>
 <p><code>qcount</code>: 队列中的元素数量<br>
 <code>dataqsiz</code>: 底层循环数组的长度<br>
 <code>buf</code>: 指向底层循环数组的指针，只针对有缓冲区的 <code>channel</code><br>
@@ -434,8 +435,7 @@
 <code>recvx</code>: 已接收元素在数组中的索引<br>
 <code>recvq</code>: 等待接收的<code>goroutine</code> 队列<br>
 <code>sendq</code>: 等待发送的<code>goroutine</code> 队列<br>
-<code>lock</code>: 保护<code>channel</code> 中所有字段，保证每个读或者写<code>channel</code>都是原子的。</p>
-</blockquote>
+<code>lock</code>: 保护<code>channel</code> 中所有字段，保证每个读或者写<code>channel</code>都是原子的。</p></blockquote>
 <p><code>sendq</code> 和 <code>recvq</code> 存储了当前Channel由于缓冲区空间不足二阻塞的 <code>Goroutine</code> 列表，这些等待队列使用双向链表<code>runtime.waitq</code>表示，结构如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -452,8 +452,8 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>runtime.sudog</code> 表示一个在等待列表中的<code>Goroutine</code>，该结构中存储了两个分别指向前后<code>runtime.sudog</code>的指针以构成链表。</p>
-<h4 id="创建管道">创建管道</h4>
-<p>语法如下：</p>
+<h4 id="创建管道">创建管道
+</h4><p>语法如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -463,12 +463,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="c1">// 无缓冲通道
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">ch1</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="c1">// 无缓冲通道</span>
+</span></span><span class="line"><span class="cl"><span class="nx">ch1</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 有缓冲通道
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">ch2</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// 创建一个缓冲区长度为2，元素类型为 int 的`channel`，若未指定缓冲区长度，则默认为0
-</span></span></span></code></pre></td></tr></table>
+</span></span><span class="line"><span class="cl"><span class="c1">// 有缓冲通道</span>
+</span></span><span class="line"><span class="cl"><span class="nx">ch2</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// 创建一个缓冲区长度为2，元素类型为 int 的`channel`，若未指定缓冲区长度，则默认为0</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Go 语言中所有Channel的床架都会使用 <code>make</code>关键字。编译器会将<code>make(chan int, 10)</code>表达式转换成 <code>OMAKE</code>类型的节点，并在类型检查阶段将<code>OMAKE</code>类型的节点转换成<code>OMAKECHAN</code>类型:</p>
 <div class="highlight"><div class="chroma">
@@ -499,11 +499,11 @@
 </span></span><span class="line"><span class="cl">  <span class="k">switch</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Etype</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="k">case</span> <span class="nx">TCHAN</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">   <span class="nx">l</span> <span class="p">=</span> <span class="kc">nil</span>
-</span></span><span class="line"><span class="cl">   <span class="k">if</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 带缓冲区的异步 Channel
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="o">...</span>
+</span></span><span class="line"><span class="cl">   <span class="k">if</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 带缓冲区的异步 Channel</span>
+</span></span><span class="line"><span class="cl">    <span class="o">...</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">n</span><span class="p">.</span><span class="nx">Left</span> <span class="p">=</span> <span class="nx">l</span>
-</span></span><span class="line"><span class="cl">   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="c1">// 不带缓冲区的同步 Channel
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">n</span><span class="p">.</span><span class="nx">Left</span> <span class="p">=</span> <span class="nf">nodintconst</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="c1">// 不带缓冲区的同步 Channel</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">n</span><span class="p">.</span><span class="nx">Left</span> <span class="p">=</span> <span class="nf">nodintconst</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">   <span class="p">}</span>
 </span></span><span class="line"><span class="cl">   <span class="nx">n</span><span class="p">.</span><span class="nx">Op</span> <span class="p">=</span> <span class="nx">OMAKECHAN</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
@@ -609,8 +609,8 @@
 <p>在函数的最后会统一更新<code>runtime.hchan</code>的<code>elemsize</code>、<code>elemtype</code>和<code>datasize</code>几个字段。</p>
 <p>源码位置：<a class="link" href="https://github.com/golang/go/blob/f57f02fcd519a86683c47a444e0e24a086fea8e0/src/runtime/chan.go#L72"  target="_blank" rel="noopener"
     >src/runtime/chan.go#L72</a></p>
-<h4 id="发送数据">发送数据</h4>
-<p>我们想要向<code>Channel</code>发送数据时，就需要使用 <code>ch &lt;- i</code>语句，编译器会将它解析成<code>OSEND</code>节点并在<code>cmd/compile/internal/gc.walkexpr</code>中转换成<a class="link" href="https://draveness.me/golang/tree/runtime.chansend1"  target="_blank" rel="noopener"
+<h4 id="发送数据">发送数据
+</h4><p>我们想要向<code>Channel</code>发送数据时，就需要使用 <code>ch &lt;- i</code>语句，编译器会将它解析成<code>OSEND</code>节点并在<code>cmd/compile/internal/gc.walkexpr</code>中转换成<a class="link" href="https://draveness.me/golang/tree/runtime.chansend1"  target="_blank" rel="noopener"
     >runtime.chansend1</a>:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -832,8 +832,8 @@
 <li>发送数据时发现 Channel 上存在等待接收数据的 Goroutine，立刻设置处理器的 runnext 属性，但是并不会立刻触发调度;</li>
 <li>发送数据时并没有找到接收方并且缓冲区已经满了，这时会将自己加入 Channel 的 sendq 队列并调用 runtime.goparkunlock 触发 Goroutine 的调度让出处理器的使用权；</li>
 </ol>
-<h4 id="接收数据">接收数据</h4>
-<p>接收数据有两种写法，一种是只值返回接收数据，第二种是返回接收数据和<code>channel</code>的关闭状态两个字段，当接收到响应类型的零值时需要判断是真实的发送者发送的数据，还是channel被关闭后，返回给接收者的默认类型的零值，可以使用第二种返回<code>channel</code>的关闭状态。</p>
+<h4 id="接收数据">接收数据
+</h4><p>接收数据有两种写法，一种是只值返回接收数据，第二种是返回接收数据和<code>channel</code>的关闭状态两个字段，当接收到响应类型的零值时需要判断是真实的发送者发送的数据，还是channel被关闭后，返回给接收者的默认类型的零值，可以使用第二种返回<code>channel</code>的关闭状态。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -898,7 +898,7 @@
         
             <a href="/tags/golang/">Golang</a>
         
-            <a href="/tags/channel/">channel</a>
+            <a href="/tags/channel/">Channel</a>
         
     </section>
 
@@ -921,18 +921,19 @@
     
         <link 
                 rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
             ><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
                 defer
                 >
             </script><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
                 defer
                 >
             </script><script>
     window.addEventListener("DOMContentLoaded", () => {
-        renderMathInElement(document.querySelector(`.article-content`), {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
             delimiters: [
                 { left: "$$", right: "$$", display: true },
                 { left: "$", right: "$", display: false },
@@ -942,6 +943,7 @@
             ignoredClasses: ["gist"]
         });})
 </script>
+
     
 </article>
 
@@ -953,6 +955,19 @@
     <h2 class="section-title">Related content</h2>
     <div class="related-content">
         <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/golang--reflect/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Golang -- Reflect</h2>
+        </div>
+    </a>
+</article>
+
             
                 
 <article class="">
@@ -1001,19 +1016,6 @@
 
         <div class="article-details">
             <h2 class="article-title">Golang数据类型之Map源码实现</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/p/golang%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B9%8B-slice-%E6%BA%90%E7%A0%81%E5%AE%9E%E7%8E%B0/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Golang数据类型之 slice 源码实现</h2>
         </div>
     </a>
 </article>
@@ -1080,14 +1082,14 @@
         
             2019 - 
         
-        2024 不积跬步无以至千里
+        2025 不积跬步无以至千里
     </section>
     
     <section class="powerby">
         
             皖ICP备20014602号 <br/>
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>
 </footer>
 
@@ -1176,7 +1178,7 @@
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.9b50b7183b4a32f9580543a89407a21e47a8bebc5bdac6e840fa8c910481f55e.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

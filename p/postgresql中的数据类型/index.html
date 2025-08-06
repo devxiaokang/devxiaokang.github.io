@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='PostgreSQL中的数据类型'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="PostgreSQL中的数据类型">
 <meta name="keywords" content="PostgreSQL"><title>PostgreSQL中的数据类型</title>
 
 <link rel='canonical' href='https://x-xkang.com/p/postgresql%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/'>
 
-<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='PostgreSQL中的数据类型'>
-<meta property='og:description' content='PostgreSQL中的数据类型'>
+<link rel="stylesheet" href="/scss/style.min.7e54386a70f08c359dc67b56ecb1ed61936ec90f83972802164db3639519a07b.css"><meta property='og:title' content="PostgreSQL中的数据类型">
+<meta property='og:description' content="PostgreSQL中的数据类型">
 <meta property='og:url' content='https://x-xkang.com/p/postgresql%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/'>
 <meta property='og:site_name' content='不积跬步无以至千里'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='databases' /><meta property='article:tag' content='postgresql' /><meta property='article:published_time' content='2024-11-19T16:02:00&#43;08:00'/><meta property='article:modified_time' content='2024-11-19T16:02:00&#43;08:00'/>
 <meta name="twitter:title" content="PostgreSQL中的数据类型">
 <meta name="twitter:description" content="PostgreSQL中的数据类型">
-    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="shortcut icon" href="/favicon.ico" />
 
     </head>
     <body class="
@@ -58,7 +58,7 @@
                     
                     
                         
-                        <img src="/img/avatar_hu3c3946a5e2dbcd463bda7dfc7c9c9efb_49773_300x0_resize_box_3.png" width="300"
+                        <img src="/img/avatar_hu_dce6ef8b51a3489.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -74,7 +74,7 @@
             <h1 class="site-name"><a href="/">不积跬步无以至千里</a></h1>
             <h2 class="site-description">拨云见日，否极泰来.</h2>
         </div>
-    </header><ol class="social-menu">
+    </header><ol class="menu-social">
             
                 <li>
                     <a 
@@ -167,12 +167,12 @@
             </a>
         </li>
         
+        <li class="menu-bottom-section">
+            <ol class="menu">
 
-        <div class="menu-bottom-section">
-            
-            
-                <li id="dark-mode-toggle">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="8" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -180,7 +180,7 @@
 
 
 
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="16" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -188,10 +188,11 @@
 
 
 
-                    <span>Dark Mode</span>
-                </li>
-            
-        </div>
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
     </ol>
 </aside>
 
@@ -243,7 +244,7 @@
     <header class="article-category">
         
             <a href="/categories/databases/" >
-                databases
+                Databases
             </a>
         
     </header>
@@ -307,206 +308,206 @@
     <section class="article-content">
     
     
-    <h2 id="数值类型">数值类型</h2>
-<div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>类型</th>
-<th>存储长度</th>
-<th>描述</th>
-<th>范围</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>smallint</td>
-<td>2 字节</td>
-<td>小整数值</td>
-<td>-32768 到 32767</td>
-</tr>
-<tr>
-<td>integer</td>
-<td>4 字节</td>
-<td>整数值</td>
-<td>-2147483648 到 2147483647</td>
-</tr>
-<tr>
-<td>bigint</td>
-<td>8 字节</td>
-<td>大整数值</td>
-<td>-9223372036854775808 到 9223372036854775807</td>
-</tr>
-<tr>
-<td>decimal</td>
-<td>可变长度</td>
-<td>用户指定的精度，精确</td>
-<td>小数点前 131072位；小数点后 16383位</td>
-</tr>
-<tr>
-<td>numeric</td>
-<td>可变长度</td>
-<td>用户指定的精度，精确</td>
-<td>小数点前 131072位；小数点后 16383位</td>
-</tr>
-<tr>
-<td>real</td>
-<td>4 字节</td>
-<td>可变精度，不精确</td>
-<td>6位十进制数字精度</td>
-</tr>
-<tr>
-<td>double precision</td>
-<td>8 字节</td>
-<td>可变精度，不精确</td>
-<td>15位十进制数字精度</td>
-</tr>
-<tr>
-<td>smallserial</td>
-<td>2 字节</td>
-<td>自增的小范围整数</td>
-<td>1 到 32767</td>
-</tr>
-<tr>
-<td>serial</td>
-<td>4 字节</td>
-<td>自增的大范围整数</td>
-<td>1 到 2147483647</td>
-</tr>
-<tr>
-<td>bigserial</td>
-<td>8 字节</td>
-<td>自增的大范围整数</td>
-<td>1 到 9223372036854775807</td>
-</tr>
-</tbody>
+    <h2 id="数值类型">数值类型
+</h2><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>类型</th>
+          <th>存储长度</th>
+          <th>描述</th>
+          <th>范围</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>smallint</td>
+          <td>2 字节</td>
+          <td>小整数值</td>
+          <td>-32768 到 32767</td>
+      </tr>
+      <tr>
+          <td>integer</td>
+          <td>4 字节</td>
+          <td>整数值</td>
+          <td>-2147483648 到 2147483647</td>
+      </tr>
+      <tr>
+          <td>bigint</td>
+          <td>8 字节</td>
+          <td>大整数值</td>
+          <td>-9223372036854775808 到 9223372036854775807</td>
+      </tr>
+      <tr>
+          <td>decimal</td>
+          <td>可变长度</td>
+          <td>用户指定的精度，精确</td>
+          <td>小数点前 131072位；小数点后 16383位</td>
+      </tr>
+      <tr>
+          <td>numeric</td>
+          <td>可变长度</td>
+          <td>用户指定的精度，精确</td>
+          <td>小数点前 131072位；小数点后 16383位</td>
+      </tr>
+      <tr>
+          <td>real</td>
+          <td>4 字节</td>
+          <td>可变精度，不精确</td>
+          <td>6位十进制数字精度</td>
+      </tr>
+      <tr>
+          <td>double precision</td>
+          <td>8 字节</td>
+          <td>可变精度，不精确</td>
+          <td>15位十进制数字精度</td>
+      </tr>
+      <tr>
+          <td>smallserial</td>
+          <td>2 字节</td>
+          <td>自增的小范围整数</td>
+          <td>1 到 32767</td>
+      </tr>
+      <tr>
+          <td>serial</td>
+          <td>4 字节</td>
+          <td>自增的大范围整数</td>
+          <td>1 到 2147483647</td>
+      </tr>
+      <tr>
+          <td>bigserial</td>
+          <td>8 字节</td>
+          <td>自增的大范围整数</td>
+          <td>1 到 9223372036854775807</td>
+      </tr>
+  </tbody>
 </table></div>
-<h2 id="货币类型">货币类型</h2>
-<p><code>money</code> 类型存储带有固定小数精度的货币金额
+<h2 id="货币类型">货币类型
+</h2><p><code>money</code> 类型存储带有固定小数精度的货币金额
 <code>numeric</code>, <code>int</code> 和 <code>bigint</code> 类型的值可以转换为 <code>money</code>,不建议使用浮点数来处理货币类型，因为存在舍入错误的可能性</p>
 <div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>类型</th>
-<th>存储长度</th>
-<th>描述</th>
-<th>范围</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>money</td>
-<td>8 字节</td>
-<td>货币金额</td>
-<td>-92233720368547758.08 到 +92233720368547758.07</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>类型</th>
+          <th>存储长度</th>
+          <th>描述</th>
+          <th>范围</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>money</td>
+          <td>8 字节</td>
+          <td>货币金额</td>
+          <td>-92233720368547758.08 到 +92233720368547758.07</td>
+      </tr>
+  </tbody>
 </table></div>
-<h2 id="字符类型">字符类型</h2>
+<h2 id="字符类型">字符类型
+</h2><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>类型</th>
+          <th>描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>varchar(n)</td>
+          <td>变长，有长度限制</td>
+      </tr>
+      <tr>
+          <td>charractor(n), char(n)</td>
+          <td>固定长度，不足补空白</td>
+      </tr>
+      <tr>
+          <td>text</td>
+          <td>变长， 无长度限制</td>
+      </tr>
+  </tbody>
+</table></div>
+<h2 id="时间日期类型">时间|日期类型
+</h2><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>类型</th>
+          <th>存储长度</th>
+          <th>描述</th>
+          <th>最低值</th>
+          <th>最高值</th>
+          <th>分辨率</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>timestamp[(p)][without time zone]</td>
+          <td>8 字节</td>
+          <td>日期和时间（无时区）</td>
+          <td>4713BC</td>
+          <td>294276AD</td>
+          <td>1毫秒 / 14 位</td>
+      </tr>
+      <tr>
+          <td>timestamp[(p)][with time zone]</td>
+          <td>8 字节</td>
+          <td>日期和时间（带时区）</td>
+          <td>4713BC</td>
+          <td>294276AD</td>
+          <td>1毫秒 / 14 位</td>
+      </tr>
+      <tr>
+          <td>date</td>
+          <td>4 字节</td>
+          <td>日期（无时区）</td>
+          <td>4713BC</td>
+          <td>5874897AD</td>
+          <td>无</td>
+      </tr>
+      <tr>
+          <td>time[(p)][without time zone]</td>
+          <td>8 字节</td>
+          <td>只用于一日内时间</td>
+          <td>00:00:00</td>
+          <td>24:00:00</td>
+          <td>1毫秒 / 14 位</td>
+      </tr>
+      <tr>
+          <td>time[(p)]with time zone</td>
+          <td>12 字节</td>
+          <td>只用于一日内时间（带时区）</td>
+          <td>00:00:00+1459</td>
+          <td>24:00:00-1459</td>
+          <td>1毫秒 / 14 位</td>
+      </tr>
+      <tr>
+          <td>interval[fields][(p)]</td>
+          <td>12 字节</td>
+          <td>时间间隔</td>
+          <td>-178000000年</td>
+          <td>178000000年</td>
+          <td>1毫秒 / 14 位</td>
+      </tr>
+  </tbody>
+</table></div>
+<h2 id="布尔">布尔
+</h2><p>boolean 有 <code>true</code> 和 <code>false</code> 两个状态，第三种状态是 <code>null</code></p>
 <div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>类型</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>varchar(n)</td>
-<td>变长，有长度限制</td>
-</tr>
-<tr>
-<td>charractor(n), char(n)</td>
-<td>固定长度，不足补空白</td>
-</tr>
-<tr>
-<td>text</td>
-<td>变长， 无长度限制</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>类型</th>
+          <th>存储长度</th>
+          <th>描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>boolean</td>
+          <td>1 字节</td>
+          <td>真假值， true or false</td>
+      </tr>
+  </tbody>
 </table></div>
-<h2 id="时间日期类型">时间|日期类型</h2>
-<div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>类型</th>
-<th>存储长度</th>
-<th>描述</th>
-<th>最低值</th>
-<th>最高值</th>
-<th>分辨率</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>timestamp[(p)][without time zone]</td>
-<td>8 字节</td>
-<td>日期和时间（无时区）</td>
-<td>4713BC</td>
-<td>294276AD</td>
-<td>1毫秒 / 14 位</td>
-</tr>
-<tr>
-<td>timestamp[(p)][with time zone]</td>
-<td>8 字节</td>
-<td>日期和时间（带时区）</td>
-<td>4713BC</td>
-<td>294276AD</td>
-<td>1毫秒 / 14 位</td>
-</tr>
-<tr>
-<td>date</td>
-<td>4 字节</td>
-<td>日期（无时区）</td>
-<td>4713BC</td>
-<td>5874897AD</td>
-<td>无</td>
-</tr>
-<tr>
-<td>time[(p)][without time zone]</td>
-<td>8 字节</td>
-<td>只用于一日内时间</td>
-<td>00:00:00</td>
-<td>24:00:00</td>
-<td>1毫秒 / 14 位</td>
-</tr>
-<tr>
-<td>time[(p)]with time zone</td>
-<td>12 字节</td>
-<td>只用于一日内时间（带时区）</td>
-<td>00:00:00+1459</td>
-<td>24:00:00-1459</td>
-<td>1毫秒 / 14 位</td>
-</tr>
-<tr>
-<td>interval[fields][(p)]</td>
-<td>12 字节</td>
-<td>时间间隔</td>
-<td>-178000000年</td>
-<td>178000000年</td>
-<td>1毫秒 / 14 位</td>
-</tr>
-</tbody>
-</table></div>
-<h2 id="布尔">布尔</h2>
-<p>boolean 有 <code>true</code> 和 <code>false</code> 两个状态，第三种状态是 <code>null</code></p>
-<div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>类型</th>
-<th>存储长度</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>boolean</td>
-<td>1 字节</td>
-<td>真假值， true or false</td>
-</tr>
-</tbody>
-</table></div>
-<h2 id="枚举类型">枚举类型</h2>
-<p>PostgreSQL 中的枚举类型类似于c语言中的enum类型，与其他类型不同的是枚举类型需要使用 <code>CREATE TYPE</code> 命令来创建。</p>
+<h2 id="枚举类型">枚举类型
+</h2><p>PostgreSQL 中的枚举类型类似于c语言中的enum类型，与其他类型不同的是枚举类型需要使用 <code>CREATE TYPE</code> 命令来创建。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -524,61 +525,61 @@
 <pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">create</span><span class="w"> </span><span class="k">type</span><span class="w"> </span><span class="n">week</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">enum</span><span class="p">(</span><span class="s1">&#39;Monday&#39;</span><span class="p">,</span><span class="s1">&#39;Tuesday&#39;</span><span class="p">,</span><span class="s1">&#39;Wednesday&#39;</span><span class="p">,</span><span class="s1">&#39;Thursday&#39;</span><span class="p">,</span><span class="s1">&#39;Friday&#39;</span><span class="p">,</span><span class="s1">&#39;Saturday&#39;</span><span class="p">,</span><span class="s1">&#39;Sunday&#39;</span><span class="p">);</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="几何类型">几何类型</h2>
-<p>几何数据类型表示二维的平面物体</p>
+</div><h2 id="几何类型">几何类型
+</h2><p>几何数据类型表示二维的平面物体</p>
 <div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>类型</th>
-<th>存储长度</th>
-<th>说明</th>
-<th>表现形式</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>point</td>
-<td>16 字节</td>
-<td>平面中的点</td>
-<td>(x,y)</td>
-</tr>
-<tr>
-<td>line</td>
-<td>32 字节</td>
-<td>平面上的直线</td>
-<td>((x1, y1), (x2, y2))</td>
-</tr>
-<tr>
-<td>lseg</td>
-<td>32 字节</td>
-<td>(有限)平面上的线段</td>
-<td>((x1, y1), (x2, y2))</td>
-</tr>
-<tr>
-<td>box</td>
-<td>32 字节</td>
-<td>矩形</td>
-<td>((x1, y1), (x2, y2))</td>
-</tr>
-<tr>
-<td>path</td>
-<td>16 + 16n</td>
-<td>闭合路径（与多边形类似）</td>
-<td>((x1,y1),&hellip;)</td>
-</tr>
-<tr>
-<td>path</td>
-<td>16 + 16n</td>
-<td>开放路径</td>
-<td>((x1,y1),&hellip;)</td>
-</tr>
-<tr>
-<td>polygon</td>
-<td>16 + 16n</td>
-<td>非闭合路径（与多边形类似）</td>
-<td>((x1,y1),&hellip;)</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>类型</th>
+          <th>存储长度</th>
+          <th>说明</th>
+          <th>表现形式</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>point</td>
+          <td>16 字节</td>
+          <td>平面中的点</td>
+          <td>(x,y)</td>
+      </tr>
+      <tr>
+          <td>line</td>
+          <td>32 字节</td>
+          <td>平面上的直线</td>
+          <td>((x1, y1), (x2, y2))</td>
+      </tr>
+      <tr>
+          <td>lseg</td>
+          <td>32 字节</td>
+          <td>(有限)平面上的线段</td>
+          <td>((x1, y1), (x2, y2))</td>
+      </tr>
+      <tr>
+          <td>box</td>
+          <td>32 字节</td>
+          <td>矩形</td>
+          <td>((x1, y1), (x2, y2))</td>
+      </tr>
+      <tr>
+          <td>path</td>
+          <td>16 + 16n</td>
+          <td>闭合路径（与多边形类似）</td>
+          <td>((x1,y1),&hellip;)</td>
+      </tr>
+      <tr>
+          <td>path</td>
+          <td>16 + 16n</td>
+          <td>开放路径</td>
+          <td>((x1,y1),&hellip;)</td>
+      </tr>
+      <tr>
+          <td>polygon</td>
+          <td>16 + 16n</td>
+          <td>非闭合路径（与多边形类似）</td>
+          <td>((x1,y1),&hellip;)</td>
+      </tr>
+  </tbody>
 </table></div>
 </section>
 
@@ -587,9 +588,9 @@
     
     <section class="article-tags">
         
-            <a href="/tags/databases/">databases</a>
+            <a href="/tags/databases/">Databases</a>
         
-            <a href="/tags/postgresql/">postgresql</a>
+            <a href="/tags/postgresql/">Postgresql</a>
         
     </section>
 
@@ -612,18 +613,19 @@
     
         <link 
                 rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
             ><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
                 defer
                 >
             </script><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
                 defer
                 >
             </script><script>
     window.addEventListener("DOMContentLoaded", () => {
-        renderMathInElement(document.querySelector(`.article-content`), {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
             delimiters: [
                 { left: "$$", right: "$$", display: true },
                 { left: "$", right: "$", display: false },
@@ -633,6 +635,7 @@
             ignoredClasses: ["gist"]
         });})
 </script>
+
     
 </article>
 
@@ -719,14 +722,14 @@
         
             2019 - 
         
-        2024 不积跬步无以至千里
+        2025 不积跬步无以至千里
     </section>
     
     <section class="powerby">
         
             皖ICP备20014602号 <br/>
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>
 </footer>
 
@@ -815,7 +818,7 @@
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.9b50b7183b4a32f9580543a89407a21e47a8bebc5bdac6e840fa8c910481f55e.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

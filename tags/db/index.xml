@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>db on 不积跬步无以至千里</title>
+        <title>Db on 不积跬步无以至千里</title>
         <link>https://x-xkang.com/tags/db/</link>
-        <description>Recent content in db on 不积跬步无以至千里</description>
+        <description>Recent content in Db on 不积跬步无以至千里</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Fri, 15 Nov 2024 17:26:46 +0800</lastBuildDate><atom:link href="https://x-xkang.com/tags/db/index.xml" rel="self" type="application/rss+xml" /><item>
@@ -12,8 +12,8 @@
         <pubDate>Fri, 15 Nov 2024 17:26:46 +0800</pubDate>
         
         <guid>https://x-xkang.com/p/mysql%E5%92%8Cpostgresql%E6%95%B0%E6%8D%AE%E5%BA%93%E6%AF%94%E8%BE%83/</guid>
-        <description>&lt;h3 id=&#34;postgresql的优势&#34;&gt;PostgreSQL的优势&lt;/h3&gt;
-&lt;ul&gt;
+        <description>&lt;h3 id=&#34;postgresql的优势&#34;&gt;PostgreSQL的优势
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;在SQL的标准实现上要比MySQL更完整，而且功能实现比较严谨&lt;/li&gt;
 &lt;li&gt;对表连接支持比较完整，优化器的功能比较完整，支持的索引类型很多，复杂查询能力较强&lt;/li&gt;
 &lt;li&gt;PG主表采用堆表存放，MySQL采用索引组织表，能够支持比MySQL更大的数据量&lt;/li&gt;
@@ -21,16 +21,16 @@
 &lt;li&gt;PostgreSQL支持json和其他NoSQL功能，如本机XML支持和使用HSTORE的键值对，它还支持索引JSON数据以加快访问速度，特别是10版本JSONB更是强大&lt;/li&gt;
 &lt;li&gt;PostgreSQL完全免费，而且是BSD协议，如果你把PostgreSQL改一改，然后再拿去卖钱也没人管你，这一点很重要，这表明了PostgreSQL数据库不会被其他公司控制，相反，MySQL现在主要被Oracle公司控制&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;mysql的优势&#34;&gt;MySQL的优势&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h3 id=&#34;mysql的优势&#34;&gt;MySQL的优势
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;innodb的基于回滚段实现的&lt;code&gt;MVCC&lt;/code&gt;机制，相对于PG新老数据一起存放的基于&lt;code&gt;XID&lt;/code&gt;的&lt;code&gt;MVCC&lt;/code&gt;机制是占优的。新老数据一起存放，需要定时触发 VACUUM,会带来多余的IO和数据库对象加锁开销，引起数据库整体的并发能力下降。而且VACUUM清理不及时，还可能会引发数据膨胀。&lt;/li&gt;
 &lt;li&gt;MySQL采用索引组织表，这种存储方式非常适合基于主键匹配的查询、删改操作，但是对表结构设计存在约束&lt;/li&gt;
 &lt;li&gt;MySQL的优化器比较简单，系统表，运算符。数据类型的实现都很精简，非常适合简单的查询操作&lt;/li&gt;
 &lt;li&gt;MySQL相对于PG在国内的流行度更高&lt;/li&gt;
 &lt;li&gt;MySQL的存储引擎插件化机制，使得它的应用场景更加广泛，比如除了innodb适合事务处理场景外，MyISAM适合静态数据的查询场景&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;总结&#34;&gt;总结&lt;/h3&gt;
-&lt;p&gt;从应用场景来说，PG更适合严格的企业应用场景（比如金融，电信，ERP，CRM），但不仅仅限制于此，PostgreSQL的&lt;code&gt;json&lt;/code&gt;, &lt;code&gt;jsonb&lt;/code&gt;, &lt;code&gt;hstore&lt;/code&gt;等数据格式，特别适用于一些大数据格式的分析；而MySQL更适合业务逻辑比较简单，数据可靠性要求较低的互联网场景（比如google， facebook, alibaba）,当然现在MySQL在innodb引擎的大力发展，也是表现良好的。&lt;/p&gt;</description>
+&lt;h3 id=&#34;总结&#34;&gt;总结
+&lt;/h3&gt;&lt;p&gt;从应用场景来说，PG更适合严格的企业应用场景（比如金融，电信，ERP，CRM），但不仅仅限制于此，PostgreSQL的&lt;code&gt;json&lt;/code&gt;, &lt;code&gt;jsonb&lt;/code&gt;, &lt;code&gt;hstore&lt;/code&gt;等数据格式，特别适用于一些大数据格式的分析；而MySQL更适合业务逻辑比较简单，数据可靠性要求较低的互联网场景（比如google， facebook, alibaba）,当然现在MySQL在innodb引擎的大力发展，也是表现良好的。&lt;/p&gt;</description>
         </item>
         
     </channel>

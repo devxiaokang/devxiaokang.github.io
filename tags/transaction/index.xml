@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>transaction on 不积跬步无以至千里</title>
+        <title>Transaction on 不积跬步无以至千里</title>
         <link>https://x-xkang.com/tags/transaction/</link>
-        <description>Recent content in transaction on 不积跬步无以至千里</description>
+        <description>Recent content in Transaction on 不积跬步无以至千里</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Wed, 24 Mar 2021 11:18:58 +0800</lastBuildDate><atom:link href="https://x-xkang.com/tags/transaction/index.xml" rel="self" type="application/rss+xml" /><item>
@@ -12,28 +12,25 @@
         <pubDate>Wed, 24 Mar 2021 11:18:58 +0800</pubDate>
         
         <guid>https://x-xkang.com/p/mysql--%E4%BA%8B%E5%8A%A1%E6%B5%85%E6%9E%90/</guid>
-        <description>&lt;h2 id=&#34;一mysql-事务&#34;&gt;一、Mysql 事务&lt;/h2&gt;
-&lt;p&gt;MySQL 事务主要用于处理操作量大、复杂度高的数据&lt;/p&gt;
+        <description>&lt;h2 id=&#34;一mysql-事务&#34;&gt;一、Mysql 事务
+&lt;/h2&gt;&lt;p&gt;MySQL 事务主要用于处理操作量大、复杂度高的数据&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;MySQL 数据库中只有 Innodb 存储引擎支持事务操作&lt;/li&gt;
 &lt;li&gt;事务处理可以用来维护数据库的完整性，保证成批的 SQL 要么全部执行，要么全部不执行&lt;/li&gt;
 &lt;li&gt;事务用来管理&lt;code&gt;insert&lt;/code&gt;，&lt;code&gt;update&lt;/code&gt;，&lt;code&gt;delete&lt;/code&gt;语句&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;二事务特性&#34;&gt;二、事务特性&lt;/h2&gt;
-&lt;p&gt;一般来说，事务必须满足 4 个条件（ACID），即原子性、一致性、持久性、隔离性，具体如下：&lt;/p&gt;
-&lt;h3 id=&#34;1原子性-atomicity&#34;&gt;&lt;strong&gt;1、原子性&lt;/strong&gt; (&lt;strong&gt;A&lt;/strong&gt;tomicity)&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;一个事务（Transaction）中的所有操作，要么全部完成，要么全部不完成，不会结束在中间某个环节，事务在执行过程中发生错误，会被回滚（Rollback）到事务开始前的状态，就像事务没有执行过一样。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;2一致性consistency&#34;&gt;&lt;strong&gt;2、一致性&lt;/strong&gt;（&lt;strong&gt;C&lt;/strong&gt;onsistency）&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;在事务执行前后，数据库中的数据必须满足一定的约束条件，保证数据的逻辑完整性。如果事务执行过程中出现错误，则会回滚到事务开始前的状态。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;3隔离性isolation&#34;&gt;&lt;strong&gt;3、隔离性&lt;/strong&gt;（&lt;strong&gt;I&lt;/strong&gt;solation）&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;数据库允许多个并发事务同时对其数据进行读写和修改的能力，隔离性可以防止多个事务并发执行时由于交叉执行而导致数据的不一致，事务隔离分为以下不同级别：&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h2 id=&#34;二事务特性&#34;&gt;二、事务特性
+&lt;/h2&gt;&lt;p&gt;一般来说，事务必须满足 4 个条件（ACID），即原子性、一致性、持久性、隔离性，具体如下：&lt;/p&gt;
+&lt;h3 id=&#34;1原子性-atomicity&#34;&gt;&lt;strong&gt;1、原子性&lt;/strong&gt; (&lt;strong&gt;A&lt;/strong&gt;tomicity)
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;一个事务（Transaction）中的所有操作，要么全部完成，要么全部不完成，不会结束在中间某个环节，事务在执行过程中发生错误，会被回滚（Rollback）到事务开始前的状态，就像事务没有执行过一样。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h3 id=&#34;2一致性consistency&#34;&gt;&lt;strong&gt;2、一致性&lt;/strong&gt;（&lt;strong&gt;C&lt;/strong&gt;onsistency）
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;在事务执行前后，数据库中的数据必须满足一定的约束条件，保证数据的逻辑完整性。如果事务执行过程中出现错误，则会回滚到事务开始前的状态。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h3 id=&#34;3隔离性isolation&#34;&gt;&lt;strong&gt;3、隔离性&lt;/strong&gt;（&lt;strong&gt;I&lt;/strong&gt;solation）
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;数据库允许多个并发事务同时对其数据进行读写和修改的能力，隔离性可以防止多个事务并发执行时由于交叉执行而导致数据的不一致，事务隔离分为以下不同级别：&lt;/p&gt;&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;读未提交（Read uncommited）&lt;/strong&gt;: 允许脏读，也就是可能读到其他会话中未提交事务修改的数据。&lt;/p&gt;
@@ -48,13 +45,12 @@
 &lt;p&gt;&lt;strong&gt;串行化（Serializable）&lt;/strong&gt;: 完全串行化的读，每次读都需要获得表级的共享锁，读写相互都会阻塞。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;4持久性durability&#34;&gt;&lt;strong&gt;4、持久性&lt;/strong&gt;（&lt;strong&gt;D&lt;/strong&gt;urability）&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;事务处理结束后，对数据的修改就是永久的，几遍系统故障也不会丢失。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h3 id=&#34;4持久性durability&#34;&gt;&lt;strong&gt;4、持久性&lt;/strong&gt;（&lt;strong&gt;D&lt;/strong&gt;urability）
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;事务处理结束后，对数据的修改就是永久的，几遍系统故障也不会丢失。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;三事务的并发处理&#34;&gt;三、事务的并发处理&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;准备工作&lt;/strong&gt;：创建数据表，插入一条数据&lt;/p&gt;
+&lt;h2 id=&#34;三事务的并发处理&#34;&gt;三、事务的并发处理
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;准备工作&lt;/strong&gt;：创建数据表，插入一条数据&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -96,8 +92,7 @@
 &lt;p&gt;1、会话 &lt;code&gt;B&lt;/code&gt; 开启一个事务，把&lt;code&gt;id=1&lt;/code&gt;的&lt;code&gt;name&lt;/code&gt;改为&lt;code&gt;老王01&lt;/code&gt;；&lt;/p&gt;
 &lt;p&gt;2、会话 &lt;code&gt;A&lt;/code&gt; 也开启一个事务，读取&lt;code&gt;id=1&lt;/code&gt;的&lt;code&gt;name&lt;/code&gt;，次时的查询结果为&lt;code&gt;老王02&lt;/code&gt;；&lt;/p&gt;
 &lt;p&gt;3、会话 &lt;code&gt;B&lt;/code&gt; 的事务回滚了修改的操作，这样会话 &lt;code&gt;A&lt;/code&gt; 读到的数据就是不存在的；&lt;/p&gt;
-&lt;p&gt;这个现象就是脏读。（脏读只会在读未提交的隔离级别中才会出现）。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;这个现象就是脏读。（脏读只会在读未提交的隔离级别中才会出现）。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;不可重复读&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -118,8 +113,7 @@
 &lt;p&gt;3、会话 &lt;code&gt;A&lt;/code&gt; 再查询时&lt;code&gt;id=1&lt;/code&gt;的 name 为&lt;code&gt;老王02&lt;/code&gt;；&lt;/p&gt;
 &lt;p&gt;4、会话 &lt;code&gt;B&lt;/code&gt; 又将&lt;code&gt;id=1&lt;/code&gt;的 name 更新为&lt;code&gt;老王03&lt;/code&gt;；&lt;/p&gt;
 &lt;p&gt;5、会话 &lt;code&gt;A&lt;/code&gt; 再查询&lt;code&gt;id=1&lt;/code&gt;的 name 时，结果为&lt;code&gt;老王03&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;这种现象就是不可重复读。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;这种现象就是不可重复读。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;幻读&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -138,69 +132,67 @@
 &lt;blockquote&gt;
 &lt;p&gt;1、会话 &lt;code&gt;A&lt;/code&gt; 开始事务，查询&lt;code&gt;id&amp;gt;0&lt;/code&gt;的数据，结果只有 name=老王 01 的一条数据&lt;/p&gt;
 &lt;p&gt;2、会话 &lt;code&gt;B&lt;/code&gt; 像数据表中插入了一条&lt;code&gt;name=老王02&lt;/code&gt;的数据（隐式事务，执行 sql 后自动 commit）&lt;/p&gt;
-&lt;p&gt;3、会话 &lt;code&gt;A&lt;/code&gt; 的事务再次查询 &lt;code&gt;id&amp;gt;0&lt;/code&gt;的数据&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;3、会话 &lt;code&gt;A&lt;/code&gt; 的事务再次查询 &lt;code&gt;id&amp;gt;0&lt;/code&gt;的数据&lt;/p&gt;&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;不同隔离级别下出现事务并发问题的可能&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;隔离级别&lt;/th&gt;
-&lt;th&gt;脏读&lt;/th&gt;
-&lt;th&gt;不可重复读&lt;/th&gt;
-&lt;th&gt;幻读&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;读未提交&lt;/td&gt;
-&lt;td&gt;可能&lt;/td&gt;
-&lt;td&gt;可能&lt;/td&gt;
-&lt;td&gt;可能&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;读已提交&lt;/td&gt;
-&lt;td&gt;不可能&lt;/td&gt;
-&lt;td&gt;可能&lt;/td&gt;
-&lt;td&gt;可能&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;可重复读&lt;/td&gt;
-&lt;td&gt;不可能&lt;/td&gt;
-&lt;td&gt;不可能&lt;/td&gt;
-&lt;td&gt;可能&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;串行化&lt;/td&gt;
-&lt;td&gt;不可能&lt;/td&gt;
-&lt;td&gt;不可能&lt;/td&gt;
-&lt;td&gt;不可能&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;隔离级别&lt;/th&gt;
+          &lt;th&gt;脏读&lt;/th&gt;
+          &lt;th&gt;不可重复读&lt;/th&gt;
+          &lt;th&gt;幻读&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;读未提交&lt;/td&gt;
+          &lt;td&gt;可能&lt;/td&gt;
+          &lt;td&gt;可能&lt;/td&gt;
+          &lt;td&gt;可能&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;读已提交&lt;/td&gt;
+          &lt;td&gt;不可能&lt;/td&gt;
+          &lt;td&gt;可能&lt;/td&gt;
+          &lt;td&gt;可能&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;可重复读&lt;/td&gt;
+          &lt;td&gt;不可能&lt;/td&gt;
+          &lt;td&gt;不可能&lt;/td&gt;
+          &lt;td&gt;可能&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;串行化&lt;/td&gt;
+          &lt;td&gt;不可能&lt;/td&gt;
+          &lt;td&gt;不可能&lt;/td&gt;
+          &lt;td&gt;不可能&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;四事务的实现原理&#34;&gt;四、事务的实现原理&lt;/h2&gt;
-&lt;p&gt;首先了解一下 redo log 和 undo log&lt;/p&gt;
-&lt;h3 id=&#34;1redo-log重做日志&#34;&gt;1、&lt;strong&gt;redo log(重做日志)&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;MySQL 为了提升性能不会把每次的修改都实时同步到磁盘，而是会优先存储到 Buffer Pool（缓冲池）里面，把这个当做缓存来用，然后使用后台线程去做缓冲池和磁盘之间的同步&lt;/p&gt;
+&lt;h2 id=&#34;四事务的实现原理&#34;&gt;四、事务的实现原理
+&lt;/h2&gt;&lt;p&gt;首先了解一下 redo log 和 undo log&lt;/p&gt;
+&lt;h3 id=&#34;1redo-log重做日志&#34;&gt;1、&lt;strong&gt;redo log(重做日志)&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;MySQL 为了提升性能不会把每次的修改都实时同步到磁盘，而是会优先存储到 Buffer Pool（缓冲池）里面，把这个当做缓存来用，然后使用后台线程去做缓冲池和磁盘之间的同步&lt;/p&gt;
 &lt;p&gt;如果还没来得及同步数据就出现宕机或者断电，就会导致丢失部分已提交事务的修改信息，&lt;/p&gt;
 &lt;p&gt;所以引入了**redo log（回滚）**来记录已成功提交事务的修改信息，并且把 redo log 持久化到磁盘，系统重启之后读取 redo log 恢复最新数据&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;redo log&lt;/strong&gt; 是用来恢复数据的，用于保障已提交事务的持久化特性。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;2undo-log&#34;&gt;2、&lt;strong&gt;undo log&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;undo log 叫做回滚日志，用于记录数据&lt;strong&gt;被修改前&lt;/strong&gt;的信息，与 redo log 记录的数据相反，redo log 是记录修改后的数据，undo log 记录的是数据的逻辑变化，为了发生错误时回滚之前的操作，需要将之前的操作都记录下来，然后在发生错误时才可以回滚&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;redo log&lt;/strong&gt; 是用来恢复数据的，用于保障已提交事务的持久化特性。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h3 id=&#34;2undo-log&#34;&gt;2、&lt;strong&gt;undo log&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;undo log 叫做回滚日志，用于记录数据&lt;strong&gt;被修改前&lt;/strong&gt;的信息，与 redo log 记录的数据相反，redo log 是记录修改后的数据，undo log 记录的是数据的逻辑变化，为了发生错误时回滚之前的操作，需要将之前的操作都记录下来，然后在发生错误时才可以回滚&lt;/p&gt;
 &lt;p&gt;每次写入数据或者修改数据之前都会把修改前的信息记录到 undo log&lt;/p&gt;
-&lt;h3 id=&#34;3事务特性的具体实现原理&#34;&gt;3、&lt;strong&gt;&lt;code&gt;事务特性的具体实现原理&lt;/code&gt;&lt;/strong&gt;&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h3 id=&#34;3事务特性的具体实现原理&#34;&gt;3、&lt;strong&gt;&lt;code&gt;事务特性的具体实现原理&lt;/code&gt;&lt;/strong&gt;
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;事务的原子性通过 &lt;strong&gt;&lt;code&gt;undo log&lt;/code&gt;&lt;/strong&gt; 来实现的&lt;/li&gt;
 &lt;li&gt;事务的持久性是通过 &lt;strong&gt;&lt;code&gt;redo log&lt;/code&gt;&lt;/strong&gt; 实现的&lt;/li&gt;
 &lt;li&gt;事务的隔离性是通过 &lt;strong&gt;&lt;code&gt;读写锁&lt;/code&gt; + &lt;code&gt;MVCC&lt;/code&gt;&lt;/strong&gt; 实现的&lt;/li&gt;
 &lt;li&gt;事务的一致性是通过 **&lt;code&gt;原子性&lt;/code&gt;、&lt;code&gt;持久性&lt;/code&gt;、&lt;code&gt;隔离性&lt;/code&gt;**来实现的&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;31原子性的实现&#34;&gt;3.1、原子性的实现&lt;/h4&gt;
-&lt;blockquote&gt;
+&lt;h4 id=&#34;31原子性的实现&#34;&gt;3.1、原子性的实现
+&lt;/h4&gt;&lt;blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;每条数据变更（insert/update/delete）操作都会记录一条&lt;code&gt;undo log&lt;/code&gt;，并且&lt;code&gt;undo log&lt;/code&gt;必须先于数据持久化到磁盘上。&lt;/p&gt;
@@ -211,23 +203,20 @@
 &lt;li&gt;
 &lt;p&gt;为了做到同时成功或者同时失败，当系统发生错误或者执行&lt;code&gt;rollback&lt;/code&gt;时需根据&lt;code&gt;undo log&lt;/code&gt;进行回滚&lt;/p&gt;
 &lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&#34;32持久性的实现&#34;&gt;3.2、持久性的实现&lt;/h4&gt;
-&lt;blockquote&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
+&lt;h4 id=&#34;32持久性的实现&#34;&gt;3.2、持久性的实现
+&lt;/h4&gt;&lt;blockquote&gt;
 &lt;p&gt;Mysql 的数据存储机制是将数据最终持久化到磁盘上，并且频繁的进行磁盘 IO 是非常消耗性能的，为了提升性能，InnoDB 提供了缓冲池（Buffer Pool），缓冲池中包含了磁盘数据也的映射，可以当做缓存来使用&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;读数据&lt;/strong&gt;：会首先从缓冲池中读取，若没有，则从磁盘读取并放入缓冲池中&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;写数据&lt;/strong&gt;：会首先写入缓冲池中，缓冲池中的数据会定期同步到磁盘中&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;写数据&lt;/strong&gt;：会首先写入缓冲池中，缓冲池中的数据会定期同步到磁盘中&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;那么问题来了，如果在缓冲池的数据还没有同步到磁盘上时，出现了机器宕机或者断电，可能会出现数据丢失的问题，因此我们需要记录已提交事务的数据，于是，&lt;code&gt;redo log&lt;/code&gt;登场了，
 &lt;code&gt;redo log&lt;/code&gt; 在执行数据变更（insert/update/delete）操作的时候，会变更后的结果记录在缓冲区，待&lt;code&gt;commit&lt;/code&gt;事务之后同步到磁盘&lt;/p&gt;
 &lt;p&gt;至于&lt;code&gt;redo log&lt;/code&gt;也要进行磁盘 IO，为什么还要用&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;(1)、&lt;code&gt;redo log&lt;/code&gt;是顺序存储，而缓存同步是随机操作&lt;/p&gt;
-&lt;p&gt;(2)、缓存同步是以数据页为单位，每次传输的数据大小小于&lt;code&gt;redo log&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&#34;33隔离性的实现&#34;&gt;3.3、隔离性的实现&lt;/h4&gt;
-&lt;ul&gt;
+&lt;p&gt;(2)、缓存同步是以数据页为单位，每次传输的数据大小小于&lt;code&gt;redo log&lt;/code&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h4 id=&#34;33隔离性的实现&#34;&gt;3.3、隔离性的实现
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;读未提交&lt;/strong&gt;： 读写并行，读的操作不能排斥写的操作，因此会出现&lt;code&gt;脏读&lt;/code&gt;,&lt;code&gt;不可重复读&lt;/code&gt;,&lt;code&gt;幻读&lt;/code&gt;的问题&lt;/p&gt;
 &lt;/li&gt;
@@ -241,10 +230,10 @@
 &lt;p&gt;&lt;strong&gt;串行化&lt;/strong&gt; ：读操作的时候加&lt;code&gt;共享锁&lt;/code&gt;，其他事务可以并发读，但是不能并发写，执行写操作的时候加&lt;code&gt;排他锁&lt;/code&gt;，其他事务既不能并发写，也不能并发读，串行化可以解决事务并发中出现的&lt;code&gt;脏读&lt;/code&gt;、&lt;code&gt;不可重复读&lt;/code&gt;、&lt;code&gt;幻读&lt;/code&gt;问题，但是并发性能却因为加锁的开销变得很差&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;34一致性的实现&#34;&gt;3.4、一致性的实现&lt;/h4&gt;
-&lt;p&gt;一致性的实现其实是通过&lt;code&gt;原子性&lt;/code&gt;、&lt;code&gt;持久性&lt;/code&gt;，&lt;code&gt;隔离性&lt;/code&gt;共同完成的&lt;/p&gt;
-&lt;h2 id=&#34;五结束语&#34;&gt;五、结束语&lt;/h2&gt;
-&lt;p&gt;了解 MySQL 的事务机制，以及实现原理，对于使用或者优化都有很大的帮助，要保持知其然和知其所以然的心态和持续学习的劲头，了解更多关于 Mysql 相关的知识！&lt;/p&gt;
+&lt;h4 id=&#34;34一致性的实现&#34;&gt;3.4、一致性的实现
+&lt;/h4&gt;&lt;p&gt;一致性的实现其实是通过&lt;code&gt;原子性&lt;/code&gt;、&lt;code&gt;持久性&lt;/code&gt;，&lt;code&gt;隔离性&lt;/code&gt;共同完成的&lt;/p&gt;
+&lt;h2 id=&#34;五结束语&#34;&gt;五、结束语
+&lt;/h2&gt;&lt;p&gt;了解 MySQL 的事务机制，以及实现原理，对于使用或者优化都有很大的帮助，要保持知其然和知其所以然的心态和持续学习的劲头，了解更多关于 Mysql 相关的知识！&lt;/p&gt;
 &lt;hr&gt;</description>
         </item>
         

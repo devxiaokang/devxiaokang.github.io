@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>network on 不积跬步无以至千里</title>
+        <title>Network on 不积跬步无以至千里</title>
         <link>https://x-xkang.com/tags/network/</link>
-        <description>Recent content in network on 不积跬步无以至千里</description>
+        <description>Recent content in Network on 不积跬步无以至千里</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Wed, 15 Jun 2022 15:57:49 +0800</lastBuildDate><atom:link href="https://x-xkang.com/tags/network/index.xml" rel="self" type="application/rss+xml" /><item>
@@ -17,14 +17,12 @@
 &lt;/ul&gt;
 &lt;blockquote&gt;
 &lt;p&gt;OSI(Open System Interconnect)，即开放式系统互联。一般都叫OSI参考模型，是ISO(International Organization for Standardization)国际标准化组织在1985年研究的网络互联模型
-ISO 为了更好的使网络应用更为普及，推出了OSI参考模型，其含义就是推荐所有公司使用这个规范来控制网络，这样所有公司都有相同的规范，就能互联了。&lt;/p&gt;
-&lt;/blockquote&gt;
+ISO 为了更好的使网络应用更为普及，推出了OSI参考模型，其含义就是推荐所有公司使用这个规范来控制网络，这样所有公司都有相同的规范，就能互联了。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;数据封装的概念&lt;/li&gt;
 &lt;/ul&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;封装&lt;/strong&gt;即每一层接收上层数据时，都会添加自己特定的头部数据（有时也会有尾部数据）。这些头部数据实际上就是实现协议的规定。即加上相应的“暗号”。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;封装&lt;/strong&gt;即每一层接收上层数据时，都会添加自己特定的头部数据（有时也会有尾部数据）。这些头部数据实际上就是实现协议的规定。即加上相应的“暗号”。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;OSI七层模型与TCP/IP四层模型对比&lt;/li&gt;
 &lt;/ul&gt;
