@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Nodejs on 不积跬步无以至千里</title>
+        <link>https://x-xkang.com/tags/nodejs/</link>
+        <description>Recent content in Nodejs on 不积跬步无以至千里</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Fri, 08 Aug 2025 10:54:26 +0800</lastBuildDate><atom:link href="https://x-xkang.com/tags/nodejs/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Node Go 和 Rust的一些简单对比</title>
+        <link>https://x-xkang.com/p/node-go-%E5%92%8C-rust%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AE%80%E5%8D%95%E5%AF%B9%E6%AF%94/</link>
+        <pubDate>Fri, 08 Aug 2025 10:54:26 +0800</pubDate>
+        
+        <guid>https://x-xkang.com/p/node-go-%E5%92%8C-rust%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AE%80%E5%8D%95%E5%AF%B9%E6%AF%94/</guid>
+        <description>&lt;h2 id=&#34;nodejs&#34;&gt;Nodejs
+&lt;/h2&gt;&lt;h3 id=&#34;优点&#34;&gt;优点
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;开发效率高&lt;/strong&gt;： 基于JavaScript，前后端统一，适合快速开发。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;异步非阻塞 I/O&lt;/strong&gt;：适合高并发 I/O 密集型任务（如 API 服务、实时应用）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;丰富的生态&lt;/strong&gt;：npm 有超过 200 万个包，框架成熟（Express、NestJS）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;缺点&#34;&gt;缺点
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;单线程限制&lt;/strong&gt;：CPU 密集型任务性能差（如视频编码、机器学习）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;回调地狱&lt;/strong&gt;：早期代码嵌套问题（现可用 async/await 缓解）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;动态类型&lt;/strong&gt;：运行时错误风险较高（需 TypeScript 辅助）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;性能指标基于-techempower-基准测试&#34;&gt;性能指标（基于 TechEmpower 基准测试）
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;HTTP 请求吞吐量&lt;/strong&gt;：~50,000 RPS（Express 框架，中等水平）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;延迟&lt;/strong&gt;：~2ms（轻量级请求）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CPU 密集型任务&lt;/strong&gt;：比 Go/Rust 慢 5-10 倍（如斐波那契计算）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;golang&#34;&gt;Golang
+&lt;/h2&gt;&lt;h3 id=&#34;优点-1&#34;&gt;优点
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;高并发模型&lt;/strong&gt;：原生协程（goroutine）和通道（channel），适合微服务。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;编译速度快&lt;/strong&gt;：静态编译，部署简单（单二进制文件）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;内存效率&lt;/strong&gt;：垃圾回收（GC）优化较好，延迟通常 &amp;lt; 1ms。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;缺点-1&#34;&gt;缺点
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;泛型支持较晚&lt;/strong&gt;：Go 1.18 才引入，生态适配仍在进行。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;错误处理冗长&lt;/strong&gt;：需手动 if err != nil 检查。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;生态较小&lt;/strong&gt;：标准库强大，但第三方库不如 Node.js/Rust 丰富。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;性能指标&#34;&gt;性能指标
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;HTTP 请求吞吐量&lt;/strong&gt;：~150,000 RPS（Gin 框架，是 Node.js 的 3 倍）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;延迟&lt;/strong&gt;：~0.5ms（低延迟场景优势明显）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CPU 任务&lt;/strong&gt;：比 Node.js 快 3-5 倍，接近 Rust（但无手动内存管理）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;rust&#34;&gt;Rust
+&lt;/h2&gt;&lt;h3 id=&#34;优点-2&#34;&gt;优点
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;零成本抽象&lt;/strong&gt;：性能接近 C/C++，无运行时开销。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;内存安全&lt;/strong&gt;：所有权模型避免内存泄漏/数据竞争。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;多线程优势&lt;/strong&gt;：无畏并发（fearless concurrency），适合系统编程。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;缺点-2&#34;&gt;缺点
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;学习曲线陡峭：所有权和生命周期概念难掌握。&lt;/li&gt;
+&lt;li&gt;开发速度慢：编译时间长（大型项目需分钟级）。&lt;/li&gt;
+&lt;li&gt;生态较新：虽增长快，但成熟库少于 Go/Node.js。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;性能指标-1&#34;&gt;性能指标
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;HTTP 请求吞吐量：~200,000 RPS（Actix 框架，领先 Go/Node.js）。&lt;/li&gt;
+&lt;li&gt;延迟：~0.3ms（极致低延迟）。&lt;/li&gt;
+&lt;li&gt;CPU 任务：比 Go 快 10-20%（如加密算法、游戏引擎）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;横向对比&#34;&gt;横向对比
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;指标&lt;/th&gt;
+          &lt;th&gt;Nodejs&lt;/th&gt;
+          &lt;th&gt;Golang&lt;/th&gt;
+          &lt;th&gt;Rust&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;I/O吞吐量&lt;/td&gt;
+          &lt;td&gt;50000&lt;/td&gt;
+          &lt;td&gt;150000&lt;/td&gt;
+          &lt;td&gt;200000&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;CPU 任务耗时&lt;/td&gt;
+          &lt;td&gt;慢（基准1x）&lt;/td&gt;
+          &lt;td&gt;快（3-5x）&lt;/td&gt;
+          &lt;td&gt;最快（5-10x）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;内存占用&lt;/td&gt;
+          &lt;td&gt;较高（V8引擎）&lt;/td&gt;
+          &lt;td&gt;低（GC控制）&lt;/td&gt;
+          &lt;td&gt;极低（手动管理）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;启动时间&lt;/td&gt;
+          &lt;td&gt;快（解释执行）&lt;/td&gt;
+          &lt;td&gt;极快（静态编译）&lt;/td&gt;
+          &lt;td&gt;慢（编译优化）&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;选型建议&#34;&gt;选型建议
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Web/实时应用&lt;/strong&gt;：Node.js（快速开发）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;微服务/云原生&lt;/strong&gt;：Go（平衡性能与效率）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;系统/高性能计算&lt;/strong&gt;：Rust（安全与速度优先）。&lt;/li&gt;
+&lt;/ul&gt;</description>
+        </item>
+        
+    </channel>
+</rss>

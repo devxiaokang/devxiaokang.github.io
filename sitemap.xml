@@ -3,24 +3,39 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://x-xkang.com/categories/</loc>
-    <lastmod>2025-08-06T14:36:14+08:00</lastmod>
+    <lastmod>2025-08-08T10:54:26+08:00</lastmod>
   </url><url>
     <loc>https://x-xkang.com/categories/golang/</loc>
-    <lastmod>2025-08-06T14:36:14+08:00</lastmod>
+    <lastmod>2025-08-08T10:54:26+08:00</lastmod>
   </url><url>
     <loc>https://x-xkang.com/tags/golang/</loc>
-    <lastmod>2025-08-06T14:36:14+08:00</lastmod>
+    <lastmod>2025-08-08T10:54:26+08:00</lastmod>
   </url><url>
-    <loc>https://x-xkang.com/p/golang--reflect/</loc>
-    <lastmod>2025-08-06T14:36:14+08:00</lastmod>
+    <loc>https://x-xkang.com/p/node-go-%E5%92%8C-rust%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AE%80%E5%8D%95%E5%AF%B9%E6%AF%94/</loc>
+    <lastmod>2025-08-08T10:54:26+08:00</lastmod>
+  </url><url>
+    <loc>https://x-xkang.com/categories/nodejs/</loc>
+    <lastmod>2025-08-08T10:54:26+08:00</lastmod>
+  </url><url>
+    <loc>https://x-xkang.com/tags/nodejs/</loc>
+    <lastmod>2025-08-08T10:54:26+08:00</lastmod>
   </url><url>
     <loc>https://x-xkang.com/post/</loc>
-    <lastmod>2025-08-06T14:36:14+08:00</lastmod>
+    <lastmod>2025-08-08T10:54:26+08:00</lastmod>
+  </url><url>
+    <loc>https://x-xkang.com/categories/rust/</loc>
+    <lastmod>2025-08-08T10:54:26+08:00</lastmod>
+  </url><url>
+    <loc>https://x-xkang.com/tags/rust/</loc>
+    <lastmod>2025-08-08T10:54:26+08:00</lastmod>
   </url><url>
     <loc>https://x-xkang.com/tags/</loc>
-    <lastmod>2025-08-06T14:36:14+08:00</lastmod>
+    <lastmod>2025-08-08T10:54:26+08:00</lastmod>
   </url><url>
     <loc>https://x-xkang.com/</loc>
+    <lastmod>2025-08-08T10:54:26+08:00</lastmod>
+  </url><url>
+    <loc>https://x-xkang.com/p/golang--reflect/</loc>
     <lastmod>2025-08-06T14:36:14+08:00</lastmod>
   </url><url>
     <loc>https://x-xkang.com/categories/zookeeper/</loc>
@@ -156,12 +171,6 @@
     <lastmod>2024-07-17T09:20:58+08:00</lastmod>
   </url><url>
     <loc>https://x-xkang.com/tags/programming-language/</loc>
-    <lastmod>2024-05-09T14:26:30+08:00</lastmod>
-  </url><url>
-    <loc>https://x-xkang.com/categories/rust/</loc>
-    <lastmod>2024-05-09T14:26:30+08:00</lastmod>
-  </url><url>
-    <loc>https://x-xkang.com/tags/rust/</loc>
     <lastmod>2024-05-09T14:26:30+08:00</lastmod>
   </url><url>
     <loc>https://x-xkang.com/p/rust-%E5%AD%A6%E4%B9%A0%E5%85%AD--%E5%BC%95%E7%94%A8%E4%B8%8E%E5%80%9F%E7%94%A8/</loc>

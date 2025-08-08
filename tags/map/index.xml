@@ -110,7 +110,7 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;map的内存模型中，最重要的三种结构： &lt;code&gt;hmap&lt;/code&gt;, &lt;code&gt;bmap&lt;/code&gt;, &lt;code&gt;mapextra&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;hmap 表示整个map，bmap 表示hmap中的一个桶，map底层其实是由很多歌桶组成的&lt;/li&gt;
+&lt;li&gt;hmap 表示整个map，bmap 表示hmap中的一个桶，map底层其实是由很多个桶组成的&lt;/li&gt;
 &lt;li&gt;当一个桶存满之后，指向的下一个桶，就叫做溢出桶，溢出桶是拉链法的具体体现&lt;/li&gt;
 &lt;li&gt;mapextra 表示所有的溢出桶，之所以还需要重新的指向，目的是为了用于GC，避免GC时扫描整个map，仅扫描所有溢出桶就够了&lt;/li&gt;
 &lt;li&gt;桶结构的很多字段得在编译时才会动态生成，比如 &lt;code&gt;key&lt;/code&gt; 和 &lt;code&gt;values&lt;/code&gt;等&lt;/li&gt;
@@ -156,7 +156,7 @@
 &lt;p&gt;以下两种情况时，会进行扩容：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;当装载因子超过6.5时，扩容一倍，属于增量扩容&lt;/li&gt;
-&lt;li&gt;当使用的溢出桶过多时间，重新分配一样大的内存空间，属于等量扩容，实际上没有扩容，主要是为了回收空闲的溢出桶&lt;/li&gt;
+&lt;li&gt;当使用的溢出桶过多时，重新分配一样大的内存空间，属于等量扩容，实际上没有扩容，主要是为了回收空闲的溢出桶&lt;/li&gt;
 &lt;/ul&gt;
 &lt;blockquote&gt;
 &lt;blockquote&gt;
