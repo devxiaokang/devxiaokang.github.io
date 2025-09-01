@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Rust学习（一）入门指南'>
+<title>Rust学习（一）入门指南</title>
+
+<link rel='canonical' href='https://x-xkang.com/p/rust%E5%AD%A6%E4%B9%A0%E4%B8%80%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/'>
+
+<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='Rust学习（一）入门指南'>
+<meta property='og:description' content='Rust学习（一）入门指南'>
+<meta property='og:url' content='https://x-xkang.com/p/rust%E5%AD%A6%E4%B9%A0%E4%B8%80%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/'>
+<meta property='og:site_name' content='不积跬步无以至千里'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-02-20T17:16:08&#43;08:00'/><meta property='article:modified_time' content='2023-02-20T17:16:08&#43;08:00'/>
+<meta name="twitter:title" content="Rust学习（一）入门指南">
+<meta name="twitter:description" content="Rust学习（一）入门指南">
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu3c3946a5e2dbcd463bda7dfc7c9c9efb_49773_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">不积跬步无以至千里</a></h1>
+            <h2 class="site-description">拨云见日，否极泰来.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/devxiaokang'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+ -->
+
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#bfbfc0" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <line x1="9" y1="6" x2="20" y2="6" />
+  <line x1="9" y1="12" x2="20" y2="12" />
+  <line x1="9" y1="18" x2="20" y2="18" />
+  <line x1="5" y1="6" x2="5" y2="6.01" />
+  <line x1="5" y1="12" x2="5" y2="12.01" />
+  <line x1="5" y1="18" x2="5" y2="18.01" />
+</svg>
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#安装rust">安装Rust</a>
+      <ol>
+        <li><a href="#在-linux-或-macos-上安装-rustup">在 Linux 或 macOS 上安装 rustup</a></li>
+        <li><a href="#在-windows-上安装-rustup">在 Windows 上安装 rustup</a></li>
+        <li><a href="#检查安装是否正确troubleshooting">检查安装是否正确（Troubleshooting）</a></li>
+        <li><a href="#更新与卸载">更新与卸载</a></li>
+        <li><a href="#本地文档">本地文档</a></li>
+      </ol>
+    </li>
+    <li><a href="#helloworld">Hello,World</a>
+      <ol>
+        <li><a href="#创建项目目录">创建项目目录</a></li>
+        <li><a href="#编写并运行-rust-程序">编写并运行 Rust 程序</a></li>
+        <li><a href="#分析这个-rust-程序">分析这个 Rust 程序</a></li>
+        <li><a href="#编译和运行是彼此独立的步骤">编译和运行是彼此独立的步骤</a></li>
+      </ol>
+    </li>
+    <li><a href="#hellocargo">Hello,Cargo</a>
+      <ol>
+        <li><a href="#使用-cargo-创建项目">使用 Cargo 创建项目</a></li>
+        <li><a href="#构建并运行-cargo-项目">构建并运行 Cargo 项目</a></li>
+        <li><a href="#发布release构建">发布（release）构建</a></li>
+        <li><a href="#把-cargo-当作习惯">把 Cargo 当作习惯</a></li>
+      </ol>
+    </li>
+    <li><a href="#总结">总结</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/rust/" >
+                Rust
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/rust%E5%AD%A6%E4%B9%A0%E4%B8%80%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/">Rust学习（一）入门指南</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            Rust学习（一）入门指南
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Feb 20, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    5 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="安装rust">安装Rust</h2>
+<p>第一步是安装 Rust。我们会通过 rustup 下载 Rust，这是一个管理 Rust 版本和相关工具的命令行工具。下载时需要联网。</p>
+<p>注意：如果你出于某些理由倾向于不使用 rustup，请到 <a class="link" href="https://forge.rust-lang.org/infra/other-installation-methods.html"  target="_blank" rel="noopener"
+    >Rust 的其他安装方法页面</a> 查看其它安装选项</p>
+<p>接下来的步骤会安装最新的稳定版 Rust 编译器。Rust 的稳定性确保本书所有示例在最新版本的 Rust 中能够继续编译。不同版本的输出可能略有不同，因为 Rust 经常改进错误信息和警告。也就是说，任何通过这些步骤安装的最新稳定版 Rust，都应该能正常运行本书中的内容。</p>
+<h3 id="在-linux-或-macos-上安装-rustup">在 Linux 或 macOS 上安装 rustup</h3>
+<p>如果你使用 Linux 或 macOS，打开终端并输入如下命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ curl --proto <span class="s1">&#39;=https&#39;</span> --tlsv1.2 https://sh.rustup.rs -sSf <span class="p">|</span> sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>此命令下载一个脚本并开始安装 rustup 工具，这会安装最新稳定版 Rust。过程中可能会提示你输入密码。如果安装成功，将会出现如下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">Rust is installed now. Great!
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>另外，你还需要一个 链接器（linker），这是 Rust 用来将其编译的输出连接到一个文件中的程序。很可能你已经有一个了。如果你遇到了链接器错误，请尝试安装一个 C 编译器，它通常包括一个链接器。C 编译器也很有用，因为一些常见的 Rust 包依赖于 C 代码，因此需要安装一个 C 编译器。</p>
+<p>在 macOS 上，你可以通过运行以下命令获得 C 语言编译器：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ xcode-select --install
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Linux 用户通常需要根据发行版（distribution）文档安装 GCC 或 Clang。比如，如果你使用 Ubuntu，可以安装 build-essential 包。</p>
+<h3 id="在-windows-上安装-rustup">在 Windows 上安装 rustup</h3>
+<p>在 Windows 上，前往 <a class="link" href="https://www.rust-lang.org/install.html"  target="_blank" rel="noopener"
+    >https://www.rust-lang.org/install.html</a> 并按照说明安装 Rust。在安装过程的某个步骤，你会收到一个信息说明为什么需要安装 Visual Studio 2013 或其更新版本的 MSVC 构建工具。</p>
+<p>要获取构建工具，你需要安装 <a class="link" href="https://visualstudio.microsoft.com/downloads/"  target="_blank" rel="noopener"
+    >Visual Studio 2022</a>。当被问及需要安装什么工作负载（Workload）的时候，请确保勾选了以下内容：</p>
+<ul>
+<li>“使用 C++ 的桌面开发”（“Desktop Development with C++”）</li>
+<li>Windows 10（或 11）SDK</li>
+<li>英语语言包，以及其他你所需要的语言包</li>
+</ul>
+<p>本书的余下部分会使用能同时运行于 cmd.exe 和 PowerShell 的命令。如果存在特定差异，我们会解释使用哪一个。</p>
+<h3 id="检查安装是否正确troubleshooting">检查安装是否正确（Troubleshooting）</h3>
+<p>要检查是否正确安装了 Rust，打开命令行并输入：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ rustc --version
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>你应该可以看到按照以下格式显示的最新稳定版本的版本号、对应的 Commit Hash 和 Commit 日期</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">rustc x.y.z <span class="o">(</span>abcabcabc yyyy-mm-dd<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果看到了这样的信息，就说明 Rust 已经安装成功了！</p>
+<p>如果没看到，请按照下面说明的方法检查 Rust 是否在您的 %PATH% 系统变量中</p>
+<p>在 Windows CMD 中，请使用命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">&gt; <span class="nb">echo</span> %PATH%
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在 PowerShell 中，请使用命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">&gt; <span class="nb">echo</span> <span class="nv">$env</span>:Path
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在 Linux 和 macOS 中，请使用命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ <span class="nb">echo</span> <span class="nv">$PATH</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果一切正确但 Rust 仍不能使用，有许多地方可以求助。您可以在<a class="link" href="https://www.rust-lang.org/community"  target="_blank" rel="noopener"
+    >社区页面</a>查看如何与其他 Rustaceans（Rust 用户的称号，有自嘲意味）联系。</p>
+<h3 id="更新与卸载">更新与卸载</h3>
+<p>通过 rustup 安装了 Rust 之后，更新到最新版本就很简单了，只需要在您对应的命令行中运行如下更新脚本：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ rustup update
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>若要卸载 Rust 和 rustup，请在命令行中运行如下卸载脚本：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ rustup self uninstall
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="本地文档">本地文档</h3>
+<p>安装程序也自带一份文档的本地拷贝，可以离线阅读。运行 rustup doc 在浏览器中查看本地文档。</p>
+<p>任何时候，如果你拿不准标准库中的类型或函数的用途和用法，请查阅应用程序接口（application programming interface，API）文档！</p>
+<h2 id="helloworld">Hello,World</h2>
+<h3 id="创建项目目录">创建项目目录</h3>
+<p>首先创建一个存放 Rust 代码的目录。Rust 并不关心代码的存放位置，不过对于本书的练习和项目来说，我们建议你在 home 目录中创建 projects 目录，并将你的所有项目存放在这里。
+打开终端并输入如下命令创建 projects 目录，并在 projects 目录中为 “Hello, world!” 项目创建一个目录。</p>
+<p>对于 Linux、macOS 和 Windows PowerShell，输入：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ mkdir ~/projects
+</span></span><span class="line"><span class="cl">$ <span class="nb">cd</span> ~/projects
+</span></span><span class="line"><span class="cl">$ mkdir hello_world
+</span></span><span class="line"><span class="cl">$ <span class="nb">cd</span> hello_world
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>对于 Windows CMD，输入：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">&gt; mkdir <span class="s2">&#34;%USERPROFILE%\projects&#34;</span>
+</span></span><span class="line"><span class="cl">&gt; <span class="nb">cd</span> /d <span class="s2">&#34;%USERPROFILE%\projects&#34;</span>
+</span></span><span class="line"><span class="cl">&gt; mkdir hello_world
+</span></span><span class="line"><span class="cl">&gt; <span class="nb">cd</span> hello_world
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="编写并运行-rust-程序">编写并运行 Rust 程序</h3>
+<p>接下来，新建一个源文件，命名为 main.rs。Rust 源文件总是以 .rs 扩展名结尾。如果文件名包含多个单词，那么按照命名习惯，应当使用下划线来分隔单词。例如命名为 <code>hello_world.rs</code>，而不是 <code>helloworld.rs</code>。</p>
+<p>现在打开刚创建的 main.rs 文件，输入示例 1-1 中的代码。</p>
+<p>文件名：main.rs</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="line"><span class="cl"><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&#34;Hello, world!&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>保存文件，并回到当前目录为“~/projects/hello_world”的终端窗口。在 Linux 或 macOS 上，输入如下命令，编译并运行文件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ rustc main.rs
+</span></span><span class="line"><span class="cl">$ ./main
+</span></span><span class="line"><span class="cl">Hello, world!
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在 Windows 上，输入命令 .\main.exe，而不是 ./main：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">&gt; rustc main.rs
+</span></span><span class="line"><span class="cl">&gt; .<span class="se">\m</span>ain.exe
+</span></span><span class="line"><span class="cl">Hello, world!
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>不管使用何种操作系统，终端应该打印字符串 Hello, world!。如果没有看到这些输出，回到安装部分的 “故障排除” 小节查找有帮助的方法。</p>
+<p>如果 <code>Hello, world!</code> 出现了，恭喜你！你已经正式编写了一个 Rust 程序。现在你成为一名 Rust 程序员，欢迎！</p>
+<h3 id="分析这个-rust-程序">分析这个 Rust 程序</h3>
+<p>现在，让我们回过头来仔细看看这个 “Hello, world!” 程序。这是第一块拼图：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="line"><span class="cl"><span class="k">fn</span> <span class="nf">main</span><span class="p">(){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>这几行定义了一个名叫 <code>main</code> 的函数。<code>main</code> 函数是一个特殊的函数：在可执行的 Rust 程序中，它总是最先运行的代码。第一行代码声明了一个叫做 <code>main</code> 的函数，它没有参数也没有返回值。如果有参数的话，它们的名称应该出现在小括号 () 中。</p>
+<p>函数体被包裹在 <code>{}</code> 中。Rust 要求所有函数体都要用花括号包裹起来。一般来说，将左花括号与函数声明置于同一行并以空格分隔，是良好的代码风格。</p>
+<blockquote>
+<p>注：如果你希望在 Rust 项目中保持一种标准风格，可以使用名为 rustfmt 的自动格式化工具将代码格式化为特定的风格（更多内容详见<a class="link" href="https://kaisery.github.io/trpl-zh-cn/appendix-04-useful-development-tools.html"  target="_blank" rel="noopener"
+    >附录 D</a> 中的 rustfmt）。Rust 团队已经在标准的 Rust 发行版中包含了这个工具，就像 rustc 一样。所以它应该已经安装在你的电脑中了！</p>
+</blockquote>
+<p>在 <code>main</code> 函数中有如下代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="line"><span class="cl"><span class="fm">println!</span><span class="p">(</span><span class="s">&#34;Hello, world!&#34;</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>这行代码完成这个简单程序的所有工作：在屏幕上打印文本。这里有四个重要的细节需要注意。首先 Rust 的缩进风格使用 4 个空格，而不是 1 个制表符（tab）。</p>
+<p>第二，println! 调用了一个 Rust 宏（macro）。如果是调用函数，则应输入 println（没有!）。我们将在第十九章详细讨论宏。现在你只需记住，当看到符号 ! 的时候，就意味着调用的是宏而不是普通函数，并且宏并不总是遵循与函数相同的规则。</p>
+<p>第三，&ldquo;Hello, world!&rdquo; 是一个字符串。我们把这个字符串作为一个参数传递给 println!，字符串将被打印到屏幕上。</p>
+<p>第四，该行以分号结尾（;），这代表一个表达式的结束和下一个表达式的开始。大部分 Rust 代码行以分号结尾。</p>
+<h3 id="编译和运行是彼此独立的步骤">编译和运行是彼此独立的步骤</h3>
+<p>你刚刚运行了一个新创建的程序，那么让我们检查此过程中的每一个步骤</p>
+<p>在运行 Rust 程序之前，必须先使用 Rust 编译器编译它，即输入 rustc 命令并传入源文件名称，如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="line"><span class="cl"><span class="cp">$</span><span class="w"> </span><span class="n">rustc</span><span class="w"> </span><span class="n">main</span><span class="p">.</span><span class="n">rs</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果你有 C 或 C++ 背景，就会发现这与 gcc 和 clang 类似。编译成功后，Rust 会输出一个二进制的可执行文件。
+在 Linux、macOS 或 Windows 的 PowerShell 上，在 shell 中输入 ls 命令可以看见这个可执行文件。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ls
+</span></span><span class="line"><span class="cl">main  main.rs
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在 Linux 和 macOS，你会看到两个文件。在 Windows PowerShell 中，你会看到同使用 CMD 相同的三个文件。在 Windows 的 CMD 上，则输入如下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">&gt; dir /B %<span class="o">=</span> the /B option says to only show the file <span class="nv">names</span> <span class="o">=</span>%
+</span></span><span class="line"><span class="cl">main.exe
+</span></span><span class="line"><span class="cl">main.pdb
+</span></span><span class="line"><span class="cl">main.rs
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这展示了扩展名为 .rs 的源文件、可执行文件（在 Windows 下是 main.exe，其它平台是 main），以及当使用 CMD 时会有一个包含调试信息、扩展名为 .pdb 的文件。从这里开始运行 main 或 main.exe 文件，如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ./main <span class="c1"># Windows 是 .\main.exe</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果这里的 main.rs 是上文所述的 “Hello, world!” 程序，那么在终端上就会打印出 Hello, world!。</p>
+<p>如果你更熟悉动态语言，如 Ruby、Python 或 JavaScript，则可能不习惯将编译和运行分为两个单独的步骤。Rust 是一种 <strong>预编译静态类型</strong>（ahead-of-time compiled）语言，这意味着你可以编译程序，并将可执行文件送给其他人，他们甚至不需要安装 Rust 就可以运行。如果你给他人一个 .rb、.py 或 .js 文件，他们需要先分别安装 Ruby，Python，JavaScript 实现（运行时环境，VM）。不过在这些语言中，只需要一句命令就可以编译和运行程序。这一切都是语言设计上的权衡取舍。</p>
+<p>仅仅使用 <code>rustc</code> 编译简单程序是没问题的，不过随着项目的增长，你可能需要管理你项目的方方面面，并让代码易于分享。接下来，我们要介绍一个叫做 Cargo 的工具，它会帮助你编写真实世界中的 Rust 程序</p>
+<h2 id="hellocargo">Hello,Cargo</h2>
+<p>Cargo 是 Rust 的构建系统和包管理器。大多数 Rustacean 们使用 Cargo 来管理他们的 Rust 项目，因为它可以为你处理很多任务，比如构建代码、下载依赖库并编译这些库。（我们把代码所需要的库叫做 <strong>依赖</strong>（dependencies））。</p>
+<p>最简单的 Rust 程序，比如我们刚刚编写的，没有任何依赖。如果使用 Cargo 来构建 “Hello, world!” 项目，将只会用到 Cargo 构建代码的那部分功能。在编写更复杂的 Rust 程序时，你将添加依赖项，如果使用 Cargo 启动项目，则添加依赖项将更容易。</p>
+<p>由于绝大多数 Rust 项目使用 Cargo，本书接下来的部分假设你也使用 Cargo。如果使用 “安装” 部分介绍的官方安装包的话，则自带了 Cargo。如果通过其他方式安装的话，可以在终端输入如下命令检查是否安装了 Cargo：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ cargo --version
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果你看到了版本号，说明已安装！如果看到类似 command not found 的错误，你应该查看相应安装文档以确定如何单独安装 Cargo。</p>
+<h3 id="使用-cargo-创建项目">使用 Cargo 创建项目</h3>
+<p>我们使用 Cargo 创建一个新项目，然后看看与上面的 “Hello, world!” 项目有什么不同。回到 projects 目录（或者你存放代码的目录）。接着，可在任何操作系统下运行以下命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ cargo new hello_cargo
+</span></span><span class="line"><span class="cl">$ <span class="nb">cd</span> hello_cargo
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>第一行命令新建了名为 hello_cargo 的目录和项目。我们将项目命名为 hello_cargo，同时 Cargo 在一个同名目录中创建项目文件。</p>
+<p>进入 hello_cargo 目录并列出文件。将会看到 Cargo 生成了两个文件和一个目录：一个 Cargo.toml 文件，一个 src 目录，以及位于 src 目录中的 main.rs 文件。</p>
+<p>这也会在 hello_cargo 目录初始化了一个 git 仓库，以及一个 .gitignore 文件。如果在一个已经存在的 git 仓库中运行 <code>cargo new</code>，则这些 git 相关文件则不会生成；可以通过运行 <code>cargo new --vcs=git</code> 来覆盖这些行为。</p>
+<blockquote>
+<p>注意：Git 是一个常用的版本控制系统（version control system，VCS）。可以通过 <code>--vcs</code> 参数使 <code>cargo new</code> 切换到其它版本控制系统（VCS），或者不使用 VCS。运行 <code>cargo new --help</code> 参看可用的选项。</p>
+</blockquote>
+<p>请自行选用文本编辑器打开 Cargo.toml 文件。它应该看起来如示例 1-2 所示：</p>
+<p>文件名：Cargo.toml</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="p">[</span><span class="nx">package</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">name</span> <span class="p">=</span> <span class="s2">&#34;hello_cargo&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">version</span> <span class="p">=</span> <span class="s2">&#34;0.1.0&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">edition</span> <span class="p">=</span> <span class="s2">&#34;2021&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">dependencies</span><span class="p">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这个文件使用 TOML (Tom&rsquo;s Obvious, Minimal Language) 格式，这是 Cargo 配置文件的格式。</p>
+<p>第一行，<code>[package]</code>，是一个片段（section）标题，表明下面的语句用来配置一个包。随着我们在这个文件增加更多的信息，还将增加其他片段（section）。</p>
+<p>接下来的三行设置了 Cargo 编译程序所需的配置：项目的名称、项目的版本以及要使用的 Rust 版本。<a class="link" href="https://kaisery.github.io/trpl-zh-cn/appendix-05-editions.html"  target="_blank" rel="noopener"
+    >附录 E</a> 会介绍 edition 的值。</p>
+<p>最后一行，<code>[dependencies]</code>，是罗列项目依赖的片段的开始。在 Rust 中，代码包被称为 crates。这个项目并不需要其他的 crate，不过在第二章的第一个项目会用到依赖，那时会用得上这个片段。</p>
+<p>现在打开 src/main.rs 看看：</p>
+<p>文件名：src/main.rs</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="line"><span class="cl"><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&#34;Hello, world!&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>Cargo 为你生成了一个 “Hello, world!” 程序，正如我们之前编写的示例 1-1！目前为止，我们的项目与 Cargo 生成项目的区别是 Cargo 将代码放在 src 目录，同时项目根目录包含一个 Cargo.toml 配置文件。</p>
+<p>Cargo 期望源文件存放在 src 目录中。项目根目录只存放 README、license 信息、配置文件和其他跟代码无关的文件。使用 Cargo 帮助你保持项目干净整洁，一切井井有条。</p>
+<p>如果没有使用 Cargo 开始项目，比如我们创建的 Hello,world! 项目，可以将其转化为一个 Cargo 项目。将代码放入 src 目录，并创建一个合适的 Cargo.toml 文件。</p>
+<h3 id="构建并运行-cargo-项目">构建并运行 Cargo 项目</h3>
+<p>现在让我们看看通过 Cargo 构建和运行 “Hello, world!” 程序有什么不同！在 hello_cargo 目录下，输入下面的命令来构建项目：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ cargo build
+</span></span><span class="line"><span class="cl">   Compiling hello_cargo v0.1.0 <span class="o">(</span>file:///projects/hello_cargo<span class="o">)</span>
+</span></span><span class="line"><span class="cl">    Finished dev <span class="o">[</span>unoptimized + debuginfo<span class="o">]</span> target<span class="o">(</span>s<span class="o">)</span> in 2.85 secs
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这个命令会创建一个可执行文件 target/debug/hello_cargo （在 Windows 上是 target\debug\hello_cargo.exe），而不是放在目前目录下。由于默认的构建方法是调试构建（debug build），Cargo 会将可执行文件放在名为 debug 的目录中。可以通过这个命令运行可执行文件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ./target/debug/hello_cargo <span class="c1"># 或者在 Windows 下为 .\target\debug\hello_cargo.exe</span>
+</span></span><span class="line"><span class="cl">Hello, world!
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果一切顺利，终端上应该会打印出 <code>Hello, world!</code>。首次运行 <code>cargo build</code> 时，也会使 Cargo 在项目根目录创建一个新文件：Cargo.lock。这个文件记录项目依赖的实际版本。这个项目并没有依赖，所以其内容比较少。你自己永远也不需要碰这个文件，让 Cargo 处理它就行了。</p>
+<p>我们刚刚使用 <code>cargo build</code> 构建了项目，并使用 ./target/debug/hello_cargo 运行了程序，也可以使用 <code>cargo run </code>在一个命令中同时编译并运行生成的可执行文件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ cargo run
+</span></span><span class="line"><span class="cl">    Finished dev <span class="o">[</span>unoptimized + debuginfo<span class="o">]</span> target<span class="o">(</span>s<span class="o">)</span> in 0.0 secs
+</span></span><span class="line"><span class="cl">     Running <span class="sb">`</span>target/debug/hello_cargo<span class="sb">`</span>
+</span></span><span class="line"><span class="cl">Hello, world!
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>比起要记得运行 <code>cargo build</code> 之后再用可执行文件的完整路径来运行程序，使用 <code>cargo run</code> 可以实现完全相同的效果，而且要方便得多，所以大多数开发者会使用 <code>cargo run</code>。</p>
+<p>注意这一次并没有出现表明 Cargo 正在编译 <code>hello_cargo</code> 的输出。Cargo 发现文件并没有被改变，所以它并没有重新编译，而是直接运行了可执行文件。如果修改了源文件的话，Cargo 会在运行之前重新构建项目，并会出现像这样的输出：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ cargo run
+</span></span><span class="line"><span class="cl">   Compiling hello_cargo v0.1.0 <span class="o">(</span>file:///projects/hello_cargo<span class="o">)</span>
+</span></span><span class="line"><span class="cl">    Finished dev <span class="o">[</span>unoptimized + debuginfo<span class="o">]</span> target<span class="o">(</span>s<span class="o">)</span> in 0.33 secs
+</span></span><span class="line"><span class="cl">     Running <span class="sb">`</span>target/debug/hello_cargo<span class="sb">`</span>
+</span></span><span class="line"><span class="cl">Hello, world!
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Cargo 还提供了一个叫 <code>cargo check</code> 的命令。该命令快速检查代码确保其可以编译，但并不产生可执行文件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ cargo check
+</span></span><span class="line"><span class="cl">   Checking hello_cargo v0.1.0 <span class="o">(</span>file:///projects/hello_cargo<span class="o">)</span>
+</span></span><span class="line"><span class="cl">    Finished dev <span class="o">[</span>unoptimized + debuginfo<span class="o">]</span> target<span class="o">(</span>s<span class="o">)</span> in 0.32 secs
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>为什么你会不需要可执行文件呢？通常 <code>cargo check</code> 要比 <code>cargo build</code> 快得多，因为它省略了生成可执行文件的步骤。如果你在编写代码时持续的进行检查，<code>cargo check</code> 可以让你快速了解现在的代码能不能正常通过编译！为此很多 Rustaceans 编写代码时定期运行 <code>cargo check</code> 确保它们可以编译。当准备好使用可执行文件时才运行 <code>cargo build</code>。</p>
+<p>我们回顾下已学习的 Cargo 内容：</p>
+<ul>
+<li>可以使用 <code>cargo new</code> 创建项目。</li>
+<li>可以使用 <code>cargo build</code> 构建项目。</li>
+<li>可以使用 <code>cargo run</code> 一步构建并运行项目。</li>
+<li>可以使用 <code>cargo check</code> 在不生成二进制文件的情况下构建项目来检查错误。</li>
+<li>有别于将构建结果放在与源码相同的目录，Cargo 会将其放到 target/debug 目录。</li>
+</ul>
+<p>使用 Cargo 的一个额外的优点是，不管你使用什么操作系统，其命令都是一样的。所以从现在开始本书将不再为 Linux 和 macOS 以及 Windows 提供相应的命令。</p>
+<h3 id="发布release构建">发布（release）构建</h3>
+<p>当项目最终准备好发布时，可以使用 <code>cargo build --release</code> 来优化编译项目。这会在 target/release 而不是 target/debug 下生成可执行文件。这些优化可以让 Rust 代码运行的更快，不过启用这些优化也需要消耗更长的编译时间。这也就是为什么会有两种不同的配置：一种是为了开发，你需要经常快速重新构建；另一种是为用户构建最终程序，它们不会经常重新构建，并且希望程序运行得越快越好。如果你在测试代码的运行时间，请确保运行 <code>cargo build --release</code> 并使用 target/release 下的可执行文件进行测试。</p>
+<h3 id="把-cargo-当作习惯">把 Cargo 当作习惯</h3>
+<p>对于简单项目，Cargo 并不比 <code>rustc</code> 提供了更多的优势，不过随着开发的深入，终将证明其价值。一旦程序壮大到由多个文件组成，亦或者是需要其他的依赖，让 Cargo 协调构建过程就会简单得多。</p>
+<p>即便 <code>hello_cargo</code> 项目十分简单，它现在也使用了很多在你之后的 Rust 生涯将会用到的实用工具。其实，要在任何已存在的项目上工作时，可以使用如下命令通过 Git 检出代码，移动到该项目目录并构建：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ git clone example.org/someproject
+</span></span><span class="line"><span class="cl">$ <span class="nb">cd</span> someproject
+</span></span><span class="line"><span class="cl">$ cargo build
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>关于更多 Cargo 的信息，请查阅 其<a class="link" href="https://doc.rust-lang.org/cargo/"  target="_blank" rel="noopener"
+    >文档</a>。</p>
+<h2 id="总结">总结</h2>
+<p>你已经准备好开启 Rust 之旅了！在本章中，你学习了如何：</p>
+<ul>
+<li>使用 <code>rustup</code> 安装最新稳定版的 Rust</li>
+<li>更新到新版的 Rust</li>
+<li>打开本地安装的文档</li>
+<li>直接通过 <code>rustc</code> 编写并运行 Hello, world! 程序</li>
+<li>使用 Cargo 创建并运行新项目</li>
+</ul>
+<p>是时候通过构建更实质性的程序来熟悉读写 Rust 代码了。所以在第二章我们会构建一个猜猜看游戏程序。如果你更愿意从学习 Rust 常用的编程概念开始，请阅读第三章，接着再回到第二章。</p>
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/rust-%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Rust 学习简介</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <script src="https://utteranc.es/client.js" 
+        repo="devxiaokang/blog"
+        issue-term="pathname"
+        
+        crossorigin="anonymous"
+        async
+        >
+</script>
+
+<style>
+    .utterances {
+        max-width: unset;
+    }
+</style>
+
+<script>
+    let utterancesLoaded = false;
+
+    function setUtterancesTheme(theme) {
+        let utterances = document.querySelector('.utterances iframe');
+        if (utterances) {
+            utterances.contentWindow.postMessage(
+                {
+                    type: 'set-theme',
+                    theme: `github-${theme}`
+                },
+                'https://utteranc.es'
+            );
+        }
+    }
+
+    addEventListener('message', event => {
+        if (event.origin !== 'https://utteranc.es') return;
+
+        
+        utterancesLoaded = true;
+        setUtterancesTheme(document.documentElement.dataset.scheme)
+    });
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (!utterancesLoaded) return;
+        setUtterancesTheme(e.detail)
+    })
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2019 - 
+        
+        2023 不积跬步无以至千里
+    </section>
+    
+    <section class="powerby">
+        
+            皖ICP备20014602号 <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

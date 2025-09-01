@@ -1,86 +1,124 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>dns on Hello, It&#39;s me</title>
+        <title>DNS on 不积跬步无以至千里</title>
         <link>https://x-xkang.com/categories/dns/</link>
-        <description>Recent content in dns on Hello, It&#39;s me</description>
+        <description>Recent content in DNS on 不积跬步无以至千里</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Thu, 16 Jun 2022 17:00:53 +0800</lastBuildDate><atom:link href="https://x-xkang.com/categories/dns/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 18 Sep 2024 13:13:06 +0800</lastBuildDate><atom:link href="https://x-xkang.com/categories/dns/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>在浏览器中输入URL到展示页面发生了什么</title>
+        <link>https://x-xkang.com/p/%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%BE%93%E5%85%A5url%E5%88%B0%E5%B1%95%E7%A4%BA%E9%A1%B5%E9%9D%A2%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/</link>
+        <pubDate>Wed, 18 Sep 2024 13:13:06 +0800</pubDate>
+        
+        <guid>https://x-xkang.com/p/%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%BE%93%E5%85%A5url%E5%88%B0%E5%B1%95%E7%A4%BA%E9%A1%B5%E9%9D%A2%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/</guid>
+        <description>&lt;p&gt;具体步骤如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在浏览器中输入指定网页的URL&lt;/li&gt;
+&lt;li&gt;浏览器通过DNS（UDP）协议，获取域名对应的IP地址。&lt;/li&gt;
+&lt;li&gt;浏览器根据IP地址和端口号，向目标服务器发起一个TCP连接请求。&lt;/li&gt;
+&lt;li&gt;浏览器在TCP连接上，向服务器发送一个HTTP请求报文，请求获取网页的内容。&lt;/li&gt;
+&lt;li&gt;服务器收到HTTP请求报文后，处理请求，并返回HTTP响应报文给浏览器。&lt;/li&gt;
+&lt;li&gt;浏览器收到HTTP响应报文后，解析响应体重的HTML代码，渲染网页的结构和样式，同时根据HTML中其他资源的URL（如图片、CSS、JavaScript等）请求这些资源。直到网页完全加载显示。&lt;/li&gt;
+&lt;li&gt;浏览器在不需要和服务器通信时，可以主动关闭TCP连接，或者等待服务器的关闭请求。&lt;/li&gt;
+&lt;/ol&gt;</description>
+        </item>
+        <item>
         <title>DNS 域名解析流程</title>
         <link>https://x-xkang.com/p/dns-%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E6%B5%81%E7%A8%8B/</link>
         <pubDate>Thu, 16 Jun 2022 17:00:53 +0800</pubDate>
         
         <guid>https://x-xkang.com/p/dns-%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E6%B5%81%E7%A8%8B/</guid>
-        <description>&lt;p&gt;了解域名结构&lt;/p&gt;
+        <description>&lt;h2 id=&#34;dns-基本概述&#34;&gt;DNS 基本概述
+&lt;/h2&gt;&lt;p&gt;DNS（Domain Name System）域名系统是一个将ip地址映射称为域名或者将域名映射成为ip地址的一种服务。DNS协议是应用层协议，运行在&lt;code&gt;UDP&lt;/code&gt;之上，使用53端口。DNS使用客户 - 服务器模式运行在通信的端系统之间，在通信的端系统之间通过端到端的传输协议来传送DNS报文。&lt;/p&gt;
+&lt;p&gt;下面通过一个示例来简单描述&lt;code&gt;DNS&lt;/code&gt;的解析过程，例如，你在浏览器中输入了 &amp;ldquo;mail.qq.com&amp;rdquo;，实际会发生以下操作：&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;以&lt;code&gt;mail.qq.com&lt;/code&gt;域名为例，&lt;code&gt;com&lt;/code&gt;为顶级域名，&lt;code&gt;qq.com&lt;/code&gt; 为二级域名， &lt;code&gt;mail.qq.com&lt;/code&gt;为三级域名&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;同一台用户主机上运行着 &lt;code&gt;DNS&lt;/code&gt; 应用的客户端&lt;/li&gt;
+&lt;li&gt;浏览器将主机名 &amp;ldquo;mail.qq.com&amp;rdquo; 发送给 &lt;code&gt;DNS&lt;/code&gt;应用的客户端&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;DNS&lt;/code&gt; 客户端向 &lt;code&gt;DNS&lt;/code&gt; 服务端发送一个包含主机名的请求&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;DNS&lt;/code&gt; 客户端最终会收到一份回答报文，其中包含该目标主机的IP地址&lt;/li&gt;
+&lt;li&gt;一旦浏览器收到目标主机的IP地址后，它就能够向位于该IP地址80端口的&lt;code&gt;HTTP&lt;/code&gt;服务器进程发起一个&lt;code&gt;TCP&lt;/code&gt;连接&lt;/li&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;除了提供IP地址到主机名的转换，DNS还提供了下面几个重要的服务&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;主机别名（host aliasing）,有着复杂的主机名的主机能够拥有一个或者多个其他别名，比如说一台名为 aaabbbcdef.com 的主机，同时会拥有 a.com 和 b.com 两个主机别名，在这种情况下 aaabbbcdef.com 也称为&lt;code&gt;规范主机名&lt;/code&gt;，而主机别名比规范主机名更加容易记忆。应用程序可以调用 &lt;code&gt;DNS&lt;/code&gt; 来获得主机别名对应的规范主机名以及对应的IP地址。&lt;/li&gt;
+&lt;li&gt;邮件服务器别名（mail server aliasing），同样的，电子邮件的应用程序也可以调用 &lt;code&gt;DNS&lt;/code&gt; 对提供的主机名进行解析。&lt;/li&gt;
+&lt;li&gt;负载均衡（load distribution），DNS也用于冗余的服务器之间进行负载分配。繁忙的站点例如 cnn.com 被冗余分布在多台服务器上，每台服务器运行在不同的端系统之间，每个都有着不同的IP地址。由于这些冗余的Web服务器，一个IP地址集合因此与同一个规范主机名联系。DNS数据库中存储着这些IP地址的集合。由于客户端每次都会发起 HTTP 请求，所以DNS就会在所有这些冗余的Web服务器之间循环分配了负载。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;dns的域名空间结构&#34;&gt;DNS的域名空间结构
+&lt;/h2&gt;&lt;p&gt;域名系统作为一个层次结构和分布式数据库，包含各种类型的数据，包括主机名和域名。DNS数据库中的名称形成一个分层树状结构称为命名空间&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://x-xkang.com/images/dns/domain-name-layer.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;domain-name-layer&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;了解域名结构&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;以&lt;code&gt;mail.qq.com&lt;/code&gt;域名为例，&lt;code&gt;com&lt;/code&gt;为顶级域名，&lt;code&gt;qq.com&lt;/code&gt; 为二级域名， &lt;code&gt;mail.qq.com&lt;/code&gt;为三级域名&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;顶级域名服务器&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;顶级域名为最后一个&lt;code&gt;.&lt;/code&gt;右侧部分的内容，如&lt;code&gt;mail.qq.com&lt;/code&gt;的&lt;code&gt;com&lt;/code&gt;就是顶级域名，顶级域名对应的服务器称之为顶级域名服务器&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;顶级域名为最后一个&lt;code&gt;.&lt;/code&gt;右侧部分的内容，如&lt;code&gt;mail.qq.com&lt;/code&gt;的&lt;code&gt;com&lt;/code&gt;就是顶级域名，顶级域名对应的服务器称之为顶级域名服务器&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;二级域名服务器&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;域名 &lt;code&gt;mail.qq.com&lt;/code&gt;中的倒数第二个&lt;code&gt;.&lt;/code&gt;右侧部分&lt;code&gt;qq.com&lt;/code&gt;成为二级域名&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;域名 &lt;code&gt;mail.qq.com&lt;/code&gt;中的倒数第二个&lt;code&gt;.&lt;/code&gt;右侧部分&lt;code&gt;qq.com&lt;/code&gt;成为二级域名&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;根域名服务器&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;在2016年之前全球一共拥有13台根服务器，1台主根服务器在美国，其他12台为辅根服务器，其中美国9台，英国1台，瑞典1台，日本1台，这13台根服务器主要管理互联网的主目录，主要作用IPV4。
-2016年，中国下一代互联网工程中心领衔发起雪人计划，旨在为下一代互联网(IPV6)提供更多的根服务器解决方案，该计划于2017年完成，其中包含3台主根服务器，中国1台，美国1台，日本1台，22台辅根服务器，中国3台，美国2台，印度和法国分别有3台，德国2台，俄罗斯、意大利、西班牙、奥地利、智利、南非、澳大利亚、瑞士、荷兰各1台，共22台，从此形成了13台原有根加25台IPV6根服务器的新格局&lt;/p&gt;
-&lt;/blockquote&gt;
+2016年，中国下一代互联网工程中心领衔发起雪人计划，旨在为下一代互联网(IPV6)提供更多的根服务器解决方案，该计划于2017年完成，其中包含3台主根服务器，中国1台，美国1台，日本1台，22台辅根服务器，中国3台，美国2台，印度和法国分别有3台，德国2台，俄罗斯、意大利、西班牙、奥地利、智利、南非、澳大利亚、瑞士、荷兰各1台，共22台，从此形成了13台原有根加25台IPV6根服务器的新格局&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;本地域名服务器&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;本地域名服务器的范围非常广，没有一个详细的定位，可能是某个运营商部署在该城市的一台服务器，也可能是某个公司的一台服务器，甚至可能是某个学校的服务器&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;存放地址&lt;/p&gt;
+&lt;p&gt;本地域名服务器的范围非常广，没有一个详细的定位，可能是某个运营商部署在该城市的一台服务器，也可能是某个公司的一台服务器，甚至可能是某个学校的服务器&lt;/p&gt;&lt;/blockquote&gt;
 &lt;ul&gt;
+&lt;li&gt;根域名&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;DNS 域名使用中规定由尾部句点 &lt;code&gt;.&lt;/code&gt; 来指定名称位于根或者更高层次的域层次结构&lt;/p&gt;&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;顶级域名&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;用来表示国家、地区或者组织。采用三个字符，如 &lt;code&gt;com&lt;/code&gt; 表示商业公司，&lt;code&gt;edu&lt;/code&gt; 表示教育机构，&lt;code&gt;net&lt;/code&gt; 表示网络公司， &lt;code&gt;gov&lt;/code&gt; 表示非军事政府机构等等。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;二级域名&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;表示归属于某个公司或组织的域名&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;dns-工作概述&#34;&gt;DNS 工作概述
+&lt;/h2&gt;&lt;p&gt;假设运行在用户主机上的某些应用程序（如Web浏览器或邮件阅读器）需要将主机名转换成 IP 地址。这些应用程序将调用 &lt;code&gt;DNS&lt;/code&gt; 的客户端，并指明需要被转换的主机名。用户主机上的 DNS 收到后，会使用 &lt;code&gt;UDP&lt;/code&gt; 通过 53 端口向网络上发送一个 DNS 查询报文，经过一段时间后，用户主机以上的 &lt;code&gt;DNS&lt;/code&gt; 会收到一个主机名对应的DNS回答报文。因此，从用户主机的角度来看，&lt;code&gt;DNS&lt;/code&gt;就像是一个黑盒子，其内部的操作你无法看到。但是实际上，实现DNS这个服务的黑盒子非常复杂，它由分布于全球的大量DNS服务器以及定义了&lt;code&gt;DNS&lt;/code&gt;服务器与查询主机通信方式的应用层协议组成。&lt;/p&gt;
+&lt;p&gt;DNS 最早的设计是只有一台 &lt;code&gt;DNS&lt;/code&gt; 服务器。这台服务器会包含所有的 &lt;code&gt;DNS&lt;/code&gt; 映射。这是一种集中式的设计，这种设计并不适用于当今的互联网，因为互联网有着数量巨大并且持续增长的主机，这种集中式的设计会存在以下几个问题：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;单点故障（a single point of failure），如果 DNS 服务器崩溃，那么整个网络随之瘫痪。&lt;/li&gt;
+&lt;li&gt;通信容量(traffic volume)，单个 DNS 服务器不得不处理所有的DNS查询，这种查询级别可能是百万、千万级&lt;/li&gt;
+&lt;li&gt;远距离集中式数据库（distant centralized databases），单个 DNS 服务器不可能邻近所有的用户，假设在美国的 DNS 服务器不可能邻近让澳大利亚的查询使用，其中查询请求势必会经过低速和拥堵的链路，造成严重的时延。&lt;/li&gt;
+&lt;li&gt;维护（maintenance），维护成本巨大，而且需要频繁更新。&lt;/li&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
+&lt;p&gt;存放地址&lt;/p&gt;
+&lt;ol&gt;
 &lt;li&gt;浏览器缓存&lt;/li&gt;
 &lt;li&gt;系统缓存&lt;/li&gt;
 &lt;li&gt;本地域名服务器&lt;/li&gt;
 &lt;li&gt;根域名服务器&lt;/li&gt;
 &lt;li&gt;顶级域名服务器&lt;/li&gt;
-&lt;li&gt;二级域名服务器&lt;/li&gt;
-&lt;li&gt;&amp;hellip; &amp;hellip;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;二级域名服务器
+&amp;hellip; &amp;hellip;&lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;查询顺序&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
 &lt;ol&gt;
 &lt;li&gt;检查浏览器缓存中是否存在改域名与IP地址的映射关系，如果有则解析结束，没有则继续&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;ol start=&#34;2&#34;&gt;
 &lt;li&gt;到系统本地查找映射关系，一般存在 &lt;code&gt;hosts&lt;/code&gt; 文件中，如果有则解析结束，否则继续&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;ol start=&#34;3&#34;&gt;
-&lt;li&gt;到本地域名服务器去查询，有则结束，否则继续&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;ol start=&#34;4&#34;&gt;
 &lt;li&gt;本地域名服务器去查询 根域名服务器，该过程不会返回映射关系，只会告诉你去下级服务器（顶级域名服务器）查询&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;到本地域名服务器去查询，有则结束，否则继续&lt;/li&gt;
 &lt;li&gt;本地域名服务器查询顶级域名服务器（即 &lt;code&gt;com&lt;/code&gt; 服务器），同样不会返回映射关系，只会引导你去二级域名服务器查询&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;ol start=&#34;6&#34;&gt;
 &lt;li&gt;本地域名服务器查询二级域名服务器（即 &lt;code&gt;qq.com&lt;/code&gt; 服务器），引导去三级域名服务器&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;ol start=&#34;7&#34;&gt;
 &lt;li&gt;本地域名服务器查询三级域名服务器（即 &lt;code&gt;mail.qq.com&lt;/code&gt;）， 此时已经是最后一级，如果有则返回映射关系，并且本地服务器加入自身的映射表中，方便下次查询，同时返回给用户的计算机，没有找到则网页报错&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ul&gt;</description>
+&lt;/ol&gt;</description>
         </item>
         
     </channel>

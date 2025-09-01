@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Distribute on 不积跬步无以至千里</title>
+        <link>https://x-xkang.com/categories/distribute/</link>
+        <description>Recent content in Distribute on 不积跬步无以至千里</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 28 Nov 2022 11:02:35 +0800</lastBuildDate><atom:link href="https://x-xkang.com/categories/distribute/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>分布式和集群的区别</title>
+        <link>https://x-xkang.com/p/%E5%88%86%E5%B8%83%E5%BC%8F%E5%92%8C%E9%9B%86%E7%BE%A4%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
+        <pubDate>Mon, 28 Nov 2022 11:02:35 +0800</pubDate>
+        
+        <guid>https://x-xkang.com/p/%E5%88%86%E5%B8%83%E5%BC%8F%E5%92%8C%E9%9B%86%E7%BE%A4%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
+        <description>&lt;ul&gt;
+&lt;li&gt;分布式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;将一个完整的系统，按照业务功能拆分成一些独立的子系统，它们独立运行在不同的服务器上。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://x-xkang.com/images/distribute-cluster/distribute.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;distribute&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;集群&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;集群就是单机的多实例，在多个服务器上部署同一个系统，这些服务器的集合叫做集群&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://x-xkang.com/images/distribute-cluster/cluster.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;distribute&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;一单机架构出现的问题&#34;&gt;一、单机架构出现的问题
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;性能问题&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;单个服务器无论是计算资源还是存储资源都非常有限，当请求量非常大的时候，会出现响应变慢等情况，严重影响用户体验&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;单体架构的多个服务中，某个服务占用资源多，时间长，导致总体响应显慢&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;可用性问题&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;当出现单机故障（进程崩溃、断电、磁盘损坏等）时，整个应用不可用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;开发问题&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;单体架构下，我们将各个模块放在一个系统中，系统过于庞大臃肿，维护成本高，各个功能模块之间的耦合度偏高，难以针对单个模块进行优化，出现 BUG 较难定位。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;交付周期长，所有功能得一起上线，一起构建，一起部署。任何一个环节出错，都可能影响交付。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;二为什么引入分布式&#34;&gt;二、为什么引入分布式
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;性能提高
+相较于单体架构，在请求量非常大的时候，整个系统的响应速度不会有明显的下降，因为每个服务都占有各自独有的服务器资，资源竞争小，任务处理较快&lt;/li&gt;
+&lt;li&gt;提高可用性
+在单体架构中，一旦出现了例如服务器宕机，磁盘损坏等故障问题，会导致整个服务不可用，但分布式架构将各个功能模块拆分独立部署后，即使部分服务器出现故障，也不会影响其他的功能&lt;/li&gt;
+&lt;li&gt;提高开发效率
+1、针对传统的单体架构，必须将整个系统的功能开发完毕才可以上线部署，分布式可以将各个功能模块拆开，独立开发，独立测试，独立部署，同时也降低了系统之间的耦合度，系统与系统之间的边界也会更加清晰
+2、服务的复用性更高，系统中某些比较通用的功能拆分出来作为独立的服务部署后，可以作为通用服务调用，不用在每一个系统中开发重复且耗时的功能，比如用户系统，支付系统等&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;三为什么引入集群&#34;&gt;三、为什么引入集群
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;性能提高
+传统的单体架构，在请求量非常大的时候，整个系统的响应速度都会下降，对于集群来说，通过负载均衡将请求分发至集群中的不同节点中，这样可以有效降低每个服务节点的压力。&lt;/li&gt;
+&lt;li&gt;提高可用性
+若集群中的某个节点出现故障时，可将请求转发至其他可用的服务节点上，这样可以保证服务的高可用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;四分布式与集群的区别&#34;&gt;四、分布式与集群的区别
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;从提升效率的角度比较&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;分布式是以缩短单个任务的执行时间来提升效率&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;集群是以提高单位时间内执行的任务数来提高效率&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;从服务部署的角度比较&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;分布式是将一个大的服务拆分成独立的小的服务并部署在不同的服务器上&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;集群则是将几台服务器集中在一起提供相同的服务&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;分布式中的每一个节点都可以做集群，反之则不一定可以&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;五分布式与集群的关系&#34;&gt;五、分布式与集群的关系
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;根据分布式的特点可以总结出，其主要作用是将系统模块化，将系统进行解耦，有利于开发和维护，但并不能解决大并发的问题，也无法保证服务在运行期间出现宕机等问题后的正常运转，&lt;/li&gt;
+&lt;li&gt;而集群刚好弥补了这个缺陷，集群，通俗来说就是多个服务器处理相同的业务，这里可以改善一些并发量大的问题，保证了高性能；另一方面，如果集群中的某个节点出现故障导致不可用，但对于整个集群来说，服务还是可用的，即保证了服务的高可用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;六分布式集群的优点&#34;&gt;六、分布式集群的优点
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;系统可用性的提升&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;一个系统全年可用时间在99.999%，5个9的服务可用率在设计合理的分布式集群系统中不是一个触不可及的数字&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;传统的集中式计算或集中式存储在遇见单点故障时很容易造成整个服务的不可用，分布式集群下的服务体系，单台机器有故障，不至于造成整个服务不可用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;系统并发能力的提升&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;请求通过负载均衡被分发到不同的服务器上，执行同样服务的服务器可以有1台或者N台，通常情况下可以根据用户访问量增加或减少服务器的数量，可以做到随时水平扩展&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;系统容错能力的提升&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;同一组服务器分别部署在不同的城市，若其中一个机房发生故障（火灾或者停电），其他城市的服务器还是可用状态，将故障机房的流量转发到正常的城市机房中，可以有效提高服务的可用性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;低延时&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;服务器部署在不同城市之后，可以根据用户的IP将请求分发至最近的机房，可以达到降低延时的效果&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;低耦合&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;（低耦度低）系统之间的耦合度大大降低，可以独立开发、独立部署、独立测试，系统与系统之间的边界非常明确，排错也变得相当容易，开发效率大大提升&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;（扩展性强）系统更易于扩展。我们可以针对性地扩展某些服务，换句话说，就是对子系统进行集群。例如在双十一时，订单子系统、支付子系统需要集群，账户管理子系统不需要集群。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ul&gt;
+&lt;li&gt;（复用性高）服务的复用性更高。比如，当我们将用户系统作为单独的服务后，该公司所有的产品都可以使用该系统作为用户系统，无需重复开发&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;七分布式集群带来的挑战&#34;&gt;七、分布式集群带来的挑战
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;依赖网络，会因为网络问题导致系统数据丢失或者不一致
+服务器之间的通信依赖网络，不可靠网络包括网络延时，丢包，中断，异步，一个完整的请求依赖于一连串的服务调用，任意一个服务节点出现网络故障都可能造成本次服务调用的失败&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;系统复杂化，系统监控维护，版本迭代发布变的相对复杂，成本高
+传统单体架构的服务只需要维护一个站点即可，分布式服务系统被拆分成若干个小服务，服务从1变成几十上百个服务之后，增加运维成本&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;一致性，可用性，分区容错性无法同时满足
+这个是最主要的，就是常说的CAP理论，在分布式系统中，这三种特性最多同时满足两种，无法同时满足全部，需要根据实际情况调整策略&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+        </item>
+        
+    </channel>
+</rss>

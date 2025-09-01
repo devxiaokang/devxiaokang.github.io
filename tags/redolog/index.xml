@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Redolog on 不积跬步无以至千里</title>
+        <link>https://x-xkang.com/tags/redolog/</link>
+        <description>Recent content in Redolog on 不积跬步无以至千里</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 20 Mar 2023 21:10:50 +0800</lastBuildDate><atom:link href="https://x-xkang.com/tags/redolog/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Mysql -- redo log</title>
+        <link>https://x-xkang.com/mysql-redolog/</link>
+        <pubDate>Mon, 20 Mar 2023 21:10:50 +0800</pubDate>
+        
+        <guid>https://x-xkang.com/mysql-redolog/</guid>
+        <description>&lt;!-- &gt;`redo log`（重做日志）是 InnoDB引擎所独有的，它让MySQL拥有了崩溃恢复的能力，在MySQL实例异常宕机时，实例重启后 InnoDB 会根据`redo log`进行数据恢复，从而保证了数据的持久性和完整性。
+
+&gt; 磁盘中的数据是以页为单位，当查询一条数据时，会先尝试从 MySQL 的 `Buffer Pool`中查找，若命中数据则直接返回，若没有命中，则从磁盘中查出记录所在数据页的一整页数据，并存入 `Buffer Poll`中，后续的查找则直接从`Buffer Poll`中查找，从而减少磁盘的IO开销，以提升性能。
+&gt; 更新数据表的时候，也是如此，若在 `Buffer Pool` 查找到要更新的数据则直接更新，然后把数据的修改记录写到 `redo log buffer`中，接着再同步到磁盘上的 `redo log` 文件中去。
+
+**刷盘时机**
+
+`InnoDB` 存储引擎为 `redo log` 的刷盘策略提供了 `innodb_flush_log_at_trx_commit` 参数，它支持三种策略：
+
+- 0 ：设置为 0 的时候，表示每次事务提交时不进行刷盘操作
+- 1 ：设置为 1 的时候，表示每次事务提交时都将进行刷盘操作（默认值）
+- 2 ：设置为 2 的时候，表示每次事务提交时都只把 `redo log buffer` 内容写入 `page cache`。
+  
+`innodb_flush_log_at_trx_commit` 参数默认为 1 ，也就是说当事务提交时会调用 `fsync` 对 `redo log` 进行刷盘另外，`InnoDB` 存储引擎有一个**后台线程**，每隔1 秒，就会把 `redo log buffer` 中的内容写到文件系统缓存（`page cache`），然后调用 `fsync` 刷盘。
+
+**也就是说，一个没有被提交的事务，也会被刷盘同步到`redo log`中。**
+
+因为在事务的执行过程中`redo log` 记录是会先写到 `redo log buffer`中，然后被后台线程每1秒执行一次的同步行为给同步到`redo log`中。另外还有一种情况，当`redo log buffer`占用的空间即将达到 `innodb_log_buffer_size` 一半的数据时，后台线程会主动刷盘同步数据。
+
+&gt; **注意**：`innodb_flush_log_at_trx_commit`=1时，如果MySQL出现宕机，可能会有1秒的数据丢失。
+&gt; `innodb_flush_log_at_trx_commit`=2时，只要事务提交成功，`redo log buffer`中的内容只写入文件系统缓存(page cache), 如果仅仅只是MySQL挂了不会有任何数据丢失，但是宕机可能会有1秒的数据丢失。 --&gt;</description>
+        </item>
+        
+    </channel>
+</rss>

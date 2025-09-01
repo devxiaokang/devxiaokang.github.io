@@ -1,13 +1,253 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Tags on Hello, It&#39;s me</title>
+        <title>Tags on 不积跬步无以至千里</title>
         <link>https://x-xkang.com/tags/</link>
-        <description>Recent content in Tags on Hello, It&#39;s me</description>
+        <description>Recent content in Tags on 不积跬步无以至千里</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Mon, 05 Sep 2022 09:01:56 +0800</lastBuildDate><atom:link href="https://x-xkang.com/tags/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>slice</title>
+        <lastBuildDate>Fri, 08 Aug 2025 10:54:26 +0800</lastBuildDate><atom:link href="https://x-xkang.com/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Golang</title>
+        <link>https://x-xkang.com/tags/golang/</link>
+        <pubDate>Fri, 08 Aug 2025 10:54:26 +0800</pubDate>
+        
+        <guid>https://x-xkang.com/tags/golang/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Nodejs</title>
+        <link>https://x-xkang.com/tags/nodejs/</link>
+        <pubDate>Fri, 08 Aug 2025 10:54:26 +0800</pubDate>
+        
+        <guid>https://x-xkang.com/tags/nodejs/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Rust</title>
+        <link>https://x-xkang.com/tags/rust/</link>
+        <pubDate>Fri, 08 Aug 2025 10:54:26 +0800</pubDate>
+        
+        <guid>https://x-xkang.com/tags/rust/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Zookeeper</title>
+        <link>https://x-xkang.com/tags/zookeeper/</link>
+        <pubDate>Wed, 04 Dec 2024 08:56:17 +0800</pubDate>
+        
+        <guid>https://x-xkang.com/tags/zookeeper/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Redis</title>
+        <link>https://x-xkang.com/tags/redis/</link>
+        <pubDate>Fri, 29 Nov 2024 14:30:45 +0800</pubDate>
+        
+        <guid>https://x-xkang.com/tags/redis/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Databases</title>
+        <link>https://x-xkang.com/tags/databases/</link>
+        <pubDate>Tue, 19 Nov 2024 16:02:00 +0800</pubDate>
+        
+        <guid>https://x-xkang.com/tags/databases/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Postgresql</title>
+        <link>https://x-xkang.com/tags/postgresql/</link>
+        <pubDate>Tue, 19 Nov 2024 16:02:00 +0800</pubDate>
+        
+        <guid>https://x-xkang.com/tags/postgresql/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Db</title>
+        <link>https://x-xkang.com/tags/db/</link>
+        <pubDate>Fri, 15 Nov 2024 17:26:46 +0800</pubDate>
+        
+        <guid>https://x-xkang.com/tags/db/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>GPM</title>
+        <link>https://x-xkang.com/tags/gpm/</link>
+        <pubDate>Tue, 22 Oct 2024 10:13:33 +0800</pubDate>
+        
+        <guid>https://x-xkang.com/tags/gpm/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Make</title>
+        <link>https://x-xkang.com/tags/make/</link>
+        <pubDate>Sat, 12 Oct 2024 09:25:01 +0800</pubDate>
+        
+        <guid>https://x-xkang.com/tags/make/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>New</title>
+        <link>https://x-xkang.com/tags/new/</link>
+        <pubDate>Sat, 12 Oct 2024 09:25:01 +0800</pubDate>
+        
+        <guid>https://x-xkang.com/tags/new/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Channel</title>
+        <link>https://x-xkang.com/tags/channel/</link>
+        <pubDate>Sat, 12 Oct 2024 08:48:16 +0800</pubDate>
+        
+        <guid>https://x-xkang.com/tags/channel/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>算法</title>
+        <link>https://x-xkang.com/tags/%E7%AE%97%E6%B3%95/</link>
+        <pubDate>Thu, 10 Oct 2024 14:55:15 +0800</pubDate>
+        
+        <guid>https://x-xkang.com/tags/%E7%AE%97%E6%B3%95/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Http</title>
+        <link>https://x-xkang.com/tags/http/</link>
+        <pubDate>Wed, 18 Sep 2024 13:38:31 +0800</pubDate>
+        
+        <guid>https://x-xkang.com/tags/http/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>HTTP，DNS</title>
+        <link>https://x-xkang.com/tags/httpdns/</link>
+        <pubDate>Wed, 18 Sep 2024 13:13:06 +0800</pubDate>
+        
+        <guid>https://x-xkang.com/tags/httpdns/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Socket</title>
+        <link>https://x-xkang.com/tags/socket/</link>
+        <pubDate>Mon, 19 Aug 2024 15:01:16 +0800</pubDate>
+        
+        <guid>https://x-xkang.com/tags/socket/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Kafka</title>
+        <link>https://x-xkang.com/tags/kafka/</link>
+        <pubDate>Thu, 15 Aug 2024 10:46:35 +0800</pubDate>
+        
+        <guid>https://x-xkang.com/tags/kafka/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>IP</title>
+        <link>https://x-xkang.com/tags/ip/</link>
+        <pubDate>Mon, 22 Jul 2024 09:48:47 +0800</pubDate>
+        
+        <guid>https://x-xkang.com/tags/ip/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>分布式事务</title>
+        <link>https://x-xkang.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/</link>
+        <pubDate>Wed, 17 Jul 2024 09:20:58 +0800</pubDate>
+        
+        <guid>https://x-xkang.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Programming Language</title>
+        <link>https://x-xkang.com/tags/programming-language/</link>
+        <pubDate>Thu, 09 May 2024 14:26:30 +0800</pubDate>
+        
+        <guid>https://x-xkang.com/tags/programming-language/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Map</title>
+        <link>https://x-xkang.com/tags/map/</link>
+        <pubDate>Thu, 09 Nov 2023 16:09:27 +0800</pubDate>
+        
+        <guid>https://x-xkang.com/tags/map/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>二叉树排序</title>
+        <link>https://x-xkang.com/tags/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%8E%92%E5%BA%8F/</link>
+        <pubDate>Fri, 22 Sep 2023 10:33:53 +0800</pubDate>
+        
+        <guid>https://x-xkang.com/tags/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%8E%92%E5%BA%8F/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Mysql</title>
+        <link>https://x-xkang.com/tags/mysql/</link>
+        <pubDate>Thu, 23 Mar 2023 09:46:34 +0800</pubDate>
+        
+        <guid>https://x-xkang.com/tags/mysql/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Redolog</title>
+        <link>https://x-xkang.com/tags/redolog/</link>
+        <pubDate>Mon, 20 Mar 2023 21:10:50 +0800</pubDate>
+        
+        <guid>https://x-xkang.com/tags/redolog/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Performance</title>
+        <link>https://x-xkang.com/tags/performance/</link>
+        <pubDate>Tue, 28 Feb 2023 10:29:46 +0800</pubDate>
+        
+        <guid>https://x-xkang.com/tags/performance/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>索引</title>
+        <link>https://x-xkang.com/tags/%E7%B4%A2%E5%BC%95/</link>
+        <pubDate>Tue, 28 Feb 2023 10:29:46 +0800</pubDate>
+        
+        <guid>https://x-xkang.com/tags/%E7%B4%A2%E5%BC%95/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Multi-Table Queries</title>
+        <link>https://x-xkang.com/tags/multi-table-queries/</link>
+        <pubDate>Tue, 28 Feb 2023 10:12:34 +0800</pubDate>
+        
+        <guid>https://x-xkang.com/tags/multi-table-queries/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Replication</title>
+        <link>https://x-xkang.com/tags/replication/</link>
+        <pubDate>Fri, 02 Dec 2022 11:52:10 +0800</pubDate>
+        
+        <guid>https://x-xkang.com/tags/replication/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Cluster</title>
+        <link>https://x-xkang.com/tags/cluster/</link>
+        <pubDate>Mon, 28 Nov 2022 11:02:35 +0800</pubDate>
+        
+        <guid>https://x-xkang.com/tags/cluster/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Mysql-Index</title>
+        <link>https://x-xkang.com/tags/mysql-index/</link>
+        <pubDate>Sat, 26 Nov 2022 11:17:45 +0800</pubDate>
+        
+        <guid>https://x-xkang.com/tags/mysql-index/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Slice</title>
         <link>https://x-xkang.com/tags/slice/</link>
         <pubDate>Mon, 05 Sep 2022 09:01:56 +0800</pubDate>
         
@@ -15,23 +255,7 @@
         <description></description>
         </item>
         <item>
-        <title>redis</title>
-        <link>https://x-xkang.com/tags/redis/</link>
-        <pubDate>Thu, 30 Jun 2022 10:01:40 +0800</pubDate>
-        
-        <guid>https://x-xkang.com/tags/redis/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>http</title>
-        <link>https://x-xkang.com/tags/http/</link>
-        <pubDate>Fri, 17 Jun 2022 10:09:23 +0800</pubDate>
-        
-        <guid>https://x-xkang.com/tags/http/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>dns</title>
+        <title>Dns</title>
         <link>https://x-xkang.com/tags/dns/</link>
         <pubDate>Thu, 16 Jun 2022 17:00:53 +0800</pubDate>
         
@@ -39,11 +263,19 @@
         <description></description>
         </item>
         <item>
-        <title>network</title>
+        <title>Network</title>
         <link>https://x-xkang.com/tags/network/</link>
         <pubDate>Wed, 15 Jun 2022 15:57:49 +0800</pubDate>
         
         <guid>https://x-xkang.com/tags/network/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>OSI</title>
+        <link>https://x-xkang.com/tags/osi/</link>
+        <pubDate>Wed, 15 Jun 2022 15:57:49 +0800</pubDate>
+        
+        <guid>https://x-xkang.com/tags/osi/</guid>
         <description></description>
         </item>
         <item>
@@ -55,15 +287,7 @@
         <description></description>
         </item>
         <item>
-        <title>golang</title>
-        <link>https://x-xkang.com/tags/golang/</link>
-        <pubDate>Thu, 16 Dec 2021 09:35:02 +0800</pubDate>
-        
-        <guid>https://x-xkang.com/tags/golang/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>ascii</title>
+        <title>Ascii</title>
         <link>https://x-xkang.com/tags/ascii/</link>
         <pubDate>Thu, 02 Dec 2021 09:31:17 +0800</pubDate>
         
@@ -71,7 +295,7 @@
         <description></description>
         </item>
         <item>
-        <title>unicode</title>
+        <title>Unicode</title>
         <link>https://x-xkang.com/tags/unicode/</link>
         <pubDate>Thu, 02 Dec 2021 09:31:17 +0800</pubDate>
         
@@ -79,7 +303,7 @@
         <description></description>
         </item>
         <item>
-        <title>utf8</title>
+        <title>Utf8</title>
         <link>https://x-xkang.com/tags/utf8/</link>
         <pubDate>Thu, 02 Dec 2021 09:31:17 +0800</pubDate>
         
@@ -87,15 +311,7 @@
         <description></description>
         </item>
         <item>
-        <title>mysql</title>
-        <link>https://x-xkang.com/tags/mysql/</link>
-        <pubDate>Mon, 22 Nov 2021 10:48:54 +0800</pubDate>
-        
-        <guid>https://x-xkang.com/tags/mysql/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>transaction</title>
+        <title>Transaction</title>
         <link>https://x-xkang.com/tags/transaction/</link>
         <pubDate>Wed, 24 Mar 2021 11:18:58 +0800</pubDate>
         
@@ -103,19 +319,11 @@
         <description></description>
         </item>
         <item>
-        <title>mysql pool</title>
+        <title>Mysql Pool</title>
         <link>https://x-xkang.com/tags/mysql-pool/</link>
         <pubDate>Fri, 12 Mar 2021 17:42:20 +0800</pubDate>
         
         <guid>https://x-xkang.com/tags/mysql-pool/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>OSI</title>
-        <link>https://x-xkang.com/tags/osi/</link>
-        <pubDate>Thu, 04 Feb 2021 13:35:56 +0800</pubDate>
-        
-        <guid>https://x-xkang.com/tags/osi/</guid>
         <description></description>
         </item>
         <item>
@@ -143,7 +351,7 @@
         <description></description>
         </item>
         <item>
-        <title>shell</title>
+        <title>Shell</title>
         <link>https://x-xkang.com/tags/shell/</link>
         <pubDate>Mon, 06 Jan 2020 09:42:51 +0800</pubDate>
         
@@ -151,7 +359,7 @@
         <description></description>
         </item>
         <item>
-        <title>vim</title>
+        <title>Vim</title>
         <link>https://x-xkang.com/tags/vim/</link>
         <pubDate>Mon, 06 Jan 2020 09:42:51 +0800</pubDate>
         
@@ -159,7 +367,7 @@
         <description></description>
         </item>
         <item>
-        <title>docker</title>
+        <title>Docker</title>
         <link>https://x-xkang.com/tags/docker/</link>
         <pubDate>Wed, 18 Sep 2019 02:01:58 +0530</pubDate>
         

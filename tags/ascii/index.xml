@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>ascii on Hello, It&#39;s me</title>
+        <title>Ascii on 不积跬步无以至千里</title>
         <link>https://x-xkang.com/tags/ascii/</link>
-        <description>Recent content in ascii on Hello, It&#39;s me</description>
+        <description>Recent content in Ascii on 不积跬步无以至千里</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Thu, 02 Dec 2021 09:31:17 +0800</lastBuildDate><atom:link href="https://x-xkang.com/tags/ascii/index.xml" rel="self" type="application/rss+xml" /><item>
@@ -12,8 +12,8 @@
         <pubDate>Thu, 02 Dec 2021 09:31:17 +0800</pubDate>
         
         <guid>https://x-xkang.com/p/asciiunicode%E5%92%8Cutf8/</guid>
-        <description>&lt;h2 id=&#34;ascii&#34;&gt;ASCII&lt;/h2&gt;
-&lt;ul&gt;
+        <description>&lt;h2 id=&#34;ascii&#34;&gt;ASCII
+&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;ascii码使用指定的7位或8位二进制数组合表示128或256种可能的字符，标准ASCII码也叫基础ASCII码，使用7位二进制数（剩下的1位二进制为0）来表示所有的大写和小写字母，数字0到9、标点符号，以及再美式英语中使用的特殊字符，其中：&lt;/p&gt;
 &lt;/li&gt;
@@ -44,8 +44,8 @@
 &lt;p&gt;后128个称为扩展ASCII码。许多基于x86的系统都支持使用扩展（或“高”ASCII）。扩展ASCII码允许将每个字符的第8位用于确定附加的128个特殊符号字符、外来语字母和图形符号&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;unicode&#34;&gt;Unicode&lt;/h2&gt;
-&lt;ul&gt;
+&lt;h2 id=&#34;unicode&#34;&gt;Unicode
+&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Unicode是国际组织制定的可以容纳世界上所有文字和符号的字符编码方案。Unicode用数字0-0x10FFFF来映射这些字符，最多可以容纳1114112个字符，或者说有1114112个码位。码位就是可以分配给字符的数字。UTF-8、UTF-16、UTF-32都是将数字转换到程序数据的编码方案。&lt;/p&gt;
 &lt;/li&gt;
@@ -60,8 +60,7 @@
 &lt;li&gt;最前面的 65536 个字符位，称为基本平面（缩写 BMP），它的码点范围是从 0 一直到 2^16-1，写成 16 进制就是从 U+0000 到 U+FFFF。所有最常见的字符都放在这个平面，这是 Unicode 最先定义和公布的一个平面。&lt;/li&gt;
 &lt;li&gt;剩下的字符都放在辅助平面（缩写 SMP），码点范围从 U+010000 一直到 U+10FFFF。&lt;/li&gt;
 &lt;li&gt;Unicode 只规定了每个字符的码点，到底用什么样的字节序表示这个码点，就涉及到编码方法。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;Unicode 编码方案&lt;/li&gt;
 &lt;/ul&gt;
@@ -70,10 +69,9 @@
 &lt;li&gt;之前提到，Unicode 没有规定字符对应的二进制码如何存储。以汉字“汉”为例，它的 Unicode 码点是 0x6c49，对应的二进制数是 110110001001001，二进制数有 15 位，这也就说明了它至少需要 2 个字节来表示。可以想象，在 Unicode 字典中往后的字符可能就需要 3 个字节或者 4 个字节，甚至更多字节来表示了。&lt;/li&gt;
 &lt;li&gt;这就导致了一些问题，计算机怎么知道你这个 2 个字节表示的是一个字符，而不是分别表示两个字符呢？这里我们可能会想到，那就取个最大的，假如 Unicode 中最大的字符用 4 字节就可以表示了，那么我们就将所有的字符都用 4 个字节来表示，不够的就往前面补 0。这样确实可以解决编码问题，但是却造成了空间的极大浪费，如果是一个英文文档，那文件大小就大出了 3 倍，这显然是无法接受的。&lt;/li&gt;
 &lt;li&gt;于是，为了较好的解决 Unicode 的编码问题， UTF-8 和 UTF-16 两种当前比较流行的编码方式诞生了。当然还有一个 UTF-32 的编码方式，也就是上述那种定长编码，字符统一使用 4 个字节，虽然看似方便，但是却不如另外两种编码方式使用广泛。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;utf8&#34;&gt;UTF8&lt;/h2&gt;
-&lt;p&gt;UTF-8 是一个非常惊艳的编码方式，漂亮的实现了对 ASCII 码的向后兼容，以保证 Unicode 可以被大众接受。&lt;/p&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;utf8&#34;&gt;UTF8
+&lt;/h2&gt;&lt;p&gt;UTF-8 是一个非常惊艳的编码方式，漂亮的实现了对 ASCII 码的向后兼容，以保证 Unicode 可以被大众接受。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;UTF-8 是目前互联网上使用最广泛的一种 Unicode 编码方式，它的最大特点就是可变长。它可以使用 1 - 4 个字节表示一个字符，根据字符的不同变换长度。编码规则如下：&lt;/li&gt;
 &lt;/ul&gt;
@@ -81,34 +79,33 @@
 &lt;ul&gt;
 &lt;li&gt;1.对于单个字节的字符，第一位设为 0，后面的 7 位对应这个字符的 Unicode 码点。因此，对于英文中的 0 - 127 号字符，与 ASCII 码完全相同。这意味着 ASCII 码那个年代的文档用 UTF-8 编码打开完全没有问题。&lt;/li&gt;
 &lt;li&gt;2.对于需要使用 N 个字节来表示的字符（N &amp;gt; 1），第一个字节的前 N 位都设为 1，第 N + 1 位设为 0，剩余的 N - 1 个字节的前两位都设位 10，剩下的二进制位则使用这个字符的 Unicode 码点来填充。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
 &lt;p&gt;编码规则如下：&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Unicode 十六进制码点范围&lt;/th&gt;
-&lt;th&gt;UTF-8 二进制&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;0000 0000 - 0000 007F&lt;/td&gt;
-&lt;td&gt;0xxxxxxx&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;0000 0080 - 0000 07FF&lt;/td&gt;
-&lt;td&gt;110xxxxx 10xxxxxx&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;0000 0800 - 0000 FFFF&lt;/td&gt;
-&lt;td&gt;1110xxxx 10xxxxxx 10xxxxxx&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;0001 0000 - 0010 FFFF&lt;/td&gt;
-&lt;td&gt;11110xxx 10xxxxxx 10xxxxxx 10xxxxxx&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Unicode 十六进制码点范围&lt;/th&gt;
+          &lt;th&gt;UTF-8 二进制&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;0000 0000 - 0000 007F&lt;/td&gt;
+          &lt;td&gt;0xxxxxxx&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;0000 0080 - 0000 07FF&lt;/td&gt;
+          &lt;td&gt;110xxxxx 10xxxxxx&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;0000 0800 - 0000 FFFF&lt;/td&gt;
+          &lt;td&gt;1110xxxx 10xxxxxx 10xxxxxx&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;0001 0000 - 0010 FFFF&lt;/td&gt;
+          &lt;td&gt;11110xxx 10xxxxxx 10xxxxxx 10xxxxxx&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -122,15 +119,13 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;每日一算&#34;&gt;每日一算&lt;/h2&gt;
-&lt;h3 id=&#34;描述&#34;&gt;描述&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;在数组中找到 2 个数之和等于给定值的数字，结果返回 2 个数字在数组中的下标&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;解题思路&#34;&gt;解题思路&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;利用map的特性，遍历数组预算计算出和给定值的差值，也就是目标元素，若值已经在map中，说明已找到，若没有，则把当前元素以 &lt;code&gt;值=&amp;gt;下标&lt;/code&gt; 的形式存到map中&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h2 id=&#34;每日一算&#34;&gt;每日一算
+&lt;/h2&gt;&lt;h3 id=&#34;描述&#34;&gt;描述
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;在数组中找到 2 个数之和等于给定值的数字，结果返回 2 个数字在数组中的下标&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h3 id=&#34;解题思路&#34;&gt;解题思路
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;利用map的特性，遍历数组预算计算出和给定值的差值，也就是目标元素，若值已经在map中，说明已找到，若没有，则把当前元素以 &lt;code&gt;值=&amp;gt;下标&lt;/code&gt; 的形式存到map中&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;代码如下：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;

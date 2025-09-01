@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='dns 解析流程'><title>DNS 域名解析流程</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="dns 解析流程">
+<meta name="keywords" content="http"><title>DNS 域名解析流程</title>
 
 <link rel='canonical' href='https://x-xkang.com/p/dns-%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E6%B5%81%E7%A8%8B/'>
 
-<link rel="stylesheet" href="/scss/style.min.5a8e892f6fa14515e9065eee1f5d2e05302606ec7f11750b2fb95198f9cdcbfd.css"><meta property='og:title' content='DNS 域名解析流程'>
-<meta property='og:description' content='dns 解析流程'>
+<link rel="stylesheet" href="/scss/style.min.7e54386a70f08c359dc67b56ecb1ed61936ec90f83972802164db3639519a07b.css"><meta property='og:title' content="DNS 域名解析流程">
+<meta property='og:description' content="dns 解析流程">
 <meta property='og:url' content='https://x-xkang.com/p/dns-%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E6%B5%81%E7%A8%8B/'>
-<meta property='og:site_name' content='Hello, It&#39;s me'>
+<meta property='og:site_name' content='不积跬步无以至千里'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='http' /><meta property='article:tag' content='dns' /><meta property='article:published_time' content='2022-06-16T17:00:53&#43;08:00'/><meta property='article:modified_time' content='2022-06-16T17:00:53&#43;08:00'/>
 <meta name="twitter:title" content="DNS 域名解析流程">
 <meta name="twitter:description" content="dns 解析流程">
-    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="shortcut icon" href="/favicon.ico" />
 
     </head>
     <body class="
@@ -57,7 +58,7 @@
                     
                     
                         
-                        <img src="/img/avatar_hu3c3946a5e2dbcd463bda7dfc7c9c9efb_49773_300x0_resize_box_3.png" width="300"
+                        <img src="/img/avatar_hu_dce6ef8b51a3489.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -70,16 +71,17 @@
         
         
         <div class="site-meta">
-            <h1 class="site-name"><a href="/">Hello, It&#39;s me</a></h1>
-            <h2 class="site-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+            <h1 class="site-name"><a href="/">不积跬步无以至千里</a></h1>
+            <h2 class="site-description">拨云见日，否极泰来.</h2>
         </div>
-    </header><ol class="social-menu">
+    </header><ol class="menu-social">
             
                 <li>
                     <a 
                         href='https://github.com/devxiaokang'
                         target="_blank"
                         title="GitHub"
+                        rel="me"
                     >
                         
                         
@@ -98,27 +100,26 @@
         
         
         
-
         <li >
-            <a href='/about/' >
+            <a href='/' target="_blank">
                 
                 
                 
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
 </svg>
 
 
 
                 
-                <span>About</span>
+                <span>Home</span>
             </a>
         </li>
         
         
-
         <li >
             <a href='/archives/' >
                 
@@ -148,7 +149,6 @@
         </li>
         
         
-
         <li >
             <a href='/search/' >
                 
@@ -167,12 +167,12 @@
             </a>
         </li>
         
+        <li class="menu-bottom-section">
+            <ol class="menu">
 
-        <div class="menu-bottom-section">
-            
-            
-                <li id="dark-mode-toggle">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="8" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -180,7 +180,7 @@
 
 
 
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="16" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -188,13 +188,50 @@
 
 
 
-                    <span>Dark Mode</span>
-                </li>
-            
-        </div>
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
     </ol>
 </aside>
-<main class="main full-width">
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#dns-基本概述">DNS 基本概述</a></li>
+    <li><a href="#dns的域名空间结构">DNS的域名空间结构</a></li>
+    <li><a href="#dns-工作概述">DNS 工作概述</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
     <article class="main-article">
     <header class="article-header">
 
@@ -203,11 +240,11 @@
     <header class="article-category">
         
             <a href="/categories/http/" >
-                http
+                HTTP
             </a>
         
             <a href="/categories/dns/" >
-                dns
+                DNS
             </a>
         
     </header>
@@ -225,6 +262,9 @@
         
     </div>
 
+    
+    
+    
     
     <footer class="article-time">
         
@@ -262,80 +302,102 @@
 
     
 </div>
+
 </header>
 
     <section class="article-content">
     
     
-    <p>了解域名结构</p>
+    <h2 id="dns-基本概述">DNS 基本概述
+</h2><p>DNS（Domain Name System）域名系统是一个将ip地址映射称为域名或者将域名映射成为ip地址的一种服务。DNS协议是应用层协议，运行在<code>UDP</code>之上，使用53端口。DNS使用客户 - 服务器模式运行在通信的端系统之间，在通信的端系统之间通过端到端的传输协议来传送DNS报文。</p>
+<p>下面通过一个示例来简单描述<code>DNS</code>的解析过程，例如，你在浏览器中输入了 &ldquo;mail.qq.com&rdquo;，实际会发生以下操作：</p>
 <blockquote>
-<p>以<code>mail.qq.com</code>域名为例，<code>com</code>为顶级域名，<code>qq.com</code> 为二级域名， <code>mail.qq.com</code>为三级域名</p>
-</blockquote>
+<ul>
+<li>同一台用户主机上运行着 <code>DNS</code> 应用的客户端</li>
+<li>浏览器将主机名 &ldquo;mail.qq.com&rdquo; 发送给 <code>DNS</code>应用的客户端</li>
+<li><code>DNS</code> 客户端向 <code>DNS</code> 服务端发送一个包含主机名的请求</li>
+<li><code>DNS</code> 客户端最终会收到一份回答报文，其中包含该目标主机的IP地址</li>
+<li>一旦浏览器收到目标主机的IP地址后，它就能够向位于该IP地址80端口的<code>HTTP</code>服务器进程发起一个<code>TCP</code>连接</li>
+</ul></blockquote>
+<p><strong>除了提供IP地址到主机名的转换，DNS还提供了下面几个重要的服务</strong></p>
+<ul>
+<li>主机别名（host aliasing）,有着复杂的主机名的主机能够拥有一个或者多个其他别名，比如说一台名为 aaabbbcdef.com 的主机，同时会拥有 a.com 和 b.com 两个主机别名，在这种情况下 aaabbbcdef.com 也称为<code>规范主机名</code>，而主机别名比规范主机名更加容易记忆。应用程序可以调用 <code>DNS</code> 来获得主机别名对应的规范主机名以及对应的IP地址。</li>
+<li>邮件服务器别名（mail server aliasing），同样的，电子邮件的应用程序也可以调用 <code>DNS</code> 对提供的主机名进行解析。</li>
+<li>负载均衡（load distribution），DNS也用于冗余的服务器之间进行负载分配。繁忙的站点例如 cnn.com 被冗余分布在多台服务器上，每台服务器运行在不同的端系统之间，每个都有着不同的IP地址。由于这些冗余的Web服务器，一个IP地址集合因此与同一个规范主机名联系。DNS数据库中存储着这些IP地址的集合。由于客户端每次都会发起 HTTP 请求，所以DNS就会在所有这些冗余的Web服务器之间循环分配了负载。</li>
+</ul>
+<h2 id="dns的域名空间结构">DNS的域名空间结构
+</h2><p>域名系统作为一个层次结构和分布式数据库，包含各种类型的数据，包括主机名和域名。DNS数据库中的名称形成一个分层树状结构称为命名空间</p>
+<p><img src="/images/dns/domain-name-layer.jpg"
+	
+	
+	
+	loading="lazy"
+	
+		alt="domain-name-layer"
+	
+	
+></p>
+<p>了解域名结构</p>
+<blockquote>
+<p>以<code>mail.qq.com</code>域名为例，<code>com</code>为顶级域名，<code>qq.com</code> 为二级域名， <code>mail.qq.com</code>为三级域名</p></blockquote>
 <p>顶级域名服务器</p>
 <blockquote>
-<p>顶级域名为最后一个<code>.</code>右侧部分的内容，如<code>mail.qq.com</code>的<code>com</code>就是顶级域名，顶级域名对应的服务器称之为顶级域名服务器</p>
-</blockquote>
+<p>顶级域名为最后一个<code>.</code>右侧部分的内容，如<code>mail.qq.com</code>的<code>com</code>就是顶级域名，顶级域名对应的服务器称之为顶级域名服务器</p></blockquote>
 <p>二级域名服务器</p>
 <blockquote>
-<p>域名 <code>mail.qq.com</code>中的倒数第二个<code>.</code>右侧部分<code>qq.com</code>成为二级域名</p>
-</blockquote>
+<p>域名 <code>mail.qq.com</code>中的倒数第二个<code>.</code>右侧部分<code>qq.com</code>成为二级域名</p></blockquote>
 <p>根域名服务器</p>
 <blockquote>
 <p>在2016年之前全球一共拥有13台根服务器，1台主根服务器在美国，其他12台为辅根服务器，其中美国9台，英国1台，瑞典1台，日本1台，这13台根服务器主要管理互联网的主目录，主要作用IPV4。
-2016年，中国下一代互联网工程中心领衔发起雪人计划，旨在为下一代互联网(IPV6)提供更多的根服务器解决方案，该计划于2017年完成，其中包含3台主根服务器，中国1台，美国1台，日本1台，22台辅根服务器，中国3台，美国2台，印度和法国分别有3台，德国2台，俄罗斯、意大利、西班牙、奥地利、智利、南非、澳大利亚、瑞士、荷兰各1台，共22台，从此形成了13台原有根加25台IPV6根服务器的新格局</p>
-</blockquote>
+2016年，中国下一代互联网工程中心领衔发起雪人计划，旨在为下一代互联网(IPV6)提供更多的根服务器解决方案，该计划于2017年完成，其中包含3台主根服务器，中国1台，美国1台，日本1台，22台辅根服务器，中国3台，美国2台，印度和法国分别有3台，德国2台，俄罗斯、意大利、西班牙、奥地利、智利、南非、澳大利亚、瑞士、荷兰各1台，共22台，从此形成了13台原有根加25台IPV6根服务器的新格局</p></blockquote>
 <p>本地域名服务器</p>
 <blockquote>
-<p>本地域名服务器的范围非常广，没有一个详细的定位，可能是某个运营商部署在该城市的一台服务器，也可能是某个公司的一台服务器，甚至可能是某个学校的服务器</p>
-</blockquote>
-<p>存放地址</p>
+<p>本地域名服务器的范围非常广，没有一个详细的定位，可能是某个运营商部署在该城市的一台服务器，也可能是某个公司的一台服务器，甚至可能是某个学校的服务器</p></blockquote>
 <ul>
+<li>根域名</li>
+</ul>
+<blockquote>
+<p>DNS 域名使用中规定由尾部句点 <code>.</code> 来指定名称位于根或者更高层次的域层次结构</p></blockquote>
+<ul>
+<li>顶级域名</li>
+</ul>
+<blockquote>
+<p>用来表示国家、地区或者组织。采用三个字符，如 <code>com</code> 表示商业公司，<code>edu</code> 表示教育机构，<code>net</code> 表示网络公司， <code>gov</code> 表示非军事政府机构等等。</p></blockquote>
+<ul>
+<li>二级域名</li>
+</ul>
+<blockquote>
+<p>表示归属于某个公司或组织的域名</p></blockquote>
+<h2 id="dns-工作概述">DNS 工作概述
+</h2><p>假设运行在用户主机上的某些应用程序（如Web浏览器或邮件阅读器）需要将主机名转换成 IP 地址。这些应用程序将调用 <code>DNS</code> 的客户端，并指明需要被转换的主机名。用户主机上的 DNS 收到后，会使用 <code>UDP</code> 通过 53 端口向网络上发送一个 DNS 查询报文，经过一段时间后，用户主机以上的 <code>DNS</code> 会收到一个主机名对应的DNS回答报文。因此，从用户主机的角度来看，<code>DNS</code>就像是一个黑盒子，其内部的操作你无法看到。但是实际上，实现DNS这个服务的黑盒子非常复杂，它由分布于全球的大量DNS服务器以及定义了<code>DNS</code>服务器与查询主机通信方式的应用层协议组成。</p>
+<p>DNS 最早的设计是只有一台 <code>DNS</code> 服务器。这台服务器会包含所有的 <code>DNS</code> 映射。这是一种集中式的设计，这种设计并不适用于当今的互联网，因为互联网有着数量巨大并且持续增长的主机，这种集中式的设计会存在以下几个问题：</p>
+<blockquote>
+<ul>
+<li>单点故障（a single point of failure），如果 DNS 服务器崩溃，那么整个网络随之瘫痪。</li>
+<li>通信容量(traffic volume)，单个 DNS 服务器不得不处理所有的DNS查询，这种查询级别可能是百万、千万级</li>
+<li>远距离集中式数据库（distant centralized databases），单个 DNS 服务器不可能邻近所有的用户，假设在美国的 DNS 服务器不可能邻近让澳大利亚的查询使用，其中查询请求势必会经过低速和拥堵的链路，造成严重的时延。</li>
+<li>维护（maintenance），维护成本巨大，而且需要频繁更新。</li>
+</ul></blockquote>
+<p>存放地址</p>
+<ol>
 <li>浏览器缓存</li>
 <li>系统缓存</li>
 <li>本地域名服务器</li>
 <li>根域名服务器</li>
 <li>顶级域名服务器</li>
-<li>二级域名服务器</li>
-<li>&hellip; &hellip;</li>
-</ul>
+<li>二级域名服务器
+&hellip; &hellip;</li>
+</ol>
 <p>查询顺序</p>
-<ul>
-<li>
 <ol>
 <li>检查浏览器缓存中是否存在改域名与IP地址的映射关系，如果有则解析结束，没有则继续</li>
-</ol>
-</li>
-<li>
-<ol start="2">
 <li>到系统本地查找映射关系，一般存在 <code>hosts</code> 文件中，如果有则解析结束，否则继续</li>
-</ol>
-</li>
-<li>
-<ol start="3">
-<li>到本地域名服务器去查询，有则结束，否则继续</li>
-</ol>
-</li>
-<li>
-<ol start="4">
 <li>本地域名服务器去查询 根域名服务器，该过程不会返回映射关系，只会告诉你去下级服务器（顶级域名服务器）查询</li>
-</ol>
-</li>
-<li>
-<ol start="5">
+<li>到本地域名服务器去查询，有则结束，否则继续</li>
 <li>本地域名服务器查询顶级域名服务器（即 <code>com</code> 服务器），同样不会返回映射关系，只会引导你去二级域名服务器查询</li>
-</ol>
-</li>
-<li>
-<ol start="6">
 <li>本地域名服务器查询二级域名服务器（即 <code>qq.com</code> 服务器），引导去三级域名服务器</li>
-</ol>
-</li>
-<li>
-<ol start="7">
 <li>本地域名服务器查询三级域名服务器（即 <code>mail.qq.com</code>）， 此时已经是最后一级，如果有则返回映射关系，并且本地服务器加入自身的映射表中，方便下次查询，同时返回给用户的计算机，没有找到则网页报错</li>
 </ol>
-</li>
-</ul>
 </section>
 
 
@@ -343,9 +405,9 @@
     
     <section class="article-tags">
         
-            <a href="/tags/http/">http</a>
+            <a href="/tags/http/">Http</a>
         
-            <a href="/tags/dns/">dns</a>
+            <a href="/tags/dns/">Dns</a>
         
     </section>
 
@@ -368,26 +430,29 @@
     
         <link 
                 rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
             ><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
                 defer
                 >
             </script><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
                 defer
                 >
             </script><script>
     window.addEventListener("DOMContentLoaded", () => {
-        renderMathInElement(document.querySelector(`.article-content`), {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
             delimiters: [
                 { left: "$$", right: "$$", display: true },
                 { left: "$", right: "$", display: false },
                 { left: "\\(", right: "\\)", display: false },
                 { left: "\\[", right: "\\]", display: true }
-            ]
+            ],
+            ignoredClasses: ["gist"]
         });})
 </script>
+
     
 </article>
 
@@ -449,6 +514,8 @@
 </style>
 
 <script>
+    let utterancesLoaded = false;
+
     function setUtterancesTheme(theme) {
         let utterances = document.querySelector('.utterances iframe');
         if (utterances) {
@@ -464,10 +531,14 @@
 
     addEventListener('message', event => {
         if (event.origin !== 'https://utteranc.es') return;
+
+        
+        utterancesLoaded = true;
         setUtterancesTheme(document.documentElement.dataset.scheme)
     });
 
     window.addEventListener('onColorSchemeChange', (e) => {
+        if (!utterancesLoaded) return;
         setUtterancesTheme(e.detail)
     })
 </script>
@@ -477,25 +548,20 @@
 
     <footer class="site-footer">
     <section class="copyright">
-        &copy;
+        &copy; 
         
-        2019 -
+            2019 - 
         
-        2022 Hello, It&#39;s me
+        2025 不积跬步无以至千里
     </section>
-
+    
     <section class="powerby">
         
-        皖ICP备20014602号 <br />
+            皖ICP备20014602号 <br/>
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener"
-                data-version="3.13.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>
 </footer>
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-
-
 
 
     
@@ -577,14 +643,12 @@
             >
 
             </main>
-    
-
         </div>
         <script 
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.9b50b7183b4a32f9580543a89407a21e47a8bebc5bdac6e840fa8c910481f55e.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');
@@ -595,9 +659,6 @@
 
         document.head.appendChild(customFont);
     }());
-
-
-
 </script>
 
     </body>

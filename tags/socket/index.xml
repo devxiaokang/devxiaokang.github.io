@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Socket on 不积跬步无以至千里</title>
+        <link>https://x-xkang.com/tags/socket/</link>
+        <description>Recent content in Socket on 不积跬步无以至千里</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 19 Aug 2024 15:01:16 +0800</lastBuildDate><atom:link href="https://x-xkang.com/tags/socket/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Socket编程概述</title>
+        <link>https://x-xkang.com/p/socket%E7%BC%96%E7%A8%8B%E6%A6%82%E8%BF%B0/</link>
+        <pubDate>Mon, 19 Aug 2024 15:01:16 +0800</pubDate>
+        
+        <guid>https://x-xkang.com/p/socket%E7%BC%96%E7%A8%8B%E6%A6%82%E8%BF%B0/</guid>
+        <description>&lt;h2 id=&#34;socket-是什么&#34;&gt;Socket 是什么？
+&lt;/h2&gt;</description>
+        </item>
+        
+    </channel>
+</rss>

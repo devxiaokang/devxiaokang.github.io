@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>C&#43;&#43; on Hello, It&#39;s me</title>
+        <title>C&#43;&#43; on 不积跬步无以至千里</title>
         <link>https://x-xkang.com/categories/c&#43;&#43;/</link>
-        <description>Recent content in C&#43;&#43; on Hello, It&#39;s me</description>
+        <description>Recent content in C&#43;&#43; on 不积跬步无以至千里</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Thu, 16 Apr 2020 16:29:28 +0800</lastBuildDate><atom:link href="https://x-xkang.com/categories/c++/index.xml" rel="self" type="application/rss+xml" /><item>
@@ -12,8 +12,8 @@
         <pubDate>Thu, 16 Apr 2020 16:29:28 +0800</pubDate>
         
         <guid>https://x-xkang.com/cpp-friend/</guid>
-        <description>&lt;h2 id=&#34;一全局函数做友元&#34;&gt;一、全局函数做友元&lt;/h2&gt;
-&lt;blockquote&gt;
+        <description>&lt;h2 id=&#34;一全局函数做友元&#34;&gt;一、全局函数做友元
+&lt;/h2&gt;&lt;blockquote&gt;
 &lt;p&gt;友元函数可以访问类内部的私有成员属性，在类中使用&lt;code&gt;friend&lt;/code&gt;关键字定义友元函数，并在全局中实现&lt;/p&gt;
 &lt;p&gt;代码如下：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -87,10 +87,9 @@
 &lt;/div&gt;&lt;p&gt;打印结果如下:&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;name:xiaokang&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;age:29&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Hello, World!&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;二类做友元&#34;&gt;二、类做友元&lt;/h2&gt;
-&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;Hello, World!&lt;/code&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;二类做友元&#34;&gt;二、类做友元
+&lt;/h2&gt;&lt;blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -187,10 +186,9 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;打印结果如下：&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;好基友当前访问的地方是：卧室&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Hello, World!&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;三类成员函数做友元&#34;&gt;三、类成员函数做友元&lt;/h2&gt;
-&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;Hello, World!&lt;/code&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;三类成员函数做友元&#34;&gt;三、类成员函数做友元
+&lt;/h2&gt;&lt;blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -294,8 +292,7 @@
 &lt;/div&gt;&lt;p&gt;打印结果如下：
 好基友当前访问的地方是：客厅
 好基友当前访问的地方是：卧室
-Hello, World!&lt;/p&gt;
-&lt;/blockquote&gt;</description>
+Hello, World!&lt;/p&gt;&lt;/blockquote&gt;</description>
         </item>
         <item>
         <title>C&#43;&#43; 面向对象学习笔记-1</title>
@@ -304,14 +301,13 @@ Hello, World!&lt;/p&gt;
         
         <guid>https://x-xkang.com/cpp-oo/</guid>
         <description>&lt;blockquote&gt;
-&lt;p&gt;C++在 C 语言的基础上增加了面向对象编程，C++支持面向对象程序设计，类是 C++的核心特性，通常被称为用户定义的类型，类用于指定对象的形式，它包含了数据表示法和用于处理数据的方法，类中的数据和方法称为类的成员，函数在类中被称为类的成员&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;一类的定义&#34;&gt;一、类的定义&lt;/h2&gt;
-&lt;ul&gt;
+&lt;p&gt;C++在 C 语言的基础上增加了面向对象编程，C++支持面向对象程序设计，类是 C++的核心特性，通常被称为用户定义的类型，类用于指定对象的形式，它包含了数据表示法和用于处理数据的方法，类中的数据和方法称为类的成员，函数在类中被称为类的成员&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;一类的定义&#34;&gt;一、类的定义
+&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;定义一个类，本质上是定义一个数据类型的蓝图，实际上并没有定义任何数据，但它定义了类的名称的意义是什么，也就是说，它定义了类的对象包括了什么，以及可以在这个对象上执行的哪些操作&lt;/li&gt;
 &lt;li&gt;定义类是以关键字 class 开头，后面跟上类的名称，类的主体是包含在一对花括号中，类定义后必须跟着一个分号或一个声明列表，例如，我们使用关键字 class 定义 Bog 数据类型，如下所示：&lt;/li&gt;
 &lt;/ul&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;!-- ![类的定义](/images/cpp-learning/class-01.jpg) --&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -339,11 +335,10 @@ Hello, World!&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;关键字 public 确定管理类成员的访问属性，在类对象作用域内，公共成员在类的外部是可访问的，您也可以指定类的成员为 private（私有的）和 protecred（受保护的）&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;关键字 public 确定管理类成员的访问属性，在类对象作用域内，公共成员在类的外部是可访问的，您也可以指定类的成员为 private（私有的）和 protecred（受保护的）&lt;/p&gt;&lt;/blockquote&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;二c对象&#34;&gt;二、C++对象&lt;/h2&gt;
-&lt;blockquote&gt;
+&lt;h2 id=&#34;二c对象&#34;&gt;二、C++对象
+&lt;/h2&gt;&lt;blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;类提供了对象的蓝图，所以基本上，对象是根据类来创建的，声明类的对象，就像声明基本类型的变量一样，下面的语句声明了类 Dog 的两个对象&lt;/li&gt;
 &lt;/ul&gt;
@@ -359,13 +354,11 @@ Hello, World!&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;对象 dog1 和 dog2 都有他们各自的数据成员&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;三访问数据成员&#34;&gt;三、访问数据成员&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;类的对象的公共数据成员可以使用直接成员访问运算符&lt;code&gt;.&lt;/code&gt;来访问&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h2 id=&#34;三访问数据成员&#34;&gt;三、访问数据成员
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;类的对象的公共数据成员可以使用直接成员访问运算符&lt;code&gt;.&lt;/code&gt;来访问&lt;/p&gt;&lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -461,16 +454,13 @@ Hello, World!&lt;/p&gt;
 &lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;上面代码被编译和执行时，会产生下列结果：&lt;/p&gt;
 &lt;p&gt;狗狗的名字：哈士奇/ 体重是：30&lt;/p&gt;
-&lt;p&gt;狗狗的名字：小金毛/ 体重是：40&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;狗狗的名字：小金毛/ 体重是：40&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;【注】 私有的成员和受保护的成员不能使用直接成员的访问运算符（&lt;code&gt;.&lt;/code&gt;）来直接访问。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;【注】 私有的成员和受保护的成员不能使用直接成员的访问运算符（&lt;code&gt;.&lt;/code&gt;）来直接访问。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;四类成员函数&#34;&gt;四、类成员函数&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;类成员函数是指那些把定义和原型写在类定义内部的函数，就像类定义中的其他函数一样，是类的一个成员，它可以操作类的任意对象，可以访问对象中的所有成员&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h2 id=&#34;四类成员函数&#34;&gt;四、类成员函数
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;类成员函数是指那些把定义和原型写在类定义内部的函数，就像类定义中的其他函数一样，是类的一个成员，它可以操作类的任意对象，可以访问对象中的所有成员&lt;/p&gt;&lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -558,8 +548,8 @@ Hello, World!&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;/blockquote&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;五类访问修饰符&#34;&gt;五、类访问修饰符&lt;/h2&gt;
-&lt;blockquote&gt;
+&lt;h2 id=&#34;五类访问修饰符&#34;&gt;五、类访问修饰符
+&lt;/h2&gt;&lt;blockquote&gt;
 &lt;p&gt;数据封装是面向对象的一个重要特点，它防止函数直接访问类类型的内部成员，类成员的访问限制是通过在类主题内部对各个区域标记 **&lt;code&gt;public、private、protected&lt;/code&gt;**来指定的，关键字 **&lt;code&gt;public、private。protected&lt;/code&gt;**称为访问修饰符。
 一个类可以有多个 public、private、protected 标记区域，每个标识区域在下一个标识区域开始之前或者在遇到类主题结束右括号之前都是有效的。成员和类的默认访问修饰符是 private。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -597,8 +587,8 @@ Hello, World!&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;/blockquote&gt;
-&lt;h3 id=&#34;51共有public成员&#34;&gt;5.1、共有（public）成员&lt;/h3&gt;
-&lt;blockquote&gt;
+&lt;h3 id=&#34;51共有public成员&#34;&gt;5.1、共有（public）成员
+&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;共有成员在类的外部是可访问的，可以不使用任何成员函数来设置和获取共有变量的值，如下所示:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -675,8 +665,8 @@ Hello, World!&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;/blockquote&gt;
-&lt;h3 id=&#34;52私有private成员&#34;&gt;5.2、私有（private）成员&lt;/h3&gt;
-&lt;blockquote&gt;
+&lt;h3 id=&#34;52私有private成员&#34;&gt;5.2、私有（private）成员
+&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;私有成员变量或函数在类的外部是不可访问的，甚至是不可查的，只有类和有元函数可以访问私有成员，
 默认情况下，类的所有成员都是私有的，例如在下面的类中，width 是一个私有成员，这意味着，如果您没有使用任何访问修饰符，类的成员将被假定为私有成员：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -700,12 +690,11 @@ Hello, World!&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;/blockquote&gt;
-&lt;h3 id=&#34;53受保护protected成员&#34;&gt;5.3、受保护（protected）成员&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;受保护成员变量或函数与私有成员相似，但又一点不同，protected 成员在派生类（即子类）中是可以访问的&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;54继承中的特点&#34;&gt;5.4、继承中的特点&lt;/h3&gt;
-&lt;blockquote&gt;
+&lt;h3 id=&#34;53受保护protected成员&#34;&gt;5.3、受保护（protected）成员
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;受保护成员变量或函数与私有成员相似，但又一点不同，protected 成员在派生类（即子类）中是可以访问的&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h3 id=&#34;54继承中的特点&#34;&gt;5.4、继承中的特点
+&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;有 public,protected,private 三种继承方式，他们响应的改变了基类成员的访问属性&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;public 继承&lt;/strong&gt;：基类 public 成员，protected 成员，private 成员的访问属性分别变成：public，protected，private&lt;/li&gt;
@@ -794,8 +783,7 @@ Hello, World!&lt;/p&gt;
 &lt;/div&gt;&lt;/blockquote&gt;
 &lt;p&gt;执行结果为：&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Total Area:35&lt;/p&gt;
-&lt;/blockquote&gt;</description>
+&lt;p&gt;Total Area:35&lt;/p&gt;&lt;/blockquote&gt;</description>
         </item>
         
     </channel>

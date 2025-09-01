@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>计算机网络 on Hello, It&#39;s me</title>
+        <title>计算机网络 on 不积跬步无以至千里</title>
         <link>https://x-xkang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</link>
-        <description>Recent content in 计算机网络 on Hello, It&#39;s me</description>
+        <description>Recent content in 计算机网络 on 不积跬步无以至千里</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Thu, 04 Feb 2021 13:35:56 +0800</lastBuildDate><atom:link href="https://x-xkang.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/index.xml" rel="self" type="application/rss+xml" /><item>
@@ -1072,30 +1072,25 @@
         <pubDate>Sat, 25 Jan 2020 17:21:56 +0800</pubDate>
         
         <guid>https://x-xkang.com/p/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C--%E7%89%A9%E7%90%86%E5%B1%82/</guid>
-        <description>&lt;h2 id=&#34;一物理层基本概念&#34;&gt;一、物理层基本概念&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;物理层&lt;/strong&gt;解决如何在连接各种计算机的传输媒体上传输数据比特流，而不是指具体的传输媒体，物理层的主要任务是确定与传输媒体接口有关的一些特性&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;1机械特性&#34;&gt;1、机械特性&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;定义物理连接的特性，规定物理连接时所采用的规格，接口形状，引线数目，引脚数量和排列情况&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;2电气特性&#34;&gt;2、电气特性&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;规定传输二进制位时，线路上信号的电压范围，阻抗匹配，传输速率和距离限制&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;3功能特性&#34;&gt;3、功能特性&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;知名某条线上出现的某一电平标识何种意义，接口不见的信号线的用途&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;4规程特性&#34;&gt;4、规程特性&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;(过程特性)定义各条物理线路的工作规程和时序关系&lt;/p&gt;
-&lt;/blockquote&gt;
+        <description>&lt;h2 id=&#34;一物理层基本概念&#34;&gt;一、物理层基本概念
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;物理层&lt;/strong&gt;解决如何在连接各种计算机的传输媒体上传输数据比特流，而不是指具体的传输媒体，物理层的主要任务是确定与传输媒体接口有关的一些特性&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h3 id=&#34;1机械特性&#34;&gt;1、机械特性
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;定义物理连接的特性，规定物理连接时所采用的规格，接口形状，引线数目，引脚数量和排列情况&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h3 id=&#34;2电气特性&#34;&gt;2、电气特性
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;规定传输二进制位时，线路上信号的电压范围，阻抗匹配，传输速率和距离限制&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h3 id=&#34;3功能特性&#34;&gt;3、功能特性
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;知名某条线上出现的某一电平标识何种意义，接口不见的信号线的用途&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h3 id=&#34;4规程特性&#34;&gt;4、规程特性
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;(过程特性)定义各条物理线路的工作规程和时序关系&lt;/p&gt;&lt;/blockquote&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;二数据通信基础知识&#34;&gt;二、数据通信基础知识&lt;/h2&gt;
-&lt;h3 id=&#34;1典型的数据通信模型&#34;&gt;1、典型的数据通信模型&lt;/h3&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id=&#34;二数据通信基础知识&#34;&gt;二、数据通信基础知识
+&lt;/h2&gt;&lt;h3 id=&#34;1典型的数据通信模型&#34;&gt;1、典型的数据通信模型
+&lt;/h3&gt;&lt;!-- 数据通信模型 --&gt;
 &lt;p&gt;&lt;img src=&#34;https://x-xkang.com/images/computer-network/data-comunication-model.jpg&#34;
 	
 	
@@ -1106,8 +1101,8 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;h3 id=&#34;2数据通信相关术语&#34;&gt;2、数据通信相关术语&lt;/h3&gt;
-&lt;blockquote&gt;
+&lt;h3 id=&#34;2数据通信相关术语&#34;&gt;2、数据通信相关术语
+&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;通信的目的是传送消息&lt;br&gt;
 &lt;strong&gt;数据&lt;/strong&gt;：传送消息的实体，通常是有意义的符号序列&lt;br&gt;
 &lt;strong&gt;信号&lt;/strong&gt;：数据的电气/电磁表现，是数据在传输过程中的存在形式&lt;/p&gt;
@@ -1115,25 +1110,21 @@
 &lt;ul&gt;
 &lt;li&gt;数字信号：代表消息的参数取值是离散的&lt;/li&gt;
 &lt;li&gt;模拟信号：代表消息的参数是连续的&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;信源&lt;/strong&gt;：产生和发送数据的源头&lt;br&gt;
 &lt;strong&gt;信宿&lt;/strong&gt;：接受数据的终点&lt;br&gt;
-&lt;strong&gt;信道&lt;/strong&gt;：信号的传输媒介，一般用来表示向某一个方向传送信息的介质，因此一条通信线路往往包含一条发送信道和一条接受信道&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;3三种通信方式&#34;&gt;3、三种通信方式&lt;/h3&gt;
-&lt;blockquote&gt;
+&lt;strong&gt;信道&lt;/strong&gt;：信号的传输媒介，一般用来表示向某一个方向传送信息的介质，因此一条通信线路往往包含一条发送信道和一条接受信道&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h3 id=&#34;3三种通信方式&#34;&gt;3、三种通信方式
+&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;从通信双方信息的交互方式来看，可以有三种基本方式：&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;单工通信&lt;/strong&gt;：只有一个方向的通信而没有反方向的交互，仅需&lt;strong&gt;一条&lt;/strong&gt;信道&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;半双工信道&lt;/strong&gt;：通信的双方都可以发送或接受信息，但任何一方都不能同时发送和接受，需要&lt;strong&gt;两条&lt;/strong&gt;信道&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;全双工信道&lt;/strong&gt;：通信双方可以同时发送和接受信息，也需要&lt;strong&gt;两条&lt;/strong&gt;信道&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;4两种数据传输方式&#34;&gt;4、两种数据传输方式&lt;/h3&gt;
-&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;全双工信道&lt;/strong&gt;：通信双方可以同时发送和接受信息，也需要&lt;strong&gt;两条&lt;/strong&gt;信道&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h3 id=&#34;4两种数据传输方式&#34;&gt;4、两种数据传输方式
+&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;串行传输&lt;/strong&gt;：速度慢、费用低、适合远距离&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;并行传输&lt;/strong&gt;：速度快、费用高、适合近距离&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;strong&gt;并行传输&lt;/strong&gt;：速度快、费用高、适合近距离&lt;/p&gt;&lt;/blockquote&gt;
+&lt;!-- 数据传输方式 --&gt;
 &lt;p&gt;&lt;img src=&#34;https://x-xkang.com/images/computer-network/data-transmission-mode.jpg&#34;
 	
 	
@@ -1145,14 +1136,13 @@
 	
 &gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;三码元波特速率带宽&#34;&gt;三、码元、波特、速率、带宽&lt;/h2&gt;
-&lt;h3 id=&#34;1码元&#34;&gt;1、码元&lt;/h3&gt;
-&lt;blockquote&gt;
+&lt;h2 id=&#34;三码元波特速率带宽&#34;&gt;三、码元、波特、速率、带宽
+&lt;/h2&gt;&lt;h3 id=&#34;1码元&#34;&gt;1、码元
+&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;码元：&lt;/strong&gt; 是指用给一个固定时长的信号波形（信号波形），代表不同离散数值的基本波形，是数字通信中数字信号的计量单位，这个时长内的信号称为k进制码元，而该时长称为码元宽度，当码元的离散状态有M个时（M大于2）此时码元为M进制码元&lt;/p&gt;
-&lt;p&gt;1码元可以携带多个比特的信息量， &lt;strong&gt;例如：&lt;/strong&gt; 在使用二进制编码时，只有两种不同的码元，一种代表0状态，另一种代表1状态&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;2速率波特带宽&#34;&gt;2、速率、波特、带宽&lt;/h3&gt;
-&lt;blockquote&gt;
+&lt;p&gt;1码元可以携带多个比特的信息量， &lt;strong&gt;例如：&lt;/strong&gt; 在使用二进制编码时，只有两种不同的码元，一种代表0状态，另一种代表1状态&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h3 id=&#34;2速率波特带宽&#34;&gt;2、速率、波特、带宽
+&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;速率：&lt;/strong&gt; 也叫 &lt;strong&gt;数据率&lt;/strong&gt; 是指数据的传输速率，表示单位时间内传输的数据量，可以用码元传输速率和信息传输速率表示&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ul&gt;
@@ -1162,15 +1152,13 @@
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;2）信息传输速率：&lt;/strong&gt; 别名信息速率、比特率等，表示单位时间内数字通讯系统传输的二进制码元个数（即比特数），单位是 &lt;strong&gt;比特/秒&lt;/strong&gt;（b/s）&lt;/p&gt;
 &lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;关系：&lt;/strong&gt; 若一个码元携带 n bit的信息量，则M Baud的码元传输速率所对应的信息传输速率为 M x n bit/s&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;带宽：&lt;/strong&gt; 表示在单位时间内从网络中的某一点到另一点所能通过的 &lt;strong&gt;“最高数据率”&lt;/strong&gt;，常用来表示网络的通信线路所能传输数据的能力，单位是b/s。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;带宽：&lt;/strong&gt; 表示在单位时间内从网络中的某一点到另一点所能通过的 &lt;strong&gt;“最高数据率”&lt;/strong&gt;，常用来表示网络的通信线路所能传输数据的能力，单位是b/s。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;四奈氏准则和香农定理&#34;&gt;四、奈氏准则和香农定理&lt;/h2&gt;
-&lt;h3 id=&#34;1失真&#34;&gt;1、失真&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;https://x-xkang.com/images/computer-network/shizhen-01.jpg&#34;
+&lt;h2 id=&#34;四奈氏准则和香农定理&#34;&gt;四、奈氏准则和香农定理
+&lt;/h2&gt;&lt;h3 id=&#34;1失真&#34;&gt;1、失真
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://x-xkang.com/images/computer-network/shizhen-01.jpg&#34;
 	
 	
 	
@@ -1180,8 +1168,8 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;h3 id=&#34;2码间串扰&#34;&gt;2、码间串扰&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;https://x-xkang.com/images/computer-network/majianchuanrao.jpg&#34;
+&lt;h3 id=&#34;2码间串扰&#34;&gt;2、码间串扰
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://x-xkang.com/images/computer-network/majianchuanrao.jpg&#34;
 	
 	
 	
@@ -1191,8 +1179,8 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;h3 id=&#34;3奈氏准则&#34;&gt;3、奈氏准则&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;https://x-xkang.com/images/computer-network/naishi.jpg&#34;
+&lt;h3 id=&#34;3奈氏准则&#34;&gt;3、奈氏准则
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://x-xkang.com/images/computer-network/naishi.jpg&#34;
 	
 	
 	
@@ -1202,8 +1190,8 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;h3 id=&#34;4香农定理&#34;&gt;4、香农定理&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;https://x-xkang.com/images/computer-network/xiangnong.jpg&#34;
+&lt;h3 id=&#34;4香农定理&#34;&gt;4、香农定理
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://x-xkang.com/images/computer-network/xiangnong.jpg&#34;
 	
 	
 	
@@ -1214,9 +1202,9 @@
 	
 &gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;五编码与调制&#34;&gt;五、编码与调制&lt;/h2&gt;
-&lt;h3 id=&#34;1基带信号和宽带信号&#34;&gt;1、基带信号和宽带信号&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;https://x-xkang.com/images/computer-network/%e5%9f%ba%e5%b8%a6%e5%92%8c%e5%ae%bd%e5%b8%a6.jpg&#34;
+&lt;h2 id=&#34;五编码与调制&#34;&gt;五、编码与调制
+&lt;/h2&gt;&lt;h3 id=&#34;1基带信号和宽带信号&#34;&gt;1、基带信号和宽带信号
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://x-xkang.com/images/computer-network/%e5%9f%ba%e5%b8%a6%e5%92%8c%e5%ae%bd%e5%b8%a6.jpg&#34;
 	
 	
 	
@@ -1226,8 +1214,8 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;h3 id=&#34;2编码与调制&#34;&gt;2、编码与调制&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;https://x-xkang.com/images/computer-network/%e7%bc%96%e7%a0%81%e5%92%8c%e8%b0%83%e5%88%b6.jpg&#34;
+&lt;h3 id=&#34;2编码与调制&#34;&gt;2、编码与调制
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://x-xkang.com/images/computer-network/%e7%bc%96%e7%a0%81%e5%92%8c%e8%b0%83%e5%88%b6.jpg&#34;
 	
 	
 	
@@ -1238,8 +1226,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;1）非归零编码&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;1）非归零编码&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;img src=&#34;https://x-xkang.com/images/computer-network/%e9%9d%9e%e5%bd%92%e9%9b%b6%e7%bc%96%e7%a0%81-01.jpg&#34;
 	
 	
@@ -1251,8 +1238,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;2）归零编码&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;2）归零编码&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;img src=&#34;https://x-xkang.com/images/computer-network/%e5%bd%92%e9%9b%b6%e7%bc%96%e7%a0%81-01.jpg&#34;
 	
 	
@@ -1264,8 +1250,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;3）反向不归零编码&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;3）反向不归零编码&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;img src=&#34;https://x-xkang.com/images/computer-network/%e5%8f%8d%e5%90%91%e4%b8%8d%e5%bd%92%e9%9b%b6%e7%bc%96%e7%a0%81-01.jpg&#34;
 	
 	
@@ -1277,8 +1262,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;4）曼彻斯特编码&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;4）曼彻斯特编码&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;img src=&#34;https://x-xkang.com/images/computer-network/%e6%9b%bc%e5%bd%bb%e6%96%af%e7%89%b9%e7%bc%96%e7%a0%81-01.jpg&#34;
 	
 	
@@ -1290,8 +1274,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;5）差分曼彻斯特编码&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;5）差分曼彻斯特编码&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;img src=&#34;https://x-xkang.com/images/computer-network/%e5%b7%ae%e5%88%86%e6%9b%bc%e5%bd%bb%e6%96%af%e7%89%b9%e7%bc%96%e7%a0%81-01.jpg&#34;
 	
 	
@@ -1303,8 +1286,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;6）4B/5B编码&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;6）4B/5B编码&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;img src=&#34;https://x-xkang.com/images/computer-network/4B-5B%e7%bc%96%e7%a0%81-01.jpg&#34;
 	
 	
@@ -1316,8 +1298,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;7）数字数据调制为模拟信号&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;7）数字数据调制为模拟信号&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;img src=&#34;https://x-xkang.com/images/computer-network/%e4%bf%a1%e5%8f%b7%e8%b0%83%e5%88%b6-01.jpg&#34;
 	
 	
@@ -1329,8 +1310,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;8）模拟数据编码为数字信号&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;8）模拟数据编码为数字信号&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;img src=&#34;https://x-xkang.com/images/computer-network/%e4%bf%a1%e5%8f%b7%e8%b0%83%e5%88%b6-02.jpg&#34;
 	
 	

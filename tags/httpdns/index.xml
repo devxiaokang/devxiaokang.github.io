@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>HTTP，DNS on 不积跬步无以至千里</title>
+        <link>https://x-xkang.com/tags/httpdns/</link>
+        <description>Recent content in HTTP，DNS on 不积跬步无以至千里</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Wed, 18 Sep 2024 13:13:06 +0800</lastBuildDate><atom:link href="https://x-xkang.com/tags/httpdns/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>在浏览器中输入URL到展示页面发生了什么</title>
+        <link>https://x-xkang.com/p/%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%BE%93%E5%85%A5url%E5%88%B0%E5%B1%95%E7%A4%BA%E9%A1%B5%E9%9D%A2%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/</link>
+        <pubDate>Wed, 18 Sep 2024 13:13:06 +0800</pubDate>
+        
+        <guid>https://x-xkang.com/p/%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%BE%93%E5%85%A5url%E5%88%B0%E5%B1%95%E7%A4%BA%E9%A1%B5%E9%9D%A2%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/</guid>
+        <description>&lt;p&gt;具体步骤如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在浏览器中输入指定网页的URL&lt;/li&gt;
+&lt;li&gt;浏览器通过DNS（UDP）协议，获取域名对应的IP地址。&lt;/li&gt;
+&lt;li&gt;浏览器根据IP地址和端口号，向目标服务器发起一个TCP连接请求。&lt;/li&gt;
+&lt;li&gt;浏览器在TCP连接上，向服务器发送一个HTTP请求报文，请求获取网页的内容。&lt;/li&gt;
+&lt;li&gt;服务器收到HTTP请求报文后，处理请求，并返回HTTP响应报文给浏览器。&lt;/li&gt;
+&lt;li&gt;浏览器收到HTTP响应报文后，解析响应体重的HTML代码，渲染网页的结构和样式，同时根据HTML中其他资源的URL（如图片、CSS、JavaScript等）请求这些资源。直到网页完全加载显示。&lt;/li&gt;
+&lt;li&gt;浏览器在不需要和服务器通信时，可以主动关闭TCP连接，或者等待服务器的关闭请求。&lt;/li&gt;
+&lt;/ol&gt;</description>
+        </item>
+        
+    </channel>
+</rss>

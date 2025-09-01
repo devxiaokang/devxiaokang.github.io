@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>友元函数 on Hello, It&#39;s me</title>
+        <title>友元函数 on 不积跬步无以至千里</title>
         <link>https://x-xkang.com/tags/%E5%8F%8B%E5%85%83%E5%87%BD%E6%95%B0/</link>
-        <description>Recent content in 友元函数 on Hello, It&#39;s me</description>
+        <description>Recent content in 友元函数 on 不积跬步无以至千里</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Thu, 16 Apr 2020 16:29:28 +0800</lastBuildDate><atom:link href="https://x-xkang.com/tags/%E5%8F%8B%E5%85%83%E5%87%BD%E6%95%B0/index.xml" rel="self" type="application/rss+xml" /><item>
@@ -12,8 +12,8 @@
         <pubDate>Thu, 16 Apr 2020 16:29:28 +0800</pubDate>
         
         <guid>https://x-xkang.com/cpp-friend/</guid>
-        <description>&lt;h2 id=&#34;一全局函数做友元&#34;&gt;一、全局函数做友元&lt;/h2&gt;
-&lt;blockquote&gt;
+        <description>&lt;h2 id=&#34;一全局函数做友元&#34;&gt;一、全局函数做友元
+&lt;/h2&gt;&lt;blockquote&gt;
 &lt;p&gt;友元函数可以访问类内部的私有成员属性，在类中使用&lt;code&gt;friend&lt;/code&gt;关键字定义友元函数，并在全局中实现&lt;/p&gt;
 &lt;p&gt;代码如下：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -87,10 +87,9 @@
 &lt;/div&gt;&lt;p&gt;打印结果如下:&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;name:xiaokang&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;age:29&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Hello, World!&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;二类做友元&#34;&gt;二、类做友元&lt;/h2&gt;
-&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;Hello, World!&lt;/code&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;二类做友元&#34;&gt;二、类做友元
+&lt;/h2&gt;&lt;blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -187,10 +186,9 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;打印结果如下：&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;好基友当前访问的地方是：卧室&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Hello, World!&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;三类成员函数做友元&#34;&gt;三、类成员函数做友元&lt;/h2&gt;
-&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;Hello, World!&lt;/code&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;三类成员函数做友元&#34;&gt;三、类成员函数做友元
+&lt;/h2&gt;&lt;blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -294,8 +292,7 @@
 &lt;/div&gt;&lt;p&gt;打印结果如下：
 好基友当前访问的地方是：客厅
 好基友当前访问的地方是：卧室
-Hello, World!&lt;/p&gt;
-&lt;/blockquote&gt;</description>
+Hello, World!&lt;/p&gt;&lt;/blockquote&gt;</description>
         </item>
         
     </channel>

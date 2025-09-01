@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=''><title>Mysql Deadlock</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="">
+<meta name="keywords" content="mysql, deadLock"><title>Mysql Deadlock</title>
 
 <link rel='canonical' href='https://x-xkang.com/p/mysql-deadlock/'>
 
-<link rel="stylesheet" href="/scss/style.min.5a8e892f6fa14515e9065eee1f5d2e05302606ec7f11750b2fb95198f9cdcbfd.css"><meta property='og:title' content='Mysql Deadlock'>
-<meta property='og:description' content=''>
+<link rel="stylesheet" href="/scss/style.min.7e54386a70f08c359dc67b56ecb1ed61936ec90f83972802164db3639519a07b.css"><meta property='og:title' content="Mysql Deadlock">
+<meta property='og:description' content="">
 <meta property='og:url' content='https://x-xkang.com/p/mysql-deadlock/'>
-<meta property='og:site_name' content='Hello, It&#39;s me'>
+<meta property='og:site_name' content='不积跬步无以至千里'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='mysql' /><meta property='article:published_time' content='2021-11-22T10:48:54&#43;08:00'/><meta property='article:modified_time' content='2021-11-22T10:48:54&#43;08:00'/>
 <meta name="twitter:title" content="Mysql Deadlock">
 <meta name="twitter:description" content="">
-    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="shortcut icon" href="/favicon.ico" />
 
     </head>
     <body class="
@@ -57,7 +58,7 @@
                     
                     
                         
-                        <img src="/img/avatar_hu3c3946a5e2dbcd463bda7dfc7c9c9efb_49773_300x0_resize_box_3.png" width="300"
+                        <img src="/img/avatar_hu_dce6ef8b51a3489.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -70,16 +71,17 @@
         
         
         <div class="site-meta">
-            <h1 class="site-name"><a href="/">Hello, It&#39;s me</a></h1>
-            <h2 class="site-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+            <h1 class="site-name"><a href="/">不积跬步无以至千里</a></h1>
+            <h2 class="site-description">拨云见日，否极泰来.</h2>
         </div>
-    </header><ol class="social-menu">
+    </header><ol class="menu-social">
             
                 <li>
                     <a 
                         href='https://github.com/devxiaokang'
                         target="_blank"
                         title="GitHub"
+                        rel="me"
                     >
                         
                         
@@ -98,27 +100,26 @@
         
         
         
-
         <li >
-            <a href='/about/' >
+            <a href='/' target="_blank">
                 
                 
                 
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
 </svg>
 
 
 
                 
-                <span>About</span>
+                <span>Home</span>
             </a>
         </li>
         
         
-
         <li >
             <a href='/archives/' >
                 
@@ -148,7 +149,6 @@
         </li>
         
         
-
         <li >
             <a href='/search/' >
                 
@@ -167,12 +167,12 @@
             </a>
         </li>
         
+        <li class="menu-bottom-section">
+            <ol class="menu">
 
-        <div class="menu-bottom-section">
-            
-            
-                <li id="dark-mode-toggle">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="8" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -180,7 +180,7 @@
 
 
 
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="16" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -188,13 +188,48 @@
 
 
 
-                    <span>Dark Mode</span>
-                </li>
-            
-        </div>
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
     </ol>
 </aside>
-<main class="main full-width">
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#问题描述">问题描述</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
     <article class="main-article">
     <header class="article-header">
 
@@ -217,6 +252,9 @@
         
     </div>
 
+    
+    
+    
     
     <footer class="article-time">
         
@@ -254,13 +292,14 @@
 
     
 </div>
+
 </header>
 
     <section class="article-content">
     
     
-    <h2 id="问题描述">问题描述</h2>
-<p>生产环境每隔一段时间会出现mysql数据库的死锁日志:</p>
+    <h2 id="问题描述">问题描述
+</h2><p>生产环境每隔一段时间会出现mysql数据库的死锁日志:</p>
 <p><img src="/images/mysql-dead-lock/question-show.png"
 	
 	
@@ -304,7 +343,7 @@
 	
 ></p>
 <p>索引合并查询，会同时使用<code>idx_status_vmstatus</code> 和 <code>uniq_instance</code> 扫描记录并给普通索引加锁，然后通过普通索引中的主键ID去锁定主键索引，问题就出现在这里，由于 idx_status_vmstatus 索引扫描和 <code>uniq_instance</code>索引扫描是同时的，如果两条update语句同时执行，则 事务2 先锁定 锁定 <code>uniq_instance</code> 成功后锁定对应的主键，然后事务1 锁定<code>idx_status_vmstatus</code> 成功后也去锁定主键,此时主键已被事务2锁定，于是阻塞等待<code>primary</code>释放，接着事务2开始扫描 <code>idx_status_vmstatus</code> 发现普通索引被事务1锁住，于是阻塞等待<code>idx_status_vmstatus</code>，于是出现最终的 事务2等待 事务2释放<code>idx_status_vmstatus</code>，事务1等待事务1释放<code>primary</code>，即出现死锁。</p>
-<p>解决方案也比较简单，先查出主键ID，使用主键ID再更新记录，因为使用主键ID直接加锁的话，锁粒度更小，及时同时更新一条记录，也不会出现同时等待对方将锁释放的场景。问题描述的比较简单，但在排查过程中还是走了不少弯路的。</p>
+<p>解决方案也比较简单，先查出主键ID，使用主键ID再更新记录，因为使用主键ID直接加锁的话，锁粒度更小，即使同时更新一条记录，也不会出现同时等待对方将锁释放的场景。问题描述的比较简单，但在排查过程中还是走了不少弯路的。</p>
 </section>
 
 
@@ -312,7 +351,7 @@
     
     <section class="article-tags">
         
-            <a href="/tags/mysql/">mysql</a>
+            <a href="/tags/mysql/">Mysql</a>
         
     </section>
 
@@ -335,26 +374,29 @@
     
         <link 
                 rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
             ><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
                 defer
                 >
             </script><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
                 defer
                 >
             </script><script>
     window.addEventListener("DOMContentLoaded", () => {
-        renderMathInElement(document.querySelector(`.article-content`), {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
             delimiters: [
                 { left: "$$", right: "$$", display: true },
                 { left: "$", right: "$", display: false },
                 { left: "\\(", right: "\\)", display: false },
                 { left: "\\[", right: "\\]", display: true }
-            ]
+            ],
+            ignoredClasses: ["gist"]
         });})
 </script>
+
     
 </article>
 
@@ -369,25 +411,12 @@
             
                 
 <article class="">
-    <a href="/p/mysql-%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F/">
+    <a href="/p/mysql--%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">Mysql 关键字的执行顺序</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/p/mysql-%E4%BA%8B%E5%8A%A1%E6%B5%85%E6%9E%90/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Mysql 事务浅析</h2>
+            <h2 class="article-title">Mysql -- 关键字的执行顺序</h2>
         </div>
     </a>
 </article>
@@ -432,6 +461,19 @@
 </article>
 
             
+                
+<article class="">
+    <a href="/p/mysql--%E8%BF%9E%E6%8E%A5%E6%B1%A0%E9%97%AE%E9%A2%98/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Mysql -- 连接池问题</h2>
+        </div>
+    </a>
+</article>
+
+            
         </div>
     </div>
 </aside>
@@ -455,6 +497,8 @@
 </style>
 
 <script>
+    let utterancesLoaded = false;
+
     function setUtterancesTheme(theme) {
         let utterances = document.querySelector('.utterances iframe');
         if (utterances) {
@@ -470,10 +514,14 @@
 
     addEventListener('message', event => {
         if (event.origin !== 'https://utteranc.es') return;
+
+        
+        utterancesLoaded = true;
         setUtterancesTheme(document.documentElement.dataset.scheme)
     });
 
     window.addEventListener('onColorSchemeChange', (e) => {
+        if (!utterancesLoaded) return;
         setUtterancesTheme(e.detail)
     })
 </script>
@@ -483,25 +531,20 @@
 
     <footer class="site-footer">
     <section class="copyright">
-        &copy;
+        &copy; 
         
-        2019 -
+            2019 - 
         
-        2022 Hello, It&#39;s me
+        2025 不积跬步无以至千里
     </section>
-
+    
     <section class="powerby">
         
-        皖ICP备20014602号 <br />
+            皖ICP备20014602号 <br/>
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener"
-                data-version="3.13.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>
 </footer>
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-
-
 
 
     
@@ -583,45 +626,12 @@
             >
 
             </main>
-    <aside class="sidebar right-sidebar sticky">
-        
-            
-                
-    <section class="widget archives">
-        <div class="widget-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <line x1="5" y1="9" x2="19" y2="9" />
-  <line x1="5" y1="15" x2="19" y2="15" />
-  <line x1="11" y1="4" x2="7" y2="20" />
-  <line x1="17" y1="4" x2="13" y2="20" />
-</svg>
-
-
-
-        </div>
-        <h2 class="widget-title section-title">Table of contents</h2>
-        
-        <div class="widget--toc">
-            <nav id="TableOfContents">
-  <ol>
-    <li><a href="#问题描述">问题描述</a></li>
-  </ol>
-</nav>
-        </div>
-    </section>
-
-            
-        
-    </aside>
-
-
         </div>
         <script 
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.9b50b7183b4a32f9580543a89407a21e47a8bebc5bdac6e840fa8c910481f55e.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');
@@ -632,9 +642,6 @@
 
         document.head.appendChild(customFont);
     }());
-
-
-
 </script>
 
     </body>

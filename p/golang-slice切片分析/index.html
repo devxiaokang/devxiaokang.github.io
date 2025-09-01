@@ -9,7 +9,7 @@
 <meta property='og:description' content='golang 中的 slice 源码'>
 <meta property='og:url' content='https://x-xkang.com/p/golang-slice%E5%88%87%E7%89%87%E5%88%86%E6%9E%90/'>
 <meta property='og:site_name' content='Hello, It&#39;s me'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='slice' /><meta property='article:published_time' content='2022-09-05T09:01:56&#43;08:00'/><meta property='article:modified_time' content='2022-09-05T09:01:56&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='slice' /><meta property='article:tag' content='切片' /><meta property='article:published_time' content='2022-09-05T09:01:56&#43;08:00'/><meta property='article:modified_time' content='2022-09-05T09:01:56&#43;08:00'/>
 <meta name="twitter:title" content="Golang Slice切片分析">
 <meta name="twitter:description" content="golang 中的 slice 源码">
     <link rel="shortcut icon" href="favicon.ico" />
@@ -57,7 +57,7 @@
                     
                     
                         
-                        <img src="/img/avatar_hu3c3946a5e2dbcd463bda7dfc7c9c9efb_49773_300x0_resize_box_3.png" width="300"
+                        <img src="/img/avatar_hu3c3946a5e2dbcd463bda7dfc7c9c9efb_49773_300x0_resize_box_2.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -71,7 +71,7 @@
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">Hello, It&#39;s me</a></h1>
-            <h2 class="site-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+            <h2 class="site-description">Good good study.</h2>
         </div>
     </header><ol class="social-menu">
             
@@ -100,20 +100,21 @@
         
 
         <li >
-            <a href='/about/' >
+            <a href='/' >
                 
                 
                 
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
 </svg>
 
 
 
                 
-                <span>About</span>
+                <span>Home</span>
             </a>
         </li>
         
@@ -202,12 +203,8 @@
     
     <header class="article-category">
         
-            <a href="/categories/code/" >
-                Code
-            </a>
-        
-            <a href="/categories/golang/" >
-                golang
+            <a href="/categories/programming-language/" >
+                Programming language
             </a>
         
     </header>
@@ -274,19 +271,19 @@
     >src/runtime/slice.go#L22</a></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">slice</span> <span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">array</span> <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span>  <span class="c1">// 引用的底层数组指针
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">len</span>   <span class="kt">int</span>             <span class="c1">// 切片的长度
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">cap</span>   <span class="kt">int</span>             <span class="c1">// 切片的容量
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-golang" data-lang="golang"><span class="kd">type</span> <span class="nx">slice</span> <span class="kd">struct</span> <span class="p">{</span>
+ <span class="nx">array</span> <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span>  <span class="c1">// 引用的底层数组指针
+</span><span class="c1"></span> <span class="nx">len</span>   <span class="kt">int</span>             <span class="c1">// 切片的长度
+</span><span class="c1"></span> <span class="nx">cap</span>   <span class="kt">int</span>             <span class="c1">// 切片的容量
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
 </div>
 </div><p><img src="/images/golang-slice/structure.jpg"
 	
@@ -300,10 +297,10 @@
 ></p>
 <h3 id="创建切片">创建切片</h3>
 <h4 id="创建方式">创建方式</h4>
-<!-- raw HTML omitted -->
+<!-- KANGji19920123. -->
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -320,35 +317,37 @@
 </span><span class="lnt">15
 </span><span class="lnt">16
 </span><span class="lnt">17
+</span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// 1. 通过关键字 var 声明，此时未初始化，无法对s1[i]进行取值、赋值
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kd">var</span> <span class="nx">s1</span> <span class="p">[]</span><span class="kt">int</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// 2. 使用 new() 创建，由于 new()返回的是一个指针，通过 *获取指针的值，未初始化，同样也无法对s2[i]进行取值赋值
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">s2</span> <span class="o">:=</span> <span class="o">*</span><span class="nb">new</span><span class="p">([]</span><span class="kt">int</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// 3. 直接创建并初始化，已初始化，因此可以对s3[i]进行取值赋值
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">s3</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// 4. make() 创建，第一个参数指定类型，第二个参数为长度，第三个参数为容量（可不指定，默认为长度值）
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">s4</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// 5. 通过截取数组或切片
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">array</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">}</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">s5</span> <span class="o">:=</span> <span class="nx">array</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span> <span class="c1">// (左闭右开)，输出 [4,5]，引用数组 array 的部分片段
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-golang" data-lang="golang"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+ <span class="c1">// 1. 通过关键字 var 声明，此时未初始化，无法对s1[i]进行取值、赋值
+</span><span class="c1"></span> <span class="kd">var</span> <span class="nx">s1</span> <span class="p">[]</span><span class="kt">int</span>
+
+ <span class="c1">// 2. 使用 new() 创建，由于 new()返回的是一个指针，通过 *获取指针的值，未初始化，同样也无法对s2[i]进行取值赋值
+</span><span class="c1"></span> <span class="nx">s2</span> <span class="o">:=</span> <span class="o">*</span><span class="nb">new</span><span class="p">([]</span><span class="kt">int</span><span class="p">)</span>
+
+ <span class="c1">// 3. 直接创建并初始化，已初始化，因此可以对s3[i]进行取值赋值
+</span><span class="c1"></span> <span class="nx">s3</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
+
+ <span class="c1">// 4. make() 创建，第一个参数指定类型，第二个参数为长度，第三个参数为容量（可不指定，默认为长度值）
+</span><span class="c1"></span> <span class="nx">s4</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+ <span class="c1">// 5. 通过截取数组或切片
+</span><span class="c1"></span> <span class="nx">array</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">}</span>
+ <span class="nx">s5</span> <span class="o">:=</span> <span class="nx">array</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span> <span class="c1">// (左闭右开)，输出 [4,5]，引用数组 array 的部分片段
+</span><span class="c1"></span><span class="p">}</span>
+
+</code></pre></td></tr></table>
 </div>
 </div><hr>
 <h4 id="创建逻辑">创建逻辑</h4>
-<!-- raw HTML omitted -->
+<!-- 本文主要聊一下通过 `make` 关键字创建切片的过程  -->
 <p><a class="link" href="https://github.com/golang/go/blob/master/src/runtime/slice.go#L88"  target="_blank" rel="noopener"
     >src/runtime/slice.go#L88</a></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -370,27 +369,27 @@
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="c1">// input: et: slice类型元信息，slice长度，slice容量
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="nf">makeslice</span><span class="p">(</span><span class="nx">et</span> <span class="o">*</span><span class="nx">_type</span><span class="p">,</span> <span class="nx">len</span><span class="p">,</span> <span class="nx">cap</span> <span class="kt">int</span><span class="p">)</span> <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">   <span class="c1">// 调用MulUintptr函数：获取创建该切片需要的内存，是否溢出(超过2^64)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// 2^64是64位机能够表示的最大内存地址
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">mem</span><span class="p">,</span> <span class="nx">overflow</span> <span class="o">:=</span> <span class="nx">math</span><span class="p">.</span><span class="nf">MulUintptr</span><span class="p">(</span><span class="nx">et</span><span class="p">.</span><span class="nx">size</span><span class="p">,</span> <span class="nb">uintptr</span><span class="p">(</span><span class="nx">cap</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">overflow</span> <span class="o">||</span> <span class="nx">mem</span> <span class="p">&gt;</span> <span class="nx">maxAlloc</span> <span class="o">||</span> <span class="nx">len</span> <span class="p">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="nx">len</span> <span class="p">&gt;</span> <span class="nx">cap</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">		<span class="nx">mem</span><span class="p">,</span> <span class="nx">overflow</span> <span class="o">:=</span> <span class="nx">math</span><span class="p">.</span><span class="nf">MulUintptr</span><span class="p">(</span><span class="nx">et</span><span class="p">.</span><span class="nx">size</span><span class="p">,</span> <span class="nb">uintptr</span><span class="p">(</span><span class="nx">len</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">// 如果溢出或超过能够分配的最大内存(2^32 - 1) | 非法输入, 报错并返回
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">if</span> <span class="nx">overflow</span> <span class="o">||</span> <span class="nx">mem</span> <span class="p">&gt;</span> <span class="nx">maxAlloc</span> <span class="o">||</span> <span class="nx">len</span> <span class="p">&lt;</span> <span class="mi">0</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">			<span class="nf">panicmakeslicelen</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">		<span class="p">}</span>
-</span></span><span class="line"><span class="cl">		<span class="nf">panicmakeslicecap</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="c1">// 调用mallocgc函数分配一块连续内存并返回该内存的首地址
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// 该函数实现涉及到了go语言内存管理，比较复杂，不是本文的主题
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// 关于 mallocgc 逻辑后续再讲
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">return</span> <span class="nf">mallocgc</span><span class="p">(</span><span class="nx">mem</span><span class="p">,</span> <span class="nx">et</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-golang" data-lang="golang"><span class="c1">// input: et: slice类型元信息，slice长度，slice容量
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">makeslice</span><span class="p">(</span><span class="nx">et</span> <span class="o">*</span><span class="nx">_type</span><span class="p">,</span> <span class="nx">len</span><span class="p">,</span> <span class="nx">cap</span> <span class="kt">int</span><span class="p">)</span> <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span> <span class="p">{</span>
+   <span class="c1">// 调用MulUintptr函数：获取创建该切片需要的内存，是否溢出(超过2^64)
+</span><span class="c1"></span>    <span class="c1">// 2^64是64位机能够表示的最大内存地址
+</span><span class="c1"></span> <span class="nx">mem</span><span class="p">,</span> <span class="nx">overflow</span> <span class="o">:=</span> <span class="nx">math</span><span class="p">.</span><span class="nf">MulUintptr</span><span class="p">(</span><span class="nx">et</span><span class="p">.</span><span class="nx">size</span><span class="p">,</span> <span class="nb">uintptr</span><span class="p">(</span><span class="nx">cap</span><span class="p">))</span>
+ <span class="k">if</span> <span class="nx">overflow</span> <span class="o">||</span> <span class="nx">mem</span> <span class="p">&gt;</span> <span class="nx">maxAlloc</span> <span class="o">||</span> <span class="nx">len</span> <span class="p">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="nx">len</span> <span class="p">&gt;</span> <span class="nx">cap</span> <span class="p">{</span>
+
+  <span class="nx">mem</span><span class="p">,</span> <span class="nx">overflow</span> <span class="o">:=</span> <span class="nx">math</span><span class="p">.</span><span class="nf">MulUintptr</span><span class="p">(</span><span class="nx">et</span><span class="p">.</span><span class="nx">size</span><span class="p">,</span> <span class="nb">uintptr</span><span class="p">(</span><span class="nx">len</span><span class="p">))</span>
+    <span class="c1">// 如果溢出或超过能够分配的最大内存(2^32 - 1) | 非法输入, 报错并返回
+</span><span class="c1"></span>  <span class="k">if</span> <span class="nx">overflow</span> <span class="o">||</span> <span class="nx">mem</span> <span class="p">&gt;</span> <span class="nx">maxAlloc</span> <span class="o">||</span> <span class="nx">len</span> <span class="p">&lt;</span> <span class="mi">0</span> <span class="p">{</span>
+   <span class="nf">panicmakeslicelen</span><span class="p">()</span>
+  <span class="p">}</span>
+  <span class="nf">panicmakeslicecap</span><span class="p">()</span>
+ <span class="p">}</span>
+
+  <span class="c1">// 调用mallocgc函数分配一块连续内存并返回该内存的首地址
+</span><span class="c1"></span>  <span class="c1">// 该函数实现涉及到了go语言内存管理，比较复杂，不是本文的主题
+</span><span class="c1"></span>  <span class="c1">// 关于 mallocgc 逻辑后续再讲
+</span><span class="c1"></span> <span class="k">return</span> <span class="nf">mallocgc</span><span class="p">(</span><span class="nx">mem</span><span class="p">,</span> <span class="nx">et</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>根据slice的类型和长度以及容量，计算出所需要的内存空间大小，</li>
@@ -401,7 +400,7 @@
     >src\runtime\internal\math\math.go</a></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -416,20 +415,20 @@
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="c1">// MulUintptr returns a * b and whether the multiplication overflowed.
-</span></span></span><span class="line"><span class="cl"><span class="c1">// On supported platforms this is an intrinsic lowered by the compiler.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="nf">MulUintptr</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">uintptr</span><span class="p">)</span> <span class="p">(</span><span class="kt">uintptr</span><span class="p">,</span> <span class="kt">bool</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">// 如果slice类型大小为0(如struct{}类型) 或 (a | b) &lt; 2 ^ 32，肯定不会发生溢出
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// sys.PtrSize = 8
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span> <span class="nx">a</span><span class="p">|</span><span class="nx">b</span> <span class="p">&lt;</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="nx">sys</span><span class="p">.</span><span class="nx">PtrSize</span><span class="p">)</span> <span class="o">||</span> <span class="nx">a</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="nx">a</span> <span class="o">*</span> <span class="nx">b</span><span class="p">,</span> <span class="kc">false</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="c1">// 如果a * b &gt; MaxUintptr，即类型大小 * 切片容量 &gt; MaxUintPtr，则说明发生了溢出
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// MaxUintptr = ^uintptr(0) = 2 ^ 64
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">overflow</span> <span class="o">:=</span> <span class="nx">b</span> <span class="p">&gt;</span> <span class="nx">MaxUintptr</span><span class="o">/</span><span class="nx">a</span>
-</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nx">a</span> <span class="o">*</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">overflow</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-golang" data-lang="golang"><span class="c1">// MulUintptr returns a * b and whether the multiplication overflowed.
+</span><span class="c1">// On supported platforms this is an intrinsic lowered by the compiler.
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">MulUintptr</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">uintptr</span><span class="p">)</span> <span class="p">(</span><span class="kt">uintptr</span><span class="p">,</span> <span class="kt">bool</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 如果slice类型大小为0(如struct{}类型) 或 (a | b) &lt; 2 ^ 32，肯定不会发生溢出
+</span><span class="c1"></span>    <span class="c1">// sys.PtrSize = 8
+</span><span class="c1"></span> <span class="k">if</span> <span class="nx">a</span><span class="p">|</span><span class="nx">b</span> <span class="p">&lt;</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="nx">sys</span><span class="p">.</span><span class="nx">PtrSize</span><span class="p">)</span> <span class="o">||</span> <span class="nx">a</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">a</span> <span class="o">*</span> <span class="nx">b</span><span class="p">,</span> <span class="kc">false</span>
+ <span class="p">}</span>
+  <span class="c1">// 如果a * b &gt; MaxUintptr，即类型大小 * 切片容量 &gt; MaxUintPtr，则说明发生了溢出
+</span><span class="c1"></span>  <span class="c1">// MaxUintptr = ^uintptr(0) = 2 ^ 64
+</span><span class="c1"></span> <span class="nx">overflow</span> <span class="o">:=</span> <span class="nx">b</span> <span class="p">&gt;</span> <span class="nx">MaxUintptr</span><span class="o">/</span><span class="nx">a</span>
+ <span class="k">return</span> <span class="nx">a</span> <span class="o">*</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">overflow</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
 </div>
 </div><hr>
 <h3 id="追加元素">追加元素</h3>
@@ -438,7 +437,7 @@
     >src/reflect/value.go</a></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -479,46 +478,46 @@
 </span><span class="lnt">39
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="c1">// Append appends the values x to a slice s and returns the resulting slice.
-</span></span></span><span class="line"><span class="cl"><span class="c1">// As in Go, each x&#39;s value must be assignable to the slice&#39;s element type.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="nf">Append</span><span class="p">(</span><span class="nx">s</span> <span class="nx">Value</span><span class="p">,</span> <span class="nx">x</span> <span class="o">...</span><span class="nx">Value</span><span class="p">)</span> <span class="nx">Value</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">s</span><span class="p">.</span><span class="nf">mustBe</span><span class="p">(</span><span class="nx">Slice</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">s</span><span class="p">,</span> <span class="nx">i0</span><span class="p">,</span> <span class="nx">i1</span> <span class="o">:=</span> <span class="nf">grow</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">x</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="o">:=</span> <span class="nx">i0</span><span class="p">,</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">i1</span><span class="p">;</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="p">=</span> <span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nx">j</span><span class="o">+</span><span class="mi">1</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="nx">s</span><span class="p">.</span><span class="nf">Index</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nf">Set</span><span class="p">(</span><span class="nx">x</span><span class="p">[</span><span class="nx">j</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nx">s</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// grow grows the slice s so that it can hold extra more values, allocating
-</span></span></span><span class="line"><span class="cl"><span class="c1">// more capacity if needed. It also returns the old and new slice lengths.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="nf">grow</span><span class="p">(</span><span class="nx">s</span> <span class="nx">Value</span><span class="p">,</span> <span class="nx">extra</span> <span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="nx">Value</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">i0</span> <span class="o">:=</span> <span class="nx">s</span><span class="p">.</span><span class="nf">Len</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">i1</span> <span class="o">:=</span> <span class="nx">i0</span> <span class="o">+</span> <span class="nx">extra</span>
-</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">i1</span> <span class="p">&lt;</span> <span class="nx">i0</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="nb">panic</span><span class="p">(</span><span class="s">&#34;reflect.Append: slice overflow&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">m</span> <span class="o">:=</span> <span class="nx">s</span><span class="p">.</span><span class="nf">Cap</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">i1</span> <span class="o">&lt;=</span> <span class="nx">m</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="nx">s</span><span class="p">.</span><span class="nf">Slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">i1</span><span class="p">),</span> <span class="nx">i0</span><span class="p">,</span> <span class="nx">i1</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">m</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="nx">m</span> <span class="p">=</span> <span class="nx">extra</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="c1">// const threshold = 256  // 1.18增加
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">for</span> <span class="nx">m</span> <span class="p">&lt;</span> <span class="nx">i1</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="nx">i0</span> <span class="p">&lt;</span> <span class="mi">1024</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">				<span class="nx">m</span> <span class="o">+=</span> <span class="nx">m</span>
-</span></span><span class="line"><span class="cl">			<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">				<span class="nx">m</span> <span class="o">+=</span> <span class="nx">m</span> <span class="o">/</span> <span class="mi">4</span>
-</span></span><span class="line"><span class="cl">			<span class="p">}</span>
-</span></span><span class="line"><span class="cl">		<span class="p">}</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">t</span> <span class="o">:=</span> <span class="nf">MakeSlice</span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nf">Type</span><span class="p">(),</span> <span class="nx">i1</span><span class="p">,</span> <span class="nx">m</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="nf">Copy</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nx">t</span><span class="p">,</span> <span class="nx">i0</span><span class="p">,</span> <span class="nx">i1</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-golang" data-lang="golang"><span class="c1">// Append appends the values x to a slice s and returns the resulting slice.
+</span><span class="c1">// As in Go, each x&#39;s value must be assignable to the slice&#39;s element type.
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">Append</span><span class="p">(</span><span class="nx">s</span> <span class="nx">Value</span><span class="p">,</span> <span class="nx">x</span> <span class="o">...</span><span class="nx">Value</span><span class="p">)</span> <span class="nx">Value</span> <span class="p">{</span>
+ <span class="nx">s</span><span class="p">.</span><span class="nf">mustBe</span><span class="p">(</span><span class="nx">Slice</span><span class="p">)</span>
+ <span class="nx">s</span><span class="p">,</span> <span class="nx">i0</span><span class="p">,</span> <span class="nx">i1</span> <span class="o">:=</span> <span class="nf">grow</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">x</span><span class="p">))</span>
+ <span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="o">:=</span> <span class="nx">i0</span><span class="p">,</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">i1</span><span class="p">;</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="p">=</span> <span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nx">j</span><span class="o">+</span><span class="mi">1</span> <span class="p">{</span>
+  <span class="nx">s</span><span class="p">.</span><span class="nf">Index</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nf">Set</span><span class="p">(</span><span class="nx">x</span><span class="p">[</span><span class="nx">j</span><span class="p">])</span>
+ <span class="p">}</span>
+ <span class="k">return</span> <span class="nx">s</span>
+<span class="p">}</span>
+
+<span class="c1">// grow grows the slice s so that it can hold extra more values, allocating
+</span><span class="c1">// more capacity if needed. It also returns the old and new slice lengths.
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">grow</span><span class="p">(</span><span class="nx">s</span> <span class="nx">Value</span><span class="p">,</span> <span class="nx">extra</span> <span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="nx">Value</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+ <span class="nx">i0</span> <span class="o">:=</span> <span class="nx">s</span><span class="p">.</span><span class="nf">Len</span><span class="p">()</span>
+ <span class="nx">i1</span> <span class="o">:=</span> <span class="nx">i0</span> <span class="o">+</span> <span class="nx">extra</span>
+ <span class="k">if</span> <span class="nx">i1</span> <span class="p">&lt;</span> <span class="nx">i0</span> <span class="p">{</span>
+  <span class="nb">panic</span><span class="p">(</span><span class="s">&#34;reflect.Append: slice overflow&#34;</span><span class="p">)</span>
+ <span class="p">}</span>
+ <span class="nx">m</span> <span class="o">:=</span> <span class="nx">s</span><span class="p">.</span><span class="nf">Cap</span><span class="p">()</span>
+ <span class="k">if</span> <span class="nx">i1</span> <span class="o">&lt;=</span> <span class="nx">m</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">s</span><span class="p">.</span><span class="nf">Slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">i1</span><span class="p">),</span> <span class="nx">i0</span><span class="p">,</span> <span class="nx">i1</span>
+ <span class="p">}</span>
+ <span class="k">if</span> <span class="nx">m</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+  <span class="nx">m</span> <span class="p">=</span> <span class="nx">extra</span>
+ <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="c1">// const threshold = 256  // 1.18增加
+</span><span class="c1"></span>  <span class="k">for</span> <span class="nx">m</span> <span class="p">&lt;</span> <span class="nx">i1</span> <span class="p">{</span>
+   <span class="k">if</span> <span class="nx">i0</span> <span class="p">&lt;</span> <span class="mi">1024</span> <span class="p">{</span>
+    <span class="nx">m</span> <span class="o">+=</span> <span class="nx">m</span>
+   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">m</span> <span class="o">+=</span> <span class="nx">m</span> <span class="o">/</span> <span class="mi">4</span>
+   <span class="p">}</span>
+  <span class="p">}</span>
+ <span class="p">}</span>
+ <span class="nx">t</span> <span class="o">:=</span> <span class="nf">MakeSlice</span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nf">Type</span><span class="p">(),</span> <span class="nx">i1</span><span class="p">,</span> <span class="nx">m</span><span class="p">)</span>
+ <span class="nf">Copy</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span>
+ <span class="k">return</span> <span class="nx">t</span><span class="p">,</span> <span class="nx">i0</span><span class="p">,</span> <span class="nx">i1</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>追加元素流程如下：</p>
 <ul>
@@ -534,7 +533,8 @@
 <p>切片的扩容逻辑：</p>
 <ul>
 <li>原cap扩充一倍，即doublecap</li>
-<li>如果指定cap(追加元素后的切片长度) 大于 doublecap，则取cap，否则如下：</li>
+<li>如果指定cap(追加元素后的切片长度) 大于 doublecap，则取cap，否则如下：
+<ul>
 <li>
 <ul>
 <li>cap 小于1024，取doublecap</li>
@@ -545,7 +545,8 @@
 <li>每次增长 1/4，直至不小于cap</li>
 </ul>
 </li>
-<li></li>
+</ul>
+</li>
 </ul>
 </section>
 
@@ -555,6 +556,8 @@
     <section class="article-tags">
         
             <a href="/tags/slice/">slice</a>
+        
+            <a href="/tags/%E5%88%87%E7%89%87/">切片</a>
         
     </section>
 
@@ -603,41 +606,6 @@
     
 
     
-
-<aside class="related-content--wrapper">
-    <h2 class="section-title">Related content</h2>
-    <div class="related-content">
-        <div class="flex article-list--tile">
-            
-                
-<article class="">
-    <a href="/p/golang-%E6%BA%90%E7%A0%81%E9%87%8C%E7%9A%84-/go-%E6%8C%87%E4%BB%A4%E9%83%BD%E4%BB%A3%E8%A1%A8%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Golang 源码里的 //go: 指令，都代表什么意思？</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/p/golang-%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Golang 常用数据类型转换</h2>
-        </div>
-    </a>
-</article>
-
-            
-        </div>
-    </div>
-</aside>
 
      
     
@@ -690,7 +658,7 @@
         
         2019 -
         
-        2022 Hello, It&#39;s me
+        2023 Hello, It&#39;s me
     </section>
 
     <section class="powerby">
