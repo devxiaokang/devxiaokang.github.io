@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>mysql-index on Hello, It&#39;s me</title>
+        <link>https://x-xkang.com/tags/mysql-index/</link>
+        <description>Recent content in mysql-index on Hello, It&#39;s me</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sat, 26 Nov 2022 11:17:45 +0800</lastBuildDate><atom:link href="https://x-xkang.com/tags/mysql-index/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Mysql -- 索引浅析</title>
+        <link>https://x-xkang.com/p/mysql-%E7%B4%A2%E5%BC%95%E6%B5%85%E6%9E%90/</link>
+        <pubDate>Sat, 26 Nov 2022 11:17:45 +0800</pubDate>
+        
+        <guid>https://x-xkang.com/p/mysql-%E7%B4%A2%E5%BC%95%E6%B5%85%E6%9E%90/</guid>
+        <description>&lt;h3 id=&#34;一索引的分类&#34;&gt;一、索引的分类&lt;/h3&gt;
+&lt;h4 id=&#34;1根据数据结构可分为&#34;&gt;1、根据数据结构可分为&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Btree索引（B+tree, b-tree）&lt;/li&gt;
+&lt;li&gt;哈希索引&lt;/li&gt;
+&lt;li&gt;full-text 全文索引&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2根据物理存储可分为&#34;&gt;2、根据物理存储可分为&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;聚簇索引&lt;/li&gt;
+&lt;li&gt;二级索引(辅助索引)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;3根据字段特性可分为&#34;&gt;3、根据字段特性可分为&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;主键索引&lt;/li&gt;
+&lt;li&gt;普通索引&lt;/li&gt;
+&lt;li&gt;前缀索引&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;4根据字段个数可分为&#34;&gt;4、根据字段个数可分为&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;单列索引&lt;/li&gt;
+&lt;li&gt;联合索引（符合索引，组合索引）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;二根据数据结构分类&#34;&gt;二、根据数据结构分类&lt;/h3&gt;
+&lt;p&gt;MySQL按数据结构分类可分为：B+tree索引，Hash索引，Full-text索引&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;-&lt;/th&gt;
+&lt;th&gt;InnoDB&lt;/th&gt;
+&lt;th&gt;MyIsam&lt;/th&gt;
+&lt;th&gt;Memory&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;B+tree索引&lt;/td&gt;
+&lt;td&gt;√&lt;/td&gt;
+&lt;td&gt;√&lt;/td&gt;
+&lt;td&gt;√&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Hash索引&lt;/td&gt;
+&lt;td&gt;×&lt;/td&gt;
+&lt;td&gt;×&lt;/td&gt;
+&lt;td&gt;√&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;B-tree索引&lt;/td&gt;
+&lt;td&gt;√（MySQL5.6+）&lt;/td&gt;
+&lt;td&gt;√&lt;/td&gt;
+&lt;td&gt;×&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注：InnoDB 实际上也支持Hash索引，但是InnoDB中Hash索引的创建由存储引擎自动优化创建，不能人为干预
+是否为表创建Hash索引，&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;B+tree是MySQL中被存储引擎采用最多的索引类型，B+tree中的B代表平衡（balance），而不是二叉（binary），因为B+tree是从最早的平衡二叉树演化而来的，下面演示B+tree数据结构与其他数据结构的对比。&lt;/p&gt;
+&lt;h4 id=&#34;1-btree-和-b-tree的对比&#34;&gt;1. B+tree 和 B-tree的对比&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;https://x-xkang.com/images/mysql-index/B-tree-01.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;B-tree&#34;
+	
+	
+&gt;
+[网络图片] B-tree示意图&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;B+tree非叶子结点只存储键值信息，数据记录都存放在叶子节点中，而B-tree的非叶子节点也存储数据，B+tree单个节点的存储量更小，在相同的磁盘IO情况下可以查到更多节点数据。&lt;/li&gt;
+&lt;li&gt;B+tree 所有叶子结点之间都采用单链表连接，适合MySQL中常见的基于范围的顺序检索场景，而B-tree无法做到这一点。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://x-xkang.com/images/mysql-index/B&amp;#43;tree-01.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;B&amp;#43;tree&#34;
+	
+	
+&gt;
+[网络图片] B+tree示意图&lt;/p&gt;
+&lt;h4 id=&#34;2-btree-和-红黑树的对比&#34;&gt;2. B+tree 和 红黑树的对比&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;https://x-xkang.com/images/mysql-index/red-black-tree.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;red-black-tree&#34;
+	
+	
+&gt;
+[网络图片] 红黑树示意图&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;红黑树&lt;/strong&gt;是一种&lt;strong&gt;弱平衡二叉查找树&lt;/strong&gt;，通过任何一条从根到叶子的路径上各个节点着色方式的限制，&lt;strong&gt;红黑树确保没有一条路径会比其他路径长出两倍&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;对于有N个节点的B+tree，其搜索的时间复杂度为O(logdN)，其中**d(Degree)**为B+tree的度，表示节点允许的最大子节点数为d个，在实际应用当中，d值一般是大于100的，即使数据量达到千万级别时B+tree的高度依然维持在3-4左右，保证了3-4次磁盘I/O操作就能查询到目标数据。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;红黑树&lt;/strong&gt;是二叉树，节点子节点个数为两个，意味着其搜索的算法时间复杂度为 O(logN)，树的高度也会比 B+tree 高出不少，因此红黑树检索到目标数据所需经历的磁盘I/O次数更多。&lt;/p&gt;
+&lt;h4 id=&#34;3-btree-和-hash的对比&#34;&gt;3. B+tree 和 Hash的对比&lt;/h4&gt;
+&lt;p&gt;Hash 索引结构的特殊性，其检索效率非常高，索引的检索可以一次定位，不像B-Tree 索引需要从根节点到枝节点，最后才能访问到页节点这样多次的IO访问，所以 Hash 索引的查询效率要远高于 B-Tree 索引。虽然 Hash 索引效率高，但是 Hash 索引本身由于其特殊性也带来了很多限制和弊端，主要有以下这些。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Hash 索引仅仅能满足 = , IN 和 &amp;lt;=&amp;gt;(表示NULL安全的等价) 查询，不能使用范围查询&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;由于 Hash 索引比较的是进行 Hash 运算之后的 Hash值，所以它只能用于等值的过滤，不能用于基于范围的过滤，因为经过相应的 Hash算法处理之后的 Hash 值的大小关系，并不能保证和Hash运算前完全一样&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Hash 索引无法适用数据的排序操作&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;由于 Hash 索引中存放的是经过 Hash 计算之后的 Hash值，而且Hash值的大小关系并不一定和 Hash运算前的键值完全一样，所以数据库无法利用索引的数据来避免任何排序运算；&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Hash 索引不能利用部分索引键查询&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;对于组合索引，Hash 索引在计算 Hash 值的时候是组合索引键合并后再一起计算 Hash 值，而不是单独计算 Hash值，所以通过组合索引的前面一个或几个索引键进行查询的时候，Hash 索引也无法被利用&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Hash 索引依然需要回表扫描&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Hash 索引是将索引键通过 Hash 运算之后，将 Hash运算结果的 Hash值和所对应的行指针信息存放于一个 Hash 表中，由于不同索引键可能存在相同 Hash 值，所以即使取满足某个 Hash 键值的数据的记录条数，也无法从 Hash索引中直接完成查询，还是要通过访问表中的实际数据进行相应的比较，并得到相应的结果。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Hash索引遇到大量Hash值相等的情况后性能并不一定就会比B-Tree索引高&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;选择性比较低的索引键，如果创建 Hash 索引，那么将会存在大量记录指针信息存于同一个Hash值相关联。这样要定位某一条记录时就会非常麻烦，会浪费多次表数据的访问，而造成整体性能低下&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;由于范围查询是MySQL数据库查询中常见的场景，Hash表不适合做范围查询，它更适合做等值查询。另外Hash表还存在Hash函数选择和Hash值冲突等问题。因此，B+tree索引要比Hash表索引有更广的适用场景&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;三根据物理存储分类&#34;&gt;三、根据物理存储分类&lt;/h3&gt;
+&lt;p&gt;MySQL根据叶子节点是否存储的是完整数据将索引分为：聚簇索引，二级索引（辅助索引）。&lt;/p&gt;
+&lt;h4 id=&#34;1聚簇索引&#34;&gt;1.聚簇索引&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;聚簇索引&lt;/strong&gt;的每个叶子节点都存储了一行完整的表数据，叶子节点之间按照id列升序连接，可以方便的进行顺序检索。
+&lt;img src=&#34;https://x-xkang.com/images/mysql-index/clustering-index.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;clustering-index&#34;
+	
+	
+&gt;
+[网络图片]
+MySQL中的InnoDB 存储引擎要求必须有聚簇索引，默认在主键字段上建立聚簇索引，在没有主键的情况下，数据表的第一个非空唯一索引将被建立为聚簇索引，
+在前两者都没有的情况下，InnoDB将自动生成一个隐式的自增id列，并在此列上建立聚簇索引。&lt;/p&gt;
+&lt;p&gt;MyISAM存储引擎不存在聚簇索引，主键索引和非主键索引的结构是一样的，索引的叶子节点不存储表数据，存放的是表数据的地址，所以MyISAM存储引擎的表可以没有主键。MyISAM表的索引和数据是分开存储的，&lt;/p&gt;
+&lt;h4 id=&#34;2二级索引&#34;&gt;2.二级索引&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;https://x-xkang.com/images/mysql-index/second-index-01.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;second-index-01&#34;
+	
+	
+&gt;
+[网络图片]&lt;/p&gt;
+&lt;p&gt;二级索引的叶子节点并不存储一行完整的数据，而是存储了聚簇索引所在的列。&lt;/p&gt;
+&lt;p&gt;回表查询：由于二级索引的叶子节点不存储完整的表数据，索引当通过二级索引查询聚簇索引列值后，还需要回到聚簇索引也就是表本身进一步获取数据
+&lt;img src=&#34;https://x-xkang.com/images/mysql-index/second-index-02.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;second-index-02&#34;
+	
+	
+&gt;
+[网络图片]&lt;/p&gt;
+&lt;p&gt;回表查询需要额外的B+tree搜索过程，必然增加查询消耗,
+需要注意的是，通过二级索引查询时，回表不是必须的过程，当select 的所有字段在单个二级索引中都能找到时，就不需要回表，MySQL称此时的二级索引为覆盖索引或者触发了索引覆盖。
+可以用explain 命令查看SQL语句的执行计划，执行计划的extra字段中若出现Using index，表示查询触发了索引覆盖。&lt;/p&gt;
+&lt;h3 id=&#34;四按字段特性分类&#34;&gt;四、按字段特性分类&lt;/h3&gt;
+&lt;p&gt;MySQL索引按照字段特性可以分为：&lt;strong&gt;主键索引，普通索引，前缀索引&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;主键索引
+建立在主键上的索引称为&lt;strong&gt;主键索引&lt;/strong&gt;，一张数据表只能有一个主键索引，索引列值不允许有空值，通常在创建表时一起创建。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;唯一索引
+建立在 Unique字段上的索引称为&lt;strong&gt;唯一索引&lt;/strong&gt;，一张表可以有多个唯一索引，索引列值允许为空，列值中出现多个空值不会出现重复冲突。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;普通索引
+建立在普通字段上的索引被称为&lt;strong&gt;普通索引&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;前缀索引
+&lt;strong&gt;前缀索引&lt;/strong&gt;是指对字符类型字段的前几个字符或对二进制类型字段的前几个bytes建立的索引，而不是在整个字段上建索引。前缀索引可以建立在类型为char、varchar、binary、varbinary的列上，可以大大减少索引占用的存储空间，也能提升索引的查询效率&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+        </item>
+        
+    </channel>
+</rss>

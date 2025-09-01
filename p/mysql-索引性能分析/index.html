@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='mysql索引性能分析'><title>Mysql -- 索引性能分析</title>
+
+<link rel='canonical' href='https://x-xkang.com/p/mysql-%E7%B4%A2%E5%BC%95%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/'>
+
+<link rel="stylesheet" href="/scss/style.min.5a8e892f6fa14515e9065eee1f5d2e05302606ec7f11750b2fb95198f9cdcbfd.css"><meta property='og:title' content='Mysql -- 索引性能分析'>
+<meta property='og:description' content='mysql索引性能分析'>
+<meta property='og:url' content='https://x-xkang.com/p/mysql-%E7%B4%A2%E5%BC%95%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/'>
+<meta property='og:site_name' content='Hello, It&#39;s me'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='mysql' /><meta property='article:tag' content='performance' /><meta property='article:tag' content='索引' /><meta property='article:published_time' content='2023-02-28T10:29:46&#43;08:00'/><meta property='article:modified_time' content='2023-02-28T10:29:46&#43;08:00'/>
+<meta name="twitter:title" content="Mysql -- 索引性能分析">
+<meta name="twitter:description" content="mysql索引性能分析">
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu3c3946a5e2dbcd463bda7dfc7c9c9efb_49773_300x0_resize_box_2.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Hello, It&#39;s me</a></h1>
+            <h2 class="site-description">Good good study.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/devxiaokang'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+ -->
+
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#bfbfc0" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <line x1="9" y1="6" x2="20" y2="6" />
+  <line x1="9" y1="12" x2="20" y2="12" />
+  <line x1="9" y1="18" x2="20" y2="18" />
+  <line x1="5" y1="6" x2="5" y2="6.01" />
+  <line x1="5" y1="12" x2="5" y2="12.01" />
+  <line x1="5" y1="18" x2="5" y2="18.01" />
+</svg>
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/database/" style="background-color: #2a9d8f; color: #fff;">
+                Database
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/mysql-%E7%B4%A2%E5%BC%95%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/">Mysql -- 索引性能分析</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            mysql索引性能分析
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Feb 28, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    3 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h3 id="查看sql执行频率">查看SQL执行频率</h3>
+<p>MySQL 客户端连接成功后，通过show[session|global] status 命令可以提供服务器状态信息。通过如下指令可以查看当前数据库的<code>INSERT</code>、<code>UPDATE</code>、<code>DELETE</code>、<code>SELECT</code>的访问频次：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SHOW</span> <span class="k">GLOBAL</span> <span class="n">STATUS</span> <span class="k">LIKE</span> <span class="s1">&#39;Com_______&#39;</span><span class="p">;</span> <span class="o">#</span> <span class="err">一个</span> <span class="s1">&#39;_&#39;</span> <span class="err">代表一个字符</span>  
+</code></pre></td></tr></table>
+</div>
+</div><p>结果如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html">mysql&gt; show global status like &#39;Com_______&#39;;
++---------------+-------+
+| Variable_name | Value |
++---------------+-------+
+| Com_binlog    | 0     |
+| Com_commit    | 0     |
+| Com_delete    | 0     |
+| Com_import    | 0     |
+| Com_insert    | 0     |
+| Com_repair    | 0     |
+| Com_revoke    | 0     |
+| Com_select    | 8     |
+| Com_signal    | 0     |
+| Com_update    | 0     |
+| Com_xa_end    | 0     |
++---------------+-------+
+11 rows in set (0.00 sec)
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 id="查询慢日志">查询慢日志</h3>
+<blockquote>
+<p>慢查询日志记录了所有执行时间超过指定参数（long_query_time，单位：秒，默认10秒）的所有SQL语句的日志。MySQL的慢查询日志默认没有开启，执行一下SQL查看慢日志开启状态：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SHOW</span> <span class="n">VARIABLES</span> <span class="k">LIKE</span> <span class="s1">&#39;slow_query_log&#39;</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div></blockquote>
+<p>需要在MySQL的配置文件（/etc/my.cnf）中配置如下信息：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 开启MySQL慢日志查询开关</span>
+<span class="nv">slow_query_log</span><span class="o">=</span><span class="m">1</span>
+
+<span class="c1"># 设置慢日志的时间为2秒，SQL语句执行时间炒锅2秒就会视为慢查询，记录慢查询日志</span>
+<span class="nv">long_query_time</span><span class="o">=</span><span class="m">2</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>重启MySQL服务，本机环境为win10的WSL2，直接执行以下命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">sudo service mysql restart
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 id="profile详情">profile详情</h3>
+<p><code>show profiles</code> 能够在做SQL优化时帮助我们了解时间都耗费到哪去了。通过<code>have_profiling</code>参数，能够看到当前MySQL是否支持profile操作：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="o">#</span> <span class="err">查看是否支持</span>
+<span class="k">SELECT</span> <span class="o">@@</span><span class="n">have_profiling</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>默认<code>profiling</code>是关闭的，可以通过<code>set</code>语句在<code>session</code>/<code>global</code>级别开启<code>profiling</code>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="o">#</span> <span class="err">查看开关状态</span>
+<span class="k">SELECT</span> <span class="o">@@</span><span class="n">profiling</span><span class="p">;</span>
+
+<span class="o">#</span> <span class="err">设置开关状态</span>
+<span class="k">SET</span> <span class="n">profiling</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>执行完查询语句后再执行<code>show profiles</code>，结果如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html">+----------+------------+------------------------+
+| Query_ID | Duration   | Query                  |
++----------+------------+------------------------+
+|        1 | 0.00025800 | select @@profiling     |
+|        2 | 0.00125875 | show tables            |
+|        3 | 0.00014975 | select * form user     |
+|        4 | 0.01059300 | select * from user     |
+|        5 | 0.00152175 | select * from user_log |
++----------+------------+------------------------+
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 id="explain-执行计划">explain 执行计划</h3>
+<p><code>EXPLAIN</code> 或者 <code>DESC</code> 命令获取MySQL如何执行SELECT语句的信息，包括在SELECT语句执行过程中表如何连接和连接的顺序。语法如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="o">#</span> <span class="err">直接在</span><span class="n">select语句之前加上关键字</span> <span class="k">explain</span><span class="o">/</span><span class="k">desc</span>
+
+<span class="k">EXPLAIN</span> <span class="k">SELECT</span> <span class="err">字段列表</span> <span class="k">FROM</span> <span class="err">表名</span> <span class="k">WHERE</span> <span class="err">条件</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>结果如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html">mysql&gt; explain select * from user;
++----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------+
+| id | select_type | table | partitions | type | possible_keys | key  | key_len | ref  | rows | filtered | Extra |
++----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------+
+|  1 | SIMPLE      | user  | NULL       | ALL  | NULL          | NULL | NULL    | NULL |    1 |   100.00 | NULL  |
++----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------+
+1 row in set, 1 warning (0.00 sec)
+</code></pre></td></tr></table>
+</div>
+</div><p><code>EXPLAIN</code> 输出列如下：</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Column</th>
+<th>JSON Name</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="link" href="#id" >id</a></td>
+<td><code>select_id</code></td>
+<td><code>SELECT</code> 标识符</td>
+</tr>
+<tr>
+<td><a class="link" href="#select_type" >select_type</a></td>
+<td><code>None</code></td>
+<td><code>SELECT</code> 类型</td>
+</tr>
+<tr>
+<td><a class="link" href="#table" >table</a></td>
+<td><code>table_name</code></td>
+<td>输出行table</td>
+</tr>
+<tr>
+<td><a class="link" href="#partitions" >partitions</a></td>
+<td><code>partitions</code></td>
+<td>匹配的分区</td>
+</tr>
+<tr>
+<td><a class="link" href="#type" >type</a></td>
+<td><code>access_type</code></td>
+<td>连接类型</td>
+</tr>
+<tr>
+<td><a class="link" href="#possible_keys" >possible_keys</a></td>
+<td><code>possible_keys</code></td>
+<td>可能的索引选择</td>
+</tr>
+<tr>
+<td><a class="link" href="#key" >key</a></td>
+<td><code>key</code></td>
+<td>实际选择的索引</td>
+</tr>
+<tr>
+<td><a class="link" href="#key_len" >key_len</a></td>
+<td><code>key_length</code></td>
+<td>所选键的长度</td>
+</tr>
+<tr>
+<td><a class="link" href="#ref" >ref</a></td>
+<td><code>ref</code></td>
+<td>与索引比较的列</td>
+</tr>
+<tr>
+<td><a class="link" href="#rows" >rows</a></td>
+<td><code>rows</code></td>
+<td>估计要检查的行</td>
+</tr>
+<tr>
+<td><a class="link" href="#filtered" >filtered</a></td>
+<td><code>filtered</code></td>
+<td>按table条件过滤的行百分比</td>
+</tr>
+<tr>
+<td><a class="link" href="#Extra" >Extra</a></td>
+<td><code>None</code></td>
+<td>扩展信息</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>😀 Note
+详细解释可参考 <a class="link" href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html"  target="_blank" rel="noopener"
+    >[官方文档]</a></p>
+</blockquote>
+<ul>
+<li>
+<p><span id="id"><code>id</code></span>
+行标识，如果没有子查询或者联合查询，这个值是1，id列值越大越先执行，如果一样大，那么就从上往下依次执行</p>
+</li>
+<li>
+<p><span id="select_type"><code>select_type</code></span>
+查询的类型，可以是下表的任何一种类型</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>select_type</th>
+<th>类型说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SIMPLE</code></td>
+<td>简单<code>SELECT</code>（不使用<code>UNION</code>或子查询）</td>
+</tr>
+<tr>
+<td><code>PROMARY</code></td>
+<td>最外层的<code>SELECT</code></td>
+</tr>
+<tr>
+<td><code>UNION</code></td>
+<td><code>UNION</code>中第二个或之后的<code>SELECT</code>语句</td>
+</tr>
+<tr>
+<td><code>DEPENDENT UNION</code></td>
+<td><code>UNION</code>中第二个或之后的<code>SELECT</code>语句取决于外面的查询</td>
+</tr>
+<tr>
+<td><code>UNION RESULT</code></td>
+<td><code>UNION</code>的结果</td>
+</tr>
+<tr>
+<td><code>SUBQUERY</code></td>
+<td>子查询中的第一个<code>SELECT</code></td>
+</tr>
+<tr>
+<td><code>DEPENDENT SUBQUERY</code></td>
+<td>子查询中的第一个<code>SELECT</code>，取决于外面的查询</td>
+</tr>
+<tr>
+<td><code>DERIVED</code></td>
+<td>衍生表（FROM自居中的子查询）</td>
+</tr>
+<tr>
+<td><code>MATERIALIZED</code></td>
+<td>物化子查询</td>
+</tr>
+<tr>
+<td><code>UNCACHEABLE SUBQUERY</code></td>
+<td>结果集无法缓存的子查询，必须重新评估外部查询的每一行</td>
+</tr>
+<tr>
+<td><code>UNCACHEABLE UNION</code></td>
+<td><code>UNION</code>中第二个或之后的<code>SELECT</code>，属于无法缓存的子查询</td>
+</tr>
+</tbody>
+</table></div>
+</li>
+</ul>
+<blockquote>
+<p>⭐ <code>DEPENDENT</code> 意味着使用了关联子查询</p>
+</blockquote>
+<ul>
+<li>
+<p><span id="table"><code>table</code></span>：输出行所引用表的名称，也可以是以下值之一：</p>
+<ul>
+<li>&lt;unionM,N&gt;: 引用id为M和N UNION之后的结果。</li>
+<li><derivedN>: 引用id为N的结果派生出的表，派生表可以是一个结果集，例如派生自FROM中子查询的结果。</li>
+<li><subqueryN>: 引用id为N的子查询结果物化得到的表，即生成一个临时表保存子查询的结果。</li>
+</ul>
+</li>
+<li>
+<p><span id="partitions"><code>partitions</code></span>：v5.7之前该项是<code>explain partitions</code>显示的选项，v5.7之后成为了默认选项，该列显示的为分区表中的分区情况，非分区表该字段为空（null）。</p>
+</li>
+<li>
+<p><span id="type">type</span>( <strong>重要</strong> )：连接类型</p>
+<ul>
+<li>
+<p><code>system</code>
+表中只有一行数据或者是空表，这是const类型的一个特例，且只能用于<code>MyISAM</code>和<code>Memory</code>表，如果是<code>InnoDB</code>引擎表，<code>type</code>列在这个情况通常都是<code>all</code>或者<code>index</code></p>
+</li>
+<li>
+<p><code>const</code>
+最多只有一行记录匹配。当联合主键或唯一索引的所有字段跟常量值比较时，<code>join</code>类型为<code>const</code>。其他数据库也叫做唯一索引扫描</p>
+</li>
+<li>
+<p><code>eq_ref</code>
+多表<code>join</code>时，对于来自前面表的每一行，在当前表中只能找到一行，这可能是除了<code>system</code>和<code>const</code>之外最好的类型，当主键或唯一非NULL索引的所有字段都被当做<code>join</code>连接时会出现此类型。
+<code>eq_ref</code>可用于使用'=&lsquo;操作符作比较的索引列，比较的值可以是常量，也可以是使用此表之前读取的表的列表达式。</p>
+</li>
+<li>
+<p><code>ref</code>
+对于来自前面表的每一行，在此表的索引中可以匹配到多行，若连接只用到索引的最左前缀或索引不是主键或唯一索引时，使用 <code>ref</code> 类型（也就是说，此类型能够匹配到多行连接）。
+<code>ref</code> 可用于使用 <code>=</code> 或 <code>&lt;=&gt;</code> 操作符作比较的索引列。</p>
+</li>
+<li>
+<p><code>fulltext</code>
+用于全文索引的时候是这个类型，要注意，<strong>全文索引的优先级很高</strong>，若全文索引和普通索引同时存在，mysql不管代价，优先选择使用全文索引</p>
+</li>
+<li>
+<p><code>ref_or_null</code>
+类似于<code>ref</code>类型，只是增加了<code>null</code>值得比较，实际用的不多</p>
+</li>
+<li>
+<p><code>index_merge</code>
+此类型表示查询使用两个以上索引，最后取交集或者并集，常见 <code>and</code>, <code>or</code>的条件使用了不同的索引，官方排序这个在<code>ref_or_null</code>之后，但是实际上由于要读取多个索引，性能可能大部分时间都不如<code>range</code>。</p>
+</li>
+<li>
+<p><code>unique_subquery</code>
+用于<code>WHERE</code>中的 <code>IN</code> 形式子查询，子查询返回不重复值唯一值，可以完全替换子查询，效率更高。
+该类型替换了下面形式的 <code>IN</code> 子查询的 <code>ref</code>:
+<code>value IN (select primary_key FROM single_table WHERE some_expr)</code></p>
+</li>
+<li>
+<p><code>index_subquery</code>
+该连接类型类似于<code>unique_subquery</code>。适用于非唯一索引，可以返回重复值</p>
+</li>
+<li>
+<p><code>range</code>
+索引范围查询，常见于使用<code>=</code> <code>&lt;&gt;</code> <code>&gt;</code> <code>&gt;=</code> <code>&lt;</code> <code>&lt;=</code> <code>IS NULL</code> <code>&lt;=&gt;</code> <code>BETWEEN</code> <code>IN</code> 或者 <code>LIKE</code> 等运算符的查询中。</p>
+</li>
+<li>
+<p><code>index</code>
+索引全表扫描，把索引从头到尾扫一遍。这里包含两种情况：
+一种是查询使用了覆盖索引，那么它只需要扫描索引就可以获得数据，这个效率要比全表扫描要快，因为索引通常比数据表小，而且还能避免二次查询。在 <code>extra</code> 中显示 <code>Using index</code>，反之，如果在索引上进行全表扫描，没有 <code>Using index</code>的提示。</p>
+</li>
+<li>
+<p><code>all</code>
+全表扫描，性能较差</p>
+</li>
+</ul>
+</li>
+<li>
+<p><span id="possible_keys">possible_keys</span>：查询可能用到的索引，如果此列是 <code>NULL</code>，则没有用到索引。</p>
+</li>
+<li>
+<p><span id="key">key</span>：表示MySQL实际决定使用的索引，如果MySQL决定使用其中一个 <code>possible_keys</code> 索引来查找行，则该索引将作为键值列出。</p>
+</li>
+<li>
+<p><span id="key_length">key_length</span>：查询用到的索引长度（字节），
+如果是单列索引，那就整个索引长度算进去，如果是多列索引，那么查询不一定都能使用到所有的列，用多少算多少。例如组合索引为<code>idx_username_create_time</code>，当查询语句为 <code>select * from user where username='qqq'</code>时，只用到了<code>username</code>字段，那么<code>key_len</code>只会计算<code>username</code>字段占用的字节数，假如<code>username</code>字段类型为<code>varchar(50)</code> NOT NULL，字符编码为<code>utf8mb3</code>（utf8编码一个字符占用3个字节，gbk编码一个字符占2字节），记录字符串长度占用2字节，记录字段不为空占用1字节（若没有<code>NOT NULL</code>限制则不占用这1个字节）那么<code>key_len</code>为 50 * 3 + 2 + 1 = 153字节</p>
+</li>
+<li>
+<p><span id="ref">ref</span>：如果使用的是常数等值查询，这里会显示<code>const</code>，如果是连接查询，被驱动表的执行计划这里会显示驱动表的关联字段，如果是条件使用了表达式或者函数，或者条件列表发生了内部隐式转换，这里可能显示为<code>func</code>。</p>
+</li>
+<li>
+<p><span id="rows">rows</span>( <strong>重要</strong> ):<code>rows</code>也是一个重要的字段，这是MySQL估算的需要扫描的行数（不是精确值）。这个值非常直观显示SQL的效率好坏，原则上<code>rows</code>越少越好。</p>
+</li>
+<li>
+<p><span id="filtered">filtered</span>：该字段表示存储引擎返回的数据在server层过滤后，剩下多少满足查询的记录数量的比例，注意是百分比，不是具体记录数。</p>
+</li>
+<li>
+<p><span id="Extra">Extra</span>( <strong>重要</strong> )：<code>EXPLAIN</code>中很多额外的信息会在<code>Extra</code>字段显示，常见的有以下：</p>
+<ul>
+<li><strong><code>distinct</code></strong>: 在<code>select</code>部分使用了<code>distinct</code>关键字</li>
+<li><strong><code>Using filesort</code></strong>: 当<code>Extra</code>中有<code>Using filesort</code>时，表示MySQL需额外的排序操作，不能通过索引顺序到达排序效果，一般有 <code>Using filesort</code> 都建议优化去掉，因为这样的查询CPU资源消耗较大。</li>
+<li><strong><code>Using index</code></strong>: “覆盖索引扫描”，表示查询在索引树种就可查找所需数据，不用扫描表数据文件，往往说明性能不错。</li>
+<li><strong><code>Using temporary</code></strong>: 查询有使用临时表，一般出现于排序，分组和多表join的情况，查询效率不高，建议优化。</li>
+</ul>
+</li>
+</ul>
+<!-- 以上即是`EXPLAIN`执行计划返回的结果集中个字段的含义。 -->
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/mysql/">mysql</a>
+        
+            <a href="/tags/performance/">performance</a>
+        
+            <a href="/tags/%E7%B4%A2%E5%BC%95/">索引</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/mysql-%E7%BA%A6%E6%9D%9F/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Mysql -- 约束</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/mysql-%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Mysql -- 多表查询</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/mysql-%E9%94%81%E5%88%86%E6%9E%90/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Mysql -- 锁分析</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/mysql-docker%E9%83%A8%E7%BD%B2%E9%9B%86%E7%BE%A4%E4%B9%8B%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E6%96%B9%E6%A1%88/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Mysql -- docker部署集群之主从复制方案</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/mysql-%E7%B4%A2%E5%BC%95%E6%B5%85%E6%9E%90/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Mysql -- 索引浅析</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <script src="https://utteranc.es/client.js" 
+        repo="devxiaokang/blog"
+        issue-term="pathname"
+        
+        crossorigin="anonymous"
+        async
+        >
+</script>
+
+<style>
+    .utterances {
+        max-width: unset;
+    }
+</style>
+
+<script>
+    function setUtterancesTheme(theme) {
+        let utterances = document.querySelector('.utterances iframe');
+        if (utterances) {
+            utterances.contentWindow.postMessage(
+                {
+                    type: 'set-theme',
+                    theme: `github-${theme}`
+                },
+                'https://utteranc.es'
+            );
+        }
+    }
+
+    addEventListener('message', event => {
+        if (event.origin !== 'https://utteranc.es') return;
+        setUtterancesTheme(document.documentElement.dataset.scheme)
+    });
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setUtterancesTheme(e.detail)
+    })
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy;
+        
+        2019 -
+        
+        2023 Hello, It&#39;s me
+    </section>
+
+    <section class="powerby">
+        
+        皖ICP备20014602号 <br />
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener"
+                data-version="3.13.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#查看sql执行频率">查看SQL执行频率</a></li>
+        <li><a href="#查询慢日志">查询慢日志</a></li>
+        <li><a href="#profile详情">profile详情</a></li>
+        <li><a href="#explain-执行计划">explain 执行计划</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+
+
+
+</script>
+
+    </body>
+</html>
