@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://x-xkang.com/p/docker-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/'>
 
-<link rel="stylesheet" href="/scss/style.min.7e54386a70f08c359dc67b56ecb1ed61936ec90f83972802164db3639519a07b.css"><meta property='og:title' content="Docker 常用命令">
+<link rel="stylesheet" href="/scss/style.min.bb7f7152956eee6b537748fb6604b0f0d3b5ee8183878889491a08c72a593558.css"><meta property='og:title' content="Docker 常用命令">
 <meta property='og:description' content="Docker">
 <meta property='og:url' content='https://x-xkang.com/p/docker-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/'>
 <meta property='og:site_name' content='不积跬步无以至千里'>
@@ -336,12 +336,12 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-Dockerfile" data-lang="Dockerfile"><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> golang:latest            # 依赖的镜像:镜像版本</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="w"> </span><span class="s">golang:latest</span>            <span class="c1"># 依赖的镜像:镜像版本</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ADD</span> . /var/www/go-aimaster    <span class="c1"># 将当前工作目录copy到镜像的/var/www/go-aimaster 目录下</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /var/www/go-aimaster  # 设置镜像内的工作目录</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/var/www/go-aimaster</span>  <span class="c1"># 设置镜像内的工作目录</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> <span class="nv">GOPROXY</span><span class="o">=</span><span class="s2">&#34;https://goproxy.cn,direct&#34;</span> go build -o main /var/www/go-aimaster/main.go   <span class="c1"># 运行命令(当前为golang 项目demo)</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;/var/www/go-aimaster/main&#34;</span><span class="p">]</span> <span class="c1"># 可执行文件目录，上一步build生成的main可执行文件</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">EXPOSE</span><span class="s"> 8080                   # 暴露端口，最终暴露的端口不一定是当前的8080 端口</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">EXPOSE</span><span class="w"> </span><span class="s">8080</span>                   <span class="c1"># 暴露端口，最终暴露的端口不一定是当前的8080 端口</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENTRYPOINT</span> <span class="p">[</span><span class="s2">&#34;./main&#34;</span><span class="p">]</span>         <span class="c1"># 入口文件</span><span class="err">
 </span></span></span></code></pre></td></tr></table>
 </div>

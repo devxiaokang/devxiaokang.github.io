@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://x-xkang.com/p/redis-%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E9%97%AE%E9%A2%98/'>
 
-<link rel="stylesheet" href="/scss/style.min.7e54386a70f08c359dc67b56ecb1ed61936ec90f83972802164db3639519a07b.css"><meta property='og:title' content="Redis 分布式锁问题">
+<link rel="stylesheet" href="/scss/style.min.bb7f7152956eee6b537748fb6604b0f0d3b5ee8183878889491a08c72a593558.css"><meta property='og:title' content="Redis 分布式锁问题">
 <meta property='og:description' content="redis 分布式锁遇到的问题">
 <meta property='og:url' content='https://x-xkang.com/p/redis-%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E9%97%AE%E9%A2%98/'>
 <meta property='og:site_name' content='不积跬步无以至千里'>
@@ -285,13 +285,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="c1">// 获取锁操作</span>
-</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="nx">redis</span><span class="p">.</span><span class="nf">setnx</span><span class="p">(</span><span class="nx">lockKey</span><span class="p">,</span> <span class="s">&#34;lock&#34;</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span> <span class="p">{</span>  <span class="c1">// 获取锁成功后会继续执行</span>
-</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;获取锁失败&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// business logic ...</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="c1">// 获取锁操作</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">if</span><span class="w"> </span><span class="nx">redis</span><span class="p">.</span><span class="nf">setnx</span><span class="p">(</span><span class="nx">lockKey</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;lock&#34;</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// 获取锁成功后会继续执行</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;获取锁失败&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// business logic ...</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>问题： 业务逻辑执行完之后锁没有释放，导致后续请求都获取不到锁，导致业务逻辑执行失败。
 解决： 在业务逻辑执行完之后，再释放锁。</p>
@@ -310,15 +310,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="c1">// 获取锁操作</span>
-</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="nx">redis</span><span class="p">.</span><span class="nf">setnx</span><span class="p">(</span><span class="nx">lockKey</span><span class="p">,</span> <span class="s">&#34;lock&#34;</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span> <span class="p">{</span>  <span class="c1">// 获取锁成功后会继续执行</span>
-</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;获取锁失败&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// business logic ...</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">redis</span><span class="p">.</span><span class="nf">del</span><span class="p">(</span><span class="nx">lockKey</span><span class="p">)</span> <span class="c1">// 释放锁操作失败，导致所没有释放</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="c1">// 获取锁操作</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">if</span><span class="w"> </span><span class="nx">redis</span><span class="p">.</span><span class="nf">setnx</span><span class="p">(</span><span class="nx">lockKey</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;lock&#34;</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// 获取锁成功后会继续执行</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;获取锁失败&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// business logic ...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nx">redis</span><span class="p">.</span><span class="nf">del</span><span class="p">(</span><span class="nx">lockKey</span><span class="p">)</span><span class="w"> </span><span class="c1">// 释放锁操作失败，导致所没有释放</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>问题： 获取锁成功后，业务逻辑执行完之后，释放锁失败，导致锁没有释放，导致后续请求都获取不到锁，导致业务逻辑执行失败。
 解决方案：获取锁之后，设置锁的过期时间，防止锁没有释放，导致锁无法释放。</p>
@@ -336,17 +336,17 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// 获取锁操作</span>
-</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="nx">redis</span><span class="p">.</span><span class="nf">setnx</span><span class="p">(</span><span class="nx">lockKey</span><span class="p">,</span> <span class="s">&#34;lock&#34;</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span> <span class="p">{</span>  <span class="c1">// 获取锁成功后会继续执行</span>
-</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;获取锁失败&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">redis</span><span class="p">.</span><span class="nf">expire</span><span class="p">(</span><span class="nx">lockKey</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span> <span class="c1">// 设置过期时间，若释放锁失败，则锁会自动释放</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// business logic ...</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">redis</span><span class="p">.</span><span class="nf">del</span><span class="p">(</span><span class="nx">lockKey</span><span class="p">)</span> 
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// 获取锁操作</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">if</span><span class="w"> </span><span class="nx">redis</span><span class="p">.</span><span class="nf">setnx</span><span class="p">(</span><span class="nx">lockKey</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;lock&#34;</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// 获取锁成功后会继续执行</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;获取锁失败&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nx">redis</span><span class="p">.</span><span class="nf">expire</span><span class="p">(</span><span class="nx">lockKey</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">)</span><span class="w"> </span><span class="c1">// 设置过期时间，若释放锁失败，则锁会自动释放</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// business logic ...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nx">redis</span><span class="p">.</span><span class="nf">del</span><span class="p">(</span><span class="nx">lockKey</span><span class="p">)</span><span class="w"> 
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="3">
 <li>锁的生命周期设置失败</li>
@@ -361,13 +361,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// 获取锁操作</span>
-</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="nx">redis</span><span class="p">.</span><span class="nf">setnx</span><span class="p">(</span><span class="nx">lockKey</span><span class="p">,</span> <span class="s">&#34;lock&#34;</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span> <span class="p">{</span>  <span class="c1">// 获取锁成功后会继续执行</span>
-</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;获取锁失败&#34;</span><span class="p">)</span> 
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">redis</span><span class="p">.</span><span class="nf">expire</span><span class="p">(</span><span class="nx">lockKey</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span> <span class="c1">// 设置失败</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// 获取锁操作</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">if</span><span class="w"> </span><span class="nx">redis</span><span class="p">.</span><span class="nf">setnx</span><span class="p">(</span><span class="nx">lockKey</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;lock&#34;</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// 获取锁成功后会继续执行</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;获取锁失败&#34;</span><span class="p">)</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nx">redis</span><span class="p">.</span><span class="nf">expire</span><span class="p">(</span><span class="nx">lockKey</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">)</span><span class="w"> </span><span class="c1">// 设置失败</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>问题：设置有效期时 redis 出现宕机，锁无法释放，导致锁变成死锁。
 解决方案：使用 lua 脚本，可以保证 获取锁和设置有效期的原子性。</p>
@@ -390,22 +390,22 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl">  <span class="c1">// 加锁</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">key</span> <span class="o">:=</span> <span class="s">&#34;lock&#34;</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">value</span> <span class="o">:=</span> <span class="nx">uuid</span><span class="p">.</span><span class="nf">New</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"> <span class="nx">cmd</span> <span class="o">:=</span> <span class="nx">redis</span><span class="p">.</span><span class="nf">NewScript</span><span class="p">(</span><span class="s">`
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="w">  </span><span class="c1">// 加锁</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">key</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&#34;lock&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">value</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">uuid</span><span class="p">.</span><span class="nf">New</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nx">cmd</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">redis</span><span class="p">.</span><span class="nf">NewScript</span><span class="p">(</span><span class="s">`
 </span></span></span><span class="line"><span class="cl"><span class="s"> if (redis.call(&#34;setnx&#34;, KEYS[1], ARGV[1]) == 1)  then
 </span></span></span><span class="line"><span class="cl"><span class="s">  return redis.call(&#34;expire&#34;, KEYS[1], ARGV[2]);
 </span></span></span><span class="line"><span class="cl"><span class="s"> else 
 </span></span></span><span class="line"><span class="cl"><span class="s">  return 0;
 </span></span></span><span class="line"><span class="cl"><span class="s"> end
-</span></span></span><span class="line"><span class="cl"><span class="s"> `</span><span class="p">).</span><span class="nf">Run</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">rds</span><span class="p">.</span><span class="nx">rdb</span><span class="p">,</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="nx">key</span><span class="p">},</span> <span class="nx">value</span><span class="p">,</span> <span class="nx">exp</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"> <span class="k">if</span> <span class="nx">ok</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">cmd</span><span class="p">.</span><span class="nf">Int64</span><span class="p">();</span> <span class="nx">ok</span> <span class="o">!=</span> <span class="mi">1</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;set lock failed&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"> <span class="c1">// business logic</span>
-</span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl"><span class="s"> `</span><span class="p">).</span><span class="nf">Run</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">rds</span><span class="p">.</span><span class="nx">rdb</span><span class="p">,</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="nx">key</span><span class="p">},</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">exp</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nx">ok</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">cmd</span><span class="p">.</span><span class="nf">Int64</span><span class="p">();</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;set lock failed&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="c1">// business logic</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="4">
 <li>并发锁被其他进程释放</li>
@@ -436,27 +436,27 @@
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">key</span> <span class="o">:=</span> <span class="s">&#34;lock&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nx">value</span> <span class="o">:=</span> <span class="nx">uuid</span><span class="p">.</span><span class="nf">New</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 加锁 ...</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// business logic ...</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 释放锁</span>
-</span></span><span class="line"><span class="cl"> <span class="nx">cmd</span> <span class="o">:=</span> <span class="nx">redis</span><span class="p">.</span><span class="nf">NewScript</span><span class="p">(</span><span class="s">`
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">key</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&#34;lock&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nx">value</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">uuid</span><span class="p">.</span><span class="nf">New</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 加锁 ...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// business logic ...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 释放锁</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nx">cmd</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">redis</span><span class="p">.</span><span class="nf">NewScript</span><span class="p">(</span><span class="s">`
 </span></span></span><span class="line"><span class="cl"><span class="s"> if (redis.call(&#34;get&#34;, KEYS[1] ) == ARGV[1])  then  
 </span></span></span><span class="line"><span class="cl"><span class="s">  return redis.call(&#34;del&#34;, KEYS[1]);
 </span></span></span><span class="line"><span class="cl"><span class="s"> else 
 </span></span></span><span class="line"><span class="cl"><span class="s">  return 0;
 </span></span></span><span class="line"><span class="cl"><span class="s"> end
-</span></span></span><span class="line"><span class="cl"><span class="s">`</span><span class="p">).</span><span class="nf">Run</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">rds</span><span class="p">.</span><span class="nx">rdb</span><span class="p">,</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="nx">key</span><span class="p">},</span> <span class="nx">value</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"> <span class="k">if</span> <span class="nx">ok</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">cmd</span><span class="p">.</span><span class="nf">Int64</span><span class="p">();</span> <span class="nx">ok</span> <span class="o">!=</span> <span class="mi">1</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;del lock error, err: %v\n&#34;</span><span class="p">,</span> <span class="nx">cmd</span><span class="p">.</span><span class="nf">Err</span><span class="p">())</span>
-</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;del lock failed&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"> <span class="p">}</span>
-</span></span><span class="line"><span class="cl"> <span class="k">return</span> <span class="kc">nil</span>
-</span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl"><span class="s">`</span><span class="p">).</span><span class="nf">Run</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">rds</span><span class="p">.</span><span class="nx">rdb</span><span class="p">,</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="nx">key</span><span class="p">},</span><span class="w"> </span><span class="nx">value</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nx">ok</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">cmd</span><span class="p">.</span><span class="nf">Int64</span><span class="p">();</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;del lock error, err: %v\n&#34;</span><span class="p">,</span><span class="w"> </span><span class="nx">cmd</span><span class="p">.</span><span class="nf">Err</span><span class="p">())</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;del lock failed&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 </section>

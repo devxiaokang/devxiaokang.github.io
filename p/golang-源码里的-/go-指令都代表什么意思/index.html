@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://x-xkang.com/p/golang-%E6%BA%90%E7%A0%81%E9%87%8C%E7%9A%84-/go-%E6%8C%87%E4%BB%A4%E9%83%BD%E4%BB%A3%E8%A1%A8%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D/'>
 
-<link rel="stylesheet" href="/scss/style.min.7e54386a70f08c359dc67b56ecb1ed61936ec90f83972802164db3639519a07b.css"><meta property='og:title' content="Golang 源码里的 //go: 指令，都代表什么意思？">
+<link rel="stylesheet" href="/scss/style.min.bb7f7152956eee6b537748fb6604b0f0d3b5ee8183878889491a08c72a593558.css"><meta property='og:title' content="Golang 源码里的 //go: 指令，都代表什么意思？">
 <meta property='og:description' content="golang源码里的//go:代表的含义">
 <meta property='og:url' content='https://x-xkang.com/p/golang-%E6%BA%90%E7%A0%81%E9%87%8C%E7%9A%84-/go-%E6%8C%87%E4%BB%A4%E9%83%BD%E4%BB%A3%E8%A1%A8%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D/'>
 <meta property='og:site_name' content='不积跬步无以至千里'>
@@ -359,8 +359,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="c1">//go:linkname localname importpath.name</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="cp">//go:linkname localname importpath.name</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
 <p>该指令指示编译器使用 <code>importpath.name</code> 作为源码中声明为 <code>localname</code> 的变量的或函数的目标文件符号名称，但是由于这个伪指令可以破坏类型系统和包模块化，只有引用了 <code>unsafe</code> 包才可以使用。
@@ -373,9 +373,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="c1">// Provided by package runtime.</span>
-</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">now</span><span class="p">()</span> <span class="p">(</span><span class="nx">sec</span> <span class="kt">int64</span><span class="p">,</span> <span class="nx">nsec</span> <span class="kt">int32</span><span class="p">,</span> <span class="nx">mono</span> <span class="kt">int64</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="c1">// Provided by package runtime.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">func</span><span class="w"> </span><span class="nf">now</span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="nx">sec</span><span class="w"> </span><span class="kt">int64</span><span class="p">,</span><span class="w"> </span><span class="nx">nsec</span><span class="w"> </span><span class="kt">int32</span><span class="p">,</span><span class="w"> </span><span class="nx">mono</span><span class="w"> </span><span class="kt">int64</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>runtime/timestub.go</p>
 <div class="highlight"><div class="chroma">
@@ -389,14 +389,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nx">_</span> <span class="s">&#34;unsafe&#34;</span> <span class="c1">// for go:linkname</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">//go:linkname time_now time.now</span>
-</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">time_now</span><span class="p">()</span> <span class="p">(</span><span class="nx">sec</span> <span class="kt">int64</span><span class="p">,</span> <span class="nx">nsec</span> <span class="kt">int32</span><span class="p">,</span> <span class="nx">mono</span> <span class="kt">int64</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">sec</span><span class="p">,</span> <span class="nx">nsec</span> <span class="p">=</span> <span class="nf">walltime</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">sec</span><span class="p">,</span> <span class="nx">nsec</span><span class="p">,</span> <span class="nf">nanotime</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="s">&#34;unsafe&#34;</span><span class="w"> </span><span class="c1">// for go:linkname</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cp">//go:linkname time_now time.now</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">func</span><span class="w"> </span><span class="nf">time_now</span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="nx">sec</span><span class="w"> </span><span class="kt">int64</span><span class="p">,</span><span class="w"> </span><span class="nx">nsec</span><span class="w"> </span><span class="kt">int32</span><span class="p">,</span><span class="w"> </span><span class="nx">mono</span><span class="w"> </span><span class="kt">int64</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">sec</span><span class="p">,</span><span class="w"> </span><span class="nx">nsec</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">walltime</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">sec</span><span class="p">,</span><span class="w"> </span><span class="nx">nsec</span><span class="p">,</span><span class="w"> </span><span class="nf">nanotime</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>now 方法并没有具体实现，注释上也描述具体实现由 <code>runtime</code> 包完成，看一下 <code>runtime</code> 包中的代码，先引入了 <code>unsafe</code> 包，再定义了 <code>//go:lickname time_now time.now</code>。</p>
 <p>第一个参数<code>time_now</code> 代表本地变量或方法，第二个参数<code>time.now</code>标识需要建立链接的变量、方法路径。也就是说，<code>//go:lickname</code> 是可以跨包使用的。</p>
@@ -408,8 +408,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="c1">//go:noscape</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="cp">//go:noscape</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>该指令指定下一个有声明但没有主体（意味着实现有可能不是 Go）的函数，不允许编译器对其做逃逸分析。</p>
 <p>一般情况下，该指令用于内存分配优化。编译器默认会进行逃逸分析，会通过规则判定一个变量是分配到堆上还是栈上。</p>
@@ -423,11 +423,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="c1">// memmove copies n bytes from &#34;from&#34; to &#34;to&#34;.</span>
-</span></span><span class="line"><span class="cl"><span class="c1">// in memmove_*.s</span>
-</span></span><span class="line"><span class="cl"><span class="c1">//go:noescape</span>
-</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">memmove</span><span class="p">(</span><span class="nx">to</span><span class="p">,</span> <span class="nx">from</span> <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span><span class="p">,</span> <span class="nx">n</span> <span class="kt">uintptr</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="c1">// memmove copies n bytes from &#34;from&#34; to &#34;to&#34;.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// in memmove_*.s</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cp">//go:noescape</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">func</span><span class="w"> </span><span class="nf">memmove</span><span class="p">(</span><span class="nx">to</span><span class="p">,</span><span class="w"> </span><span class="nx">from</span><span class="w"> </span><span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span><span class="p">,</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="kt">uintptr</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>我们观察一下这个案例，它满足了该指令的常见特性。如下：</p>
 <p>memmove_*.s: 只有声明，没有主体，其主体是由底层汇编实现的。</p>
@@ -439,8 +439,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="c1">//go:noslip</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="cp">//go:noslip</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>该指令指定文件中声明的下一个函数不得包含堆栈溢出检查。</p>
 <p>简单来讲，就是这个函数跳过堆栈溢出的检查。</p>
@@ -453,11 +453,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="c1">//go:nosplit</span>
-</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">key32</span><span class="p">(</span><span class="nx">p</span> <span class="o">*</span><span class="kt">uintptr</span><span class="p">)</span> <span class="o">*</span><span class="kt">uint32</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl"> <span class="k">return</span> <span class="p">(</span><span class="o">*</span><span class="kt">uint32</span><span class="p">)(</span><span class="nx">unsafe</span><span class="p">.</span><span class="nf">Pointer</span><span class="p">(</span><span class="nx">p</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="cp">//go:nosplit</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">func</span><span class="w"> </span><span class="nf">key32</span><span class="p">(</span><span class="nx">p</span><span class="w"> </span><span class="o">*</span><span class="kt">uintptr</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="kt">uint32</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="kt">uint32</span><span class="p">)(</span><span class="nx">unsafe</span><span class="p">.</span><span class="nf">Pointer</span><span class="p">(</span><span class="nx">p</span><span class="p">))</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h3 id="gonowritebarrierrec">go:nowritebarrierrec
@@ -466,8 +466,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="c1">//go:nowritebarrierrec</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="cp">//go:nowritebarrierrec</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>该指令表示编译器遇到写屏障时就会产生一个错误，并且允许递归。也就是这个函数调用的其他函数如果有写屏障也会报错。</p>
 <p>简单来讲，就是针对写屏障的处理，防止其死循环。</p>
@@ -480,11 +480,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="c1">//go:nowritebarrierrec</span>
-</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">gcFlushBgCredit</span><span class="p">(</span><span class="nx">scanWork</span> <span class="kt">int64</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="o">...</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="cp">//go:nowritebarrierrec</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">func</span><span class="w"> </span><span class="nf">gcFlushBgCredit</span><span class="p">(</span><span class="nx">scanWork</span><span class="w"> </span><span class="kt">int64</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h3 id="goyeswritebarrierrec">go:yeswritebarrierrec
@@ -493,8 +493,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="c1">//go:yeswritebarrierrec</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="cp">//go:yeswritebarrierrec</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>该指令与 <code>go:nowritebarrierrec</code> 相对，在标注 <code>go:nowritebarrierrec</code> 指令的函数上，遇到写屏障会产生错误。</p>
 <p>而当编译器遇到 <code>go:yeswritebarrierrec</code> 指令时将会停止。</p>
@@ -507,11 +507,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="c1">//go:yeswritebarrierrec</span>
-</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">gchelper</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl"> <span class="o">...</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="cp">//go:yeswritebarrierrec</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">func</span><span class="w"> </span><span class="nf">gchelper</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="o">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h3 id="gonoinline">go:noinline
@@ -520,8 +520,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="c1">//go:noinline</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="cp">//go:noinline</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>该指令表示该函数禁止进行内联。</p>
 <div class="highlight"><div class="chroma">
@@ -532,11 +532,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="c1">//go:noinline</span>
-</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">unexportedPanicForTesting</span><span class="p">(</span><span class="nx">b</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">,</span> <span class="nx">i</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">byte</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl"> <span class="k">return</span> <span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="cp">//go:noinline</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">func</span><span class="w"> </span><span class="nf">unexportedPanicForTesting</span><span class="p">(</span><span class="nx">b</span><span class="w"> </span><span class="p">[]</span><span class="kt">byte</span><span class="p">,</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="kt">byte</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="例如-5">例如
 </h4><p>我们观察一下这个案例，是直接通过索引取值，逻辑比较简单。如果不加上 go:noinline 的话，就会出现编译器对其进行内联优化。</p>
@@ -548,8 +548,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="c1">//go:norace</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="cp">//go:norace</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>该指令表示禁止进行竞态检测。</p>
 <p>常见的形式就是在启动时执行 go run -race，能够检测应用程序中是否存在双向的数据竞争，非常有用。</p>
@@ -562,11 +562,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="c1">//go:norace</span>
-</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">forkAndExecInChild</span><span class="p">(</span><span class="nx">argv0</span> <span class="o">*</span><span class="kt">byte</span><span class="p">,</span> <span class="nx">argv</span><span class="p">,</span> <span class="nx">envv</span> <span class="p">[]</span><span class="o">*</span><span class="kt">byte</span><span class="p">,</span> <span class="nx">chroot</span><span class="p">,</span> <span class="nx">dir</span> <span class="o">*</span><span class="kt">byte</span><span class="p">,</span> <span class="nx">attr</span> <span class="o">*</span><span class="nx">ProcAttr</span><span class="p">,</span> <span class="nx">sys</span> <span class="o">*</span><span class="nx">SysProcAttr</span><span class="p">,</span> <span class="nx">pipe</span> <span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="nx">pid</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">err</span> <span class="nx">Errno</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="o">...</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="cp">//go:norace</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">func</span><span class="w"> </span><span class="nf">forkAndExecInChild</span><span class="p">(</span><span class="nx">argv0</span><span class="w"> </span><span class="o">*</span><span class="kt">byte</span><span class="p">,</span><span class="w"> </span><span class="nx">argv</span><span class="p">,</span><span class="w"> </span><span class="nx">envv</span><span class="w"> </span><span class="p">[]</span><span class="o">*</span><span class="kt">byte</span><span class="p">,</span><span class="w"> </span><span class="nx">chroot</span><span class="p">,</span><span class="w"> </span><span class="nx">dir</span><span class="w"> </span><span class="o">*</span><span class="kt">byte</span><span class="p">,</span><span class="w"> </span><span class="nx">attr</span><span class="w"> </span><span class="o">*</span><span class="nx">ProcAttr</span><span class="p">,</span><span class="w"> </span><span class="nx">sys</span><span class="w"> </span><span class="o">*</span><span class="nx">SysProcAttr</span><span class="p">,</span><span class="w"> </span><span class="nx">pipe</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">pid</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="nx">Errno</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h3 id="gonotinheap">go:notinheap
@@ -575,8 +575,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="c1">//go:notinheap</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="cp">//go:notinheap</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>该指令常用于类型声明，它表示这个类型不允许从 GC 堆上进行申请内存。</p>
 <p>在运行时中常用其来做较低层次的内部结构，避免调度器和内存分配中的写屏障，能够提高性能。</p>
@@ -594,16 +594,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="c1">// notInHeap is off-heap memory allocated by a lower-level allocator</span>
-</span></span><span class="line"><span class="cl"><span class="c1">// like sysAlloc or persistentAlloc.</span>
-</span></span><span class="line"><span class="cl"><span class="c1">//</span>
-</span></span><span class="line"><span class="cl"><span class="c1">// In general, it&#39;s better to use real types marked as go:notinheap,</span>
-</span></span><span class="line"><span class="cl"><span class="c1">// but this serves as a generic type for situations where that isn&#39;t</span>
-</span></span><span class="line"><span class="cl"><span class="c1">// possible (like in the allocators).</span>
-</span></span><span class="line"><span class="cl"><span class="c1">//</span>
-</span></span><span class="line"><span class="cl"><span class="c1">//go:notinheap</span>
-</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">notInHeap</span> <span class="kd">struct</span><span class="p">{}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="c1">// notInHeap is off-heap memory allocated by a lower-level allocator</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// like sysAlloc or persistentAlloc.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1">// In general, it&#39;s better to use real types marked as go:notinheap,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// but this serves as a generic type for situations where that isn&#39;t</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// possible (like in the allocators).</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1">//go:notinheap</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">type</span><span class="w"> </span><span class="nx">notInHeap</span><span class="w"> </span><span class="kd">struct</span><span class="p">{}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h3 id="每日一算">每日一算
@@ -683,70 +683,70 @@ Output  0 -&gt; 0 -&gt; 0 -&gt; 0 -&gt; 1</p></blockquote>
 </span><span class="lnt">63
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">ListNode</span> <span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">Val</span> <span class="kt">int</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">Next</span> <span class="o">*</span><span class="nx">ListNode</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">addTwoNumbers</span><span class="p">(</span><span class="nx">l1</span> <span class="o">*</span><span class="nx">ListNode</span><span class="p">,</span> <span class="nx">l2</span> <span class="o">*</span><span class="nx">ListNode</span><span class="p">)</span> <span class="o">*</span><span class="nx">ListNode</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">l1</span> <span class="o">==</span> <span class="kc">nil</span> <span class="o">||</span> <span class="nx">l2</span> <span class="o">==</span> <span class="kc">nil</span><span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="kc">nil</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// 虚拟头结点</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">head</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">ListNode</span><span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="nx">Val</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">		<span class="nx">Next</span><span class="p">:</span> <span class="kc">nil</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="nx">current</span> <span class="o">:=</span> <span class="nx">head</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">carry</span> <span class="o">:=</span> <span class="mi">0</span>	<span class="c1">// 是否需要进位</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// 遍历</span>
-</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">l1</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="o">||</span> <span class="nx">l2</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="kd">var</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="kt">int</span>
-</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="nx">l1</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">			<span class="nx">x</span> <span class="p">=</span> <span class="mi">0</span>
-</span></span><span class="line"><span class="cl">		<span class="p">}</span><span class="k">else</span><span class="p">{</span>
-</span></span><span class="line"><span class="cl">			<span class="nx">x</span> <span class="p">=</span> <span class="nx">l1</span><span class="p">.</span><span class="nx">Val</span>
-</span></span><span class="line"><span class="cl">		<span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="nx">l2</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">			<span class="nx">y</span> <span class="p">=</span> <span class="mi">0</span>
-</span></span><span class="line"><span class="cl">		<span class="p">}</span><span class="k">else</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">			<span class="nx">y</span> <span class="p">=</span> <span class="nx">l2</span><span class="p">.</span><span class="nx">Val</span>
-</span></span><span class="line"><span class="cl">		<span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">		<span class="nx">current</span><span class="p">.</span><span class="nx">Next</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">ListNode</span><span class="p">{</span>
-</span></span><span class="line"><span class="cl">			<span class="nx">Val</span><span class="p">:</span> <span class="p">(</span><span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span> <span class="o">+</span> <span class="nx">carry</span><span class="p">)</span> <span class="o">%</span> <span class="mi">10</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">			<span class="nx">Next</span><span class="p">:</span> <span class="kc">nil</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">		<span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">		<span class="nx">current</span> <span class="p">=</span> <span class="nx">current</span><span class="p">.</span><span class="nx">Next</span>
-</span></span><span class="line"><span class="cl">		<span class="nx">carry</span> <span class="p">=</span> <span class="p">(</span><span class="nx">x</span><span class="o">+</span><span class="nx">y</span><span class="o">+</span><span class="nx">carry</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="nx">l1</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">			<span class="nx">l1</span> <span class="p">=</span> <span class="nx">l1</span><span class="p">.</span><span class="nx">Next</span>
-</span></span><span class="line"><span class="cl">		<span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="nx">l2</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">			<span class="nx">l2</span> <span class="p">=</span> <span class="nx">l2</span><span class="p">.</span><span class="nx">Next</span>
-</span></span><span class="line"><span class="cl">		<span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;carry:&#34;</span><span class="p">,</span> <span class="nx">carry</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">carry</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="p">{</span>	<span class="c1">// 最后一位相加又进位，要在尾结点再加一个结点</span>
-</span></span><span class="line"><span class="cl">		<span class="nx">current</span><span class="p">.</span><span class="nx">Next</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">ListNode</span><span class="p">{</span>
-</span></span><span class="line"><span class="cl">			<span class="nx">Val</span><span class="p">:</span> <span class="nx">carry</span> <span class="o">%</span> <span class="mi">10</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">			<span class="nx">Next</span><span class="p">:</span> <span class="kc">nil</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">		<span class="p">}</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nx">head</span><span class="p">.</span><span class="nx">Next</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">type</span><span class="w"> </span><span class="nx">ListNode</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">Val</span><span class="w"> </span><span class="kt">int</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">Next</span><span class="w"> </span><span class="o">*</span><span class="nx">ListNode</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">func</span><span class="w"> </span><span class="nf">addTwoNumbers</span><span class="p">(</span><span class="nx">l1</span><span class="w"> </span><span class="o">*</span><span class="nx">ListNode</span><span class="p">,</span><span class="w"> </span><span class="nx">l2</span><span class="w"> </span><span class="o">*</span><span class="nx">ListNode</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">ListNode</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="nx">l1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">l2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">nil</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="c1">// 虚拟头结点</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">head</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">ListNode</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="nx">Val</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="nx">Next</span><span class="p">:</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">current</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">head</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">carry</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="w">	</span><span class="c1">// 是否需要进位</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="c1">// 遍历</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">for</span><span class="w"> </span><span class="nx">l1</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">l2</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="kd">var</span><span class="w"> </span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="kt">int</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="k">if</span><span class="w"> </span><span class="nx">l1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="nx">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="p">}</span><span class="k">else</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="nx">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">l1</span><span class="p">.</span><span class="nx">Val</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="k">if</span><span class="w"> </span><span class="nx">l2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="nx">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="p">}</span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="nx">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">l2</span><span class="p">.</span><span class="nx">Val</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="nx">current</span><span class="p">.</span><span class="nx">Next</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">ListNode</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="nx">Val</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="nx">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">carry</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="nx">Next</span><span class="p">:</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="nx">current</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">current</span><span class="p">.</span><span class="nx">Next</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="nx">carry</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="nx">x</span><span class="o">+</span><span class="nx">y</span><span class="o">+</span><span class="nx">carry</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="k">if</span><span class="w"> </span><span class="nx">l1</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="nx">l1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">l1</span><span class="p">.</span><span class="nx">Next</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="k">if</span><span class="w"> </span><span class="nx">l2</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="nx">l2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">l2</span><span class="p">.</span><span class="nx">Next</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;carry:&#34;</span><span class="p">,</span><span class="w"> </span><span class="nx">carry</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="nx">carry</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span><span class="w">	</span><span class="c1">// 最后一位相加又进位，要在尾结点再加一个结点</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="nx">current</span><span class="p">.</span><span class="nx">Next</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">ListNode</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="nx">Val</span><span class="p">:</span><span class="w"> </span><span class="nx">carry</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="nx">Next</span><span class="p">:</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">return</span><span class="w"> </span><span class="nx">head</span><span class="p">.</span><span class="nx">Next</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 </section>
@@ -816,6 +816,19 @@ Output  0 -&gt; 0 -&gt; 0 -&gt; 0 -&gt; 1</p></blockquote>
             
                 
 <article class="">
+    <a href="/p/golang-%E8%BF%90%E8%A1%8C%E5%88%9D%E5%A7%8B%E5%8C%96%E9%83%BD%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Golang 运行初始化都做了什么</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
     <a href="/p/node-go-%E5%92%8C-rust%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AE%80%E5%8D%95%E5%AF%B9%E6%AF%94/">
         
         
@@ -861,19 +874,6 @@ Output  0 -&gt; 0 -&gt; 0 -&gt; 0 -&gt; 1</p></blockquote>
 
         <div class="article-details">
             <h2 class="article-title">Golang -- Channel</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/p/golang-%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Golang 常用数据类型转换</h2>
         </div>
     </a>
 </article>

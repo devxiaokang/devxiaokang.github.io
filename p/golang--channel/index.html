@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://x-xkang.com/p/golang--channel/'>
 
-<link rel="stylesheet" href="/scss/style.min.7e54386a70f08c359dc67b56ecb1ed61936ec90f83972802164db3639519a07b.css"><meta property='og:title' content="Golang -- Channel">
+<link rel="stylesheet" href="/scss/style.min.bb7f7152956eee6b537748fb6604b0f0d3b5ee8183878889491a08c72a593558.css"><meta property='og:title' content="Golang -- Channel">
 <meta property='og:description' content="Golang之channel数据类型解析">
 <meta property='og:url' content='https://x-xkang.com/p/golang--channel/'>
 <meta property='og:site_name' content='不积跬步无以至千里'>
@@ -401,27 +401,27 @@
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">hchan</span> <span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl"> <span class="nx">qcount</span>   <span class="kt">uint</span>           <span class="c1">// total data in the queue， 队列中的元素数量</span>
-</span></span><span class="line"><span class="cl"> <span class="nx">dataqsiz</span> <span class="kt">uint</span>           <span class="c1">// size of the circular queue，  底层循环数组的长度</span>
-</span></span><span class="line"><span class="cl"> <span class="nx">buf</span>      <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span> <span class="c1">// points to an array of dataqsiz elements， 指向底层循环数组的指针，只针对有缓冲区的 channel</span>
-</span></span><span class="line"><span class="cl"> <span class="nx">elemsize</span> <span class="kt">uint16</span>        <span class="c1">// channel 中的元素大小</span>
-</span></span><span class="line"><span class="cl"> <span class="nx">closed</span>   <span class="kt">uint32</span>        <span class="c1">// channel是否被关闭的标识</span>
-</span></span><span class="line"><span class="cl"> <span class="nx">elemtype</span> <span class="o">*</span><span class="nx">_type</span> <span class="c1">// element type  ，channel中元素类型</span>
-</span></span><span class="line"><span class="cl"> <span class="nx">sendx</span>    <span class="kt">uint</span>   <span class="c1">// send index，已发送元素在循环数组中的索引</span>
-</span></span><span class="line"><span class="cl"> <span class="nx">recvx</span>    <span class="kt">uint</span>   <span class="c1">// receive index，已接收元素在数组中的索引</span>
-</span></span><span class="line"><span class="cl"> <span class="nx">recvq</span>    <span class="nx">waitq</span>  <span class="c1">// list of recv waiters，等待接收的 `goroutine` 队列</span>
-</span></span><span class="line"><span class="cl"> <span class="nx">sendq</span>    <span class="nx">waitq</span>  <span class="c1">// list of send waiters，等待发送的 `goroutine` 队列</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"> <span class="c1">// lock protects all fields in hchan, as well as several</span>
-</span></span><span class="line"><span class="cl"> <span class="c1">// fields in sudogs blocked on this channel.</span>
-</span></span><span class="line"><span class="cl"> <span class="c1">//</span>
-</span></span><span class="line"><span class="cl"> <span class="c1">// Do not change another G&#39;s status while holding this lock</span>
-</span></span><span class="line"><span class="cl"> <span class="c1">// (in particular, do not ready a G), as this can deadlock</span>
-</span></span><span class="line"><span class="cl"> <span class="c1">// with stack shrinking.</span>
-</span></span><span class="line"><span class="cl"> <span class="nx">lock</span> <span class="nx">mutex</span>   <span class="c1">// 保护 channel 中的所有字段</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">type</span><span class="w"> </span><span class="nx">hchan</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nx">qcount</span><span class="w">   </span><span class="kt">uint</span><span class="w">           </span><span class="c1">// total data in the queue， 队列中的元素数量</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nx">dataqsiz</span><span class="w"> </span><span class="kt">uint</span><span class="w">           </span><span class="c1">// size of the circular queue，  底层循环数组的长度</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nx">buf</span><span class="w">      </span><span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span><span class="w"> </span><span class="c1">// points to an array of dataqsiz elements， 指向底层循环数组的指针，只针对有缓冲区的 channel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nx">elemsize</span><span class="w"> </span><span class="kt">uint16</span><span class="w">        </span><span class="c1">// channel 中的元素大小</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nx">closed</span><span class="w">   </span><span class="kt">uint32</span><span class="w">        </span><span class="c1">// channel是否被关闭的标识</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nx">elemtype</span><span class="w"> </span><span class="o">*</span><span class="nx">_type</span><span class="w"> </span><span class="c1">// element type  ，channel中元素类型</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nx">sendx</span><span class="w">    </span><span class="kt">uint</span><span class="w">   </span><span class="c1">// send index，已发送元素在循环数组中的索引</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nx">recvx</span><span class="w">    </span><span class="kt">uint</span><span class="w">   </span><span class="c1">// receive index，已接收元素在数组中的索引</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nx">recvq</span><span class="w">    </span><span class="nx">waitq</span><span class="w">  </span><span class="c1">// list of recv waiters，等待接收的 `goroutine` 队列</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nx">sendq</span><span class="w">    </span><span class="nx">waitq</span><span class="w">  </span><span class="c1">// list of send waiters，等待发送的 `goroutine` 队列</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="c1">// lock protects all fields in hchan, as well as several</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="c1">// fields in sudogs blocked on this channel.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1"> // Do not change another G&#39;s status while holding this lock</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="c1">// (in particular, do not ready a G), as this can deadlock</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="c1">// with stack shrinking.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nx">lock</span><span class="w"> </span><span class="nx">mutex</span><span class="w">   </span><span class="c1">// 保护 channel 中的所有字段</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="字段解释">字段解释
 </h4><blockquote>
@@ -445,11 +445,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">waitq</span> <span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl"> <span class="nx">first</span> <span class="o">*</span><span class="nx">sudog</span>
-</span></span><span class="line"><span class="cl"> <span class="nx">last</span>  <span class="o">*</span><span class="nx">sudog</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">type</span><span class="w"> </span><span class="nx">waitq</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nx">first</span><span class="w"> </span><span class="o">*</span><span class="nx">sudog</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nx">last</span><span class="w">  </span><span class="o">*</span><span class="nx">sudog</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>runtime.sudog</code> 表示一个在等待列表中的<code>Goroutine</code>，该结构中存储了两个分别指向前后<code>runtime.sudog</code>的指针以构成链表。</p>
 <h4 id="创建管道">创建管道
@@ -463,12 +463,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="c1">// 无缓冲通道</span>
-</span></span><span class="line"><span class="cl"><span class="nx">ch1</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 有缓冲通道</span>
-</span></span><span class="line"><span class="cl"><span class="nx">ch2</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// 创建一个缓冲区长度为2，元素类型为 int 的`channel`，若未指定缓冲区长度，则默认为0</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="c1">// 无缓冲通道</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nx">ch1</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">chan</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 有缓冲通道</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nx">ch2</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">chan</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="c1">// 创建一个缓冲区长度为2，元素类型为 int 的`channel`，若未指定缓冲区长度，则默认为0</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>Go 语言中所有Channel的床架都会使用 <code>make</code>关键字。编译器会将<code>make(chan int, 10)</code>表达式转换成 <code>OMAKE</code>类型的节点，并在类型检查阶段将<code>OMAKE</code>类型的节点转换成<code>OMAKECHAN</code>类型:</p>
 <div class="highlight"><div class="chroma">
@@ -492,24 +492,24 @@
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">typecheck1</span><span class="p">(</span><span class="nx">n</span> <span class="o">*</span><span class="nx">Node</span><span class="p">,</span> <span class="nx">top</span> <span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="nx">res</span> <span class="o">*</span><span class="nx">Node</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl"> <span class="k">switch</span> <span class="nx">n</span><span class="p">.</span><span class="nx">Op</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl"> <span class="k">case</span> <span class="nx">OMAKE</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">  <span class="o">...</span>
-</span></span><span class="line"><span class="cl">  <span class="k">switch</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Etype</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="k">case</span> <span class="nx">TCHAN</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">   <span class="nx">l</span> <span class="p">=</span> <span class="kc">nil</span>
-</span></span><span class="line"><span class="cl">   <span class="k">if</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 带缓冲区的异步 Channel</span>
-</span></span><span class="line"><span class="cl">    <span class="o">...</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">n</span><span class="p">.</span><span class="nx">Left</span> <span class="p">=</span> <span class="nx">l</span>
-</span></span><span class="line"><span class="cl">   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="c1">// 不带缓冲区的同步 Channel</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">n</span><span class="p">.</span><span class="nx">Left</span> <span class="p">=</span> <span class="nf">nodintconst</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">   <span class="p">}</span>
-</span></span><span class="line"><span class="cl">   <span class="nx">n</span><span class="p">.</span><span class="nx">Op</span> <span class="p">=</span> <span class="nx">OMAKECHAN</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"> <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="nf">typecheck1</span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="o">*</span><span class="nx">Node</span><span class="p">,</span><span class="w"> </span><span class="nx">top</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">res</span><span class="w"> </span><span class="o">*</span><span class="nx">Node</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="k">switch</span><span class="w"> </span><span class="nx">n</span><span class="p">.</span><span class="nx">Op</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="k">case</span><span class="w"> </span><span class="nx">OMAKE</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="o">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">switch</span><span class="w"> </span><span class="nx">t</span><span class="p">.</span><span class="nx">Etype</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="nx">TCHAN</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="nx">l</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">nil</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// 带缓冲区的异步 Channel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">n</span><span class="p">.</span><span class="nx">Left</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">l</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// 不带缓冲区的同步 Channel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">n</span><span class="p">.</span><span class="nx">Left</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">nodintconst</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="nx">n</span><span class="p">.</span><span class="nx">Op</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">OMAKECHAN</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>这一阶段会对传入的<code>make</code>关键字的缓冲区大小进行检查，如果我们不向<code>make</code>传递表示缓冲区大小参数，那么就会设置一个默认值0，也就是当前的Channel不存在缓冲区。</p>
 <p><code>OMAKECHAN</code>类型的节点最终都会在SSA中间代码生成阶段之前被转换成调用<a class="link" href="https://draveness.me/golang/tree/runtime.makechan"  target="_blank" rel="noopener"
@@ -533,21 +533,21 @@
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">walkexpr</span><span class="p">(</span><span class="nx">n</span> <span class="o">*</span><span class="nx">Node</span><span class="p">,</span> <span class="nx">init</span> <span class="o">*</span><span class="nx">Nodes</span><span class="p">)</span> <span class="o">*</span><span class="nx">Node</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl"> <span class="k">switch</span> <span class="nx">n</span><span class="p">.</span><span class="nx">Op</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl"> <span class="k">case</span> <span class="nx">OMAKECHAN</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">size</span> <span class="o">:=</span> <span class="nx">n</span><span class="p">.</span><span class="nx">Left</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">fnname</span> <span class="o">:=</span> <span class="s">&#34;makechan64&#34;</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">argtype</span> <span class="o">:=</span> <span class="nx">types</span><span class="p">.</span><span class="nx">Types</span><span class="p">[</span><span class="nx">TINT64</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="nx">size</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="nf">IsKind</span><span class="p">(</span><span class="nx">TIDEAL</span><span class="p">)</span> <span class="o">||</span> <span class="nx">maxintval</span><span class="p">[</span><span class="nx">size</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="nx">Etype</span><span class="p">].</span><span class="nf">Cmp</span><span class="p">(</span><span class="nx">maxintval</span><span class="p">[</span><span class="nx">TUINT</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">   <span class="nx">fnname</span> <span class="p">=</span> <span class="s">&#34;makechan&#34;</span>
-</span></span><span class="line"><span class="cl">   <span class="nx">argtype</span> <span class="p">=</span> <span class="nx">types</span><span class="p">.</span><span class="nx">Types</span><span class="p">[</span><span class="nx">TINT</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">n</span> <span class="p">=</span> <span class="nf">mkcall1</span><span class="p">(</span><span class="nf">chanfn</span><span class="p">(</span><span class="nx">fnname</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">n</span><span class="p">.</span><span class="nx">Type</span><span class="p">),</span> <span class="nx">n</span><span class="p">.</span><span class="nx">Type</span><span class="p">,</span> <span class="nx">init</span><span class="p">,</span> <span class="nf">typename</span><span class="p">(</span><span class="nx">n</span><span class="p">.</span><span class="nx">Type</span><span class="p">),</span> <span class="nf">conv</span><span class="p">(</span><span class="nx">size</span><span class="p">,</span> <span class="nx">argtype</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl"> <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="nf">walkexpr</span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="o">*</span><span class="nx">Node</span><span class="p">,</span><span class="w"> </span><span class="nx">init</span><span class="w"> </span><span class="o">*</span><span class="nx">Nodes</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">Node</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="k">switch</span><span class="w"> </span><span class="nx">n</span><span class="p">.</span><span class="nx">Op</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="k">case</span><span class="w"> </span><span class="nx">OMAKECHAN</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">size</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">n</span><span class="p">.</span><span class="nx">Left</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">fnname</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&#34;makechan64&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">argtype</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">types</span><span class="p">.</span><span class="nx">Types</span><span class="p">[</span><span class="nx">TINT64</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="nx">size</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="nf">IsKind</span><span class="p">(</span><span class="nx">TIDEAL</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">maxintval</span><span class="p">[</span><span class="nx">size</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="nx">Etype</span><span class="p">].</span><span class="nf">Cmp</span><span class="p">(</span><span class="nx">maxintval</span><span class="p">[</span><span class="nx">TUINT</span><span class="p">])</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="nx">fnname</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#34;makechan&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="nx">argtype</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">types</span><span class="p">.</span><span class="nx">Types</span><span class="p">[</span><span class="nx">TINT</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">mkcall1</span><span class="p">(</span><span class="nf">chanfn</span><span class="p">(</span><span class="nx">fnname</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nx">n</span><span class="p">.</span><span class="nx">Type</span><span class="p">),</span><span class="w"> </span><span class="nx">n</span><span class="p">.</span><span class="nx">Type</span><span class="p">,</span><span class="w"> </span><span class="nx">init</span><span class="p">,</span><span class="w"> </span><span class="nf">typename</span><span class="p">(</span><span class="nx">n</span><span class="p">.</span><span class="nx">Type</span><span class="p">),</span><span class="w"> </span><span class="nf">conv</span><span class="p">(</span><span class="nx">size</span><span class="p">,</span><span class="w"> </span><span class="nx">argtype</span><span class="p">))</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p><a class="link" href="https://draveness.me/golang/tree/runtime.makechan"  target="_blank" rel="noopener"
     >runtime.makechan</a> 和 <a class="link" href="https://draveness.me/golang/tree/runtime.makechan64"  target="_blank" rel="noopener"
@@ -577,28 +577,28 @@
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">makechan</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">chantype</span><span class="p">,</span> <span class="nx">size</span> <span class="kt">int</span><span class="p">)</span> <span class="o">*</span><span class="nx">hchan</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl"> <span class="nx">elem</span> <span class="o">:=</span> <span class="nx">t</span><span class="p">.</span><span class="nx">elem</span>
-</span></span><span class="line"><span class="cl"> <span class="nx">mem</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">math</span><span class="p">.</span><span class="nf">MulUintptr</span><span class="p">(</span><span class="nx">elem</span><span class="p">.</span><span class="nx">size</span><span class="p">,</span> <span class="nb">uintptr</span><span class="p">(</span><span class="nx">size</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"> <span class="kd">var</span> <span class="nx">c</span> <span class="o">*</span><span class="nx">hchan</span>
-</span></span><span class="line"><span class="cl"> <span class="k">switch</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl"> <span class="k">case</span> <span class="nx">mem</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">c</span> <span class="p">=</span> <span class="p">(</span><span class="o">*</span><span class="nx">hchan</span><span class="p">)(</span><span class="nf">mallocgc</span><span class="p">(</span><span class="nx">hchanSize</span><span class="p">,</span> <span class="kc">nil</span><span class="p">,</span> <span class="kc">true</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">c</span><span class="p">.</span><span class="nx">buf</span> <span class="p">=</span> <span class="nx">c</span><span class="p">.</span><span class="nf">raceaddr</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"> <span class="k">case</span> <span class="nx">elem</span><span class="p">.</span><span class="nx">kind</span><span class="o">&amp;</span><span class="nx">kindNoPointers</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">c</span> <span class="p">=</span> <span class="p">(</span><span class="o">*</span><span class="nx">hchan</span><span class="p">)(</span><span class="nf">mallocgc</span><span class="p">(</span><span class="nx">hchanSize</span><span class="o">+</span><span class="nx">mem</span><span class="p">,</span> <span class="kc">nil</span><span class="p">,</span> <span class="kc">true</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">c</span><span class="p">.</span><span class="nx">buf</span> <span class="p">=</span> <span class="nf">add</span><span class="p">(</span><span class="nx">unsafe</span><span class="p">.</span><span class="nf">Pointer</span><span class="p">(</span><span class="nx">c</span><span class="p">),</span> <span class="nx">hchanSize</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"> <span class="k">default</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">c</span> <span class="p">=</span> <span class="nb">new</span><span class="p">(</span><span class="nx">hchan</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">c</span><span class="p">.</span><span class="nx">buf</span> <span class="p">=</span> <span class="nf">mallocgc</span><span class="p">(</span><span class="nx">mem</span><span class="p">,</span> <span class="nx">elem</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"> <span class="p">}</span>
-</span></span><span class="line"><span class="cl"> <span class="nx">c</span><span class="p">.</span><span class="nx">elemsize</span> <span class="p">=</span> <span class="nb">uint16</span><span class="p">(</span><span class="nx">elem</span><span class="p">.</span><span class="nx">size</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"> <span class="nx">c</span><span class="p">.</span><span class="nx">elemtype</span> <span class="p">=</span> <span class="nx">elem</span>
-</span></span><span class="line"><span class="cl"> <span class="nx">c</span><span class="p">.</span><span class="nx">dataqsiz</span> <span class="p">=</span> <span class="nb">uint</span><span class="p">(</span><span class="nx">size</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"> <span class="k">return</span> <span class="nx">c</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="nf">makechan</span><span class="p">(</span><span class="nx">t</span><span class="w"> </span><span class="o">*</span><span class="nx">chantype</span><span class="p">,</span><span class="w"> </span><span class="nx">size</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">hchan</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nx">elem</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">t</span><span class="p">.</span><span class="nx">elem</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nx">mem</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">math</span><span class="p">.</span><span class="nf">MulUintptr</span><span class="p">(</span><span class="nx">elem</span><span class="p">.</span><span class="nx">size</span><span class="p">,</span><span class="w"> </span><span class="nb">uintptr</span><span class="p">(</span><span class="nx">size</span><span class="p">))</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">hchan</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="k">switch</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="k">case</span><span class="w"> </span><span class="nx">mem</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">hchan</span><span class="p">)(</span><span class="nf">mallocgc</span><span class="p">(</span><span class="nx">hchanSize</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">))</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">c</span><span class="p">.</span><span class="nx">buf</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nf">raceaddr</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="k">case</span><span class="w"> </span><span class="nx">elem</span><span class="p">.</span><span class="nx">kind</span><span class="o">&amp;</span><span class="nx">kindNoPointers</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">hchan</span><span class="p">)(</span><span class="nf">mallocgc</span><span class="p">(</span><span class="nx">hchanSize</span><span class="o">+</span><span class="nx">mem</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">))</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">c</span><span class="p">.</span><span class="nx">buf</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="nx">unsafe</span><span class="p">.</span><span class="nf">Pointer</span><span class="p">(</span><span class="nx">c</span><span class="p">),</span><span class="w"> </span><span class="nx">hchanSize</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="k">default</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">new</span><span class="p">(</span><span class="nx">hchan</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">c</span><span class="p">.</span><span class="nx">buf</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">mallocgc</span><span class="p">(</span><span class="nx">mem</span><span class="p">,</span><span class="w"> </span><span class="nx">elem</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">elemsize</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">uint16</span><span class="p">(</span><span class="nx">elem</span><span class="p">.</span><span class="nx">size</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">elemtype</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">elem</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">dataqsiz</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">uint</span><span class="p">(</span><span class="nx">size</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">c</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>上述代码根据 Channel 中收发元素的类型和缓冲区的大小初始化 runtime.hchan 和缓冲区：</p>
 <ul>
@@ -626,17 +626,17 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">walkexpr</span><span class="p">(</span><span class="nx">n</span> <span class="o">*</span><span class="nx">Node</span><span class="p">,</span> <span class="nx">init</span> <span class="o">*</span><span class="nx">Nodes</span><span class="p">)</span> <span class="o">*</span><span class="nx">Node</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl"> <span class="k">switch</span> <span class="nx">n</span><span class="p">.</span><span class="nx">Op</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl"> <span class="k">case</span> <span class="nx">OSEND</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">n1</span> <span class="o">:=</span> <span class="nx">n</span><span class="p">.</span><span class="nx">Right</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">n1</span> <span class="p">=</span> <span class="nf">assignconv</span><span class="p">(</span><span class="nx">n1</span><span class="p">,</span> <span class="nx">n</span><span class="p">.</span><span class="nx">Left</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="nf">Elem</span><span class="p">(),</span> <span class="s">&#34;chan send&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">n1</span> <span class="p">=</span> <span class="nf">walkexpr</span><span class="p">(</span><span class="nx">n1</span><span class="p">,</span> <span class="nx">init</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">n1</span> <span class="p">=</span> <span class="nf">nod</span><span class="p">(</span><span class="nx">OADDR</span><span class="p">,</span> <span class="nx">n1</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">n</span> <span class="p">=</span> <span class="nf">mkcall1</span><span class="p">(</span><span class="nf">chanfn</span><span class="p">(</span><span class="s">&#34;chansend1&#34;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">n</span><span class="p">.</span><span class="nx">Left</span><span class="p">.</span><span class="nx">Type</span><span class="p">),</span> <span class="kc">nil</span><span class="p">,</span> <span class="nx">init</span><span class="p">,</span> <span class="nx">n</span><span class="p">.</span><span class="nx">Left</span><span class="p">,</span> <span class="nx">n1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"> <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="nf">walkexpr</span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="o">*</span><span class="nx">Node</span><span class="p">,</span><span class="w"> </span><span class="nx">init</span><span class="w"> </span><span class="o">*</span><span class="nx">Nodes</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">Node</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="k">switch</span><span class="w"> </span><span class="nx">n</span><span class="p">.</span><span class="nx">Op</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="k">case</span><span class="w"> </span><span class="nx">OSEND</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">n1</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">n</span><span class="p">.</span><span class="nx">Right</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">n1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">assignconv</span><span class="p">(</span><span class="nx">n1</span><span class="p">,</span><span class="w"> </span><span class="nx">n</span><span class="p">.</span><span class="nx">Left</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="nf">Elem</span><span class="p">(),</span><span class="w"> </span><span class="s">&#34;chan send&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">n1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">walkexpr</span><span class="p">(</span><span class="nx">n1</span><span class="p">,</span><span class="w"> </span><span class="nx">init</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">n1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">nod</span><span class="p">(</span><span class="nx">OADDR</span><span class="p">,</span><span class="w"> </span><span class="nx">n1</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">mkcall1</span><span class="p">(</span><span class="nf">chanfn</span><span class="p">(</span><span class="s">&#34;chansend1&#34;</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nx">n</span><span class="p">.</span><span class="nx">Left</span><span class="p">.</span><span class="nx">Type</span><span class="p">),</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">init</span><span class="p">,</span><span class="w"> </span><span class="nx">n</span><span class="p">.</span><span class="nx">Left</span><span class="p">,</span><span class="w"> </span><span class="nx">n1</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>chansend1</code>只是调用了<code>runtime.chansend</code>并传入<code>Channel</code>和需要发送的数据。<code>chansend</code>是向<code>Channel</code>
 中发送数据时一定会调用的函数，该函数包含了发送数据的全部逻辑，如果我们在调用时将<code>block</code>参数设置成<code>true</code>,那么表示当前发送操作是阻塞的。
@@ -653,14 +653,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">chansend</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">hchan</span><span class="p">,</span> <span class="nx">ep</span> <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span><span class="p">,</span> <span class="nx">block</span> <span class="kt">bool</span><span class="p">,</span> <span class="nx">callerpc</span> <span class="kt">uintptr</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl"> <span class="nf">lock</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">c</span><span class="p">.</span><span class="nx">lock</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"> <span class="k">if</span> <span class="nx">c</span><span class="p">.</span><span class="nx">closed</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">c</span><span class="p">.</span><span class="nx">lock</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">  <span class="nb">panic</span><span class="p">(</span><span class="nf">plainError</span><span class="p">(</span><span class="s">&#34;send on closed channel&#34;</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl"> <span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="nf">chansend</span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">hchan</span><span class="p">,</span><span class="w"> </span><span class="nx">ep</span><span class="w"> </span><span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span><span class="p">,</span><span class="w"> </span><span class="nx">block</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span><span class="w"> </span><span class="nx">callerpc</span><span class="w"> </span><span class="kt">uintptr</span><span class="p">)</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nf">lock</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">c</span><span class="p">.</span><span class="nx">lock</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">closed</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nf">unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">c</span><span class="p">.</span><span class="nx">lock</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nb">panic</span><span class="p">(</span><span class="nf">plainError</span><span class="p">(</span><span class="s">&#34;send on closed channel&#34;</span><span class="p">))</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>在发送数据的逻辑执行之前会先为当前 Channel 加锁，防止多个线程并发修改数据。如果 Channel 已经关闭，那么向该 Channel 发送数据时会报 “send on closed channel” 错误并中止程序。</p>
 <p>因为<code>runtime.chansend</code>函数的实现比较复杂，所以我们将该函数的执行过程分为以下三部分：</p>
@@ -680,11 +680,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="k">if</span> <span class="nx">sg</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">recvq</span><span class="p">.</span><span class="nf">dequeue</span><span class="p">();</span> <span class="nx">sg</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">send</span><span class="p">(</span><span class="nx">c</span><span class="p">,</span> <span class="nx">sg</span><span class="p">,</span> <span class="nx">ep</span><span class="p">,</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span> <span class="nf">unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">c</span><span class="p">.</span><span class="nx">lock</span><span class="p">)</span> <span class="p">},</span> <span class="mi">3</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="kc">true</span>
-</span></span><span class="line"><span class="cl"> <span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="k">if</span><span class="w"> </span><span class="nx">sg</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">recvq</span><span class="p">.</span><span class="nf">dequeue</span><span class="p">();</span><span class="w"> </span><span class="nx">sg</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nf">send</span><span class="p">(</span><span class="nx">c</span><span class="p">,</span><span class="w"> </span><span class="nx">sg</span><span class="p">,</span><span class="w"> </span><span class="nx">ep</span><span class="p">,</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nf">unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">c</span><span class="p">.</span><span class="nx">lock</span><span class="p">)</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>发送数据时会调用<code>runtime.send</code>，该函数的执行可以分为两个部分：</p>
 <ol>
@@ -705,17 +705,17 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">send</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">hchan</span><span class="p">,</span> <span class="nx">sg</span> <span class="o">*</span><span class="nx">sudog</span><span class="p">,</span> <span class="nx">ep</span> <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span><span class="p">,</span> <span class="nx">unlockf</span> <span class="kd">func</span><span class="p">(),</span> <span class="nx">skip</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl"> <span class="k">if</span> <span class="nx">sg</span><span class="p">.</span><span class="nx">elem</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">sendDirect</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">elemtype</span><span class="p">,</span> <span class="nx">sg</span><span class="p">,</span> <span class="nx">ep</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">sg</span><span class="p">.</span><span class="nx">elem</span> <span class="p">=</span> <span class="kc">nil</span>
-</span></span><span class="line"><span class="cl"> <span class="p">}</span>
-</span></span><span class="line"><span class="cl"> <span class="nx">gp</span> <span class="o">:=</span> <span class="nx">sg</span><span class="p">.</span><span class="nx">g</span>
-</span></span><span class="line"><span class="cl"> <span class="nf">unlockf</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"> <span class="nx">gp</span><span class="p">.</span><span class="nx">param</span> <span class="p">=</span> <span class="nx">unsafe</span><span class="p">.</span><span class="nf">Pointer</span><span class="p">(</span><span class="nx">sg</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"> <span class="nf">goready</span><span class="p">(</span><span class="nx">gp</span><span class="p">,</span> <span class="nx">skip</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="nf">send</span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">hchan</span><span class="p">,</span><span class="w"> </span><span class="nx">sg</span><span class="w"> </span><span class="o">*</span><span class="nx">sudog</span><span class="p">,</span><span class="w"> </span><span class="nx">ep</span><span class="w"> </span><span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span><span class="p">,</span><span class="w"> </span><span class="nx">unlockf</span><span class="w"> </span><span class="kd">func</span><span class="p">(),</span><span class="w"> </span><span class="nx">skip</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nx">sg</span><span class="p">.</span><span class="nx">elem</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nf">sendDirect</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">elemtype</span><span class="p">,</span><span class="w"> </span><span class="nx">sg</span><span class="p">,</span><span class="w"> </span><span class="nx">ep</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">sg</span><span class="p">.</span><span class="nx">elem</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">nil</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nx">gp</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sg</span><span class="p">.</span><span class="nx">g</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nf">unlockf</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nx">gp</span><span class="p">.</span><span class="nx">param</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">unsafe</span><span class="p">.</span><span class="nf">Pointer</span><span class="p">(</span><span class="nx">sg</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nf">goready</span><span class="p">(</span><span class="nx">gp</span><span class="p">,</span><span class="w"> </span><span class="nx">skip</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>需要注意的是，发送数据的过程只是将接收方的Goroutine放到了处理器的<code>runnext</code>中，程序没有立刻执行该Goroutine。</p>
 <hr>
@@ -740,22 +740,22 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">chansend</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">hchan</span><span class="p">,</span> <span class="nx">ep</span> <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span><span class="p">,</span> <span class="nx">block</span> <span class="kt">bool</span><span class="p">,</span> <span class="nx">callerpc</span> <span class="kt">uintptr</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl"> <span class="o">...</span>
-</span></span><span class="line"><span class="cl"> <span class="k">if</span> <span class="nx">c</span><span class="p">.</span><span class="nx">qcount</span> <span class="p">&lt;</span> <span class="nx">c</span><span class="p">.</span><span class="nx">dataqsiz</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">qp</span> <span class="o">:=</span> <span class="nf">chanbuf</span><span class="p">(</span><span class="nx">c</span><span class="p">,</span> <span class="nx">c</span><span class="p">.</span><span class="nx">sendx</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">typedmemmove</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">elemtype</span><span class="p">,</span> <span class="nx">qp</span><span class="p">,</span> <span class="nx">ep</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">c</span><span class="p">.</span><span class="nx">sendx</span><span class="o">++</span>
-</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="nx">c</span><span class="p">.</span><span class="nx">sendx</span> <span class="o">==</span> <span class="nx">c</span><span class="p">.</span><span class="nx">dataqsiz</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">   <span class="nx">c</span><span class="p">.</span><span class="nx">sendx</span> <span class="p">=</span> <span class="mi">0</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">c</span><span class="p">.</span><span class="nx">qcount</span><span class="o">++</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">c</span><span class="p">.</span><span class="nx">lock</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="kc">true</span>
-</span></span><span class="line"><span class="cl"> <span class="p">}</span>
-</span></span><span class="line"><span class="cl"> <span class="o">...</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="nf">chansend</span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">hchan</span><span class="p">,</span><span class="w"> </span><span class="nx">ep</span><span class="w"> </span><span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span><span class="p">,</span><span class="w"> </span><span class="nx">block</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span><span class="w"> </span><span class="nx">callerpc</span><span class="w"> </span><span class="kt">uintptr</span><span class="p">)</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="o">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">qcount</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">dataqsiz</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">qp</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nf">chanbuf</span><span class="p">(</span><span class="nx">c</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">sendx</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nf">typedmemmove</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">elemtype</span><span class="p">,</span><span class="w"> </span><span class="nx">qp</span><span class="p">,</span><span class="w"> </span><span class="nx">ep</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">c</span><span class="p">.</span><span class="nx">sendx</span><span class="o">++</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">sendx</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">dataqsiz</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="nx">c</span><span class="p">.</span><span class="nx">sendx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">c</span><span class="p">.</span><span class="nx">qcount</span><span class="o">++</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nf">unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">c</span><span class="p">.</span><span class="nx">lock</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="o">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>在这里我们首先会使用 <code>runtime.chanbuf</code> 计算出下一个可以存储数据的位置，然后通过 <code>runtime.typedmemmove</code> 将发送的数据拷贝到缓冲区中并增加 sendx 索引和 qcount 计数器。</p>
 <p>如果当前Channel的缓冲区未满，向Channel发送的数据会存储在Channel的<code>sendx</code>索引所在的位置，并将<code>sendx</code>索引加1，，因为这里的<code>buf</code>是一个循环数组，所以当<code>sendx</code>等于<code>dataqsiz</code>时会重新回到数组开始的位置。</p>
@@ -788,29 +788,29 @@
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">chansend</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">hchan</span><span class="p">,</span> <span class="nx">ep</span> <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span><span class="p">,</span> <span class="nx">block</span> <span class="kt">bool</span><span class="p">,</span> <span class="nx">callerpc</span> <span class="kt">uintptr</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl"> <span class="o">...</span>
-</span></span><span class="line"><span class="cl"> <span class="k">if</span> <span class="p">!</span><span class="nx">block</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">c</span><span class="p">.</span><span class="nx">lock</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="kc">false</span>
-</span></span><span class="line"><span class="cl"> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"> <span class="nx">gp</span> <span class="o">:=</span> <span class="nf">getg</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"> <span class="nx">mysg</span> <span class="o">:=</span> <span class="nf">acquireSudog</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"> <span class="nx">mysg</span><span class="p">.</span><span class="nx">elem</span> <span class="p">=</span> <span class="nx">ep</span>
-</span></span><span class="line"><span class="cl"> <span class="nx">mysg</span><span class="p">.</span><span class="nx">g</span> <span class="p">=</span> <span class="nx">gp</span>
-</span></span><span class="line"><span class="cl"> <span class="nx">mysg</span><span class="p">.</span><span class="nx">c</span> <span class="p">=</span> <span class="nx">c</span>
-</span></span><span class="line"><span class="cl"> <span class="nx">gp</span><span class="p">.</span><span class="nx">waiting</span> <span class="p">=</span> <span class="nx">mysg</span>
-</span></span><span class="line"><span class="cl"> <span class="nx">c</span><span class="p">.</span><span class="nx">sendq</span><span class="p">.</span><span class="nf">enqueue</span><span class="p">(</span><span class="nx">mysg</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"> <span class="nf">goparkunlock</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">c</span><span class="p">.</span><span class="nx">lock</span><span class="p">,</span> <span class="nx">waitReasonChanSend</span><span class="p">,</span> <span class="nx">traceEvGoBlockSend</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"> <span class="nx">gp</span><span class="p">.</span><span class="nx">waiting</span> <span class="p">=</span> <span class="kc">nil</span>
-</span></span><span class="line"><span class="cl"> <span class="nx">gp</span><span class="p">.</span><span class="nx">param</span> <span class="p">=</span> <span class="kc">nil</span>
-</span></span><span class="line"><span class="cl"> <span class="nx">mysg</span><span class="p">.</span><span class="nx">c</span> <span class="p">=</span> <span class="kc">nil</span>
-</span></span><span class="line"><span class="cl"> <span class="nf">releaseSudog</span><span class="p">(</span><span class="nx">mysg</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"> <span class="k">return</span> <span class="kc">true</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="nf">chansend</span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">hchan</span><span class="p">,</span><span class="w"> </span><span class="nx">ep</span><span class="w"> </span><span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span><span class="p">,</span><span class="w"> </span><span class="nx">block</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span><span class="w"> </span><span class="nx">callerpc</span><span class="w"> </span><span class="kt">uintptr</span><span class="p">)</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="o">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">block</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nf">unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">c</span><span class="p">.</span><span class="nx">lock</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nx">gp</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nf">getg</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nx">mysg</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nf">acquireSudog</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nx">mysg</span><span class="p">.</span><span class="nx">elem</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">ep</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nx">mysg</span><span class="p">.</span><span class="nx">g</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">gp</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nx">mysg</span><span class="p">.</span><span class="nx">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">c</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nx">gp</span><span class="p">.</span><span class="nx">waiting</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">mysg</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">sendq</span><span class="p">.</span><span class="nf">enqueue</span><span class="p">(</span><span class="nx">mysg</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nf">goparkunlock</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">c</span><span class="p">.</span><span class="nx">lock</span><span class="p">,</span><span class="w"> </span><span class="nx">waitReasonChanSend</span><span class="p">,</span><span class="w"> </span><span class="nx">traceEvGoBlockSend</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nx">gp</span><span class="p">.</span><span class="nx">waiting</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">nil</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nx">gp</span><span class="p">.</span><span class="nx">param</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">nil</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nx">mysg</span><span class="p">.</span><span class="nx">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">nil</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nf">releaseSudog</span><span class="p">(</span><span class="nx">mysg</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><ol>
 <li>调用 runtime.getg 获取发送数据使用的 Goroutine；</li>
@@ -840,9 +840,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="nx">i</span> <span class="o">:=</span> <span class="o">&lt;-</span> <span class="nx">ch</span>
-</span></span><span class="line"><span class="cl"><span class="nx">i</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="o">&lt;-</span> <span class="nx">ch</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nx">ch</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nx">i</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nx">ch</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>这两种不同的方法经过编译器的处理都会变成 ORECV 类型的节点，后者会在类型检查阶段被转换成 OAS2RECV 类型。虽然不同的接收方式会被转换成 runtime.chanrecv1 和 runtime.chanrecv2 两种不同函数的调用，但是这两个函数最终还是会调用 runtime.chanrecv。</p>
 <p>当我们从一个空 Channel 接收数据时会直接调用 runtime.gopark 让出处理器的使用权。</p>
@@ -868,25 +868,25 @@
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">chanrecv</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">hchan</span><span class="p">,</span> <span class="nx">ep</span> <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span><span class="p">,</span> <span class="nx">block</span> <span class="kt">bool</span><span class="p">)</span> <span class="p">(</span><span class="nx">selected</span><span class="p">,</span> <span class="nx">received</span> <span class="kt">bool</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl"> <span class="k">if</span> <span class="nx">c</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">!</span><span class="nx">block</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">   <span class="k">return</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">gopark</span><span class="p">(</span><span class="kc">nil</span><span class="p">,</span> <span class="kc">nil</span><span class="p">,</span> <span class="nx">waitReasonChanReceiveNilChan</span><span class="p">,</span> <span class="nx">traceEvGoStop</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">throw</span><span class="p">(</span><span class="s">&#34;unreachable&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"> <span class="nf">lock</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">c</span><span class="p">.</span><span class="nx">lock</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"> <span class="k">if</span> <span class="nx">c</span><span class="p">.</span><span class="nx">closed</span> <span class="o">!=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">c</span><span class="p">.</span><span class="nx">qcount</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">c</span><span class="p">.</span><span class="nx">lock</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="nx">ep</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">   <span class="nf">typedmemclr</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">elemtype</span><span class="p">,</span> <span class="nx">ep</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="kc">true</span><span class="p">,</span> <span class="kc">false</span>
-</span></span><span class="line"><span class="cl"> <span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="nf">chanrecv</span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">hchan</span><span class="p">,</span><span class="w"> </span><span class="nx">ep</span><span class="w"> </span><span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span><span class="p">,</span><span class="w"> </span><span class="nx">block</span><span class="w"> </span><span class="kt">bool</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">selected</span><span class="p">,</span><span class="w"> </span><span class="nx">received</span><span class="w"> </span><span class="kt">bool</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nx">c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">block</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">return</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nf">gopark</span><span class="p">(</span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">waitReasonChanReceiveNilChan</span><span class="p">,</span><span class="w"> </span><span class="nx">traceEvGoStop</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nf">throw</span><span class="p">(</span><span class="s">&#34;unreachable&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nf">lock</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">c</span><span class="p">.</span><span class="nx">lock</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">closed</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">qcount</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nf">unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">c</span><span class="p">.</span><span class="nx">lock</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="nx">ep</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="nf">typedmemclr</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">elemtype</span><span class="p">,</span><span class="w"> </span><span class="nx">ep</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 </section>
@@ -958,6 +958,19 @@
             
                 
 <article class="">
+    <a href="/p/golang-%E8%BF%90%E8%A1%8C%E5%88%9D%E5%A7%8B%E5%8C%96%E9%83%BD%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Golang 运行初始化都做了什么</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
     <a href="/p/node-go-%E5%92%8C-rust%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AE%80%E5%8D%95%E5%AF%B9%E6%AF%94/">
         
         
@@ -1003,19 +1016,6 @@
 
         <div class="article-details">
             <h2 class="article-title">Golang 源码里的 //go: 指令，都代表什么意思？</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/p/golang-%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Golang 常用数据类型转换</h2>
         </div>
     </a>
 </article>
